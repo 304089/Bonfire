@@ -37,7 +37,7 @@
 - キャンプ場経営者や利用者が写真やコメントの投稿により、キャンプ場のアピールができ、集客に繋がる
 
 ## 設計書
-<...>
+（後に作成・添付予定）
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1lzPPfHXpo8iiL9e9x6RtkWUOUH-uQZxFOOObnomo3rw/edit?usp=sharing>
