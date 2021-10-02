@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'homes#top'
   devise_for :users
-  resources :users, only:[:show, :index] do
+  resources :users, except:[:new, :destroy] do
     member do
       get :unsubscribe
     end

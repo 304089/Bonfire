@@ -1,0 +1,8 @@
+<%= form_with model: @user, local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :introduction %>
+  <%= f.text_area :introduction %>
+  <%= f.attachment_field :profile_image %>
+  <%= f.submit "送信" %>
+<% end %>

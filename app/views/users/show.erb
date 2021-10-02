@@ -1,4 +1,7 @@
 <ul>
-  <li><%= link_to "登録情報編集", edit_user_registration_path %></li>
+  <li><%= link_to "登録情報編集", edit_user_path(@user) %></li>
+  <li><%= link_to "退会したい", unsubscribe_user_path(@user) %></li>
 </ul>
 <%= @user.name %>
+<%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
+<%= @user.introduction %>
