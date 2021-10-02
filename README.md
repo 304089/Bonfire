@@ -37,10 +37,12 @@
 - キャンプ場経営者や利用者が写真やコメントの投稿により、キャンプ場のアピールができ、集客に繋がる
 
 ## 設計書
-（後に作成・添付予定）
+- [ER図](https://drive.google.com/file/d/1ymml7Fkh7u8_nLktpGkY7eLkgAgzvsNR/view?usp=sharing)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1TiKXs-gF7U1hp21zsyggsn9Wx65AIRBJmQt6bPhGByI/edit?usp=sharing)
+- [詳細設計書](https://docs.google.com/spreadsheets/d/1j3Ew7qn6H9omB5gyCthA_8D-DoOXKvXJ7WoKEB-mPPE/edit?usp=sharing)
 
 ## チャレンジ要素一覧
-<https://docs.google.com/spreadsheets/d/1lzPPfHXpo8iiL9e9x6RtkWUOUH-uQZxFOOObnomo3rw/edit?usp=sharing>
+[チャレンジ要素](https://docs.google.com/spreadsheets/d/1lzPPfHXpo8iiL9e9x6RtkWUOUH-uQZxFOOObnomo3rw/edit?usp=sharing)
 
 ## 開発環境
 - OS：macOS Big Sur
