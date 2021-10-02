@@ -1,0 +1,2 @@
+class HelpfulnessesController < ApplicationController
+end

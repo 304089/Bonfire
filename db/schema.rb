@@ -10,7 +10,93 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_02_011729) do
+ActiveRecord::Schema.define(version: 2021_10_02_022700) do
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "photo_post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photo_post_id"], name: "index_bookmarks_on_photo_post_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
+  create_table "consultation_answers", force: :cascade do |t|
+    t.integer "consultation_id", null: false
+    t.integer "user_id", null: false
+    t.text "answer", null: false
+    t.string "answer_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["consultation_id"], name: "index_consultation_answers_on_consultation_id"
+    t.index ["user_id"], name: "index_consultation_answers_on_user_id"
+  end
+
+  create_table "consultations", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "genre_id", null: false
+    t.string "title", null: false
+    t.text "content", null: false
+    t.string "consultation_image_id"
+    t.boolean "anonymity", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_consultations_on_genre_id"
+    t.index ["user_id"], name: "index_consultations_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "photo_post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photo_post_id"], name: "index_favorites_on_photo_post_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "helpfulnesses", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "consultation_answer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["consultation_answer_id"], name: "index_helpfulnesses_on_consultation_answer_id"
+    t.index ["user_id"], name: "index_helpfulnesses_on_user_id"
+  end
+
+  create_table "infomations", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "genre", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "photo_post_comments", force: :cascade do |t|
+    t.integer "photo_post_id", null: false
+    t.integer "user_id", null: false
+    t.text "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photo_post_id"], name: "index_photo_post_comments_on_photo_post_id"
+    t.index ["user_id"], name: "index_photo_post_comments_on_user_id"
+  end
+
+  create_table "photo_posts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "genre_id", null: false
+    t.text "introduction", null: false
+    t.string "photo_image_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_photo_posts_on_genre_id"
+    t.index ["user_id"], name: "index_photo_posts_on_user_id"
+  end
 
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id"
@@ -37,6 +123,21 @@ ActiveRecord::Schema.define(version: 2021_10_02_011729) do
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "name", null: false
+    t.string "profile_image_id"
+    t.boolean "admin", default: false, null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

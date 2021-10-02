@@ -1,0 +1,2 @@
+class PhotoPostCommentsController < ApplicationController
+end
