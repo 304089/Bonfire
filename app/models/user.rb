@@ -11,4 +11,9 @@ class User < ApplicationRecord
   has_many :consultations, dependent: :destroy
   has_many :consultation_answers, dependent: :destroy
   has_many :helpfulnesses, dependent: :destroy
+
+  def admin?
+    self.admin == true
+  end
+
 end

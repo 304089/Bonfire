@@ -64,6 +64,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #認証
 gem 'devise'
+#日本語化
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 #Google認証
 gem 'omniauth-google-oauth2'
 #Twitter認証
