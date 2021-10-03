@@ -1,0 +1,17 @@
+<%= form_with(model:[@photo_post], local: true) do |f| %>
+  <div class = "field">
+    <%= f.label :genre, "投稿ジャンル" %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+  </div>
+  <div class = "field">
+    <%= f.label :photo_image, "投稿写真" %>
+    <%= f.attachment_field :photo_image %>
+  </div>
+  <div class = "field">
+    <%= f.label :introduction, "説明" %>
+    <%= f.text_area :introduction %>
+  </div>
+  <div class = "submit">
+    <%= f.submit "投稿" %>
+  </div>
+<% end %>

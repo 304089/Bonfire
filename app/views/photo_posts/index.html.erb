@@ -1,0 +1,17 @@
+<table>
+  <% @photo_posts.each do |photo_post| %>
+  <tr>
+    <td>
+      <%= link_to photo_post_path(photo_post) do %>
+        <%= attachment_image_tag photo_post, :photo_image, size: "70x70" %>
+      <% end %>
+    </td>
+    <td><%= photo_post.created_at.strftime("%Y年%m月%d日").to_s %></td>
+    <td><%= link_to user_path(photo_post.user) do %>
+          <%= attachment_image_tag photo_post.user, :profile_image, size: "20x20" %>
+          <%= photo_post.user.name %>
+        <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>

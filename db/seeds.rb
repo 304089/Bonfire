@@ -11,3 +11,7 @@ User.create!(
    name: 'テスト太郎',
    admin: true
 )
+
+Genre.create!(name: "ロケーション")
+Genre.create!(name: "料理")
+Genre.create!(name: "ギア")

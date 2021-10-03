@@ -4,5 +4,5 @@ class PhotoPost < ApplicationRecord
   has_many :photo_post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  has_one :genre
+  belongs_to :genre
 end
