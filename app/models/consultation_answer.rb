@@ -1,6 +1,6 @@
 class ConsultationAnswer < ApplicationRecord
   attachment :answer_image
-  has_many :helpfulnesses
+  has_many :helpfulnesses, dependent: :destroy
   belongs_to :user
   belongs_to :consultation
 

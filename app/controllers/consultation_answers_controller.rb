@@ -1,4 +1,5 @@
 class ConsultationAnswersController < ApplicationController
+
   def create
     consultation = Consultation.find(params[:consultation_id])
     @consultation_answer = ConsultationAnswer.new(consultation_answer_params)
