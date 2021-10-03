@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 2021_10_03_085643) do
 
   create_table "infomations", force: :cascade do |t|
     t.string "email", null: false
-    t.string "genre", default: "0", null: false
     t.text "content", null: false
     t.string "status", default: "0", null: false
     t.datetime "created_at", null: false
