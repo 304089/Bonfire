@@ -12,19 +12,9 @@
     <%= @photo_post.created_at.strftime("%Y年%m月%d日").to_s %>
   </div>
   <div>
-    <% if @photo_post.favorited_by?(current_user) %>
-      <p>
-        <%= link_to photo_post_favorite_path(@photo_post), method: :delete do %>
-          ♥<%= @photo_post.favorites.count %> いいね
-        <% end %>
-      </p>
-    <% else %>
-      <p>
-        <%= link_to photo_post_favorite_path(@photo_post), method: :post do %>
-          ♡<%= @photo_post.favorites.count %> いいね
-        <% end %>
-      </p>
-    <% end %>
+    <div id="photo_post_favorite_<%= @photo_post.id %>">
+      <%= render "favorites/favorite", photo_post: @photo_post %>
+    </div>
   </div>
   <div>
     <% if @photo_post.bookmarked_by?(current_user) %>
