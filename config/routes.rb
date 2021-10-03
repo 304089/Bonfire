@@ -7,8 +7,9 @@ Rails.application.routes.draw do
     end
   end
   resources :photo_posts do
-    resource :photo_post_comments
-    resource :favorites, only:[:create, :destroy]
+    resource :photo_post_comment
+    resource :favorite, only:[:create, :destroy]
+    resource :bookmark, only:[:create, :destroy]
   end
   resources :consultations
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

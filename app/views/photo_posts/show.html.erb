@@ -14,14 +14,29 @@
   <div>
     <% if @photo_post.favorited_by?(current_user) %>
       <p>
-        <%= link_to photo_post_favorites_path(@photo_post), method: :delete do %>
+        <%= link_to photo_post_favorite_path(@photo_post), method: :delete do %>
           ♥<%= @photo_post.favorites.count %> いいね
         <% end %>
       </p>
     <% else %>
       <p>
-        <%= link_to photo_post_favorites_path(@photo_post), method: :post do %>
+        <%= link_to photo_post_favorite_path(@photo_post), method: :post do %>
           ♡<%= @photo_post.favorites.count %> いいね
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+  <div>
+    <% if @photo_post.bookmarked_by?(current_user) %>
+      <p>
+        <%= link_to photo_post_bookmark_path(@photo_post), method: :delete do %>
+          ●<%= @photo_post.bookmarks.count %> ブックマーク
+        <% end %>
+      </p>
+    <% else %>
+      <p>
+        <%= link_to photo_post_bookmark_path(@photo_post), method: :post do %>
+          ○<%= @photo_post.bookmarks.count %> ブックマーク取り消し
         <% end %>
       </p>
     <% end %>
@@ -29,7 +44,7 @@
 </div>
 <h3>コメント</h3>
 <div>
-  <%= form_with(model:[@photo_post, @photo_post_comment], url: photo_post_photo_post_comments_path(@photo_post), local: true) do |f| %>
+  <%= form_with(model:[@photo_post, @photo_post_comment], url: photo_post_photo_post_comment_path(@photo_post), local: true) do |f| %>
     <%= f.text_field :comment %>
     <%= f.submit "投稿する" %>
   <% end %>
