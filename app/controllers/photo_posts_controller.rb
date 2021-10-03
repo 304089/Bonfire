@@ -7,7 +7,7 @@ class PhotoPostsController < ApplicationController
   def create
     @photo_post = PhotoPost.new(photo_post_params)
     @photo_post.user_id = current_user.id
-    if @photo_post.save!
+    if @photo_post.save
       redirect_to user_path(@photo_post.user)
     else
       render "new"
@@ -29,7 +29,7 @@ class PhotoPostsController < ApplicationController
 
   private
   def photo_post_params
-    params.require(:photo_post).permit(:introduction, :photo_image, :genre_id)
+    params.require(:photo_post).permit(:introduction, :photo_image, :photo_post_genre_id)
   end
 
 end

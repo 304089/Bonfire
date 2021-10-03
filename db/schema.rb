@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_02_022700) do
+ActiveRecord::Schema.define(version: 2021_10_03_085643) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -32,16 +32,22 @@ ActiveRecord::Schema.define(version: 2021_10_02_022700) do
     t.index ["user_id"], name: "index_consultation_answers_on_user_id"
   end
 
+  create_table "consultation_genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "consultations", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "genre_id", null: false
+    t.integer "consultation_genre_id", null: false
     t.string "title", null: false
     t.text "content", null: false
     t.string "consultation_image_id"
     t.boolean "anonymity", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_consultations_on_genre_id"
+    t.index ["consultation_genre_id"], name: "index_consultations_on_consultation_genre_id"
     t.index ["user_id"], name: "index_consultations_on_user_id"
   end
 
@@ -52,12 +58,6 @@ ActiveRecord::Schema.define(version: 2021_10_02_022700) do
     t.datetime "updated_at", null: false
     t.index ["photo_post_id"], name: "index_favorites_on_photo_post_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
-  end
-
-  create_table "genres", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "helpfulnesses", force: :cascade do |t|
@@ -87,14 +87,20 @@ ActiveRecord::Schema.define(version: 2021_10_02_022700) do
     t.index ["user_id"], name: "index_photo_post_comments_on_user_id"
   end
 
+  create_table "photo_post_genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "photo_posts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "genre_id", null: false
+    t.integer "photo_post_genre_id", null: false
     t.text "introduction", null: false
     t.string "photo_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["genre_id"], name: "index_photo_posts_on_genre_id"
+    t.index ["photo_post_genre_id"], name: "index_photo_posts_on_photo_post_genre_id"
     t.index ["user_id"], name: "index_photo_posts_on_user_id"
   end
 

@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     resource :favorite, only:[:create, :destroy]
     resource :bookmark, only:[:create, :destroy]
   end
-  resources :consultations
+  resources :consultations, except:[:edit, :update] do
+    collection do
+      get :top
+      post :confirm
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

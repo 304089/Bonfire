@@ -1,0 +1,21 @@
+<%= form_with(model:[@consultation], local: true) do |f| %>
+  <div class = "field">
+    <%= f.label :consultation_genre, "投稿ジャンル" %>
+    <%= f.collection_select :consultation_genre_id, ConsultationGenre.all, :id, :name, include_blank: "選択して下さい" %>
+  </div>
+  <div class = "field">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title %>
+  </div>
+  <div class = "field">
+    <%= f.label :content, "内容" %>
+    <%= f.text_area :content %>
+  </div>
+  <div class = "field">
+    <%= f.label :consultation_image, "添付画像" %>
+    <%= f.attachment_field :consultation_image %>
+  </div>
+  <div class = "submit">
+    <%= f.submit "投稿" %>
+  </div>
+<% end %>

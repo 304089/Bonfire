@@ -12,6 +12,11 @@ User.create!(
    admin: true
 )
 
-Genre.create!(name: "ロケーション")
-Genre.create!(name: "料理")
-Genre.create!(name: "ギア")
+PhotoPostGenre.create!(name: "ロケーション")
+PhotoPostGenre.create!(name: "料理")
+PhotoPostGenre.create!(name: "ギア")
+
+ConsultationGenre.create!(name: "キャンプ場")
+ConsultationGenre.create!(name: "ギア")
+ConsultationGenre.create!(name: "キャンプファッション")
+ConsultationGenre.create!(name: "その他")

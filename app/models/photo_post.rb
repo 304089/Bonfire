@@ -4,7 +4,7 @@ class PhotoPost < ApplicationRecord
   has_many :photo_post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  belongs_to :genre
+  belongs_to :photo_post_genre
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
