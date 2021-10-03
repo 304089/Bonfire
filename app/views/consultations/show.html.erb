@@ -1,0 +1,35 @@
+<h4><%= @consultation.user.name %>さんからの相談</h4>
+<div>タイトル：<%= @consultation.title %></div>
+<div>内容：<%= @consultation.content %></div>
+<div><%= attachment_image_tag @consultation, :consultation_image, size: "400x400" %></div>
+
+<h3>回答</h3>
+<div>
+  <%= form_with(model:[@consultation, @consultation_answer], url: consultation_consultation_answer_path(@consultation), local: true) do |f| %>
+    <%= f.text_field :answer %>
+    <%= f.attachment_field :answer_image %>
+    <%= f.submit "投稿する" %>
+  <% end %>
+</div>
+<div>
+  <table>
+    <% @consultation_answers.each do |consultation_answer| %>
+    <tr>
+      <th>
+        <%= link_to user_path(consultation_answer.user) do %>
+          <%= attachment_image_tag consultation_answer.user, :profile_image, size: "20x20" %>
+          <%= consultation_answer.user.name %>
+        <% end %>
+      </th>
+      <td>
+        <%= attachment_image_tag consultation_answer, :answer_image, size: "100x100" %>
+      </td>
+      <td>
+        <%= consultation_answer.answer %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+

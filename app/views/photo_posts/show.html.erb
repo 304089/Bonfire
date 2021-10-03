@@ -36,7 +36,7 @@
     <% else %>
       <p>
         <%= link_to photo_post_bookmark_path(@photo_post), method: :post do %>
-          ○<%= @photo_post.bookmarks.count %> ブックマーク取り消し
+          ○<%= @photo_post.bookmarks.count %> ブックマーク
         <% end %>
       </p>
     <% end %>

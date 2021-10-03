@@ -23,6 +23,9 @@ class ConsultationsController < ApplicationController
   end
 
   def show
+    @consultation = Consultation.find(params[:id])
+    @consultation_answer = ConsultationAnswer.new
+    @consultation_answers = ConsultationAnswer.where(consultation_id: @consultation.id)
   end
 
   def destroy

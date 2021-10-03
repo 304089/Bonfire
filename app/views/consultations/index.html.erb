@@ -1,0 +1,11 @@
+<h2>相談一覧</h2>
+<% @consultations.each do |consultation| %>
+  <%= link_to consultation_path(consultation) do %>
+    <%= consultation.consultation_genre.name %>
+    <%= consultation.title %>
+    <%= consultation.created_at %>
+    閲覧数
+    回答数
+    未回答かどうか
+  <% end %>
+<% end %>
