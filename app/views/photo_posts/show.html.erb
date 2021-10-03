@@ -17,19 +17,9 @@
     </div>
   </div>
   <div>
-    <% if @photo_post.bookmarked_by?(current_user) %>
-      <p>
-        <%= link_to photo_post_bookmark_path(@photo_post), method: :delete do %>
-          ●<%= @photo_post.bookmarks.count %> ブックマーク
-        <% end %>
-      </p>
-    <% else %>
-      <p>
-        <%= link_to photo_post_bookmark_path(@photo_post), method: :post do %>
-          ○<%= @photo_post.bookmarks.count %> ブックマーク
-        <% end %>
-      </p>
-    <% end %>
+    <div id="photo_post_bookmark_<%= @photo_post.id %>">
+      <%= render "bookmarks/bookmark", photo_post: @photo_post %>
+    </div>
   </div>
 </div>
 <h3>コメント</h3>
