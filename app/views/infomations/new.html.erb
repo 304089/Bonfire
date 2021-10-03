@@ -1,0 +1,21 @@
+<div>
+  <h3>お問い合わせフォーム</h3>
+  <p><%= flash[:infomation_notice] %></p>
+  <%= form_with model: @infomation,local: true do |f| %>
+    <table>
+      <tr>
+        <th><%= f.label :name,"お名前(必須)" %></th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :email,"メールアドレス(必須)" %></th>
+        <td><%= f.email_field :email %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :content,"お問い合わせ内容(必須)" %></th>
+        <td><%= f.text_area :content %></td>
+      </tr>
+    </table>
+    <%= f.submit "送信" ,class: "btn btn-secondary btn-sm"%>
+  <% end %>
+</div>

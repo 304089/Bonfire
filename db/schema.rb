@@ -70,9 +70,10 @@ ActiveRecord::Schema.define(version: 2021_10_03_085643) do
   end
 
   create_table "infomations", force: :cascade do |t|
+    t.string "name", null: false
     t.string "email", null: false
     t.text "content", null: false
-    t.string "status", default: "0", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
