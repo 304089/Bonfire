@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     member do
       get :favorites
     end
-    resource :photo_post_comment, only:[:create, :destroy]
+    resources :photo_post_comments, only:[:index, :create, :destroy]
     resource :favorite, only:[:create, :destroy]
     resource :bookmark, only:[:create, :destroy]
   end
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       get :top
       post :confirm
     end
-    resources :consultation_answers, only:[:create, :destroy] do
+    resources :consultation_answers, only:[:index, :create, :destroy] do
       resource :helpfulness, only:[:create, :destroy]
     end
   end
