@@ -5,11 +5,15 @@ Rails.application.routes.draw do
   resources :users, except:[:new, :destroy] do
     member do
       get :unsubscribe
+      get :bookmarks
     end
   end
 
-  resources :photo_posts do
-    resource :photo_post_comment
+  resources :photo_posts, except:[:edit, :update] do
+    member do
+      get :favorites
+    end
+    resource :photo_post_comment, only:[:create, :destroy]
     resource :favorite, only:[:create, :destroy]
     resource :bookmark, only:[:create, :destroy]
   end
@@ -19,12 +23,12 @@ Rails.application.routes.draw do
       get :top
       post :confirm
     end
-    resources :consultation_answers do
+    resources :consultation_answers, only:[:create, :destroy] do
       resource :helpfulness, only:[:create, :destroy]
     end
   end
 
-  resources :infomations do
+  resources :infomations, except:[:edit] do
      collection do
        get :thanks
      end

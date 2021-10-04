@@ -25,21 +25,9 @@
     <div>
       <%= consultation_answer.answer %>
     </div>
-    <div>
-    <% if consultation_answer.helped_by?(current_user) %>
-      <p>
-        <%= link_to consultation_consultation_answer_helpfulness_path(consultation_answer.consultation,consultation_answer), method: :delete do %>
-          ♥<%= consultation_answer.helpfulnesses.count %> 役に立った
-        <% end %>
-      </p>
-    <% else %>
-      <p>
-        <%= link_to consultation_consultation_answer_helpfulness_path(consultation_answer.consultation,consultation_answer), method: :post do %>
-          ♡<%= consultation_answer.helpfulnesses.count %> 役に立った
-        <% end %>
-      </p>
-    <% end %>
-  </div>
+    <div id="consultation_answer_helpfulness_<%= consultation_answer.id %>">
+      <%= render "helpfulnesses/helpfulness", consultation_answer: consultation_answer %>
+    </div>
   <% end %>
 </div>
 </div>
