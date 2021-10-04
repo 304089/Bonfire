@@ -21,28 +21,9 @@
       <%= render "bookmarks/bookmark", photo_post: @photo_post %>
     </div>
   </div>
-</div>
-<h3>コメント</h3>
-<div>
-  <%= form_with(model:[@photo_post, @photo_post_comment], url: photo_post_photo_post_comments_path(@photo_post, @photo_post_comment), method: :post, local: true) do |f| %>
-    <%= f.text_field :comment %>
-    <%= f.submit "投稿する" %>
-  <% end %>
-</div>
-<div>
-  <table>
-    <% @photo_post_comments.each do |photo_post_comment| %>
-    <tr>
-      <th>
-        <%= link_to user_path(photo_post_comment.user) do %>
-          <%= attachment_image_tag photo_post_comment.user, :profile_image, size: "20x20" %>
-          <%= photo_post_comment.user.name %>
-        <% end %>
-      </th>
-      <td>
-        <%= photo_post_comment.comment %>
-      </td>
-    </tr>
+  <div>
+    <%= link_to photo_post_photo_post_comments_path(@photo_post) do %>
+      <i class="far fa-comment-dots"></i>
     <% end %>
-  </table>
+  </div>
 </div>

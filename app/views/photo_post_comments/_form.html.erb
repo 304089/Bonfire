@@ -1,0 +1,4 @@
+<%= form_with(model:[photo_post, photo_post_comment], url: photo_post_photo_post_comments_path(photo_post, photo_post_comment), method: :post, remote: true) do |f| %>
+  <%= f.text_field :comment %>
+  <%= f.submit "投稿する" %>
+<% end %>

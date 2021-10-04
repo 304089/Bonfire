@@ -1,0 +1,15 @@
+<table>
+  <% photo_post_comments.each do |photo_post_comment| %>
+  <tr>
+    <th>
+      <%= link_to user_path(photo_post_comment.user) do %>
+        <%= attachment_image_tag photo_post_comment.user, :profile_image, size: "20x20" %>
+        <%= photo_post_comment.user.name %>
+      <% end %>
+    </th>
+    <td>
+      <%= photo_post_comment.comment %>
+    </td>
+  </tr>
+  <% end %>
+</table>
