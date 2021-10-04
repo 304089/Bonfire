@@ -1,4 +1,5 @@
 class PhotoPost < ApplicationRecord
+  acts_as_taggable
   attachment :photo_image
   belongs_to :user
   belongs_to :photo_post_genre

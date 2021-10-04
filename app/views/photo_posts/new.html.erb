@@ -11,6 +11,10 @@
     <%= f.label :introduction, "説明" %>
     <%= f.text_area :introduction %>
   </div>
+   <div>
+    <%= f.label :tag_list, "タグ" %>
+    <%= f.text_field :tag_list, value: @photo_post.tag_list.join(',') %>
+  </div>
   <div class = "submit">
     <%= f.submit "投稿" %>
   </div>

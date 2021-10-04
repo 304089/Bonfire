@@ -15,8 +15,10 @@
     <%= render "helpfulnesses/helpfulness", consultation_answer: consultation_answer %>
   </div>
   <div>
-    <%= link_to consultation_consultation_answer_path(consultation, consultation_answer), method: :delete, remote: true, data: {confirm: "削除しますか？"} do %>
-      <i class="fas fa-trash-alt"></i>
+    <% if consultation_answer.user == current_user %>
+      <%= link_to consultation_consultation_answer_path(consultation, consultation_answer), method: :delete, remote: true, data: {confirm: "削除しますか？"} do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
     <% end %>
   </div>
 <% end %>

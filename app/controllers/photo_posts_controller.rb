@@ -18,6 +18,7 @@ class PhotoPostsController < ApplicationController
     @photo_post = PhotoPost.find(params[:id])
     @photo_post_comment = PhotoPostComment.new
     @photo_post_comments = PhotoPostComment.where(photo_post_id: @photo_post.id)
+    
   end
 
   def index
@@ -29,7 +30,7 @@ class PhotoPostsController < ApplicationController
 
   private
   def photo_post_params
-    params.require(:photo_post).permit(:introduction, :photo_image, :photo_post_genre_id)
+    params.require(:photo_post).permit(:introduction, :photo_image, :photo_post_genre_id, :tag_list)
   end
 
 end
