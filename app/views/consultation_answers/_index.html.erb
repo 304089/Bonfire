@@ -1,0 +1,22 @@
+<% consultation_answers.each do |consultation_answer| %>
+  <div>
+    <%= link_to user_path(consultation_answer.user) do %>
+      <%= attachment_image_tag consultation_answer.user, :profile_image, size: "20x20" %>
+      <%= consultation_answer.user.name %>
+    <% end %>
+  </div>
+  <div>
+    <%= attachment_image_tag consultation_answer, :answer_image, size: "100x100" %>
+  </div>
+  <div>
+    <%= consultation_answer.answer %>
+  </div>
+  <div id="consultation_answer_helpfulness_<%= consultation_answer.id %>">
+    <%= render "helpfulnesses/helpfulness", consultation_answer: consultation_answer %>
+  </div>
+  <div>
+    <%= link_to consultation_consultation_answer_path(consultation, consultation_answer), method: :delete, remote: true do %>
+      <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </div>
+<% end %>

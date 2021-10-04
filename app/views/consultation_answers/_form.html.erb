@@ -1,0 +1,5 @@
+<%= form_with(model:[consultation, consultation_answer], remote: true) do |f| %>
+  <%= f.text_field :answer %>
+  <%= f.attachment_field :answer_image %>
+  <%= f.submit "投稿する" %>
+<% end %>

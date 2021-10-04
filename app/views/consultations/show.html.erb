@@ -5,30 +5,10 @@
 
 <h3>回答</h3>
 <div>
-  <%= form_with(model:[@consultation, @consultation_answer], local: true) do |f| %>
-    <%= f.text_field :answer %>
-    <%= f.attachment_field :answer_image %>
-    <%= f.submit "投稿する" %>
-  <% end %>
+  <%= render "consultation_answers/form", consultation: @consultation, consultation_answer: @consultation_answer %>
 </div>
-<div>
-  <% @consultation_answers.each do |consultation_answer| %>
-    <div>
-      <%= link_to user_path(consultation_answer.user) do %>
-        <%= attachment_image_tag consultation_answer.user, :profile_image, size: "20x20" %>
-        <%= consultation_answer.user.name %>
-      <% end %>
-    </div>
-    <div>
-      <%= attachment_image_tag consultation_answer, :answer_image, size: "100x100" %>
-    </div>
-    <div>
-      <%= consultation_answer.answer %>
-    </div>
-    <div id="consultation_answer_helpfulness_<%= consultation_answer.id %>">
-      <%= render "helpfulnesses/helpfulness", consultation_answer: consultation_answer %>
-    </div>
-  <% end %>
+<div id="consultation_answer_index">
+  <%= render "consultation_answers/index", consultation: @consultation, consultation_answers: @consultation_answers %>
 </div>
 </div>
 
