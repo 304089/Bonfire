@@ -10,6 +10,13 @@
     <td>
       <%= photo_post_comment.comment %>
     </td>
+    <% if current_user.admin == true || current_user == photo_post_comment.user %>   <%#.  管理人は全て削除可能　%>
+    <td>
+      <%= link_to photo_post_photo_post_comment_path(photo_post, photo_post_comment), method: :delete, remote: true do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+    </td>
+    <% end %>
   </tr>
   <% end %>
 </table>

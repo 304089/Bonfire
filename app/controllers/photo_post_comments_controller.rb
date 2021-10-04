@@ -17,6 +17,11 @@ class PhotoPostCommentsController < ApplicationController
   end
 
   def destroy
+    @photo_post = PhotoPost.find(params[:photo_post_id])
+    @photo_post_comments = PhotoPostComment.where(photo_post_id: @photo_post.id)
+    @photo_post_comment = PhotoPostComment.find(params[:id])
+    @photo_post_comment.destroy
+    render :comments
   end
 
   private
