@@ -1,4 +1,8 @@
-<h4><%= @consultation.user.name %>さんからの相談</h4>
+<% if @consultation.anonymity == true %>
+  <h4>匿名さんからの相談</h4>
+<% else %>
+  <h4><%= @consultation.user.name %>さんからの相談</h4>
+<% end %>
 <div>タイトル：<%= @consultation.title %></div>
 <div>内容：<%= @consultation.content %></div>
 <div><%= attachment_image_tag @consultation, :consultation_image, size: "400x400" %></div>

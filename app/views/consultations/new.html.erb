@@ -15,6 +15,10 @@
     <%= f.label :consultation_image, "添付画像" %>
     <%= f.attachment_field :consultation_image %>
   </div>
+  <div class = "field">
+    <%= f.label :anonymity, "匿名を希望する" %>
+    <%= f.check_box :anonymity %>
+  </div>
   <div class = "submit">
     <%= f.submit "投稿" %>
   </div>
