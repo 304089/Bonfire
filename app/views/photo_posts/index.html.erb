@@ -1,19 +1,12 @@
-<table>
-  <% @photo_posts.each do |photo_post| %>
-  <tr>
-    <td>
-      <%= link_to photo_post_path(photo_post) do %>
-        <% photo_post.post_images.first(1).each do |image| %>
-          <%= attachment_image_tag image, :image, size: "70x70" %>
-        <% end %>
+<% @photo_posts.each do |photo_post| %>
+  <div class="photo">
+    <%= link_to photo_post_path(photo_post) do %>
+      <% photo_post.post_images.first(1).each do |image| %>
+        <%= attachment_image_tag image, :image, size: "200x200" %>
+        <div class="photo__background">
+		      <div class="photo__background__image"><i class="fab fa-instagram"></i></div>
+	      </div>
       <% end %>
-    </td>
-    <td><%= photo_post.created_at.strftime("%Y年%m月%d日").to_s %></td>
-    <td><%= link_to user_path(photo_post.user) do %>
-          <%= attachment_image_tag photo_post.user, :profile_image, size: "20x20" %>
-          <%= photo_post.user.name %>
-        <% end %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+    <% end %>
+  </div>
+<% end %>
