@@ -33,7 +33,7 @@ class ConsultationsController < ApplicationController
 
   private
     def consultation_params
-      params.require(:consultation).permit(:title, :content, :consultation_image, :consultation_genre_id, :anonymity)
+      params.require(:consultation).permit(:title, :content, :consultation_image, :genre, :anonymity)
     end
 
 end

@@ -32,15 +32,9 @@ ActiveRecord::Schema.define(version: 2021_10_06_045425) do
     t.index ["user_id"], name: "index_consultation_answers_on_user_id"
   end
 
-  create_table "consultation_genres", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "consultations", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "consultation_genre_id", null: false
+    t.integer "genre", null: false
     t.string "title", null: false
     t.text "content", null: false
     t.string "consultation_image_id"
@@ -48,7 +42,6 @@ ActiveRecord::Schema.define(version: 2021_10_06_045425) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["consultation_genre_id"], name: "index_consultations_on_consultation_genre_id"
     t.index ["user_id"], name: "index_consultations_on_user_id"
   end
 
@@ -89,20 +82,13 @@ ActiveRecord::Schema.define(version: 2021_10_06_045425) do
     t.index ["user_id"], name: "index_photo_post_comments_on_user_id"
   end
 
-  create_table "photo_post_genres", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "photo_posts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "photo_post_genre_id", null: false
+    t.integer "genre", null: false
     t.text "introduction", null: false
     t.string "photo_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["photo_post_genre_id"], name: "index_photo_posts_on_photo_post_genre_id"
     t.index ["user_id"], name: "index_photo_posts_on_user_id"
   end
 

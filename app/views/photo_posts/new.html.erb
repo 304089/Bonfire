@@ -1,7 +1,7 @@
 <%= form_with(model:[@photo_post], local: true) do |f| %>
   <div class = "field">
-    <%= f.label :photo_post_genre, "投稿ジャンル" %>
-    <%= f.collection_select :photo_post_genre_id, PhotoPostGenre.all, :id, :name, include_blank: "選択して下さい" %>
+    <%= f.label :genre, "投稿ジャンル" %>
+    <%= f.select :genre,options_for_select(PhotoPost.genres.keys), include_blank: "選択して下さい" %>
   </div>
   <div class = "field">
     <%= f.label :photo_image, "投稿写真" %>

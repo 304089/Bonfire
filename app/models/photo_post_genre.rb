@@ -1,2 +1,0 @@
-class PhotoPostGenre < ApplicationRecord
-end

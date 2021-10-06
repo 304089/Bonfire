@@ -1,2 +1,0 @@
-class ConsultationGenre < ApplicationRecord
-end

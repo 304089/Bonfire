@@ -2,10 +2,11 @@ class PhotoPost < ApplicationRecord
   acts_as_taggable
   attachment :photo_image
   belongs_to :user
-  belongs_to :photo_post_genre
   has_many :photo_post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+
+  enum genre: {"キャンプ場": 0, "キャンプ道具": 1, "キャンプ料理": 2, "キャンプ初心者": 3}
 
   def self.search(keyword)
     if keyword == "" #未入力の場合は全権表示

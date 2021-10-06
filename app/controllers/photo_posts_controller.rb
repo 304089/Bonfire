@@ -2,6 +2,7 @@ class PhotoPostsController < ApplicationController
 
   def new
     @photo_post = PhotoPost.new
+
   end
 
   def create
@@ -34,7 +35,7 @@ class PhotoPostsController < ApplicationController
 
   private
   def photo_post_params
-    params.require(:photo_post).permit(:introduction, :photo_image, :photo_post_genre_id, :tag_list)
+    params.require(:photo_post).permit(:introduction, :photo_image, :genre, :tag_list)
   end
 
 end
