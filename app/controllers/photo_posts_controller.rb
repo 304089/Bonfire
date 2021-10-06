@@ -35,7 +35,7 @@ class PhotoPostsController < ApplicationController
 
   private
   def photo_post_params
-    params.require(:photo_post).permit(:introduction, :photo_image, :genre, :tag_list)
+    params.require(:photo_post).permit(:introduction, :photo_image, :genre, :tag_list, post_images_images: [])
   end
 
 end

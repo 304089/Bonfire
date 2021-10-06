@@ -4,8 +4,7 @@
     <%= f.select :genre,options_for_select(PhotoPost.genres.keys), include_blank: "選択して下さい" %>
   </div>
   <div class = "field">
-    <%= f.label :photo_image, "投稿写真" %>
-    <%= f.attachment_field :photo_image %>
+    <%= f.attachment_field :post_images_images, multiple: true %>
   </div>
   <div class = "field">
     <%= f.label :introduction, "説明" %>

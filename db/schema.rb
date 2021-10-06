@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_06_045425) do
+ActiveRecord::Schema.define(version: 2021_10_06_141241) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -86,10 +86,17 @@ ActiveRecord::Schema.define(version: 2021_10_06_045425) do
     t.integer "user_id", null: false
     t.integer "genre", null: false
     t.text "introduction", null: false
-    t.string "photo_image_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_photo_posts_on_user_id"
+  end
+
+  create_table "post_images", force: :cascade do |t|
+    t.integer "photo_post_id", null: false
+    t.string "image_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photo_post_id"], name: "index_post_images_on_photo_post_id"
   end
 
   create_table "relations", force: :cascade do |t|
