@@ -5,12 +5,19 @@
     <li><%= link_to "ブックマークした投稿", bookmarks_user_path(@user) %></li>
     <li><%= link_to "登録情報編集", edit_user_path(@user) %></li>
     <li><%= link_to "退会したい", unsubscribe_user_path(@user) %></li>
+    <li><%= link_to "フォロワー",user_followers_path(@user.id) %></li>
+    <li><%= link_to "フォロー中",user_followings_path(@user.id) %></li>
   </ul>
 <% else %>
   <ul>
     <li><%= link_to "#{@user.name}さんの投稿", my_posts_user_path(@user) %></li>
+    <li><%= link_to "フォロワー",user_followers_path(@user.id) %></li>
+    <li><%= link_to "フォロー中",user_followings_path(@user.id) %></li>
   </ul>
 <% end %>
 <%= @user.name %>
 <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
 <%= @user.introduction %>
+<div id = "relation">
+  <%= render "relations/follow", user: @user %>
+</div>

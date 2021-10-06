@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, except:[:new, :destroy] do
+    resource :relation
+    get "followings" => "relations#followings"
+    get "followers" => "relations#followers"
     member do
       get :my_posts
       get :unsubscribe
