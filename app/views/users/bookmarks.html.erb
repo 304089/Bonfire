@@ -1,0 +1,4 @@
+<h3>ブックマークした投稿</h3>
+<% @bookmarks.each do |bookmark| %>
+  <%= attachment_image_tag bookmark.photo_post, :photo_image, size: "100x100" %>
+<% end %>

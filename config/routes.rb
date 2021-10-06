@@ -4,12 +4,16 @@ Rails.application.routes.draw do
 
   resources :users, except:[:new, :destroy] do
     member do
+      get :my_posts
       get :unsubscribe
       get :bookmarks
     end
   end
 
   resources :photo_posts, except:[:edit, :update] do
+    collection do
+      get :search
+    end
     member do
       get :favorites
     end

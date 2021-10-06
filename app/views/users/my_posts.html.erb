@@ -1,0 +1,10 @@
+<% if @user == current_user %>
+  <h3>自分の投稿</h3>
+<% else %>
+  <h3><%= "#{@user.name}さんの投稿" %></h3>
+<% end %>
+<% @photo_posts.each do |photo_post| %>
+  <%= link_to photo_post_path(photo_post) do %>
+    <%= attachment_image_tag photo_post, :photo_image, size: "100x100" %>
+  <% end %>
+<% end %>

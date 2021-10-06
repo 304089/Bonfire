@@ -97,3 +97,5 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 #タグ付与
 gem 'acts-as-taggable-on', '~> 6.0'
+#タグ自動補完
+gem 'jquery-ui-rails'

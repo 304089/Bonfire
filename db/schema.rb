@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_10_04_142936) do
     t.text "content", null: false
     t.string "consultation_image_id"
     t.boolean "anonymity", default: false, null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["consultation_genre_id"], name: "index_consultations_on_consultation_genre_id"

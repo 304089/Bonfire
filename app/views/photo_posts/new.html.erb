@@ -13,7 +13,7 @@
   </div>
    <div>
     <%= f.label :tag_list, "タグ" %>
-    <%= f.text_field :tag_list, value: @photo_post.tag_list.join(',') %>
+    <%= f.text_field :tag_list, value: @photo_post.tag_list.join(','), id: 'tags' %>
   </div>
   <div class = "submit">
     <%= f.submit "投稿" %>

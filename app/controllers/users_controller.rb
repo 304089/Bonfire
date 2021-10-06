@@ -8,6 +8,16 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def my_posts
+    @user = User.find(params[:id])
+    @photo_posts = PhotoPost.where(user_id: @user.id)
+  end
+
+  def bookmarks
+    @user = User.find(params[:id])
+    @bookmarks = Bookmark.where(user_id: @user.id)
+  end
+
   def edit
     @user = User.find(params[:id])
   end

@@ -18,7 +18,6 @@ class PhotoPostsController < ApplicationController
     @photo_post = PhotoPost.find(params[:id])
     @photo_post_comment = PhotoPostComment.new
     @photo_post_comments = PhotoPostComment.where(photo_post_id: @photo_post.id)
-    
   end
 
   def index
@@ -26,6 +25,11 @@ class PhotoPostsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def search
+    @photo_posts = PhotoPost.search(params[:keyword])
+    @keyword = params[:keyword]
   end
 
   private

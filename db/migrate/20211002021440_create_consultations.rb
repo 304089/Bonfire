@@ -8,6 +8,7 @@ class CreateConsultations < ActiveRecord::Migration[5.2]
       t.string :consultation_image_id
       #trueで匿名
       t.boolean :anonymity, null: false, default: false
+      t.integer :status,null: false,default: 0
       t.timestamps
     end
   end

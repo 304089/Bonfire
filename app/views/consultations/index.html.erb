@@ -4,8 +4,7 @@
     <%= consultation.consultation_genre.name %>
     <%= consultation.title %>
     <%= consultation.created_at %>
-    閲覧数
-    回答数
-    未回答かどうか
+    解答数<%= consultation.consultation_answers.count %>
+    <%= consultation.status %>
   <% end %>
 <% end %>
