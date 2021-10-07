@@ -18,5 +18,12 @@
 //= require bootstrap-sprockets
 
 //= require activestorage
-//= require turbolinks
+
 //= require_tree .
+/*global $*/
+
+$(function() {
+    $('.slider').slick({
+        dots: true,
+    });
+});

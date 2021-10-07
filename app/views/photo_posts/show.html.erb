@@ -5,10 +5,12 @@
       <%= @photo_post.user.name %>
     <% end %>
   </div>
-  <div>
-    <% @photo_post.post_images.each do |image| %>
-      <%= attachment_image_tag image, :image, size: "300x300" %>
-    <% end %>
+  <div class="photo_area">
+    <div class="slider">
+      <% @photo_post.post_images.each do |image| %>
+        <%= attachment_image_tag image, :image %>
+      <% end %>
+    </div>
   </div>
   <div>
     <%= @photo_post.created_at.strftime("%Y年%m月%d日").to_s %>

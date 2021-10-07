@@ -1,6 +1,7 @@
 // Place all the styles related to the photo_posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/* 　　indexページ  　 */
 .photo {
     	width: 200px;
     	height:	200px;
@@ -23,9 +24,35 @@
     	-webkit-transition:	all 0.2s ease;
     	transition:	all 0.2s ease;
     }
+    &:hover {
+        .photo__background {
+    	    opacity: 1;
+        }
+    }
 }
-.photo:hover {
-    .photo__background {
-    	opacity: 1;
+
+
+
+/* 　　showページ  　 */
+.photp_area {
+    width: 100%;
+}
+
+.slider {
+        display: inline-block;
+        margin: 0 auto;
+        width: 50%;
+    &:hover {
+        .slick-next {
+            right: 20px;
+            z-index: 100;
+       }
+        .slick-prev {
+            left: 10px;
+            z-index: 100;
+       }
+       .slick-prev::before,.slick-next::before {
+            font-size: 30px;
+       }
     }
 }

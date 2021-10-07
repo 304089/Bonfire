@@ -67,16 +67,6 @@ gem 'devise'
 #日本語化
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-#Google認証
-gem 'omniauth-google-oauth2'
-#Twitter認証
-gem 'omniauth-twitter'
-#facebook認証
-gem 'omniauth-facebook'
-#APIキー環境変数管理
-gem 'dotenv-rails'
-#omniauthエラー対策
-gem "omniauth-rails_csrf_protection"
 #rubocop
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
@@ -88,8 +78,6 @@ gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 #ページネーション
 gem 'kaminari','~> 1.2.1'
-#検索機能
-gem 'ransack'
 #bootstrap導入
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
