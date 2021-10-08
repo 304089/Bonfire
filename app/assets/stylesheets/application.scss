@@ -29,13 +29,17 @@
   list-style: none;
  }
 
+ a{
+  color: black;
+ }
  a:hover {
   text-decoration: none;
+  color: #CCCCCC;
  }
 
  /*.   ヘッダー.   */
  header {
-  height: 80px;
+  height: 70px;
   background-color: #DCDCDC;
  }
 
@@ -47,11 +51,11 @@
   letter-spacing:.1em;
 
   a {
-   margin-right: 40px;
-   color: #000;
+    margin-right: 40px;
   }
 
  }
+
 
 
  .contents {

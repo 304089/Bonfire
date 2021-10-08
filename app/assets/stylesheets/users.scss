@@ -5,22 +5,26 @@
 /**************showページ****************/
 .profile-container {
   display: flex;
-  width: 95%;
+  width: 90%;
   height: 680px;
-  margin: 20px auto;
-  background-color: gray;
+  margin: 5px auto;
+
 
   .profile {
-    width: 40%;
+    width: 50%;
   }
 
   .posts {
-    width: 60%;
+    width: 50%;
 
      .contents {
        display: flex;
        align-items: center;
        flex-wrap: wrap;
+     }
+
+     h2 {
+       font-weight: 600;
      }
   }
 

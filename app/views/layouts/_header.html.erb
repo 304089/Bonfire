@@ -10,5 +10,5 @@
   <% end %>
     <%= link_to "PHPTOs", photo_posts_path %>
     <%= link_to "相談コーナー", top_consultations_path %>
-    <%= render "layouts/search_form" %>
+    <%= render "layouts/search_form", keyword: @keyword %>
 </nav>

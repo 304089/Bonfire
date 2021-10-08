@@ -26,12 +26,7 @@
             font-size: 30px;
         }
     }
-    .slick-slide {
-     min-height: 650px!important;      /********画像サイズ統一*********/
-    }
 }
-
-.slider
 
 
 /*画像１枚の場合*/
@@ -43,15 +38,17 @@
 
 .photo_post-container {
     display: flex;
-    width: 90%;
+    width: 70%;
     height: 600px;
-    margin: 10px auto;
+    margin: 50px auto;
+    gap: 0 10px;
 
     .photo-area {
-        width: 65%;
+        width: 60%;
     }
 
     .explanation-area {
-        width: 35%;
+        width: 40%;
+        background-color: gray;
     }
 }

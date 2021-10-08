@@ -1,7 +1,6 @@
 <% if user == current_user %>
   <ul>
     <li><%= link_to "写真投稿", new_photo_post_path %></li>
-    <li><%= link_to "自分の投稿", my_posts_user_path(user) %></li>
     <li><%= link_to "ブックマークした投稿", bookmarks_user_path(user) %></li>
     <li><%= link_to "登録情報編集", edit_user_path(user) %></li>
     <li><%= link_to "退会したい", unsubscribe_user_path(user) %></li>
@@ -10,7 +9,6 @@
   </ul>
 <% else %>
   <ul>
-    <li><%= link_to "#{user.name}さんの投稿", my_posts_user_path(user) %></li>
     <li><%= link_to "フォロワー",user_followers_path(user.id) %></li>
     <li><%= link_to "フォロー中",user_followings_path(user.id) %></li>
   </ul>

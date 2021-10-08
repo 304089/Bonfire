@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @photo_posts = PhotoPost.where(user_id: @user.id).order(id: "DESC")
+    @photo_posts = PhotoPost.where(user_id: @user.id).order(id: "DESC").limit(9)
   end
 
   def index
