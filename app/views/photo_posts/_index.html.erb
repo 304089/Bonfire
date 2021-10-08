@@ -1,5 +1,5 @@
 <div class="contents">
-  <% @photo_posts.each do |photo_post| %>
+  <% photo_posts.each do |photo_post| %>
     <div class="photo">
       <%= link_to photo_post_path(photo_post) do %>
         <% photo_post.post_images.first(1).each do |image| %>

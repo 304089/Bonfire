@@ -22,14 +22,14 @@ class PhotoPostsController < ApplicationController
   end
 
   def index
-    @photo_posts = PhotoPost.all
+    @photo_posts = PhotoPost.all.order(id: "DESC")
   end
 
   def destroy
   end
 
   def search
-    @photo_posts = PhotoPost.search(params[:keyword])
+    @photo_posts = PhotoPost.search(params[:keyword]).order(id: "DESC")
     @keyword = params[:keyword]
   end
 

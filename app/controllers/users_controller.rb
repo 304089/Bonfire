@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @photo_posts = PhotoPost.where(user_id: @user.id).order(id: "DESC")
   end
 
   def index
@@ -10,7 +11,7 @@ class UsersController < ApplicationController
 
   def my_posts
     @user = User.find(params[:id])
-    @photo_posts = PhotoPost.where(user_id: @user.id)
+    @photo_posts = PhotoPost.where(user_id: @user.id).order(id: "DESC")
   end
 
   def bookmarks
