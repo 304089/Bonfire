@@ -1,13 +1,15 @@
-<% if @photo_post.bookmarked_by?(current_user) %>
-  <p>
-    <%= link_to photo_post_bookmark_path(@photo_post), method: :delete, remote: true do %>
-      <i class="fas fa-bookmark"></i>
-    <% end %>
-  </p>
-<% else %>
-  <p>
-    <%= link_to photo_post_bookmark_path(@photo_post), method: :post, remote: true do %>
-      <i class="far fa-bookmark"></i>
-    <% end %>
-  </p>
+<% if user_signed_in? %>
+  <% if photo_post.bookmarked_by?(current_user) %>
+    <p>
+      <%= link_to photo_post_bookmark_path(photo_post), method: :delete, remote: true do %>
+        <i class="fas fa-bookmark"></i>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to photo_post_bookmark_path(photo_post), method: :post, remote: true do %>
+        <i class="far fa-bookmark"></i>
+      <% end %>
+    </p>
+  <% end %>
 <% end %>

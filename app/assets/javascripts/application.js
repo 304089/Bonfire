@@ -27,3 +27,8 @@ $(function() {
         dots: true,
     });
 });
+
+/*一枚ならドットなし*/
+$(function() {
+    $('.slider__solo').slick({});
+});

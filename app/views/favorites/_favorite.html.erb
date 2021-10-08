@@ -1,13 +1,15 @@
-<% if photo_post.favorited_by?(current_user) %>
-  <p>
-    <%= link_to photo_post_favorite_path(photo_post), method: :delete, remote: true do %>
-      <i class="fas fa-heart"></i>
-    <% end %>
-  </p>
-<% else %>
-  <p>
-    <%= link_to photo_post_favorite_path(photo_post), method: :post, remote: true do %>
-      <i class="far fa-heart"></i>
-    <% end %>
-  </p>
+<% if user_signed_in? %>
+  <% if photo_post.favorited_by?(current_user) %>
+    <p>
+      <%= link_to photo_post_favorite_path(photo_post), method: :delete, remote: true do %>
+        <i class="fas fa-heart"></i>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to photo_post_favorite_path(photo_post), method: :post, remote: true do %>
+        <i class="far fa-heart"></i>
+      <% end %>
+    </p>
+  <% end %>
 <% end %>

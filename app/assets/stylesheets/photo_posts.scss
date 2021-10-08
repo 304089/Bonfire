@@ -1,14 +1,23 @@
 // Place all the styles related to the photo_posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-/* 　　indexページ  　 */
+
+/****************indexページ***************/
 .photo {
-    	width: 200px;
-    	height:	200px;
-    	position:	relative;
+    width: 200px;
+    height:	200px;
+    position:	relative;
+
+    .photos {
+        position: absolute;
+        top: 5px;
+    	right: 10px;
+    	z-index: 100;
+    	color: white;
+    }
 
     .photo__background__image {
-    	font-size: 200%;
+	    font-size: 200%;
     	text-align: center;
     	padding-top: 80px;
     	color: black;
@@ -16,11 +25,11 @@
     .photo__background {
     	width: 100%;
     	height:	100%;
-    	position:	absolute;
+    	position: absolute;
     	top: 0;
     	left:	0;
     	opacity: 0;
-    	background-color:	rgba(245,245,245,.5);
+    	background-color: rgba(245,245,245,.5);
     	-webkit-transition:	all 0.2s ease;
     	transition:	all 0.2s ease;
     }
@@ -33,26 +42,31 @@
 
 
 
-/* 　　showページ  　 */
-.photp_area {
-    width: 100%;
-}
+/***********showページ**************/
 
+/*画像複数の場合*/
 .slider {
-        display: inline-block;
-        margin: 0 auto;
-        width: 50%;
+    display: inline-block;
+    margin: 0 auto;
+    width: 60%;
     &:hover {
         .slick-next {
             right: 20px;
             z-index: 100;
-       }
+        }
         .slick-prev {
             left: 10px;
             z-index: 100;
-       }
-       .slick-prev::before,.slick-next::before {
+        }
+        .slick-prev::before,.slick-next::before {
             font-size: 30px;
-       }
+        }
     }
+}
+
+/*画像１枚の場合*/
+.slider__solo {
+    display: inline-block;
+    margin: 0 auto;
+    width: 60%;
 }

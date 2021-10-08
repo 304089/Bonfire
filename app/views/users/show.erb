@@ -18,6 +18,8 @@
 <%= @user.name %>
 <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
 <%= @user.introduction %>
-<div id = "relation">
-  <%= render "relations/follow", user: @user %>
-</div>
+<% if user_signed_in? %>
+  <div id = "relation">
+    <%= render "relations/follow", user: @user %>
+  </div>
+<% end %>

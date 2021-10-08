@@ -2,6 +2,11 @@
   <div class="photo">
     <%= link_to photo_post_path(photo_post) do %>
       <% photo_post.post_images.first(1).each do |image| %>
+        <% if image.photo_post.post_images.count > 1 %>
+          <div class="photos">
+            <i class="far fa-clone"></i>
+          </div>
+        <% end %>
         <%= attachment_image_tag image, :image, size: "200x200" %>
         <div class="photo__background">
 		      <div class="photo__background__image"><i class="fab fa-instagram"></i></div>
