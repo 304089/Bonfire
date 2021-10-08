@@ -13,7 +13,6 @@
 .slider {
     display: inline-block;
     margin: 0 auto;
-    width: 60%;
     &:hover {
         .slick-next {
             right: 20px;
@@ -27,11 +26,32 @@
             font-size: 30px;
         }
     }
+    .slick-slide {
+     min-height: 650px!important;      /********画像サイズ統一*********/
+    }
 }
+
+.slider
+
 
 /*画像１枚の場合*/
 .slider__solo {
     display: inline-block;
     margin: 0 auto;
-    width: 60%;
+
+}
+
+.photo_post-container {
+    display: flex;
+    width: 90%;
+    height: 600px;
+    margin: 10px auto;
+
+    .photo-area {
+        width: 65%;
+    }
+
+    .explanation-area {
+        width: 35%;
+    }
 }

@@ -1,44 +1,48 @@
-<div>
-  <div>
-    <%= link_to user_path(@photo_post.user) do %>
-      <%= attachment_image_tag @photo_post.user, :profile_image, size: "20x20" %>
-      <%= @photo_post.user.name %>
-    <% end %>
-  </div>
+<div class="photo_post-container">
+  <div class="photo-area">
   <% if @photo_post.post_images.count > 1 %>
     <div class="slider">
   <% else %>
     <div class="slider__solo">
   <% end %>
       <% @photo_post.post_images.each do |image| %>
-        <%= attachment_image_tag image, :image, format:'jpg' %>
+        <%= attachment_image_tag image, :image %>
       <% end %>
     </div>
+  </div>
 
-  <div>
-    <%= @photo_post.created_at.strftime("%Y年%m月%d日").to_s %>
-  </div>
-  <% unless @photo_post.user == current_user %>
+  <div class="explanation-area">
     <div>
-      <div id="photo_post_favorite">
-        <%= render "favorites/favorite", photo_post: @photo_post %>         <%#　いいね　%>
-      </div>
+      <%= link_to user_path(@photo_post.user) do %>
+        <%= attachment_image_tag @photo_post.user, :profile_image, size: "20x20" %>
+        <%= @photo_post.user.name %>
+      <% end %>
     </div>
     <div>
-      <div id="photo_post_bookmark">
-        <%= render "bookmarks/bookmark", photo_post: @photo_post %>         <%#　ブックマーク　%>
-      </div>
+      <%= @photo_post.created_at.strftime("%Y年%m月%d日").to_s %>
     </div>
-  <% end %>
-  <div>
-    <%= link_to photo_post_photo_post_comments_path(@photo_post) do %>
-      <i class="far fa-comment-dots"></i>
+    <% unless @photo_post.user == current_user %>
+      <div>
+        <div id="photo_post_favorite">
+          <%= render "favorites/favorite", photo_post: @photo_post %>         <%#　いいね　%>
+        </div>
+      </div>
+      <div>
+        <div id="photo_post_bookmark">
+          <%= render "bookmarks/bookmark", photo_post: @photo_post %>         <%#　ブックマーク　%>
+        </div>
+      </div>
     <% end %>
-  </div>
-  <div>
-    <%= render "tags", tag_list: @photo_post.tag_list %>　　　　　　<%#　タグ追加　%>
-  </div>
-  <div>
-    <%= @photo_post.introduction %>
+    <div>
+      <%= link_to photo_post_photo_post_comments_path(@photo_post) do %>
+        <i class="far fa-comment-dots"></i>
+      <% end %>
+    </div>
+    <div>
+      <%= render "tags", tag_list: @photo_post.tag_list %>　　　　　　<%#　タグ追加　%>
+    </div>
+    <div>
+      <%= @photo_post.introduction %>
+    </div>
   </div>
 </div>
