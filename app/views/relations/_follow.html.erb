@@ -1,7 +1,11 @@
 <% unless current_user == user %>
   <% if Relation.find_by(followed_id: user.id) %>
-    <%= link_to "フォローをやめる",user_relation_path(user.id),method: :delete, remote: true %>
+    <%= link_to user_relation_path(user.id),method: :delete, remote: true do %>
+      <p><i class="fas fa-user-slash fa-2x"></i>  フォローをやめる</p>
+    <% end %>
   <% else %>
-    <%= link_to "フォローする",user_relation_path(user.id),method: :post, remote: true %>
+    <%= link_to user_relation_path(user.id),method: :post, remote: true do %>
+      <p><i class="fas fa-user-friends fa-2x"></i>  フォローする</p>
+    <% end %>
   <% end %>
 <% end %>

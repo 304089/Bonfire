@@ -1,21 +1,42 @@
+
 <div class="profile-container">
   <div class="profile">
-    <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "no_image.jpg", class: "rounded-circle"  %>
-    <%= @user.name %>
-    <%= @user.introduction %>
-    <% if user_signed_in? %>
-      <div id = "relation">
-        <%= render "relations/follow", user: @user %>
+    <div class="profile__left">
+      <div class="profile__left__top">
+        <h1>Profile</h1>
+        <%= attachment_image_tag @user, :profile_image, size: "300x300", fallback: "no_image.jpg"  %>
       </div>
-    <% end %>
-    <%= render "navigation", user: @user %>
+      <div class="profile__left__bottom">
+        <% if user_signed_in? %>
+          <div id = "relation">
+            <%= render "relations/follow", user: @user %>
+          </div>
+        <% end %>
+        <div class="follow">
+          <ul>
+            <li><%= link_to "フォロワー",user_followers_path(@user.id) %></li>
+            <li><%= link_to "フォロー中",user_followings_path(@user.id) %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="profile__right">
+      <h3>Name</h3>
+      <h5><%= @user.name %></h5>
+      <h3>Introduction</h3>
+      <%if @user.introduction.nil? %>
+        <p><%=@user.introduction%></p>
+      <% else %>
+        <p><%=safe_join(@user.introduction.split("\n"),tag(:br))%></p>
+      <% end %>
+    </div>
   </div>
   <div class="posts">
-    <h3><%= "#{@user.name} ’PHOTO" %>  <i class="fas fa-camera"></i></h3>
+    <h2>Photo  <i class="fas fa-camera"></i></h2>
     <%= render "photo_posts/index", photo_posts: @photo_posts%>
     <% if @user.photo_posts.count > 9 %>
       <%= link_to my_posts_user_path(@user) do %>
-        <h2 class="text-right posts__more">..more<i class="fas fa-angle-double-right"></i></h2>
+        <h3 class="text-right posts__more">..more<i class="fas fa-angle-double-right"></i></h3>
       <% end %>
     <% end %>
   </div>
