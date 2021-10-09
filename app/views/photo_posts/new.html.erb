@@ -1,20 +1,27 @@
-<%= form_with(model:[@photo_post], local: true) do |f| %>
-  <div class = "field">
-    <%= f.label :genre, "投稿ジャンル" %>
-    <%= f.select :genre,options_for_select(PhotoPost.genres.keys), include_blank: "選択して下さい" %>
+<div class="post-container" %>
+  <div class="form-area">
+    <%= form_with(model:[@photo_post], local: true) do |f| %>
+      <div class = "field">
+        <%= f.label :genre, "投稿ジャンル" %>
+        <%= f.select :genre,options_for_select(PhotoPost.genres.keys), include_blank: "選択して下さい" %>
+      </div>
+      <div class = "field">
+        <%= f.attachment_field :post_images_images, multiple: true %>
+      </div>
+      <div class = "field">
+        <%= f.label :introduction, "説明" %>
+        <%= f.text_area :introduction %>
+      </div>
+       <div>
+        <%= f.label :tag_list, "タグ" %>
+        <%= f.text_field :tag_list, value: @photo_post.tag_list.join(','), id: 'tags' %>
+      </div>
+      <div class = "submit">
+        <%= f.submit "投稿" %>
+      </div>
+    <% end %>
   </div>
-  <div class = "field">
-    <%= f.attachment_field :post_images_images, multiple: true %>
+  <div class="preview-area">
+    <%= render "preview", photo_post: @photo_post %>
   </div>
-  <div class = "field">
-    <%= f.label :introduction, "説明" %>
-    <%= f.text_area :introduction %>
-  </div>
-   <div>
-    <%= f.label :tag_list, "タグ" %>
-    <%= f.text_field :tag_list, value: @photo_post.tag_list.join(','), id: 'tags' %>
-  </div>
-  <div class = "submit">
-    <%= f.submit "投稿" %>
-  </div>
-<% end %>
+</div>

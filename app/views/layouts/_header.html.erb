@@ -1,14 +1,19 @@
 <nav>
+  <ul>
+    <li class="item1"><%= image_tag "logo.jpg", size: "70x70" %></li>
+    <li class="item2"><%= render "layouts/search_form", keyword: @keyword %></li>
+    <li class="item3"><%= link_to "PHPTOs", photo_posts_path %></li>
+    <li class="item4"><%= link_to "相談コーナー", top_consultations_path %></li>
   <% if user_signed_in? && current_user.admin? %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
   <% elsif user_signed_in? %>
-    <%= link_to "マイページ", user_path(current_user) %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <li><%= link_to "マイページ", user_path(current_user) %>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
   <% else %>
-    <%= link_to "新規登録", new_user_registration_path %>
-    <%= link_to "ログイン", new_user_session_path %>
+    <li><%= link_to "新規登録", new_user_registration_path %></li>
+    <li><%= link_to "ログイン", new_user_session_path %></li>
   <% end %>
-    <%= link_to "PHPTOs", photo_posts_path %>
-    <%= link_to "相談コーナー", top_consultations_path %>
-    <%= render "layouts/search_form", keyword: @keyword %>
+
+  </ul>
 </nav>
+

@@ -2,7 +2,6 @@ class PhotoPostsController < ApplicationController
 
   def new
     @photo_post = PhotoPost.new
-
   end
 
   def create

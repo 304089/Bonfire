@@ -1,0 +1,41 @@
+<div class="photo_post-container">
+  <div class="photo-area">
+  <% if photo_post.post_images.count > 1 %>
+    <div class="slider">
+  <% else %>
+    <div class="slider__solo">
+  <% end %>
+      <% photo_post.post_images.each do |image| %>
+        <%= attachment_image_tag image, :image %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="explanation-area">
+    <div>
+      <%= attachment_image_tag photo_post.user, :profile_image, size: "50x50", fallback: "no_image.jpg", class: "rounded-circle" %>
+      <%= current_user.name %>
+    </div>
+    <% unless photo_post.user == current_user %>
+      <div>
+        <div id="photo_post_favorite">
+          ♡       <%#　いいね　%>
+        </div>
+      </div>
+      <div>
+        <div id="photo_post_bookmark">
+          ブックマーク
+        </div>
+      </div>
+    <% end %>
+    <div>
+      <i class="far fa-comment-dots"></i>
+    </div>
+    <div>
+      <%= render "tags", tag_list: photo_post.tag_list %>　　　　　　<%#　タグ　%>
+    </div>
+    <div>
+      <%= photo_post.introduction %>
+    </div>
+  </div>
+</div>

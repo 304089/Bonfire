@@ -43,15 +43,48 @@
   background-color: #DCDCDC;
  }
 
- nav{
+ nav ul{
   display: flex;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   align-items: center;
   letter-spacing:.1em;
 
   a {
     margin-right: 40px;
+  }
+
+  .item2 {
+     flex-grow: 1;
+     border-radius: 20px;
+
+     form {
+       text-align: center;
+     }
+
+     input {
+       width: 250px;
+       margin: 0 auto;
+       padding: 0 35px 0 15px;
+       height: 30px;
+       border-radius: 30px;
+       outline: none;
+     }
+
+     input:focus {
+       border: 2px solid #0000BB;
+     }
+
+     .search-btn {
+       background: none;
+       position: relative;
+       right: 40px;
+       font-size: 20px;
+     }
+
+     .search-btn:hover {
+       color: #0000BB;
+     }
   }
 
  }

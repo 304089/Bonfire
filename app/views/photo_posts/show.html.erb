@@ -12,7 +12,7 @@
   </div>
 
   <div class="explanation-area">
-    <div>
+    <div class="user-name">
       <%= link_to user_path(@photo_post.user) do %>
         <%= attachment_image_tag @photo_post.user, :profile_image, size: "50x50", fallback: "no_image.jpg", class: "rounded-circle" %>
         <%= @photo_post.user.name %>
@@ -39,10 +39,21 @@
       <% end %>
     </div>
     <div>
-      <%= render "tags", tag_list: @photo_post.tag_list %>　　　　　　<%#　タグ追加　%>
+      <%= render "tags", tag_list: @photo_post.tag_list %>　　　　　　<%#　タグ　%>
     </div>
     <div>
       <%= @photo_post.introduction %>
+    </div>
+    <div class="comments">
+      <h3>コメント</h3>
+      <div id="photo_post_comment_index">
+        <%= render "photo_post_comments/index", photo_post: @photo_post, photo_post_comments: @photo_post_comments %>
+      </div>
+      <% if user_signed_in? %>
+        <div id="photo_post_comment_form">
+          <%= render "photo_post_comments/form", photo_post: @photo_post, photo_post_comment: @photo_post_comment %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

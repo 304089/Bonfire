@@ -50,5 +50,41 @@
     .explanation-area {
         width: 40%;
         background-color: gray;
+
+        .user-name {
+            a {
+                font-size: 20px;
+            }
+        }
+
+        #photo_post_comment_index {
+            height: 300px;
+        }
+
+        #photo_post_comment_form {
+
+        }
+    }
+}
+
+
+
+
+/***************************newページ***************************/
+.post-container {
+    display: flex;
+    gap: 0 10px;
+    width: 90%;
+    margin: 20px auto;
+    height: 600px;
+
+    .form-area {
+        width: 50%;
+        background-color: silver;
+    }
+
+    .preview-area {
+        width: 50%;
+        background-color: silver;
     }
 }
