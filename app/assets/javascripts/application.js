@@ -22,6 +22,17 @@
 //= require_tree .
 /*global $*/
 
+  $(function() {
+    $("ul.menu li").hover(
+      function() {
+        $(".menuSub:not(:animated)", this).slideDown();
+      },
+      function() {
+        $(".menuSub", this).slideUp();
+      }
+    );
+  });
+
 $(function() {
     $('.slider').slick({
         dots: true,

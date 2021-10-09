@@ -40,54 +40,87 @@
  /*.   ヘッダー.   */
  header {
   height: 70px;
-  background-color: #DCDCDC;
+
  }
 
- nav ul{
+ .menu {               /******************ドロップダウンメニュー**********************/
   display: flex;
   width: 90%;
   margin: 0 auto;
   align-items: center;
   letter-spacing:.1em;
+  font-size: 20px;
 
-  a {
-    margin-right: 40px;
-  }
+   .item3,.item4,.item5, .item6,.item7 {
+     width: 140px;
+   }
 
-  .item2 {
-     flex-grow: 1;
-     border-radius: 20px;
+   .itme5,.item6,.item7 {
+   }
 
-     form {
-       text-align: center;
-     }
+   .menu li {
+     position: relative;
+     width: 100px;
+     background-color: #444444;
+   }
 
-     input {
-       width: 250px;
-       margin: 0 auto;
-       padding: 0 35px 0 15px;
-       height: 30px;
-       border-radius: 30px;
-       outline: none;
-     }
+   .menuSub {
+     position: absolute;
+     display: none;
+   }
 
-     input:focus {
-       border: 2px solid #0000BB;
-     }
+   .menuSub li a {
+     padding: 5px;
+     display: block;
+     color: black;
+     text-decoration: none;
+     margin: 0 0 -5px -5px;
+   }
 
-     .search-btn {
-       background: none;
-       position: relative;
-       right: 40px;
-       font-size: 20px;
-     }
+   .menuSub li a:hover {
+     color: silver;
+   }
+                                /****************************************/
+}
 
-     .search-btn:hover {
-       color: #0000BB;
-     }
-  }
 
- }
+
+.item2 {                /*****************検索フォーム***************/
+   flex-grow: 1;
+   border-radius: 20px;
+
+   form {
+     text-align: center;
+   }
+
+   input {
+     width: 250px;
+     margin: 0 auto;
+     padding: 0 35px 0 15px;
+     height: 30px;
+     border-radius: 30px;
+     outline: none;
+     border: 1px solid gray;
+     font-size: 15px;
+   }
+
+   input:focus {
+     border: 2px solid #0000BB;
+   }
+
+   .search-btn {
+     background: none;
+     position: relative;
+     right: 40px;
+     font-size: 18px;
+   }
+
+   .search-btn:hover {
+     color: #0000BB;
+   }
+}
+                         /**********************************************/
+
 
 
 
