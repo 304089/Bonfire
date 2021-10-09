@@ -31,20 +31,27 @@
         margin-top: 15px;
 
         p {
-          border: 2px solid silver;
+          border: 1px solid #333333;
           font-weight: 900;
           width: 140px;
-          height: 35px;
-          padding: 6px;
+          height: 30px;
+          padding: 5px 5px 10px 5px;
           text-align: center;
+          align-items: center;
           font-size: 13px;
           transition-duration: 0.1s;
+          border-radius: 5px;
+
+              i {
+                position: relative;
+                top: 5px;
+              }
         }
 
         p:hover {
-          background-color: silver;
-          transition-duration: 0.1s;
-          color: white;
+          transition-duration: 0.2s;
+          border: 1px solid silver;
+          color: silver;
         }
 
         #relation {

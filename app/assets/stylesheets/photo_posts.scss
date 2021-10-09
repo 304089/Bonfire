@@ -13,6 +13,7 @@
 .slider {
     display: inline-block;
     margin: 0 auto;
+
     &:hover {
         .slick-next {
             right: 20px;
@@ -33,25 +34,54 @@
 .slider__solo {
     display: inline-block;
     margin: 0 auto;
+    padding-bottom: 30px;
 
 }
 
 .photo_post-container {
     display: flex;
     width: 70%;
-    height: 600px;
-    margin: 50px auto;
+    height: 610px;        /************写真外枠****************/
+    margin: 40px auto;
     gap: 0 10px;
 
     .photo-area {
         width: 60%;
+        padding: 20px;
+        border: 1px solid silver;
+        border-radius: 5px;
+
+        &__under {
+            display: flex;
+
+            #photo_post_favorite, #photo_post_bookmark, #photo_post_comment {
+                width: 60px;
+                font-size: 30px;
+                text-align: center;
+                position: relative;
+                bottom: 15px;
+                left: 20px;
+
+            }
+
+            .post-day {
+                font-size: 18px;
+                width: 200px;
+                margin-left: auto;
+                position: relative;
+                left: 50px;
+
+            }
+        }
     }
 
     .explanation-area {
         width: 40%;
-        background-color: gray;
+
 
         .user-name {
+            padding: 15px;
+
             a {
                 font-size: 20px;
             }

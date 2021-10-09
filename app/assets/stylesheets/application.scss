@@ -51,11 +51,12 @@
   letter-spacing:.1em;
   font-size: 20px;
 
-   .item3,.item4,.item5, .item6,.item7 {
+   .item5, .item6,.item7 {
      width: 140px;
    }
 
-   .itme5,.item6,.item7 {
+   .item3,.item4, {
+     width: 125px;
    }
 
    .menu li {
@@ -75,6 +76,7 @@
      color: black;
      text-decoration: none;
      margin: 0 0 -5px -5px;
+     background-color: white;
    }
 
    .menuSub li a:hover {

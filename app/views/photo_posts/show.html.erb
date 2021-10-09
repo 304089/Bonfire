@@ -9,6 +9,22 @@
         <%= attachment_image_tag image, :image %>
       <% end %>
     </div>
+    <div class="photo-area__under">
+      <div id="photo_post_favorite">
+        <%= render "favorites/favorite", photo_post: @photo_post %>         <%#　いいね　%>
+      </div>
+      <div id="photo_post_bookmark">
+        <%= render "bookmarks/bookmark", photo_post: @photo_post %>         <%#　ブックマーク　%>
+      </div>
+      <div id="photo_post_comment">
+        <%= link_to photo_post_photo_post_comments_path(@photo_post) do %>   <%#　コメント　%>
+          <i class="far fa-comment-dots"></i>
+        <% end %>
+      </div>
+      <div class="post-day">
+        <%= @photo_post.created_at.strftime("%Y年%m月%d日").to_s %>
+      </div>
+    </div>
   </div>
 
   <div class="explanation-area">
@@ -19,30 +35,10 @@
       <% end %>
     </div>
     <div>
-      <%= @photo_post.created_at.strftime("%Y年%m月%d日").to_s %>
-    </div>
-    <% unless @photo_post.user == current_user %>
-      <div>
-        <div id="photo_post_favorite">
-          <%= render "favorites/favorite", photo_post: @photo_post %>         <%#　いいね　%>
-        </div>
-      </div>
-      <div>
-        <div id="photo_post_bookmark">
-          <%= render "bookmarks/bookmark", photo_post: @photo_post %>         <%#　ブックマーク　%>
-        </div>
-      </div>
-    <% end %>
-    <div>
-      <%= link_to photo_post_photo_post_comments_path(@photo_post) do %>
-        <i class="far fa-comment-dots"></i>
-      <% end %>
-    </div>
-    <div>
       <%= render "tags", tag_list: @photo_post.tag_list %>　　　　　　<%#　タグ　%>
     </div>
     <div>
-      <%= @photo_post.introduction %>
+      <%=safe_join(@photo_post.introduction.split("\n"),tag(:br))%>
     </div>
     <div class="comments">
       <h3>コメント</h3>
