@@ -1,8 +1,14 @@
 class PhotoPostCommentsController < ApplicationController
 
-  def index
+  def new
     @photo_post = PhotoPost.find(params[:photo_post_id])
     @photo_post_comments = PhotoPostComment.where(photo_post_id: @photo_post.id)
+    @photo_post_comment = PhotoPostComment.new
+  end
+
+  def index
+    @photo_post = PhotoPost.find(params[:photo_post_id])
+    @photo_post_comments = PhotoPostComment.where(photo_post_id: @photo_post.id).order(id: "DESC").page(params[:page]).per(20)
     @photo_post_comment = PhotoPostComment.new
   end
 
@@ -21,11 +27,7 @@ class PhotoPostCommentsController < ApplicationController
     @photo_post_comments = PhotoPostComment.where(photo_post_id: @photo_post.id)
     @photo_post_comment = PhotoPostComment.find(params[:id])
     @photo_post_comment.destroy
-    if controller_name == "photo_posts"
-      redirect_to request.referer
-    else
-      render :comments
-    end
+    render :comments
   end
 
   private

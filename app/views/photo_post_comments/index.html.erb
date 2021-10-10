@@ -1,14 +1,9 @@
-<div class="photo_post-container">
-  <%= render "photo_posts/photo", photo_post: @photo_post %>
-  <div class="photo_post_comment-area">
-    <h3>コメント</h3>
-    <div id="photo_post_comment_index">
-      <%= render "index", photo_post: @photo_post, photo_post_comments: @photo_post_comments %>
-    </div>
-    <% if user_signed_in? %>
-      <div id="photo_post_comment_form">
-        <%= render "form", photo_post: @photo_post, photo_post_comment: @photo_post_comment %>
-      </div>
-    <% end %>
+<div class="photo_post_comment_index-container">
+  <h2 class="text-center"><%= "#{@photo_post.user.name}" %>さんの投稿へのコメント</h2>
+  <div id="photo_post_comment_index">
+    <%= render "index", photo_post: @photo_post, photo_post_comments: @photo_post_comments %>
+  </div>
+  <div class="photo_post_comment-page">
+    <%= paginate(@photo_post_comments) %>
   </div>
 </div>

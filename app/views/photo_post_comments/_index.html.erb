@@ -18,8 +18,36 @@
       -他<%= photo_post_comments.count - 2 %>件のコメントを見る-
     <% end %>
   <% end %>
-<% else %>　　                            <%#  phot_post_comments/indexページは全件表示   %>
-  <% photo_post_comments.each do |photo_post_comment| %>
+<% elsif controller.action_name == "index" %> <%#  phot_post_comments/indexページは全件表示   %>
+  <table class="table table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th class="col-3 text-center">Name</th>
+        <th class="col-7 text-center">Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% photo_post_comments.each do |photo_post_comment| %>
+        <tr>
+          <th class="text-center">
+            <%= link_to user_path(photo_post_comment.user) do %>
+              <%= attachment_image_tag photo_post_comment.user, :profile_image, size: "20x20", fallback: "no_image.jpg", class: "rounded-circle" %>
+              <%= photo_post_comment.user.name %>
+            <% end %>
+          </th>
+          <td>
+            <% if current_user.admin == true || current_user == photo_post_comment.user %>   <%#.  管理人は全て削除可能　%>
+              <%= link_to photo_post_photo_post_comment_path(photo_post, photo_post_comment), method: :delete, remote: true, class: "index-comment", data: {confirm: "本当に削除しますか？"} do %>
+                <%= photo_post_comment.comment %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>   <%#  phot_post_comments/newページは8件表示   %>
+  <% photo_post_comments.last(5).each do |photo_post_comment| %>
     <div class="comment-body">
       <%= link_to user_path(photo_post_comment.user) do %>
         <%= attachment_image_tag photo_post_comment.user, :profile_image, size: "20x20", fallback: "no_image.jpg", class: "rounded-circle" %>
@@ -31,5 +59,10 @@
         <% end %>
       <% end %>
     </div>
+  <% end %>
+  <% if photo_post_comments.count > 5 %>          <%#. コメントが3件以上なら件数(表示分除く)と一覧へのリンク表示%>
+    <%= link_to photo_post_photo_post_comments_path(photo_post) do %>
+      ー 他<%= photo_post_comments.count - 5 %>件のコメントを見る ー
+    <% end %>
   <% end %>
 <% end %>

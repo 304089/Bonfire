@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     member do
       get :favorites
     end
-    resources :photo_post_comments, only:[:index, :create, :destroy]
+    resources :photo_post_comments, except:[:show, :edit, :update]
     resource :favorite, only:[:create, :destroy]
     resource :bookmark, only:[:create, :destroy]
   end
