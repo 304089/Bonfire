@@ -1,33 +1,5 @@
 <div class="photo_post-container">
-  <div class="photo-area">
-    <p class="photo-place"><i class="fas fa-map-marker-alt"></i>&ensp; 仲良しキャンプ場</p>
-  <% if @photo_post.post_images.count > 1 %>
-    <div class="slider">
-  <% else %>
-    <div class="slider__solo">
-  <% end %>
-      <% @photo_post.post_images.each do |image| %>
-        <%= attachment_image_tag image, :image %>
-      <% end %>
-    </div>
-    <div class="photo-area__under">
-      <div id="photo_post_favorite">
-        <%= render "favorites/favorite", photo_post: @photo_post %>         <%#　いいね　%>
-      </div>
-      <div id="photo_post_bookmark">
-        <%= render "bookmarks/bookmark", photo_post: @photo_post %>         <%#　ブックマーク　%>
-      </div>
-      <div id="photo_post_comment">
-        <%= link_to photo_post_photo_post_comments_path(@photo_post) do %>   <%#　コメント　%>
-          <i class="far fa-comment-dots"></i>
-        <% end %>
-      </div>
-      <div class="post-day">
-        <%= @photo_post.created_at.strftime("%Y年%m月%d日").to_s %>
-      </div>
-    </div>
-  </div>
-
+  <%= render "photo", photo_post: @photo_post %>     <%#  写真　%>
   <div class="explanation-area">
     <div class="user-name">
       <%= link_to user_path(@photo_post.user) do %>
@@ -38,12 +10,17 @@
     <br>
     <p>-----Introduction-----</p>
     <div>
-      <%=safe_join(@photo_post.introduction.split("\n"),tag(:br))%>　 <%#　コメント　%>
+      <%=safe_join(@photo_post.introduction.split("\n"),tag(:br))%>　 <%#　紹介文　%>
     </div>
     <br>
     <p>--------Tags---------</p>
     <div class="explanation-area__tag">
       <%= render "tags", tag_list: @photo_post.tag_list %>　　　　　　<%#　タグ　%>
+    </div>
+    <br>
+    <p>-------Comments-------</p>
+    <div id="photo_post_comment_index">
+      <%= render "photo_post_comments/index", photo_post: @photo_post, photo_post_comments: @photo_post_comments %>
     </div>
   </div>
 </div>
