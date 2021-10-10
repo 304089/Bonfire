@@ -1,5 +1,6 @@
 <div class="photo_post-container">
   <div class="photo-area">
+    <p class="photo-place"><i class="fas fa-map-marker-alt"></i>&ensp; 仲良しキャンプ場</p>
   <% if @photo_post.post_images.count > 1 %>
     <div class="slider">
   <% else %>
@@ -34,22 +35,15 @@
         <%= @photo_post.user.name %>
       <% end %>
     </div>
+    <br>
+    <p>-----Introduction-----</p>
     <div>
+      <%=safe_join(@photo_post.introduction.split("\n"),tag(:br))%>　 <%#　コメント　%>
+    </div>
+    <br>
+    <p>--------Tags---------</p>
+    <div class="explanation-area__tag">
       <%= render "tags", tag_list: @photo_post.tag_list %>　　　　　　<%#　タグ　%>
-    </div>
-    <div>
-      <%=safe_join(@photo_post.introduction.split("\n"),tag(:br))%>
-    </div>
-    <div class="comments">
-      <h3>コメント</h3>
-      <div id="photo_post_comment_index">
-        <%= render "photo_post_comments/index", photo_post: @photo_post, photo_post_comments: @photo_post_comments %>
-      </div>
-      <% if user_signed_in? %>
-        <div id="photo_post_comment_form">
-          <%= render "photo_post_comments/form", photo_post: @photo_post, photo_post_comment: @photo_post_comment %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>

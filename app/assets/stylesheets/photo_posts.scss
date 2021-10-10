@@ -41,15 +41,21 @@
 .photo_post-container {
     display: flex;
     width: 70%;
-    height: 610px;        /************写真外枠****************/
+    height: 620px;        /************写真外枠****************/
     margin: 40px auto;
     gap: 0 10px;
 
     .photo-area {
         width: 60%;
-        padding: 20px;
+        padding: 8px 5px 20px 5px;
         border: 1px solid silver;
         border-radius: 5px;
+
+        .photo-place {
+            margin-bottom: 5px;
+            font-size: 16px;
+            padding: 0 20px;
+        }
 
         &__under {
             display: flex;
@@ -77,22 +83,18 @@
 
     .explanation-area {
         width: 40%;
-
+        padding: 20px;
 
         .user-name {
-            padding: 15px;
+
 
             a {
                 font-size: 20px;
             }
         }
 
-        #photo_post_comment_index {
-            height: 300px;
-        }
-
-        #photo_post_comment_form {
-
+        &__tag {
+            padding-bottom: 80px;
         }
     }
 }
