@@ -177,7 +177,7 @@
   gap: 0 50px;
   width: 90%;
   height: 680px;
-  margin: 30px auto;
+  margin: 40px auto;
 
   .profile {
     width: 50%;
@@ -189,13 +189,22 @@
       margin-top: -20px;
       width: 50%;
 
+      img {
+        margin-top: 10px;
+      }
+
       h1 {
         margin-bottom: 10px;
         font-weight: 600;
       }
 
+      h2 {
+        font-weight: 630;
+      }
+
       &__bottom {
         margin-top: 15px;
+
 
         p {
           border: 1px solid #333333;
@@ -248,17 +257,21 @@
 /*****************部分テンプレート右側部分外枠*/
   .posts {
     width: 50%;
+    margin-top: 10px;
 
      .contents {
        display: flex;
-       align-items: center;
+       align-items: flex-start;
+       align-content: flex-start;
        flex-wrap: wrap;
        height: 610px;
        overflow-y: scroll;
+       margin-top: 5px;
      }
 
      h2 {
        font-weight: 600;
+       display: inline-block;
      }
   }
 

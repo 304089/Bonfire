@@ -1,5 +1,9 @@
 <% if user_signed_in? %>
-  <% unless current_user == user %>
+  <% if current_user == user %>
+    <%= link_to edit_user_path(user) do %>
+      <p><i class="fas fa-user-cog fa-2x"></i>  ユーザー情報変更</p>
+    <% end %>
+  <% else %>
     <% if Relation.find_by(followed_id: user.id) %>
       <%= link_to user_relation_path(user.id),method: :delete, remote: true do %>
         <p><i class="fas fa-user-slash fa-2x"></i>  フォローをやめる</p>
@@ -8,10 +12,6 @@
       <%= link_to user_relation_path(user.id),method: :post, remote: true do %>
         <p><i class="fas fa-user-friends fa-2x"></i>  フォローする</p>
       <% end %>
-    <% end %>
-  <% else %>
-    <%= link_to edit_user_path(user) do %>
-      <p><i class="fas fa-user-cog fa-2x"></i>  ユーザー情報変更</p>
     <% end %>
   <% end %>
 <% end %>

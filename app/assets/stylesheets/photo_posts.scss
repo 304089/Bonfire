@@ -2,6 +2,71 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/******************newページ*****************/
+.form-area {
+    margin: 15px auto;
+    select {
+        height: 40px;
+        width: 250px;
+        background-color: gray;
+        color: white;
+        margin-bottom: 20px;
+
+    }
+
+    .inp {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .label {
+        margin-bottom: 0;
+    }
+
+    .input3 {
+        width: 400px;
+        height: 200px;
+    }
+
+    .input4 {
+        width: 400px;
+    }
+
+    .input5 {
+        width: 400px;
+        height: 70px;
+    }
+
+
+
+
+    .input6 {
+        background-color: white;
+
+        p {
+            font-size: 15px;
+            height: 28px;
+            padding: 10px;
+            line-height: 30px;
+            background-color: #0066FF;
+            color: white;
+            border-radius: 5px;
+            transition: all 0.2s 0s ease;
+        }
+
+        p:hover {
+            background-color: #EEEEEE;
+            color: gray;
+            border: 1px solid white;
+        }
+
+        i {
+            font-size: 20px;
+        }
+    }
+}
+
+
 /****************indexページ***************/
 
 
