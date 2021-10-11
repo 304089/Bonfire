@@ -4,7 +4,7 @@
     <h2>Photo  <i class="fas fa-camera"></i></h2>
     <%= render "photo_posts/index", photo_posts: @photo_posts%>
     <% if @user.photo_posts.count > 9 %>
-      <%= link_to my_posts_user_path(@user) do %>
+      <%= link_to my_post_user_path(@user) do %>
         <h3 class="text-right posts__more">..more<i class="fas fa-angle-double-right"></i></h3>
       <% end %>
     <% end %>

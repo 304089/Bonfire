@@ -40,9 +40,9 @@
 
 .photo_post-container {
     display: flex;
-    width: 70%;
-    height: 620px;        /************写真外枠****************/
-    margin: 40px auto;
+    width: 65%;
+    height: 600px;        /************写真外枠****************/
+    margin: 60px auto 10px auto;
     gap: 0 10px;
 
     .photo-area {
@@ -65,7 +65,7 @@
                 font-size: 30px;
                 text-align: center;
                 position: relative;
-                bottom: 15px;
+                bottom: 20px;
                 left: 20px;
 
             }
@@ -75,14 +75,15 @@
                 width: 200px;
                 margin-left: auto;
                 position: relative;
-                left: 50px;
+                left: 75px;
+                top: 20px;
 
             }
         }
     }
 
     .explanation-area {
-        width: 30%;
+        width: 40%;
         padding: 20px;
 
         .user-name {
@@ -114,4 +115,135 @@
 
 
 
-/***************************newページ***************************/
+/************************************previewページ************************************************************/
+.photo_post-container-preview {
+    display: flex;
+    width: 70%;
+    height: 580px;        /************写真外枠****************/
+    margin: 100px auto 10px auto ;
+    gap: 0 10px;
+
+    .slick-slider .slick-list {
+    height: 470px!important;  /*************画像サイズ調整*****************/
+    }
+
+    .photo-area {
+        width: 50%;
+        padding: 8px 5px 20px 5px;
+        border: 1px solid silver;
+        border-radius: 5px;
+
+        .photo-place {
+            margin-bottom: 5px;
+            font-size: 13px;
+            padding: 0 20px;
+        }
+
+        &__under {
+            display: flex;
+
+            #photo_post_favorite, #photo_post_bookmark, #photo_post_comment {
+                width: 60px;
+                font-size: 25px;
+                text-align: center;
+                position: relative;
+                bottom: 20px;
+                left: 20px;
+
+            }
+
+            .post-day {
+                font-size: 15px;
+                width: 200px;
+                margin-left: auto;
+                position: relative;
+                left: 70px;
+                top: 10px;
+
+            }
+        }
+    }
+
+    .explanation-area {
+        width: 35%;
+        padding: 25px 20px;
+        height: 400px;
+        overflow-y: scroll;
+
+        .user-name {
+
+
+            a {
+                font-size: 20px;
+            }
+        }
+
+        #photo_post_comment_index {
+            padding-bottom: 80px;
+
+            .comment-body {
+                margin: 5px 0;
+
+                .comment {
+                    position: relative;
+                    left: 20px;
+                }
+
+            }
+
+
+        }
+    }
+
+}
+.button-area {
+    width: 400px;
+    margin: 0 auto;
+    position: relative;
+    bottom: 105px;
+    left: 250px;
+        .btn1 {
+            button {
+                background-color: white;
+
+                p {
+                    width: 330px;
+                    height: 45px;
+                    border: 1px solid gray;
+                    line-height: 45px;
+                    font-size: 25px;
+                    letter-spacing: 2px;
+                }
+
+                p:hover {
+                    background-color: #EEEEEE;
+                    color: gray;
+                    border: 1px solid white;
+                }
+            }
+
+        }
+
+        .btn2{
+
+            p {
+                text-align: center;
+                border: 1px solid gray;
+                display: inline-block;
+                width: 160px;
+                height: 30px;
+                line-height: 30px;
+                margin-right: 5px;
+                letter-spacing: 2px;
+            }
+
+            p:hover {
+                background-color: #EEEEEE;
+                color: gray;
+                border: 1px solid white;
+            }
+
+        }
+
+    }
+

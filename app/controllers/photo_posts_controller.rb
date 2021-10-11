@@ -21,13 +21,14 @@ class PhotoPostsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
     @photo_post = PhotoPost.find(params[:id])
     if @photo_post.preview == true                #*********** 下書き状態なら投稿
       if @photo_post.update(preview: false)  #**********下書きから投稿へ変更した時間を作成日にする
-        redirect_to photo_post_path(@photo_post)
+        redirect_to user_path(@photo_post.user)
       end
     else
       @photo_post.record_timestamps = false       #*************更新日＝投稿日にするため、普通の内容編集の際は更新日を変えさせない

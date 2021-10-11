@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <% if photo_post.preview == false %>　<%#.  プレビュー用　falseでリンクを持たせない　%>
+  <% if photo_post.preview == false %>
     <% if photo_post.bookmarked_by?(current_user) %>
       <p>
         <%= link_to photo_post_bookmark_path(photo_post), method: :delete, remote: true do %>
