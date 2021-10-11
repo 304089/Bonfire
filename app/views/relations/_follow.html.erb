@@ -17,7 +17,7 @@
 <% end %>
 <div class="follow">
   <ul>
-    <li><%= link_to "フォロワー",user_followers_path(@user.id) %> <%= user.followers.count%> 人</li>
-    <li><%= link_to "フォロー中",user_followings_path(@user.id) %> <%= user.followings.count%> 人</li>
+    <li><%= link_to "フォロワー",user_followers_path(user.id) %> <%= user.followers.count%> 人</li>
+    <li><%= link_to "フォロー中",user_followings_path(user.id) %> <%= user.followings.count%> 人</li>
   </ul>
 </div>

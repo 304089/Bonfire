@@ -1,7 +1,7 @@
 <div class="profile">
   <div class="profile__left">
     <div class="profile__left__top">
-      <h1>Profile</h1>
+      <h2>Profile <i class="fas fa-id-card"></i></h2>
       <%= attachment_image_tag user, :profile_image, size: "300x300", fallback: "no_image.jpg"  %>
     </div>
     <div class="profile__left__bottom">
@@ -9,7 +9,12 @@
         <%= render "relations/follow", user: user %>
       </div>
     </div>
-    <%= link_to "写真投稿", new_photo_post_path %>
+    <% unless controller.controller_name == "photo_posts" %>
+      <%= link_to "写真投稿", new_photo_post_path %>
+    <% else %>
+      <%= link_to "My Photo", user_path(user) %>
+    <% end %>
+    <%= link_to "下書き一覧",my_post_user_path(user) %>
   </div>
   <div class="profile__right">
     <h3>Name</h3>

@@ -1,0 +1,27 @@
+<div class="photo_post-container">
+  <%= render "photo", photo_post: @photo_post %>     <%#   render先は条件分岐で各ボタンにリンクを持たせない%>
+  <div class="explanation-area">
+    <div class="user-name">
+      <%= attachment_image_tag @photo_post.user, :profile_image, size: "50x50", fallback: "no_image.jpg", class: "rounded-circle" %>
+      <%= @photo_post.user.name %>
+    </div>
+    <br>
+    <p>-----Introduction-----</p>
+    <div>
+      <%=safe_join(@photo_post.introduction.split("\n"),tag(:br))%>
+    </div>
+    <br>
+    <p>--------Tags---------</p>
+    <div class="explanation-area__tag">
+      <%= render "tags", tag_list: @photo_post.tag_list %>　　<%#   render先は条件分岐で各ボタンにリンクを持たせない%>
+    </div>
+    <br>
+    <p>-------Comments-------</p>
+    <div id="photo_post_comment_index">
+    </div>
+  </div>
+  <%= form_with model: @photo_post,url: photo_post_path(@photo_post), method: :patch, local: true do |f| %>
+    <%= f.hidden_field :preview, value: @preview %>
+    <div class="log-btn"><%=f.submit '注文を確定する',class: "btn btn-danger" %></div>
+  <% end %>
+</div>

@@ -4,6 +4,8 @@ class CreatePhotoPosts < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true, null: false
       t.integer :genre, null: false
       t.text :introduction, null: false
+      t.string :place
+      t.boolean :preview, null: false, default: true
       t.timestamps
     end
   end

@@ -2,21 +2,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @photo_posts = PhotoPost.where(user_id: @user.id).order(id: "DESC").limit(9)
+    @photo_posts = PhotoPost.where(user_id: @user.id, preview: false).order(id: "DESC").limit(9)
   end
 
   def index
     @users = User.all
   end
 
-  def my_posts
+  def my_post
     @user = User.find(params[:id])
-    @photo_posts = PhotoPost.where(user_id: @user.id).order(id: "DESC")
-  end
-
-  def bookmarks
-    @user = User.find(params[:id])
-    @bookmarks = Bookmark.where(user_id: @user.id)
+    @photo_posts = PhotoPost.where(user_id: @user.id, preview: false).order(id: "DESC")
   end
 
   def edit

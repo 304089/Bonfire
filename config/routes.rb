@@ -7,17 +7,17 @@ Rails.application.routes.draw do
     get "followings" => "relations#followings"
     get "followers" => "relations#followers"
     member do
-      get :my_posts
+      get :my_post
       get :unsubscribe
-      get :bookmarks
     end
   end
 
-  resources :photo_posts, except:[:edit, :update] do
+  resources :photo_posts do
     collection do
       get :search
     end
     member do
+      get :preview
       get :favorites
     end
     resources :photo_post_comments, except:[:show, :edit, :update]

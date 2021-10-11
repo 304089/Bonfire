@@ -37,7 +37,7 @@
   color: #CCCCCC;
  }
 
- /*.   ヘッダー.   */
+ /*********************ヘッダー******************************/
  header {
   height: 70px;
 
@@ -82,7 +82,7 @@
    .menuSub li a:hover {
      color: silver;
    }
-                                /****************************************/
+
 }
 
 
@@ -121,10 +121,9 @@
      color: #0000BB;
    }
 }
-                         /**********************************************/
 
 
-
+/***************一覧画像レイアウト********************/
 
  .contents {
 
@@ -168,3 +167,97 @@
         }
     }
 }
+
+
+/*********user 部分テンプレート(profile)***********/
+
+.profile-container {
+  display: flex;
+  gap: 0 50px;
+  width: 90%;
+  height: 680px;
+  margin: 30px auto;
+
+  .profile {
+    width: 50%;
+    display: flex;
+    gap: 0 10px;
+    margin-top: 30px;
+
+    &__left {
+      margin-top: -20px;
+      width: 50%;
+
+      h1 {
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
+
+      &__bottom {
+        margin-top: 15px;
+
+        p {
+          border: 1px solid #333333;
+          font-weight: 900;
+          width: 140px;
+          height: 30px;
+          padding: 5px 5px 10px 5px;
+          text-align: center;
+          align-items: center;
+          font-size: 13px;
+          transition-duration: 0.1s;
+          border-radius: 5px;
+
+              i {
+                position: relative;
+                top: 5px;
+              }
+        }
+
+        p:hover {
+          transition-duration: 0.2s;
+          border: 1px solid silver;
+          color: silver;
+        }
+
+        #relation {
+          display: flex;
+          gap: 0 15px
+        }
+
+        .follow a{
+          font-weight: 600;
+          font-size: 14px;
+        }
+      }
+    }
+
+    &__right {
+      margin-top: 50px;
+      width: 50%;
+
+      h3{
+        border-bottom: 1px solid gray;
+        margin: 20px 0 10px 0;
+      }
+
+    }
+  }
+
+/*****************部分テンプレート右側部分外枠*/
+  .posts {
+    width: 50%;
+
+     .contents {
+       display: flex;
+       align-items: center;
+       flex-wrap: wrap;
+     }
+
+     h2 {
+       font-weight: 600;
+     }
+  }
+
+}
+

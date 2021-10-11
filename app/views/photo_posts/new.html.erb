@@ -1,27 +1,31 @@
-<div class="post-container" %>
-  <div class="form-area">
-    <%= form_with(model:[@photo_post], local: true) do |f| %>
-      <div class = "field">
-        <%= f.label :genre, "投稿ジャンル" %>
-        <%= f.select :genre,options_for_select(PhotoPost.genres.keys), include_blank: "選択して下さい" %>
-      </div>
-      <div class = "field">
-        <%= f.attachment_field :post_images_images, multiple: true %>
-      </div>
-      <div class = "field">
+<div class="profile-container">
+  <%= render "users/profile", user: @user %>
+  <div class="posts">
+    <h2>Post  <i class="fas fa-upload"></i></h2>
+    <div class="form-area">
+      <%= form_with model: @photo_post, local: true do |f| %>
+        <div class="field">
+          <%= f.attachment_field :post_images_images, multiple: true %>
+        </div>
         <%= f.label :introduction, "説明" %>
-        <%= f.text_area :introduction %>
-      </div>
-       <div>
-        <%= f.label :tag_list, "タグ" %>
-        <%= f.text_field :tag_list, value: @photo_post.tag_list.join(','), id: 'tags' %>
-      </div>
-      <div class = "submit">
-        <%= f.submit "投稿" %>
-      </div>
-    <% end %>
-  </div>
-  <div class="preview-area">
-    <%= render "preview", photo_post: @photo_post %>
+        <div class="field">
+          <%= f.text_area :introduction %>
+        </div>
+        <div class="label">
+          <%= f.label :genre, "投稿ジャンル" %>
+        <div class="field">
+          <%= f.select :genre,options_for_select(PhotoPost.genres.keys), include_blank: "選択して下さい" %>
+        </div>
+        <div class="label">
+          <%= f.label :tag_list, "タグ" %>
+        </div>
+         <div class="field">
+          <%= f.text_field :tag_list, value: @photo_post.tag_list.join(','), id: 'tags' %>
+        </div>
+        <div class="submit">
+          <%= f.submit "投稿" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -17,18 +17,26 @@
       <%= render "bookmarks/bookmark", photo_post: photo_post %>         <%#　ブックマーク　%>
     </div>
     <div id="photo_post_comment">
-      <% if controller.controller_name == "photo_post_comments" %>
-        <%= link_to photo_post_path(photo_post) do %>   <%#　コメント　%>
-          <i class="far fa-file-alt"></i>
+      <% if photo_post.preview == false %>　<%#.  プレビュー用　falseでリンクを持たせない　%>
+        <% if controller.controller_name == "photo_post_comments" %>
+          <%= link_to photo_post_path(photo_post) do %>
+            <i class="far fa-file-alt"></i>
+          <% end %>
+        <% else %>
+          <%= link_to new_photo_post_photo_post_comment_path(photo_post) do %>
+            <i class="far fa-comment-dots"></i>
+          <% end %>
         <% end %>
       <% else %>
-        <%= link_to new_photo_post_photo_post_comment_path(photo_post) do %>   <%#　コメント　%>
-          <i class="far fa-comment-dots"></i>
-        <% end %>
+        <i class="far fa-comment-dots"></i>
       <% end %>
     </div>
     <div class="post-day">
-      <%= photo_post.created_at.strftime("%Y年%m月%d日").to_s %>
+      <% if photo_post.preview == false %>
+        <%= photo_post.created_at.strftime("%Y年%m月%d日").to_s %>
+      <% else %>
+        <p>投稿日が入ります</p>　　<%#.  プレビュー用　　%>
+      <% end %>
     </div>
   </div>
 </div>

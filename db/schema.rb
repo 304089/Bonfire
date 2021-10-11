@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 2021_10_06_141241) do
     t.integer "user_id", null: false
     t.integer "genre", null: false
     t.text "introduction", null: false
+    t.string "place"
+    t.boolean "preview", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_photo_posts_on_user_id"
