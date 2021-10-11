@@ -3,17 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /****************newページ*********************/
+.index-title {
+  color: black;
+  position: relative;
+  bottom: 500px;
+}
 
 .photo_post_comment-area {
-      width: 30%;
+      width: 40%;
       margin-left: 20px;
+      height: 480px;
+      overflow-y: scroll;
+      margin-top: 50px;
 
       #photo_post_comment_form {             /****************投稿フォーム*****************/
           position: absolute;
-          top: 680px;
+          top: 660px;
 
           input {
-             width: 350px;
+             width: 280px;
              margin: 0 auto;
              padding: 0 45px 0 25px;
              height: 45px;
