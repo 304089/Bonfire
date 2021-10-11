@@ -50,6 +50,9 @@ class PhotoPostsController < ApplicationController
   end
 
   def destroy
+    @photo_post = PhotoPost.find(params[:id])
+    @photo_post.destroy
+    redirect_to user_path(@photo_post.user)
   end
 
   def search
