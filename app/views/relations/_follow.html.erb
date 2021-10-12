@@ -4,7 +4,7 @@
       <p><i class="fas fa-user-cog fa-2x"></i>  ユーザー情報変更</p>
     <% end %>
   <% else %>
-    <% if Relation.find_by(followed_id: user.id) %>
+    <% if Relation.find_by(follower_id: current_user.id, followed_id: user.id) %>
       <%= link_to user_relation_path(user.id),method: :delete, remote: true do %>
         <p><i class="fas fa-user-slash fa-2x"></i>  フォローをやめる</p>
       <% end %>

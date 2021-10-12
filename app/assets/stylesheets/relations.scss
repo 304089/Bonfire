@@ -1,3 +1,26 @@
 // Place all the styles related to the relations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*************************一覧*****************************/
+.follow-list {
+    h2{
+      margin-bottom: 20px;
+    }
+
+    .list-area {
+      width: 400px;
+      height: 550px;
+      overflow-y: scroll;
+
+      a {
+        display: block;
+        padding: 3px;
+      }
+
+      img {
+        margin-right: 8px ;
+      }
+
+    }
+}

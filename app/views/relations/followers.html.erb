@@ -1,13 +1,14 @@
 <div class="profile-container">
   <%= render "users/profile", user: @user %>
-  <div class="posts">
-    <h2>Followers  <i class="fas fa-camera"></i></h2>
-    <% @users.each do |user| %>
-      <%= link_to user_path(user) do %>
-        <%= attachment_image_tag user,:profile_image,size: "50x50", fallback: "no_image.jpg", class: "rounded-circle" %>
-        <%= user.name %>
+  <div class="posts follow-list">
+    <h2>Followers  <i class="far fa-handshake"></i></h2>
+    <div class="list-area">
+      <% @users.each do |user| %>
+        <%= link_to user_path(user) do %>
+          <%= attachment_image_tag user,:profile_image,size: "50x50", fallback: "no_image.jpg", class: "rounded-circle" %>
+          <%= user.name %>
+        <% end %>
       <% end %>
-    <% end %>
-    <%= paginate(@users) %>
+    </div>
   </div>
 </div>
