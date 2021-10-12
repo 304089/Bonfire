@@ -8,16 +8,19 @@
               <%= link_to "写真投稿", new_photo_post_path %>
             </li>
             <li>
+              <%= link_to "相談投稿", new_consultation_path %>
+            </li>
+            <li>
               <%= link_to "ユーザー編集",edit_user_path(user) %>
             </li>
             <li>
               <%= link_to "My Photo", user_path(user, choose: "mine") %>
             </li>
             <li>
-              <%= link_to "ブックマーク",user_path(user, choose: "bookmark") %>
+              <%= link_to "ブックマーク", user_path(user, choose: "bookmark") %>
             </li>
             <li>
-              <%= link_to "下書き一覧",user_path(user, choose: "draft") %>
+              <%= link_to "下書き一覧", user_path(user, choose: "draft") %>
             </li>
           </ul>
       </li>

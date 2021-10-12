@@ -1,3 +1,55 @@
 // Place all the styles related to the consultations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/********************newページ********************/
+.form-area {
+  .cons-inp1 {
+    height: 30px;
+  }
+
+  .cons-inp2 {
+    height: 200px;
+  }
+
+
+  .cons-label3 label{
+    display: inline-block;
+    width: 50px;
+  }
+
+  .cons-inp5 {  /********チェックボタン*********/
+    width: 20px;
+    height: 20px;
+
+  }
+
+  .cons-label3 {
+    height: 5px;
+    font-size: 20px;
+  }
+
+  .cons-inp6 p{
+    background-color: #FF6928;
+    border: 1px solid #FF6928;
+    color: white;
+    height: 40px;
+    line-height: 40px;
+    transition: all 0.2s 0s ease;
+  }
+
+  .cons-inp6:hover p{
+    background-color: white;
+    border: 1px solid #FF6928;
+    color: #FF6928;
+  }
+
+  .cons-inp6 {
+    height: 0;
+  }
+
+
+
+
+}
+

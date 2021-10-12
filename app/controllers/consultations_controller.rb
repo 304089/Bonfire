@@ -5,6 +5,7 @@ class ConsultationsController < ApplicationController
 
   def new
     @consultation = Consultation.new
+    @user = current_user
   end
 
   def confirm
