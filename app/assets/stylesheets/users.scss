@@ -12,6 +12,16 @@
        left: 400px;
      }
 
+     .posts-title, .select-list {
+       display: inline-block;
+     }
+
+     #sort {
+       margin-left: 10px;
+       position: relative;
+       bottom: 3px;
+     }
+
 }
 
 /************************:edit部分*****************************/
