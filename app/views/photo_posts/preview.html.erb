@@ -1,41 +1,51 @@
-<div class="photo_post-container-preview">
-  <%= render "photo", photo_post: @photo_post %>     <%#   プレビュー・下書きの場合はrender先は条件分岐で各ボタンにリンクを持たせない%>
-  <div class="explanation-area">
-    <div class="user-name">
-      <%= attachment_image_tag @photo_post.user, :profile_image, size: "50x50", fallback: "no_image.jpg", class: "rounded-circle" %>
-      <%= @photo_post.user.name %>
-    </div>
-    <br>
-    <p>-----Introduction-----</p>
-    <div>
-      <%=safe_join(@photo_post.introduction.split("\n"),tag(:br))%>
-    </div>
-    <br>
-    <p>--------Tags---------</p>
-    <div class="explanation-area__tag">
-      <%= render "tags", tag_list: @photo_post.tag_list %>　　<%#   プレビュー・下書きの場合はrender先は条件分岐で各ボタンにリンクを持たせない%>
-    </div>
-    <br>
-    <p>-------Comments-------</p>
-    <div id="photo_post_comment_index">
+<% if @title == "draft" %>
+  <h2 class="draft-title">下書き <i class="fas fa-edit"></i></h2>
+<% else %>
+  <p class="preview-text">
+    <i class="fas fa-exclamation-triangle"></i><strong>まだ投稿は完了していません</strong><i class="fas fa-exclamation-triangle"></i>
+    <br>このまま他のページへ移動すると下書きとして保存されます。
+    <br>（下書きはマイページから再度編集できます）
+  </p>
+<% end %>
+  <div class="photo_post-container-preview">
+    <%= render "photo", photo_post: @photo_post %>     <%#   プレビュー・下書きの場合はrender先は条件分岐で各ボタンにリンクを持たせない%>
+    <div class="explanation-area">
+      <div class="user-name">
+        <%= attachment_image_tag @photo_post.user, :profile_image, size: "50x50", fallback: "no_image.jpg", class: "rounded-circle" %>
+        <%= @photo_post.user.name %>
+      </div>
+      <br>
+      <p>-----Introduction-----</p>
+      <div>
+        <%=safe_join(@photo_post.introduction.split("\n"),tag(:br))%>
+      </div>
+      <br>
+      <p>--------Tags---------</p>
+      <div class="explanation-area__tag">
+        <%= render "tags", tag_list: @photo_post.tag_list, photo_post: @photo_post %>　　<%#   プレビュー・下書きの場合はrender先は条件分岐で各ボタンにリンクを持たせない%>
+      </div>
+      <br>
+      <p>-------Comments-------</p>
+      <div id="photo_post_comment_index">
+      </div>
     </div>
   </div>
-</div>
-<div class="button-area">
-  <div class="btn1">
-    <%= form_with model: @photo_post,url: photo_post_path(@photo_post), method: :patch, local: true do |f| %>
-      <%= f.hidden_field :preview, value: @preview %>
-      <%= f.button :type => "submit", style: 'border-style: none;' do %>
-        <p>投稿<i class="fas fa-upload"></i></p>
+  <div class="button-area">
+    <div class="btn1">
+      <%= form_with model: @photo_post,url: photo_post_path(@photo_post), method: :patch, local: true do |f| %>
+        <%= f.hidden_field :preview, value: @preview %>
+        <%= f.button :type => "submit", style: 'border-style: none;' do %>
+          <p>投稿<i class="fas fa-upload"></i></p>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  <div class="btn2">
-    <%= link_to edit_photo_post_path(@photo_post) do %>
-      <p>編集<i class="far fa-edit"></i></p>
-    <% end %>
-    <%= link_to photo_post_path(@photo_post), method: :delete, data: {confirm: "本当に削除しますか？"} do %>
-      <p>削除<i class="far fa-trash-alt"></i></p>
-    <% end %>
+    </div>
+    <div class="btn2">
+      <%= link_to edit_photo_post_path(@photo_post) do %>
+        <p>編集<i class="far fa-edit"></i></p>
+      <% end %>
+      <%= link_to photo_post_path(@photo_post), method: :delete, data: {confirm: "本当に削除しますか？"} do %>
+        <p>削除<i class="far fa-trash-alt"></i></p>
+      <% end %>
+    </div>
   </div>
 </div>

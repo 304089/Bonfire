@@ -8,6 +8,9 @@ class PhotoPostsController < ApplicationController
   def preview
     @photo_post = PhotoPost.find(params[:id])
     @preview = true
+    if params[:status] == "draft"     #***************詳細ページ遷移時に draftパラメータが送られたら、タイトルは「下書き」
+      @title = "draft"               #そうじゃない場合　= 投稿作成時のプレビュー表示の際　は　タイトルは　「プレビュー」
+    end
   end
 
   def create
@@ -62,7 +65,7 @@ class PhotoPostsController < ApplicationController
 
   private
   def photo_post_params
-    params.require(:photo_post).permit(:introduction, :photo_image,:genre, :tag_list,:place, :preview,
+    params.require(:photo_post).permit(:introduction, :photo_image,:genre, :tag_list,:place, :preview, :status,
       post_images_images: [])
   end
 

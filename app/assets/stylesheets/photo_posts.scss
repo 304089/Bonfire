@@ -181,13 +181,30 @@
 
 
 /************************************previewページ************************************************************/
+
+.preview-title, .preview-text {
+    text-align: center;
+}
+
+.preview-text {
+    margin-top: 30px;
+
+    i {
+        color: red;
+    }
+}
+
+
 .photo_post-container-preview {
     display: flex;
     width: 70%;
     height: 580px;        /************写真外枠****************/
-    margin: 100px auto 10px auto ;
+    margin: 0 auto 10px auto ;
     gap: 0 10px;
 
+    p {
+
+    }
     .slick-slider .slick-list {
     height: 470px!important;  /*************画像サイズ調整*****************/
     }
@@ -311,4 +328,10 @@
         }
 
     }
+
+/*********下書きの場合**/
+.draft-title {
+    text-align: center;
+    margin: 40px 0 30px 0;
+}
 
