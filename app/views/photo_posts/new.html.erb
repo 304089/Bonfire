@@ -1,10 +1,11 @@
 <div class="profile-container">
   <%= render "users/profile", user: @user %>
   <div class="posts">
-    <h2>Post  <i class="fas fa-file-upload"></i></h2>
+    <h2>写真投稿フォーム  <i class="fas fa-file-upload"></i></h2>
     <div class="form-area">
       <%= form_with model: @photo_post, local: true do |f| %>
         <%= f.select :genre,options_for_select(PhotoPost.genres.keys), include_blank: "カテゴリーを選択して下さい", class: "inp input1" %>
+        <%= f.label :profile_image,"投稿画像（複数可）", class: "label" %>
         <%= f.attachment_field :post_images_images, multiple: true, class: "inp input2" %>
         <%= f.text_area :introduction, placeholder: " ---------------説明文を入力してください------------ -----改行も反映されます" , class: "inp input3"%>
         <%= f.label :place, "(任意) 場所", class: "label" %>
