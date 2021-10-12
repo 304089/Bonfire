@@ -1,5 +1,9 @@
 <div class="photo-area">
-  <p class="photo-place"><i class="fas fa-map-marker-alt"></i>&ensp; 仲良しキャンプ場</p>
+  <% unless photo_post.place == "" %>
+    <p class="photo-place"><i class="fas fa-map-marker-alt"></i>&ensp; <%= photo_post.place %></p>
+  <% else %>
+    <p class="photo-place"><br></p>
+  <% end %>
 <% if photo_post.post_images.count > 1 %>
   <div class="slider">
 <% else %>

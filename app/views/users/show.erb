@@ -1,12 +1,18 @@
 <div class="profile-container">
   <%= render "profile", user: @user %>
   <div class="posts">
-    <h2 class="posts-title">Photo  <i class="fas fa-camera"></i></h2>
-    <div class="select-list">
-      <%= form_with url: user_path(@user), method: :get, local: true do |f| %>
-        <%= f.select :sort, [["いいねが多い順", "favorite"], ["新しい順", "new"], ["古い順", "old"]], include_blank: "並び替え" %>
-      <% end %>
-    </div>
+    <% if @title == "mine" %>
+        <h2 class="posts-title">My Photo  <i class="fas fa-camera"></i></h2>
+      <div class="select-list">
+        <%= form_with url: user_path(@user), method: :get, local: true do |f| %>
+          <%= f.select :sort, [["いいねが多い順", "favorite"], ["新しい順", "new"], ["古い順", "old"]], include_blank: "並び替え" %>
+        <% end %>
+      </div>
+    <% elsif @title == "bookmark" %>
+      <h2 class="posts-title">ブックマーク <i class="fas fa-bookmark"></i></h2>
+    <% elsif @title == "draft" %>
+      <h2 class="posts-title">下書き <i class="fas fa-edit"></i></h2>
+    <% end %>
     <%= render "photo_posts/index", photo_posts: @photo_posts%>
   </div>
 </div>
