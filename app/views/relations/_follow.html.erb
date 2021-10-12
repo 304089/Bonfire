@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <% if current_user == user %>
-    <ul>
+    <ul class="user-menu">
       <li class="item">
           <p class="title">Menu　<i class="fas fa-bars"></i></p>
           <ul class="child">
@@ -8,10 +8,16 @@
               <%= link_to "写真投稿", new_photo_post_path %>
             </li>
             <li>
-              <%= link_to "My Photo", user_path(user) %>
+              <%= link_to "ユーザー編集",edit_user_path(user) %>
             </li>
             <li>
-              <%= link_to "下書き一覧",my_post_user_path(user) %>
+              <%= link_to "My Photo", user_path(user, choose: "mine") %>
+            </li>
+            <li>
+              <%= link_to "ブックマーク",user_path(user, choose: "bookmark") %>
+            </li>
+            <li>
+              <%= link_to "下書き一覧",user_path(user, choose: "draft") %>
             </li>
           </ul>
       </li>

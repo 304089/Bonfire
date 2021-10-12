@@ -22,17 +22,33 @@
 //= require_tree .
 /*global $*/
 
-  $(function() {
-    $("ul.menu li").hover(
-      function() {
-        $(".menuSub:not(:animated)", this).slideDown();
-      },
-      function() {
-        $(".menuSub", this).slideUp();
-      }
-    );
-  });
+/*********トップメニューバー****/
+$(function() {
+  $("ul.menu li").hover(
+    function() {
+      $(".menuSub:not(:animated)", this).slideDown();
+    },
+    function() {
+      $(".menuSub", this).slideUp();
+    }
+  );
+});
 
+/************マイページメニューバー***********/
+$(function() {
+  $("ul.user-menu li").hover(
+    function() {
+      $(".child", this).slideDown();
+    },
+    function() {
+      $(".child", this).slideUp();
+    }
+  );
+});
+
+
+
+/**********複数画像スライダー***********/
 $(function() {
     $('.slider').slick({
         dots: true,
@@ -42,4 +58,12 @@ $(function() {
 /*一枚ならドットなし*/
 $(function() {
     $('.slider__solo').slick({});
+});
+
+
+/***************マイページ　写真ソート選択動化*/
+$(function(){
+    $('#sort').change(function() {
+        $("form").submit();
+    });
 });

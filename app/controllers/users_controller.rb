@@ -2,16 +2,24 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @photo_posts = PhotoPost.where(user_id: @user.id, preview: false).order(id: "DESC")
+    if params[:choose] == "mine" || params[:choose] == nil   #My Photo押すか、マイページに飛んできた時
+      if params[:sort] == "new" || params[:sort] == nil
+        @photo_posts = PhotoPost.where(user_id: @user.id, preview: false).order(id: "DESC")
+      elsif params[:sort] == "old"
+        @photo_posts = PhotoPost.where(user_id: @user.id, preview: false)
+      end
+    elsif params[:choose] == "bookmark" #ブックマークページ
+      @photo_posts = PhotoPost.joins(:bookmarks).where(bookmarks: { user_id: @user.id })
+    elsif params[:choose] == "draft" # 下書きページ
+      @photo_posts = PhotoPost.where(user_id: @user.id, preview: true).order(id: "DESC")
+    end
   end
 
   def index
-    @users = User.all
   end
 
   def my_post
     @user = User.find(params[:id])
-    @photo_posts = PhotoPost.where(user_id: @user.id, preview: false).order(id: "DESC")
   end
 
   def edit
@@ -30,6 +38,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name,:email,:profile_image, :introduction)
+    params.require(:user).permit(:name,:email,:profile_image, :introduction, :choose, :sort)
   end
 end
