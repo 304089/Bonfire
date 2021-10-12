@@ -56,3 +56,59 @@
 
     }
 }
+
+.profile__left {                     /*************************メニューバー*/
+  ul {
+      margin: 0px;
+      padding: 0px;
+      list-style: none;
+  }
+
+
+
+  .item {
+      position: relative;
+
+       a {
+          display: block;
+          line-height: 40px;
+          text-align: center;
+          background: white;
+          border: .5px solid black;
+          border-top: .5px solid silver;
+          transition: .2s ease-out;
+       }
+
+       a:hover {
+         background: silver;
+         color: white;
+       }
+
+       .title {
+         font-size: 23px;
+         font-weight: 300;
+         text-align: right;
+         p {
+           position: relative;
+           left: 10px;
+         }
+
+         .fa-bars {
+           position: relative;
+           top: 2px;
+         }
+       }
+  }
+
+  .child {
+      visibility: hidden;
+      width: 100%;
+      position: relative;
+      bottom: 16px;
+      left: 0px;
+  }
+
+  .item:hover .child {
+      visibility: visible;
+  }
+}

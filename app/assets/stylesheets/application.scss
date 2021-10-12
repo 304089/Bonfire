@@ -206,7 +206,7 @@
         margin-top: 15px;
 
 
-        p {
+        p {                                     /***********メニューボタン*****/
           border: 1px solid #333333;
           font-weight: 900;
           width: 140px;
@@ -216,7 +216,6 @@
           align-items: center;
           font-size: 13px;
           transition-duration: 0.1s;
-          border-radius: 5px;
 
               i {
                 position: relative;
