@@ -1,9 +1,21 @@
-<%= form_with model: @user, local: true do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :introduction %>
-  <%= f.text_area :introduction %>
-  <%= f.attachment_field :profile_image %>
-  <%= f.submit "送信" %>
-<% end %>
-<%= link_to "アカウント削除はこちらから", unsubscribe_user_path(@user) %>
+<div class="profile-container">
+  <%= render "users/profile", user: @user %>
+  <div class="posts">
+    <h2>User Edit  <i class="fas fa-user-cog"></i></h2>
+    <div class="form-area">
+      <%= form_with model: @user, local: true do |f| %>
+        <%= f.label :name, "ユーザー名", class: "label" %>
+        <%= f.text_field :name, class: "edit-input1 inp"%>
+        <%= f.label :introduction, "自己紹介文", class: "label" %>
+        <%= f.text_area :introduction, placeholder: " ----改行も反映されます----",class: "edit-input2 inp" %>
+        <%= f.label :profile_image,"プロフィール画像", class: "label" %>
+        <%= f.attachment_field :profile_image, class: "edit-input3 inp" %>
+        <%= f.button :type => "submit", style: 'border-style: none;', class: "edit-input4 inp" do %>
+          更新する <i class="far fa-check-circle"></i>
+        <% end %>
+      <% end %>
+      <%= link_to "ー アカウント削除はこちらから ー", unsubscribe_user_path(@user), class: "leave-btn" %>
+    </div>
+  </div>
+</div>
+

@@ -14,3 +14,45 @@
 
 }
 
+/************************:edit部分*****************************/
+.form-area{
+    .label,.inp {
+        display: block;
+        width: 350px;
+    }
+
+    .edit-input1 {
+        height: 30px;
+    }
+
+    .edit-input2 {
+        height: 200px;
+    }
+
+    .edit-input3 {
+        height: 35px;
+
+    }
+
+    .edit-input4 {
+      display: block;
+      background-color: #009900;
+      height: 30px;
+      color: white;
+      border: 1px solid  #009900!important;
+    }
+
+    .edit-input4:hover {
+      background-color: white;
+      color: #009900;
+      border: 1px solid  #009900!important;
+    }
+
+    .leave-btn {
+        position: relative;
+        left: 70px;
+        top: 15px;
+        font-size: 14px;
+
+    }
+}
