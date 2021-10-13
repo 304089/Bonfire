@@ -123,6 +123,35 @@
    }
 }
 
+/********************ページネーション************************/
+
+.pagination {
+  justify-content: center;
+
+  .page-item.active .page-link {
+    background: #93c9ff;
+    border-radius: 50%;
+  }
+
+  li {
+    margin: 0 5px;
+  }
+
+  li a {
+    border: none;
+    color: gray;
+    border-radius: 50%;
+  }
+
+  li a:hover {
+    color: white;
+  }
+
+  .page-item:first-child .page-link, .page-item:last-child .page-link {
+    border-radius: 50%;
+  }
+}
+
 
 /***************一覧画像レイアウト********************/
 

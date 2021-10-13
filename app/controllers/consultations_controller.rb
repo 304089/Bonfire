@@ -20,7 +20,7 @@ class ConsultationsController < ApplicationController
   end
 
   def index
-    @consultations = Consultation.all
+    @consultations = Consultation.page(params[:page]).per(8)
   end
 
   def show

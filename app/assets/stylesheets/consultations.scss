@@ -97,31 +97,52 @@
       &__list {
         background: #BC8F8F;
         height: 80%;
+        overflow-x: scroll;
 
         ul {
           height: 100%;
 
           li {
-            height: 12%;
+            height: 13%;
             background: white;
             display: flex;
+            border-bottom: 1px solid silver;
           }
         }
 
         &__left {
           height: 100%;
-          width: 10%;
+          width: 12%;
           background: #CCFFFF;
+          color: black;
+
+          .icon {
+            height: 80%;
+            font-size: 33px;
+            text-align: center;
+          }
+
+          .genre {
+            height: 20%;
+            font-size: 1px;
+            font-weight: 900;
+            text-align: center;
+          }
         }
 
         &__right {
           height: 100%;
-          width: 90%;
+          width: 88%;
           background: #FFDDFF;
 
           .title {
             background: #FFFFAA	;
             height: 60%;
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 35px;
+            overflow-x: scroll;
+            white-space: nowrap;
           }
 
           .body {
@@ -143,11 +164,30 @@
               .user {
                 background: #CC66CC;
                 width: 40%;
+                display: flex;
+                gap: 7px;
+                font-size: 12px;
+                line-height: 25px;
+                a {
+                  width: 100%;
+                }
+
+                .user-icon {
+                  height: 100%;
+                  width: 10%;
+                }
+
+                .user-name {
+                  height: 100%;
+                  width: 90%;
+                }
               }
 
               .time {
                 background: #993300;
                 width: 30%;
+                font-size: 11px;
+                line-height: 23px;
               }
             }
 
@@ -156,14 +196,14 @@
       }
 
       &__page {
-        background: #B0C4DE;
+        background: white;
         height: 6%;
       }
     }
 
     .consultation-right {
       background: #00CCFF;
-      width: 30%;
+      width: 50%;
     }
   }
 }
