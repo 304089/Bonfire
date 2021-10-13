@@ -1,7 +1,7 @@
 <div class="profile-container">
   <%= render "users/profile", user: @user %>
   <div class="posts">
-    <h2>User Edit  <i class="fas fa-user-cog"></i></h2>
+    <h2>Profile Edit  <i class="fas fa-user-cog"></i></h2>
     <div class="form-area">
       <%= form_with model: @user, local: true do |f| %>
         <%= f.label :name, "ユーザー名", class: "label" %>

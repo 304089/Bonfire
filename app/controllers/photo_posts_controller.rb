@@ -7,9 +7,9 @@ class PhotoPostsController < ApplicationController
 
   def preview
     @photo_post = PhotoPost.find(params[:id])
-    @preview = true
-    if params[:status] == "draft"     #***************詳細ページ遷移時に draftパラメータが送られたら、タイトルは「下書き」
-      @title = "draft"               #そうじゃない場合　= 投稿作成時のプレビュー表示の際　は　タイトルは　「プレビュー」
+    @preview = true                             #***updateアクション時の条件分岐用でhiddenで：previewのパラメータを送る
+    if params[:status] == "draft"               #***************詳細ページ遷移時に draftパラメータが送られたら、タイトルは「下書き」
+      @title = "draft"                          #そうじゃない場合　= 投稿作成時のプレビュー表示の際　は　タイトルは　「プレビュー」
     end
   end
 
@@ -24,22 +24,34 @@ class PhotoPostsController < ApplicationController
   end
 
   def edit
-
+    @photo_post = PhotoPost.find(params[:id])
+    @user = current_user
   end
 
   def update
     @photo_post = PhotoPost.find(params[:id])
-    if @photo_post.preview == true                #*********** 下書き状態なら投稿
-      if @photo_post.update(preview: false)  #**********下書きから投稿へ変更した時間を作成日にする
-        redirect_to user_path(@photo_post.user)
+    if @photo_post.preview == true                #*********** true=下書き・プレビュー状態の投稿, false=すでに投稿済みの投稿
+      if params[:photo_post][:preview] == "preview" #******下書き・プレビューの投稿編集なら
+        if @photo_post.update(photo_post_params)  #**********編集された内容だけ更新
+          redirect_to preview_photo_post_path(@photo_post) #*****プレビュー画面へ
+        end
+      else                                #********下書き・プレビューから本投稿されたら
+        if @photo_post.update(preview: false) #*******ステータスを投稿に切り替えて
+          redirect_to user_path(@photo_post.user) #*******マイページへ
+        end
       end
-    else
-      @photo_post.record_timestamps = false       #*************更新日＝投稿日にするため、普通の内容編集の際は更新日を変えさせない
-      if @photo_post.update
-        redirect_to photo_post_path(@photo_post)
+    else                                          #*****すでに投稿済みの投稿の編集の時
+      @photo_post.record_timestamps = false       #*************今回の仕様上、更新日＝投稿日にするため、投稿済みの投稿の内容編集は更新日を変えさせない
+      if params[:photo_post][:preview] == "preview"
+        if @photo_post.update(photo_post_params)
+          redirect_to preview_photo_post_path(@photo_post)  #*********プレビュー画面を経由させる
+        end
+      else
+        if @photo_post.update(photo_post_params)
+          redirect_to user_path(@photo_post.user) #*******マイページへ
+        end
       end
     end
-    @photo_post.record_timestamps = true
   end
 
   def show
@@ -64,7 +76,7 @@ class PhotoPostsController < ApplicationController
   end
 
   private
-  def photo_post_params
+  def photo_post_params #画像は複数投稿可能なため、配列で受け取る.
     params.require(:photo_post).permit(:introduction, :photo_image,:genre, :tag_list,:place, :preview, :status,
       post_images_images: [])
   end
