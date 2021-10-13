@@ -47,9 +47,123 @@
   .cons-inp6 {
     height: 0;
   }
-
-
-
-
 }
 
+/******************************indexページ*********************************/
+
+.consultation-container{
+  margin-top: 70px;
+
+  .consultation-body {
+    width: 70%;
+    display: flex;
+    gap: 10px;
+    height: 610px;
+    margin: 0 auto;
+
+    .consultation-left {
+      background: silver;
+      width: 20%;
+    }
+    .consultation-center {
+      background: #99CC99;
+      width: 60%;
+
+      &__sort {
+        background: #8FBC8F;
+        height: 6%;
+      }
+
+      &__label {
+        background: #FFB6C1;
+        height: 8%;
+
+        ul {
+          display: flex;
+          justify-content: flex-start;
+          height: 100%;
+
+
+          li {
+            background: #D2B48C;
+            width: 100%;
+            border: 1px solid black;
+          }
+        }
+
+
+      }
+
+      &__list {
+        background: #BC8F8F;
+        height: 80%;
+
+        ul {
+          height: 100%;
+
+          li {
+            height: 12%;
+            background: white;
+            display: flex;
+          }
+        }
+
+        &__left {
+          height: 100%;
+          width: 10%;
+          background: #CCFFFF;
+        }
+
+        &__right {
+          height: 100%;
+          width: 90%;
+          background: #FFDDFF;
+
+          .title {
+            background: #FFFFAA	;
+            height: 60%;
+          }
+
+          .body {
+            background: #9900FF;
+            height: 40%;
+
+            ul {
+              display: flex;
+
+              li {
+                height: 100%;
+              }
+
+              .count {
+                background: #336666	;
+                width: 20%;
+              }
+
+              .user {
+                background: #CC66CC;
+                width: 40%;
+              }
+
+              .time {
+                background: #993300;
+                width: 30%;
+              }
+            }
+
+          }
+        }
+      }
+
+      &__page {
+        background: #B0C4DE;
+        height: 6%;
+      }
+    }
+
+    .consultation-right {
+      background: #00CCFF;
+      width: 30%;
+    }
+  }
+}
