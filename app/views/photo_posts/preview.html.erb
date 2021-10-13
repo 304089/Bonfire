@@ -36,7 +36,7 @@
         <%= f.hidden_field :preview, value: @preview %>
         <%= f.button :type => "submit", style: 'border-style: none;' do %>
           <% if @photo_post.preview == true %>
-            <p>投稿<i class="fas fa-upload"></i></p>
+            <p>投稿<i class="fas fa-file-upload"></i></i></p>
           <% else %>
             <p>更新<i class="fas fa-upload"></i></p>
           <% end %>

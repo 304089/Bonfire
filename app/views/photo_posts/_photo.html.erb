@@ -35,10 +35,17 @@
         <i class="far fa-comment-dots"></i>
       <% end %>
     </div>
+    <% if photo_post.user == current_user %>
+      <div class="photo_post-edit">
+        <%= link_to edit_photo_post_path(photo_post) do %>
+          <i class="fas fa-cog"></i>
+        <% end %>
+      </div>
+    <% end %>
     <div class="post-day">
-      <% if photo_post.preview == false %>
+      <% if photo_post.preview == false %> <%# 下書き・プレビュー状態でなければ%>
         <%= photo_post.created_at.strftime("%Y / %m / %d").to_s %>
-      <% else %>
+      <% else %> <%# 下書き・プレビュー状態%>
         <p>投稿日が入ります</p>
       <% end %>
     </div>
