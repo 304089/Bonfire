@@ -5,11 +5,11 @@
     <div class="form-area">
       <%= form_with(model:[@consultation], local: true) do |f| %>
         <%= f.label :title, "タイトル", class: "label cons-label1" %>
-        <%= f.text_field :title, placeholder: "(例)　○○のテントを持ってる方！！", class: "inp cons-inp1" %>
+        <%= f.text_field :title, placeholder: "(例)　○○のテントを持ってる方！！", class: "inp cons-inp1 edit-inp1" %>
         <%= f.label :content, "内容", class: "label cons-label2" %>
         <%= f.text_area :content, placeholder: "(例)　○○のテントの購入を検討していますが、店頭には置いていないため、サイズ感などの感想を教えていただきたいです！写真もあればとても助かります！", class: "inp cons-inp2" %>
         <%= f.select :genre,options_for_select(Consultation.genres.keys), include_blank: "カテゴリーを選択して下さい", class: "inp cons-inp3" %>
-        <%= f.label :profile_image,"(任意)画像添付", class: "label" %>
+        <%= f.label :consultation_image,"(任意)画像添付", class: "label" %>
         <%= f.attachment_field :consultation_image, class: "inp  cons-inp4" %>
         <%= f.label :anonymity, "匿名を希望する", class: "label cons-label3" %>
         <%= f.check_box :anonymity, class: "inp cons-inp5"  %>

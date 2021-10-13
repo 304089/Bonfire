@@ -34,6 +34,8 @@ class PhotoPostsController < ApplicationController
       if params[:photo_post][:preview] == "preview" #******下書き・プレビューの投稿編集なら
         if @photo_post.update(photo_post_params)  #**********編集された内容だけ更新
           redirect_to preview_photo_post_path(@photo_post) #*****プレビュー画面へ
+        else
+          render "edit"
         end
       else                                #********下書き・プレビューから本投稿されたら
         if @photo_post.update(preview: false) #*******ステータスを投稿に切り替えて
@@ -45,6 +47,8 @@ class PhotoPostsController < ApplicationController
       if params[:photo_post][:preview] == "preview"
         if @photo_post.update(photo_post_params)
           redirect_to preview_photo_post_path(@photo_post)  #*********プレビュー画面を経由させる
+        else
+          render "edit"
         end
       else
         if @photo_post.update(photo_post_params)
@@ -77,7 +81,7 @@ class PhotoPostsController < ApplicationController
 
   private
   def photo_post_params #画像は複数投稿可能なため、配列で受け取る.
-    params.require(:photo_post).permit(:introduction, :photo_image,:genre, :tag_list,:place, :preview, :status,
+    params.require(:photo_post).permit(:introduction, :photo_image, :genre, :tag_list,:place, :preview, :status,
       post_images_images: [])
   end
 

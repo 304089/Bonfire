@@ -35,7 +35,7 @@
         <i class="far fa-comment-dots"></i>
       <% end %>
     </div>
-    <% if photo_post.user == current_user %>
+    <% if photo_post.user == current_user && photo_post.preview == false %>
       <div class="photo_post-edit">
         <%= link_to edit_photo_post_path(photo_post) do %>
           <i class="fas fa-cog"></i>
