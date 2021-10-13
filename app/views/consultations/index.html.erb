@@ -35,7 +35,7 @@
                 <% end %>
                 <div class="body">
                   <ul>
-                    <li class="count"></li>
+                    <li class="count">閲覧数:<%= consultation.impressions_count %></li>
                     <% if consultation.anonymity == true %>
                       <li class="user">
                         <%= image_tag "no_image.jpeg", class: "user-icon rounded-circle" %>

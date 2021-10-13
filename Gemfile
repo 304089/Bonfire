@@ -88,4 +88,4 @@ gem 'acts-as-taggable-on', '~> 6.0'
 #タグ自動補完
 gem 'jquery-ui-rails'
 #閲覧数計測
-gem 'impressionist'
+gem 'impressionist', '~>1.6.1'

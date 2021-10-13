@@ -25,6 +25,7 @@ class ConsultationsController < ApplicationController
 
   def show
     @consultation = Consultation.find(params[:id])
+    impressionist(@consultation, nil, unique: [:user_id]) #ユーザーで判別
     @consultation_answer = ConsultationAnswer.new
     @consultation_answers = ConsultationAnswer.where(consultation_id: @consultation.id)
   end
