@@ -20,7 +20,15 @@ class ConsultationsController < ApplicationController
   end
 
   def index
-    @consultations = Consultation.page(params[:page]).per(8)
+    if params[:list] == "1"
+      @consultations = Consultation.page(params[:page]).per(8)
+      @list = 1
+    elsif params[:list] == "2"
+      @consultations = Consultation.order(impressions_count: 'DESC').page(params[:page]).per(8)
+      @list = 2
+    else
+      @consultations = Consultation.page(params[:page]).per(8)
+    end
   end
 
   def show
