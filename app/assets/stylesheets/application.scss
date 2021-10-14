@@ -352,7 +352,6 @@
         margin: 20px auto;
         width: 300px;
         height: 35px;
-        border: 1px solid #0066FF;
         border-radius: 5px;
         transition: 0.2s;
         color: white;
@@ -367,10 +366,7 @@
         }
 
         button:hover {
-          background: white;
-          color: #444444;
-          transition: 0.2s;
-          border: 1px solid silver;
+          opacity: 0.5;
         }
       }
     }
