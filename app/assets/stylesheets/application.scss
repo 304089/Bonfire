@@ -305,8 +305,8 @@
 }
 
 
-/**************************ログインページ***********************/
-.signup-container {
+/**************************サインアップページ***********************/
+.sign-container {
     background-color: #EEEEEE;
     height: 900px;
     margin: 20px auto;
@@ -317,7 +317,7 @@
       background-color: white;
       border: 1px solid #BBBBBB;
       width: 25%;
-      height: 500px;
+      height: 490px;
       margin: 90px auto;
       text-align: center;
       align-item: center;
@@ -342,6 +342,8 @@
         border: 1px solid silver;
         background-color: Menu;
         outline: none;
+        font-size: 14px;
+
       }
 
       input:focus {
@@ -371,4 +373,15 @@
       }
     }
 
+}
+
+/******************************ログイン************************/
+.sign-in {
+  height: 430px;
+}
+
+.forget {
+  font-size: 13px;
+  position: relative;
+  top: 5px;
 }
