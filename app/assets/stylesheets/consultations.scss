@@ -104,7 +104,8 @@
             }
 
             p:hover {
-              background: silver;
+              background: #DDDDDD;
+              color: black;
               transition: 0.3s;
             }
           }
@@ -177,14 +178,23 @@
                 height: 100%;
               }
 
-              .count {
-                width: 20%;
+              .answer {
+                width: 10%;
                 font-size: 12px;
                 line-height: 26px;
+                padding-left: 4px;
+              }
 
-                p {
-                  padding-left: 7px;
-                }
+              .look {
+                width: 10%;
+                font-size: 12px;
+                line-height: 26px;
+              }
+
+              .good {
+                width: 10%;
+                font-size: 12px;
+                line-height: 26px;
               }
 
               .user {

@@ -1,8 +1,8 @@
 class ConsultationAnswer < ApplicationRecord
   attachment :answer_image
   has_many :helpfulnesses, dependent: :destroy
-  belongs_to :user
   belongs_to :consultation
+  belongs_to :user
 
   def helped_by?(user)
     helpfulnesses.where(user_id: user.id).exists?
