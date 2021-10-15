@@ -69,6 +69,48 @@
 
 /****************indexページ***************/
 
+.index-container {
+    width: 95%;
+    margin: 50px auto;
+    overflow: hidden;
+
+    &__block {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-top: 40px;
+        gap: 6px;
+        position: relative;
+        left: 15px;
+
+
+        .contents {
+            width: 330px;
+            height: 330px;
+
+            .photo__many i {
+                position: relative;
+                left: 130px;
+
+            }
+
+            .photo__background {
+                width: 330px;
+                height: 330px;
+
+                &__image {
+                    position: relative;
+                    top: 50px;
+
+                    i {
+                        font-size: 60px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 
 /***********showページ**************/
