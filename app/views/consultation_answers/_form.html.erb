@@ -1,5 +1,9 @@
-<%= form_with(model:[consultation, consultation_answer], remote: true) do |f| %>
-  <%= f.text_field :answer %>
-  <%= f.attachment_field :answer_image %>
-  <%= f.submit "投稿する" %>
-<% end %>
+<div class="consultation_answer-form">
+  <%= form_with(model:[consultation, consultation_answer], remote: true) do |f| %>
+    <%= f.text_area :answer, class: "text_area"%>
+    <%= f.attachment_field :answer_image, class: "upload" %>
+    <%= f.button :type => "submit", style: 'border-style: none;', class: "button" do %>
+      <p>コメントする <i class="fas fa-angle-double-right"></i></p>
+    <% end %>
+  <% end %>
+</div>

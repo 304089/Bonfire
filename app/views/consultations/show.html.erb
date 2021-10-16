@@ -1,19 +1,38 @@
-<% if @consultation.anonymity == true %>
-  <h4>匿名さんからの相談</h4>
-<% else %>
-  <h4><%= @consultation.user.name %>さんからの相談</h4>
-<% end %>
-<div>タイトル：<%= @consultation.title %></div>
-<div>内容：<%= @consultation.content %></div>
-<div><%= attachment_image_tag @consultation, :consultation_image, size: "400x400" %></div>
+<div class="consultation-show-container">
+  <div class="consultation-show-container__innor">
+    <div class="consultation-area">
+      <div class="consultation-area__content">
+        <% if @consultation.anonymity == true %>
+          <h6><%= image_tag "no_image.jpeg",size: "30x30", class: "user-icon rounded-circle" %>匿名さんからの相談</h4>
+        <% else %>
+          <p>
+            <%= attachment_image_tag @consultation.user, :profile_image, size: "30x30", fallback: "no_image.jpg", class: "user-icon rounded-circle" %>
+            <%= @consultation.user.name %>さんからの相談
+          </p>
+        <% end %>
+        <div class="title"><%= @consultation.title %></div>
+        <p class="day text-right"><%= @consultation.set_date %></p>
+        <div class="list">
+          <p class="look"><i class="fas fa-eye"></i> <%= @consultation.impressions_count %></p>
+          <p class="answer"><i class="far fa-comment-dots"></i> <%= @consultation.consultation_answers.count%></p>
+          <div class="genre text-right">カテゴリー: <%= @consultation.genre %><i class="fas fa-hammer"></i></div>
+        </div>
+        <div class="border"></div>
+        <div class="post-image"><%= attachment_image_tag @consultation, :consultation_image, size: "200x170"%></div>
+        <div class="content"><%=safe_join(@consultation.content.split("\n"),tag(:br))%></div>
+      </div>
+    </div>
+    <div class="answer-area">
+      <h3>ー Answers ー</h3>
+      <div id="consultation_answer_index">
+        <%= render "consultation_answers/index", consultation: @consultation, consultation_answers: @consultation_answers %>
+      </div>
+      <div class="form-area">
+        <%= render "consultation_answers/form", consultation: @consultation, consultation_answer: @consultation_answer %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h3>回答</h3>
-<div>
-  <%= render "consultation_answers/form", consultation: @consultation, consultation_answer: @consultation_answer %>
-</div>
-<div id="consultation_answer_index">
-  <%= render "consultation_answers/index", consultation: @consultation, consultation_answers: @consultation_answers %>
-</div>
-</div>
 
 

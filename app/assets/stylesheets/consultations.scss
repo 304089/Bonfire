@@ -134,7 +134,7 @@
 
         &__left {
           height: 100%;
-          width: 12%;
+          width: 13%;
           background: #CCFFFF;
           color: black;
 
@@ -147,7 +147,7 @@
           .genre {
             height: 20%;
             font-size: 1px;
-            font-weight: 900;
+            font-weight: 800;
             text-align: center;
           }
         }
@@ -221,7 +221,7 @@
 
               .time {
                 background: #993300;
-                width: 30%;
+                width: 29%;
                 font-size: 11px;
                 line-height: 23px;
               }
@@ -240,6 +240,158 @@
     .consultation-right {      /***************右側*/
       background: #00CCFF;
       width: 30%;
+    }
+  }
+}
+
+
+/******************************showページ******************/
+
+.consultation-show-container {        /************************左側*********/
+  width: 80%;
+  height: 900px;
+  margin: 0 auto;
+  background: white;
+  overflow: hidden;
+
+  &__innor {
+    width: 100%;
+    height: 600px;
+
+    margin: 60px auto;
+    display: flex;
+    gap: 10px;
+
+    .consultation-area {
+      width: 50%;
+
+      overflow-y: scroll;
+
+
+      &__content {
+        width: 80%;
+        margin: 0 auto;
+
+
+        p img {
+          margin-right: 10px;
+          position: relative;
+        }
+
+        .title {
+          font-size: 30px;
+        }
+
+
+        .list {
+          margin-top: 5px;
+          display: flex;
+
+          .look {
+            width: 10%;
+          }
+
+          .answer {
+            width: 10%;
+          }
+
+          .genre {
+            width: 80%;
+          }
+        }
+
+        .day{
+          margin: 0;
+        }
+
+        .border {
+          width: 85%;
+          margin: 0 auto 10px auto;
+        }
+
+        .post-image{
+          text-align: center;
+        }
+
+        .content {
+          font-size: 16px;
+          margin-top: 10px;
+        }
+      }
+    }
+
+    .answer-area {/***************右側****:::*/
+      width: 50%;
+      .answer {
+        display: block;
+        margin: 0 auto;
+      }
+
+        #consultation_answer_index {
+          padding: 10px;
+          height: 370px;
+          overflow-x: scroll;
+          .menu {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+            border-bottom: 1px solid gray;
+
+            .day {
+              font-size: 12px;
+              position: relative;
+              right: 10px;
+            }
+
+            .fa-trash-alt {
+              position: relative;
+              bottom: 8px;
+              left: 8px;
+            }
+          }
+        }
+
+        .form-area {
+
+          .consultation_answer-form {
+
+            .text_area {
+               width: 480px;
+               border: 2px solid gray;
+               border-radius: 5px;
+               position: relative;
+               left: 45px;
+               height: 100px;
+            }
+
+            .upload {
+              font-size: 5px;
+              display: block;
+              position: relative;
+              left: 45px;
+            }
+
+            .button {
+              width: 200px;
+              display: block;
+              position: relative;
+              left: 190px;
+              background-color: orange;
+              border-radius: 5px;
+
+              p {
+                position: relative;
+                top: 8px;
+
+              }
+            }
+
+            .button:hover {
+              opacity: 0.7;
+              transition: 0.2s;
+            }
+          }
+        }
     }
   }
 }

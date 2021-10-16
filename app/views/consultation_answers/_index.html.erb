@@ -1,7 +1,7 @@
 <% consultation_answers.each do |consultation_answer| %>
   <div>
     <%= link_to user_path(consultation_answer.user) do %>
-      <%= attachment_image_tag consultation_answer.user, :profile_image, size: "20x20" %>
+      <%= attachment_image_tag consultation_answer.user, :profile_image, size: "20x20", fallback: "no_image.jpg", class: "rounded-circle" %>
       <%= consultation_answer.user.name %>
     <% end %>
   </div>
@@ -9,16 +9,19 @@
     <%= attachment_image_tag consultation_answer, :answer_image, size: "100x100" %>
   </div>
   <div>
-    <%= consultation_answer.answer %>
+    <%=safe_join(consultation_answer.answer.split("\n"),tag(:br))%>
   </div>
-  <div id="consultation_answer_helpfulness_<%= consultation_answer.id %>">
-    <%= render "helpfulnesses/helpfulness", consultation_answer: consultation_answer %>
-  </div>
-  <div>
-    <% if consultation_answer.user == current_user %>
-      <%= link_to consultation_consultation_answer_path(consultation, consultation_answer), method: :delete, remote: true, data: {confirm: "削除しますか？"} do %>
-        <i class="fas fa-trash-alt"></i>
+  <div class="menu">
+    <p class="day"><%= consultation_answer.set_date %></p>
+    <div id="consultation_answer_helpfulness_<%= consultation_answer.id %>">
+      <%= render "helpfulnesses/helpfulness", consultation_answer: consultation_answer %>
+    </div>
+    <div>
+      <% if consultation_answer.user == current_user %>
+        <%= link_to consultation_consultation_answer_path(consultation, consultation_answer), method: :delete, remote: true, data: {confirm: "削除しますか？"} do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 <% end %>
