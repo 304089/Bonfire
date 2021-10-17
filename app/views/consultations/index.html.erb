@@ -55,7 +55,7 @@
               </div>
               <div class="consultation-center__list__right">
                 <%= link_to consultation_path(consultation) do %>
-                  <div class="title"><%= consultation.title %></div>
+                  <div class="title">&emsp;<%= consultation.title %></div>
                 <% end %>
                 <div class="body">
                   <ul>
@@ -86,6 +86,26 @@
       </div>
       <div class="consultation-center__page"><%= paginate @consultations %></div>
     </div>
-    <div class="consultation-right"></div>
+    <div class="consultation-right">
+      <div class="ranking">
+        <div class="title">
+          <h4>Contribute Rank</h4>
+        </div>
+        <div class="list">
+          <% @ranks.each do |rank| %>
+            <div class="icon">
+              <i class="fas fa-medal"></i>
+            </div>
+            <div class="user">
+              <%= attachment_image_tag rank, :profile_image, size: "20x20", fallback: "no_image.jpg", class: "user-icon rounded-circle" %>
+              <%= rank.name %>
+            </div>
+            <div clss="count">
+              <%= Helpfulness.where(consultation_answer_id: rank.consultation_answer_ids).count %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

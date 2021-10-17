@@ -22,23 +22,26 @@ class ConsultationsController < ApplicationController
   def index
 
     if params[:list] == "1"
-      @consultations = Consultation.page(params[:page]).per(8)
+      @consultations = Consultation.page(params[:page]).per(9)
       @list = 1
     elsif params[:list] == "2"
-      @consultations = Consultation.order(impressions_count: "DESC").page(params[:page]).per(8)
+      @consultations = Consultation.order(impressions_count: "DESC").page(params[:page]).per(9)
       @list = 2
     elsif params[:list] == "3"
-      @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id).order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
+      @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id).order("count(helpfulnesses.id) DESC").page(params[:page]).per(9)
       @list = 3
     else
-      @consultations = Consultation.page(params[:page]).per(8)
+      @consultations = Consultation.page(params[:page]).per(9)
     end
+
+    @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(5)
+
 
   end
 
   def show
     @consultation = Consultation.find(params[:id])
-    impressionist(@consultation, nil, unique: [:user_id]) #ユーザーで判別
+    impressionist(@consultation, nil, unique: [:user_id]) #動作確認しやすいためユーザーIDで判別
     @consultation_answer = ConsultationAnswer.new
     @consultation_answers = ConsultationAnswer.where(consultation_id: @consultation.id)
   end

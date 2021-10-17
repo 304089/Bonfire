@@ -9,7 +9,7 @@ class ConsultationAnswer < ApplicationRecord
   end
 
   def set_date
-  created_at.strftime("%Y年%m月%d日 %H:%M")
+    created_at.strftime("%Y年%m月%d日 %H:%M")
   end
 
 end

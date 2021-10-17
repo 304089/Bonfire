@@ -88,7 +88,6 @@
 }
 
 main {
-  background-color: Menu;
 }
 
 
@@ -131,28 +130,10 @@ main {
 
 .pagination {
   justify-content: center;
+   margin-top: 10px;
 
-  .page-item.active .page-link {
-    background: #93c9ff;
-    border-radius: 50%;
-  }
+  ul {
 
-  li {
-    margin: 0 5px;
-  }
-
-  li a {
-    border: none;
-    color: gray;
-    border-radius: 50%;
-  }
-
-  li a:hover {
-    color: white;
-  }
-
-  .page-item:first-child .page-link, .page-item:last-child .page-link {
-    border-radius: 50%;
   }
 }
 
