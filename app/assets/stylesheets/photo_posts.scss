@@ -70,41 +70,90 @@
 /****************indexページ***************/
 
 .index-container {
-    width: 95%;
-    margin: 50px auto;
-    overflow: hidden;
+    width: 100%;
+    margin: 100px auto;
 
     &__block {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        margin-top: 40px;
-        gap: 6px;
-        position: relative;
-        left: 15px;
 
 
         .contents {
-            width: 330px;
-            height: 330px;
+            display: inline-block;
+            width: 280px;
+            height: 280px;
+            margin-left: 4px;
 
-            .photo__many i {
+            .photo__background {
+                width: 280px;
+                height: 280px;
+
+                &__image {
+                    font-size: 50px;
+                    position: relative;
+                    top: 20px;
+                }
+            }
+            .fa-clone {
                 position: relative;
-                left: 130px;
+                left: 80px;
+            }
 
+        }
+
+        .contents:nth-child(14n + 1) {
+            width: 570px;
+            height: 560px;
+            float: left!important;
+            margin-left: 6px;
+
+            img {
+             width: 568px;
+             height: 552px;
+             position: relative;
+             right: 2px;
             }
 
             .photo__background {
-                width: 330px;
-                height: 330px;
+                width: 565px;
+                height: 552px;
+
 
                 &__image {
+                    font-size: 50px;
                     position: relative;
-                    top: 50px;
+                    top: 150px;
+                }
+            }
 
-                    i {
-                        font-size: 60px;
-                    }
+
+            .fa-clone {
+                font-size: 30px;
+                position: relative;
+                left: 360px;
+            }
+        }
+
+        .contents:nth-child(14n + 8) {
+            width: 570px;
+            height: 560px;
+            float: right;
+            position: relative;
+            right: 2px;
+
+
+            img {
+               width: 568px;
+               height: 551px;
+            }
+
+            .photo__background {
+                width: 568px;
+                height: 551px;
+
+
+                &__image {
+                    font-size: 50px;
+                    position: relative;
+                    top: 150px;
                 }
             }
         }
@@ -391,4 +440,42 @@
 
 .edit-select {
     margin-top: -30px;
+}
+
+/**************************:*******:検索結果******************************/
+.result {
+    margin: 20px 0 0 20px;
+    font-size: 30px
+}
+
+
+.kari {
+    ul {
+        max-width: 600px;
+    }
+
+    ul li {
+        display: flex;
+        align-items: center;
+    }
+
+
+    ul li .photo,
+    ul li .txt {
+        width: 50%;
+        box-sizing: border-box;
+    }
+
+    ul li:nth-child(odd) {
+        flex-direction: row-reverse;
+    }
+
+
+    ul li:nth-child(odd) .txt {
+        padding-right: 10px;
+    }
+
+    ul li:nth-child(even) .txt {
+        padding-left: 10px;
+    }
 }
