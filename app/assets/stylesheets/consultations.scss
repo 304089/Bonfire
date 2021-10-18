@@ -52,33 +52,90 @@
 /******************************indexページ*********************************/
 
 .consultation-container{
-  margin-top: 70px;
+  position: relative;
+  top: 70px;
   background: Menu;
 
   .consultation-body {
     width: 80%;
     background: white;
     display: flex;
-    gap: 20px;
-    height: 610px;
+    gap: 10px;
+    background: Menu;
     margin: 0 auto;
 
     .consultation-left {      /******************左側*/
-      background: silver;
-      width: 25%;
-    }
-    .consultation-center {    /*****************中央******/
+      border: 1px solid black;
+      padding: 10px;
+      height: 370px;
+      width: 23%;
+      background: white;
 
-      width: 50%;
+      &__genre {
 
-      &__sort {
+        h5 {
+          margin-bottom: 15px;
+        }
 
-        height: 6%;
+        &__list {
+          display: flex;
+
+          p {
+            position: relative;
+            left: 5px;
+          }
+
+          i {
+            position: relative;
+            top: 4px;
+
+          }
+        }
       }
 
-      &__label {
+      &__search {
+        margin-top: 15px;
 
-        height: 8%;
+        input {
+          width: 250px;
+          margin-top: 8px;
+        }
+
+        button {
+          position: relative;
+          bottom: 26px;
+          left: 234px;
+          background: white;
+        }
+      }
+
+
+      &__post {
+
+        &__link{
+          display: flex;
+          margin: 5px 0 10px 0;
+
+
+          i {
+            margin-right: 8px;
+            position: relative;
+            top: 4px;
+          }
+        }
+      }
+
+    }
+    .consultation-center {    /*****************中央******/
+      background: Menu;
+      border-radius: 10px 10px 0 0 ;
+      width: 57%;
+
+
+      &__label {
+        background: white;
+        border-radius: 10px 10px 0 0 ;
+        height: 50px;
 
         ul {
           display: flex;
@@ -94,15 +151,15 @@
           li {
 
             width: 100%;
+            border-radius: 10px 10px 0 0;
 
             p {
-
               height: 100%;
               font-size: 20px;
               text-align: center;
               line-height: 48px;
               font-weight: 600;
-              border-radius: 8px 8px 0 0;
+              border-radius: 10px 10px 0 0;
             }
 
             p:hover {
@@ -118,8 +175,10 @@
 
 
       &__list {
-        height: 80%;
         border-top: 1px solid gray;
+        border-right: 1px solid gray;
+        border-left: 1px solid gray;
+
 
         ul {
           height: 100%;
@@ -128,9 +187,10 @@
 
 
           li {
-            height: 60px;
+            height: 62px;
             display: flex;
             border-bottom: 1px solid silver;
+            background: white;
           }
 
         }
@@ -204,20 +264,22 @@
                 width: 40%;
                 display: flex;
                 gap: 7px;
-                font-size: 12px;
+                font-size: 10px;
                 line-height: 25px;
                 a {
                   width: 100%;
                 }
 
                 .user-icon {
-                  height: 100%;
-                  width: 15%;
+                  height: 80%;
+                  width: 25px;
+                  position: relative;
+                  top: 2px;
                 }
 
                 .user-name {
                   height: 100%;
-                  width: 85%;
+                  width: 100px;
                 }
               }
 
@@ -233,14 +295,15 @@
       }
 
       &__page {
-        height: 6%;
       }
     }
 
     .consultation-right {      /***************右側*/
       width: 25%;
       border: 1px solid gray;
+      height: 610px;
       padding: 5px;
+      background: white;
 
       .ranking {
 

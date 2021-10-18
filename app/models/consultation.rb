@@ -13,13 +13,8 @@ class Consultation < ApplicationRecord
   end
 
   def self.search(keyword)
-    if keyword == "" #未入力の場合は全件表示
-      Consultation.order(created_at: "DESC").page(params[:page]).per(8)
-    else
-      Consultation.joins(:consultation_answers) #タイトル、内容、コメント内容で検索
+    Consultation.joins(:consultation_answers) #タイトル、内容、コメント内容で検索
                   .where(["title like? OR content like? OR consultation_answers.answer like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
-    end
   end
-
 
 end

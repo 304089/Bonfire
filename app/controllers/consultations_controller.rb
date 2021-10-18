@@ -2,81 +2,81 @@ class ConsultationsController < ApplicationController
 
   def index
 
-    @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(5)
+    @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(10)
 
     if params[:genre] == "0"
       @genre = 0
       if params[:list] == "1"
-        @consultations = Consultation.where(genre: "キャンプ場").order(created_at: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "キャンプ場").order(created_at: "DESC").page(params[:page]).per(15)
         @list = 1
       elsif params[:list] == "2"
-        @consultations = Consultation.where(genre: "キャンプ場").order(impressions_count: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "キャンプ場").order(impressions_count: "DESC").page(params[:page]).per(15)
         @list = 2
       elsif params[:list] == "3"
         @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
-                                     .where(genre: "キャンプ場").order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
+                                     .where(genre: "キャンプ場").order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
         @list = 3
       else
-        @consultations = Consultation.where(genre: "キャンプ場").order(created_at: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "キャンプ場").order(created_at: "DESC").page(params[:page]).per(15)
       end
     elsif params[:genre] == "1"
       @genre = 1
       if params[:list] == "1"
-        @consultations = Consultation.where(genre: "キャンプ道具").order(created_at: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "キャンプ道具").order(created_at: "DESC").page(params[:page]).per(15)
         @list = 1
       elsif params[:list] == "2"
-        @consultations = Consultation.where(genre: "キャンプ道具").order(impressions_count: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "キャンプ道具").order(impressions_count: "DESC").page(params[:page]).per(15)
         @list = 2
       elsif params[:list] == "3"
         @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
-                                     .where(genre: "キャンプ道具").order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
+                                     .where(genre: "キャンプ道具").order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
         @list = 3
       else
-        @consultations = Consultation.where(genre: "キャンプ道具").order(created_at: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "キャンプ道具").order(created_at: "DESC").page(params[:page]).per(15)
       end
     elsif params[:genre] == "2"
       @genre = 2
       if params[:list] == "1"
-        @consultations = Consultation.where(genre: "キャンプ料理").order(created_at: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "キャンプ料理").order(created_at: "DESC").page(params[:page]).per(15)
         @list = 1
       elsif params[:list] == "2"
-        @consultations = Consultation.where(genre: "キャンプ料理").order(impressions_count: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "キャンプ料理").order(impressions_count: "DESC").page(params[:page]).per(15)
         @list = 2
       elsif params[:list] == "3"
         @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
-                                     .where(genre: "キャンプ料理").order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
+                                     .where(genre: "キャンプ料理").order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
         @list = 3
       else
-        @consultations = Consultation.where(genre: "キャンプ料理").order(created_at: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "キャンプ料理").order(created_at: "DESC").page(params[:page]).per(15)
       end
     elsif params[:genre] == "3"
       @genre = 3
       if params[:list] == "1"
-        @consultations = Consultation.where(genre: "その他").order(created_at: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "その他").order(created_at: "DESC").page(params[:page]).per(15)
         @list = 1
       elsif params[:list] == "2"
-        @consultations = Consultation.where(genre: "その他").order(impressions_count: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "その他").order(impressions_count: "DESC").page(params[:page]).per(15)
         @list = 2
       elsif params[:list] == "3"
         @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
-                                     .where(genre: "その他").order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
+                                     .where(genre: "その他").order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
         @list = 3
       else
-        @consultations = Consultation.where(genre: "その他").order(created_at: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "その他").order(created_at: "DESC").page(params[:page]).per(15)
       end
     else
       if params[:list] == "1"
-        @consultations = Consultation.order(created_at: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.order(created_at: "DESC").page(params[:page]).per(15)
         @list = 1
       elsif params[:list] == "2"
-        @consultations = Consultation.order(impressions_count: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.order(impressions_count: "DESC").page(params[:page]).per(15)
         @list = 2
       elsif params[:list] == "3"
         @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
-                                     .order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
+                                     .order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
         @list = 3
       else
-        @consultations = Consultation.order(created_at: "DESC").page(params[:page]).per(8)
+        @consultations = Consultation.order(created_at: "DESC").page(params[:page]).per(15)
       end
     end
   end
@@ -101,9 +101,21 @@ class ConsultationsController < ApplicationController
   end
 
   def search
-    @consultations = Consultation.search(params[:keyword]).order(creared_at: "DESC").page(params[:page]).per(8)
     @keyword = params[:keyword]
-    @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(5)
+
+    @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(10)
+    if params[:list] == "1" || params[:list] == nil
+      @consultations = Consultation.search(params[:keyword]).order(creared_at: "DESC").page(params[:page]).per(15)
+      @list = 1
+    elsif params[:list] == "2"
+      @consultations = Consultation.search(params[:keyword]).order(impressions_count: "DESC").page(params[:page]).per(15)
+      @list = 2
+    elsif params[:list] == "3"
+      @consultations = Consultation.search(params[:keyword]).joins(consultation_answers: :helpfulnesses).group(:consultation_id)
+                                   .order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
+      @list = 3
+    else
+    end
   end
 
   def destroy

@@ -1,31 +1,47 @@
 <div class="consultation-container">
   <div class="consultation-body">
     <div class="consultation-left">
+      <div class="consultation-left__post">
+        <%= link_to new_consultation_path do %>
+          <div class="consultation-left__post__link">
+            <i class="far fa-paper-plane"></i>
+            <p>相談を投稿する</p>
+          </div>
+        <% end %>
+      </div>
       <div class="consultation-left__genre">
+        <h5>カテゴリー検索</h5>
         <%= link_to consultations_path(genre: 0) do %>
-          <p>キャンプ場</p>
+          <div class="consultation-left__genre__list">
+            <i class="fas fa-campground"></i>
+            <p>キャンプ場</p>
+          </div>
         <% end %>
         <%= link_to consultations_path(genre: 1) do %>
-          <p>キャンプ道具</p>
+          <div class="consultation-left__genre__list">
+            <i class="fas fa-hammer"></i>
+            <p>キャンプ道具</p>
+          </div>
         <% end %>
         <%= link_to consultations_path(genre: 2) do %>
-          <p>キャンプ料理</p>
+          <div class="consultation-left__genre__list">
+            <i class="fas fa-utensils"></i>
+            <p>キャンプ料理</p>
+          </div>
         <% end %>
         <%= link_to consultations_path(genre: 3) do %>
-          <p>その他</p>
+          <div class="consultation-left__genre__list">
+            <i class="fas fa-infinity"></i>
+            <p>その他</p>
+          </div>
         <% end %>
       </div>
       <div class="consultation-left__search">
+        <h5>キーワード検索</h5>
         <%= render "search-form", keyword: @keyword %>
-      </div>
-      <div class="consultation-left__post">
-        <%= link_to new_consultation_path do %>
-          <p>相談を投稿する</p>
-        <% end %>
       </div>
     </div>
     <div class="consultation-center">
-      <div class="consultation-center__sort"></div>
       <div class="consultation-center__label">
         <ul>
           <li class="consultation-center__label-list1">
@@ -107,7 +123,9 @@
           <% end %>
         </ul>
       </div>
-      <div class="consultation-center__page"><%= paginate @consultations %></div>
+      <div class="consultation-center__page">
+        <%= paginate @consultations %>
+      </div>
     </div>
     <div class="consultation-right">
       <div class="ranking">
