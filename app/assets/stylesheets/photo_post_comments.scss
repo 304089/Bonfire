@@ -5,23 +5,22 @@
 /****************newページ*********************/
 .index-title {
   color: black;
-  position: relative;
-  bottom: 500px;
+  position: absolute;
+  bottom: 585px;
 }
 
 .photo_post_comment-area {
       width: 40%;
-      margin-left: 40px;
       height: 480px;
       overflow-y: scroll;
       margin-top: 50px;
 
       #photo_post_comment_form {             /****************投稿フォーム*****************/
           position: absolute;
-          top: 660px;
+          top: 550px;
 
           input {
-             width: 280px;
+             width: 270px;
              margin: 0 auto;
              padding: 0 45px 0 25px;
              height: 45px;
@@ -38,8 +37,8 @@
           .comment-btn {
              background: none;
              position: relative;
-             right: 47px;
-             top: 3px;
+             bottom: 45px;
+             left: 300px;
              font-size: 27px;
           }
 
@@ -52,6 +51,7 @@
 
             .comment-body {
                 margin: 5px 0;
+                width: 320px;
 
                 .comment {
                     position: relative;

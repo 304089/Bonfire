@@ -1,26 +1,28 @@
-<div class="photo_post-container">
-  <%= render "photo", photo_post: @photo_post %>     <%#  写真　%>
-  <div class="explanation-area">
-    <div class="user-name">
-      <%= link_to user_path(@photo_post.user) do %>
-        <%= attachment_image_tag @photo_post.user, :profile_image, size: "50x50", fallback: "no_image.jpg", class: "rounded-circle" %>
-        <%= @photo_post.user.name %>
-      <% end %>
-    </div>
-    <br>
-    <p>-----Introduction-----</p>
-    <div>
-      <%=safe_join(@photo_post.introduction.split("\n"),tag(:br))%>　 <%#　紹介文　%>
-    </div>
-    <br>
-    <p>--------Tags---------</p>
-    <div class="explanation-area__tag">
-      <%= render "tags", tag_list: @photo_post.tag_list, photo_post: @photo_post %>　　　　　　<%#　タグ　%>
-    </div>
-    <br>
-    <p>-------Comments-------</p>
-    <div id="photo_post_comment_index">
-      <%= render "photo_post_comments/index", photo_post: @photo_post, photo_post_comments: @photo_post_comments %>
+<div class="photo_post-show">
+  <div class="photo_post-container">
+    <%= render "photo", photo_post: @photo_post %>     <%#  写真　%>
+    <div class="explanation-area">
+      <div class="user-name">
+        <%= link_to user_path(@photo_post.user) do %>
+          <%= attachment_image_tag @photo_post.user, :profile_image, size: "50x50", fallback: "no_image.jpg", class: "rounded-circle" %>
+          <%= @photo_post.user.name %>
+        <% end %>
+      </div>
+      <br>
+      <p>-----Introduction-----</p>
+      <div>
+        <%=safe_join(@photo_post.introduction.split("\n"),tag(:br))%>　 <%#　紹介文　%>
+      </div>
+      <br>
+      <p>--------Tags---------</p>
+      <div class="explanation-area__tag">
+        <%= render "tags", tag_list: @photo_post.tag_list, photo_post: @photo_post %>　　　　　　<%#　タグ　%>
+      </div>
+      <br>
+      <p>-------Comments-------</p>
+      <div id="photo_post_comment_index">
+        <%= render "photo_post_comments/index", photo_post: @photo_post, photo_post_comments: @photo_post_comments %>
+      </div>
     </div>
   </div>
 </div>

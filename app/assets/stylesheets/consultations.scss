@@ -369,10 +369,13 @@
 
 .consultation-show-container {        /************************左側*********/
   width: 80%;
-  height: 900px;
   margin: 0 auto;
+  position: relative;
+  top: 30px;
   background: white;
   overflow: hidden;
+  border: 1px solid silver;
+  border-radius: 5px;
 
   &__innor {
     width: 100%;
@@ -384,6 +387,7 @@
 
     .consultation-area {
       width: 50%;
+      border-right: 1px solid silver;
 
       overflow-y: scroll;
 

@@ -71,7 +71,10 @@
 
 .index-container {
     width: 100%;
-    margin: 100px auto;
+    margin: 0 auto;
+    height: 2400px;
+    position: relative;
+    top: 100px;
 
     &__block {
 
@@ -194,17 +197,26 @@
 
 }
 
+.photo_post-show {
+    background: Menu;
+    height: 700px;
+}
+
 .photo_post-container {
     display: flex;
     width: 65%;
     height: 600px;        /************写真外枠****************/
-    margin: 80px auto 10px auto;
+    margin: 0  auto;
+    background: Menu;
     gap: 0 10px;
+    position: relative;
+    top: 80px;
 
     .photo-area {
         width: 60%;
         padding: 8px 5px 20px 5px;
         border: 1px solid silver;
+        background: white;
         border-radius: 5px;
 
         .photo-place {
@@ -243,6 +255,8 @@
     .explanation-area {
         width: 40%;
         padding: 20px;
+        border: 1px solid silver;
+        background: white;
 
         .user-name {
 
@@ -280,8 +294,6 @@
 }
 
 .preview-text {
-    margin-top: 30px;
-
     i {
         color: red;
     }
@@ -307,6 +319,7 @@
         padding: 8px 5px 20px 5px;
         border: 1px solid silver;
         border-radius: 5px;
+        background: white;
 
         .photo-place {
             margin-bottom: 5px;
@@ -342,8 +355,10 @@
     .explanation-area {
         width: 35%;
         padding: 25px 20px;
-        height: 400px;
+        height: 530px;
         overflow-y: scroll;
+        background: white;
+        border: 1px solid silver;
 
         .user-name {
 
@@ -372,15 +387,11 @@
 
 }
 .button-area {
-    width: 400px;
     margin: 0 auto;
-    position: relative;
-    bottom: 105px;
-    left: 250px;
+    background: Menu;
+    text-align: center;
         .btn1 {
             button {
-                background-color: white;
-
                 p {
                     width: 330px;
                     height: 45px;
@@ -388,6 +399,8 @@
                     line-height: 45px;
                     font-size: 25px;
                     letter-spacing: 2px;
+                    margin-bottom: 0;
+                    background-color: white;
                 }
 
                 p:hover {
@@ -400,7 +413,7 @@
         }
 
         .btn2{
-
+            margin-top: 10px;
             p {
                 text-align: center;
                 border: 1px solid gray;
@@ -408,8 +421,9 @@
                 width: 160px;
                 height: 30px;
                 line-height: 30px;
-                margin-right: 5px;
+                margin-right: 3px;
                 letter-spacing: 2px;
+                background-color: white;
             }
 
             p:hover {
@@ -425,7 +439,9 @@
 /*********下書きの場合**/
 .draft-title {
     text-align: center;
-    margin: 40px 0 30px 0;
+    margin-bottom: 30px;
+    position: relative;
+    top: 20px;
 }
 
 
@@ -435,11 +451,15 @@
     float: right;
     position: relative;
     right: 430px;
-    bottom: 20px;
+    top: 40px;
 }
 
 .edit-select {
     margin-top: -30px;
+}
+
+.input6 p{
+    margin-bottom: 0!important;
 }
 
 /**************************:*******:検索結果******************************/
