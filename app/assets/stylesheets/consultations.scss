@@ -53,11 +53,13 @@
 
 .consultation-container{
   margin-top: 70px;
+  background: Menu;
 
   .consultation-body {
     width: 80%;
+    background: white;
     display: flex;
-    gap: 10px;
+    gap: 20px;
     height: 610px;
     margin: 0 auto;
 
@@ -118,8 +120,6 @@
       &__list {
         height: 80%;
         border-top: 1px solid gray;
-        border-right: 1px solid gray;
-        border-left: 1px solid gray;
 
         ul {
           height: 100%;
@@ -128,7 +128,7 @@
 
 
           li {
-            height: 11%;
+            height: 60px;
             display: flex;
             border-bottom: 1px solid silver;
           }
@@ -238,30 +238,60 @@
     }
 
     .consultation-right {      /***************右側*/
-      background: #00CCFF;
       width: 25%;
+      border: 1px solid gray;
+      padding: 5px;
 
       .ranking {
 
-        .list {
+        .list li {
           display: flex;
-          height: 30px;
+          height: 50px;
+          padding: 3px;
+          border-bottom: 1px solid silver;
+          line-height: 57px;
 
           .icon {
-            width: 15%;
+            width: 14%;
+            font-size: 20px;
+            position: relative;
+            left: 5px;
+
           }
 
           .user {
             width: 70%;
             display: flex;
 
+
             img {
-              width: 10%;
+              width: 12%;
+              position: relative;
+              top: 18px;
+              right: 3px;
+
+
             }
           }
 
           .count {
             width: 15%;
+          }
+        }
+
+        .list li:nth-child(1) {
+          .icon {
+            color: gold;
+          }
+        }
+        .list li:nth-child(2) {
+          .icon {
+            color: silver;
+          }
+        }
+        .list li:nth-child(3) {
+          .icon {
+            color: #CC6633;
           }
         }
 
