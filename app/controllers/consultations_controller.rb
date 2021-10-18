@@ -1,6 +1,9 @@
 class ConsultationsController < ApplicationController
 
-  def top
+  def index
+
+    @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(5)
+
     if params[:genre] == "0"
       @genre = 0
       if params[:list] == "1"
@@ -10,10 +13,11 @@ class ConsultationsController < ApplicationController
         @consultations = Consultation.where(genre: "キャンプ場").order(impressions_count: "DESC").page(params[:page]).per(8)
         @list = 2
       elsif params[:list] == "3"
-        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id).where(genre: "キャンプ場").order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
+        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
+                                     .where(genre: "キャンプ場").order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
         @list = 3
       else
-        @consultations = Consultation.where(genre: "キャンプ場").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "キャンプ場").order(created_at: "DESC").page(params[:page]).per(8)
       end
     elsif params[:genre] == "1"
       @genre = 1
@@ -24,10 +28,11 @@ class ConsultationsController < ApplicationController
         @consultations = Consultation.where(genre: "キャンプ道具").order(impressions_count: "DESC").page(params[:page]).per(8)
         @list = 2
       elsif params[:list] == "3"
-        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id).where(genre: "キャンプ道具").order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
+        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
+                                     .where(genre: "キャンプ道具").order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
         @list = 3
       else
-        @consultations = Consultation.where(genre: "キャンプ道具").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "キャンプ道具").order(created_at: "DESC").page(params[:page]).per(8)
       end
     elsif params[:genre] == "2"
       @genre = 2
@@ -38,10 +43,11 @@ class ConsultationsController < ApplicationController
         @consultations = Consultation.where(genre: "キャンプ料理").order(impressions_count: "DESC").page(params[:page]).per(8)
         @list = 2
       elsif params[:list] == "3"
-        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id).where(genre: "キャンプ料理").order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
+        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
+                                     .where(genre: "キャンプ料理").order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
         @list = 3
       else
-        @consultations = Consultation.where(genre: "キャンプ料理").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "キャンプ料理").order(created_at: "DESC").page(params[:page]).per(8)
       end
     elsif params[:genre] == "3"
       @genre = 3
@@ -52,10 +58,11 @@ class ConsultationsController < ApplicationController
         @consultations = Consultation.where(genre: "その他").order(impressions_count: "DESC").page(params[:page]).per(8)
         @list = 2
       elsif params[:list] == "3"
-        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id).where(genre: "その他").order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
+        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
+                                     .where(genre: "その他").order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
         @list = 3
       else
-        @consultations = Consultation.where(genre: "その他").page(params[:page]).per(8)
+        @consultations = Consultation.where(genre: "その他").order(created_at: "DESC").page(params[:page]).per(8)
       end
     else
       if params[:list] == "1"
@@ -65,14 +72,13 @@ class ConsultationsController < ApplicationController
         @consultations = Consultation.order(impressions_count: "DESC").page(params[:page]).per(8)
         @list = 2
       elsif params[:list] == "3"
-        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id).order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
+        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
+                                     .order("count(helpfulnesses.id) DESC").page(params[:page]).per(8)
         @list = 3
       else
-        @consultations = Consultation.page(params[:page]).per(8)
+        @consultations = Consultation.order(created_at: "DESC").page(params[:page]).per(8)
       end
     end
-
-    @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(5)
   end
 
   def new
@@ -80,18 +86,11 @@ class ConsultationsController < ApplicationController
     @user = current_user
   end
 
-  def confirm
-    @consultation = Consultation.new(consultation_params)
-  end
-
   def create
     @consultation = Consultation.new(consultation_params)
     @consultation.user_id = current_user.id
     @consultation.save!
-    redirect_to top_consultations_path
-  end
-
-  def index
+    redirect_to consultations_path
   end
 
   def show
@@ -99,6 +98,12 @@ class ConsultationsController < ApplicationController
     impressionist(@consultation, nil, unique: [:user_id]) #動作確認しやすいためユーザーIDで判別
     @consultation_answer = ConsultationAnswer.new
     @consultation_answers = ConsultationAnswer.where(consultation_id: @consultation.id)
+  end
+
+  def search
+    @consultations = Consultation.search(params[:keyword]).order(creared_at: "DESC").page(params[:page]).per(8)
+    @keyword = params[:keyword]
+    @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(5)
   end
 
   def destroy

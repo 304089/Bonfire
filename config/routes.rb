@@ -27,8 +27,7 @@ Rails.application.routes.draw do
 
   resources :consultations, except:[:edit, :update] do
     collection do
-      get :top
-      post :confirm
+      get :search
     end
     resources :consultation_answers, only:[:index, :create, :destroy] do
       resource :helpfulness, only:[:create, :destroy]

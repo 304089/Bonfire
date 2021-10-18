@@ -63,7 +63,7 @@ class PhotoPostsController < ApplicationController
     @photo_post_comment = PhotoPostComment.new
     @photo_post_comments = PhotoPostComment.where(photo_post_id: @photo_post.id)
   end
-  
+
   def index
     @photo_posts = PhotoPost.where(preview: false).order(id: "DESC")
 

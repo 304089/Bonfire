@@ -1,0 +1,6 @@
+<%= form_with url: search_consultations_path, method: :get,  local: true do |f| %>
+  <%= f.text_field :keyword, value: keyword, placeholder: "キーワードを入力してください", class: "search_form" %>
+  <%= f.button :type => "submit", style: 'border-style: none;', class: "search-btn" do %>
+    <i class="fas fa-search"></i>
+  <% end %>
+<% end %>

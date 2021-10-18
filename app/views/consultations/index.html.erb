@@ -2,18 +2,21 @@
   <div class="consultation-body">
     <div class="consultation-left">
       <div class="consultation-left__genre">
-        <%= link_to top_consultations_path(genre: 0) do %>
+        <%= link_to consultations_path(genre: 0) do %>
           <p>キャンプ場</p>
         <% end %>
-        <%= link_to top_consultations_path(genre: 1) do %>
+        <%= link_to consultations_path(genre: 1) do %>
           <p>キャンプ道具</p>
         <% end %>
-        <%= link_to top_consultations_path(genre: 2) do %>
+        <%= link_to consultations_path(genre: 2) do %>
           <p>キャンプ料理</p>
         <% end %>
-        <%= link_to top_consultations_path(genre: 3) do %>
+        <%= link_to consultations_path(genre: 3) do %>
           <p>その他</p>
         <% end %>
+      </div>
+      <div class="consultation-left__search">
+        <%= render "search-form", keyword: @keyword %>
       </div>
       <div class="consultation-left__post">
         <%= link_to new_consultation_path do %>
@@ -26,7 +29,7 @@
       <div class="consultation-center__label">
         <ul>
           <li class="consultation-center__label-list1">
-            <%= link_to top_consultations_path(list: 1, genre: @genre) do %>
+            <%= link_to consultations_path(list: 1, genre: @genre) do %>
               <% if @list == 1  || @list == nil %>
                 <p class="border border-dark"><i class="fas fa-praying-hands"></i>新着相談</p>
               <% else %>
@@ -35,7 +38,7 @@
             <% end %>
           </li>
           <li class="consultation-center__label-list2">
-            <%= link_to top_consultations_path(list: 2, genre: @genre) do %>
+            <%= link_to consultations_path(list: 2, genre: @genre) do %>
               <% if @list == 2 %>
                 <p class="border border-dark"><i class="far fa-laugh"></i>閲覧数</p>
               <% else %>
@@ -44,7 +47,7 @@
             <% end %>
           </li>
           <li class="consultation-center__label-list3">
-            <%= link_to top_consultations_path(list: 3, genre: @genre) do %>
+            <%= link_to consultations_path(list: 3, genre: @genre) do %>
               <% if @list == 3 %>
                 <p class="border border-dark"><i class="far fa-thumbs-up"></i>役立った！</p>
               <% else %>
