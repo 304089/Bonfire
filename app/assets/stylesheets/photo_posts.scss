@@ -70,7 +70,7 @@
 /****************indexページ***************/
 
 .index-container {
-    width: 100%;
+    width: 90%;
     margin: 0 auto;
     height: 2400px;
     position: relative;
@@ -81,82 +81,90 @@
 
         .contents {
             display: inline-block;
-            width: 280px;
-            height: 280px;
+            width: 250px;
+            height: 250px;
             margin-left: 4px;
+            margin-right: 2px;
 
             .photo__background {
-                width: 280px;
-                height: 280px;
+                width: 250px;
+                height: 250px;
 
                 &__image {
                     font-size: 50px;
                     position: relative;
-                    top: 20px;
+                    top: 5px;
                 }
             }
             .fa-clone {
                 position: relative;
-                left: 80px;
+                left: 50px;
             }
 
         }
 
         .contents:nth-child(14n + 1) {
-            width: 570px;
-            height: 560px;
+            width: 513px;
+            height: 500px;
             float: left!important;
-            margin-left: 6px;
 
             img {
-             width: 568px;
-             height: 552px;
-             position: relative;
-             right: 2px;
+             width: 510px;
+             height: 490px;
             }
 
             .photo__background {
-                width: 568px;
-                height: 552px;
+                width: 510px;
+                height: 490px;
 
 
                 &__image {
                     font-size: 50px;
                     position: relative;
-                    top: 150px;
+                    top: 130px;
                 }
             }
 
 
             .fa-clone {
-                font-size: 30px;
+                font-size: 20px;
                 position: relative;
-                left: 360px;
+                left: 305px;
+                top: 8px;
             }
         }
 
         .contents:nth-child(14n + 8) {
-            width: 570px;
-            height: 560px;
+            width: 500px;
+            height: 500px;
             float: right;
             position: relative;
-            right: 2px;
+            right: 10px;
 
 
             img {
-               width: 568px;
-               height: 551px;
+               width: 510px;
+               height: 490px;
+
             }
 
             .photo__background {
-                width: 568px;
-                height: 551px;
+                width: 510px;
+                height: 490px;
+
 
 
                 &__image {
                     font-size: 50px;
                     position: relative;
-                    top: 150px;
+                    top: 130px;
+                }
+
+                .fa-clone {
+                    font-size: 20px;
+                    position: relative;
+                    left: 305px;
+                    top: 8px;
                 }
             }
         }
@@ -236,6 +244,12 @@
                 bottom: 20px;
                 left: 20px;
 
+            }
+
+            .favorite-count {
+                font-size: 20px;
+                position: relative;
+                bottom: 20px;
             }
 
             .post-day {
@@ -467,36 +481,4 @@
 .result {
     margin: 20px 0 0 20px;
     font-size: 30px
-}
-
-
-.kari {
-    ul {
-        max-width: 600px;
-    }
-
-    ul li {
-        display: flex;
-        align-items: center;
-    }
-
-
-    ul li .photo,
-    ul li .txt {
-        width: 50%;
-        box-sizing: border-box;
-    }
-
-    ul li:nth-child(odd) {
-        flex-direction: row-reverse;
-    }
-
-
-    ul li:nth-child(odd) .txt {
-        padding-right: 10px;
-    }
-
-    ul li:nth-child(even) .txt {
-        padding-left: 10px;
-    }
 }
