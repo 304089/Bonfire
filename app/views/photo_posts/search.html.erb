@@ -1,4 +1,6 @@
-<i class="fas fa-search"></i><%= "'#{@keyword}' の検索結果 - #{@photo_posts.count}件" %>
+<div class="result">
+  <i class="fas fa-search"></i> <%= "' #{@keyword} ' の検索結果 - #{@photo_posts.count}件" %>
+</div>
 <div class="index-container">
   <div class="index-container__block">
     <% @photo_posts.each do |photo_post| %>
@@ -11,7 +13,7 @@
                   <i class="far fa-clone"></i>
                 </div>
               <% end %>
-              <%= attachment_image_tag image, :image, size: "330x330" %>
+              <%= attachment_image_tag image, :image, size: "250x240" %>
               <div class="photo__background">
       		      <div class="photo__background__image"><i class="fab fa-instagram"></i></div>
       	      </div>
@@ -21,4 +23,5 @@
       </div>
     <% end %>
   </div>
+  <%= paginate @photo_posts %>
 </div>

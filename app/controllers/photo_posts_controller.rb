@@ -65,8 +65,7 @@ class PhotoPostsController < ApplicationController
   end
 
   def index
-    @photo_posts = PhotoPost.where(preview: false).order(id: "DESC")
-
+    @photo_posts = PhotoPost.where(preview: false).order(id: "DESC").page(params[:page]).per(14)
   end
 
   def destroy
@@ -76,7 +75,7 @@ class PhotoPostsController < ApplicationController
   end
 
   def search
-    @photo_posts = PhotoPost.search(params[:keyword]).order(id: "DESC")
+    @photo_posts = PhotoPost.search(params[:keyword]).order(id: "DESC").page(params[:page]).per(14)
     @keyword = params[:keyword]
   end
 
