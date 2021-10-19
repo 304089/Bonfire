@@ -3,11 +3,11 @@
     <%= image_tag "IMG_2820.JPG" %>
     <h1>そうだ<br>キャンプ<br>行こう。</h1>
   </div>
-  <div class="photo-area">
+  <div class="introduce-area">
     <ul>
       <li>
         <p class="photo">
-          <%= image_tag "IMG_2820.JPG" %>
+          <%= image_tag "IMG_2829.JPG" %>
         </p>
         <p class="txt">
           <span>ー キャンプ ー</span><br>
@@ -21,7 +21,7 @@
       </li>
       <li>
         <p class="photo">
-          <%= image_tag "IMG_2820.JPG" %>
+          <%= image_tag "IMG_2833.JPG" %>
         </p>
         <p class="txt">
           そしてキャンパーの皆さん、<br>
@@ -32,5 +32,33 @@
       </li>
     </ul>
   </div>
-  <div class="cousultation-area"></div>
+  <div class="contents-area">
+    <div class="photo-area">
+      <div class="photo-area__header">
+        <h2><i class="fas fa-camera"></i> Photo</h2>
+        <p>ー 見たい・見せたいを共有しよう ー</p>
+        <div class="link">
+          <%= link_to photo_posts_path do %>
+            <p>写真を見に行く<i class="fas fa-angle-double-right"></i></p>
+          <% end %>
+        </div>
+      </div>
+      <div class="photo-area__photos">
+        <div class="big">
+          <%= image_tag "IMG_2833.JPG" %>
+        </div>
+        <div class="small">
+          <ul>
+            <li><%= image_tag "IMG_2833.JPG" %></li>
+            <li><%= image_tag "IMG_2833.JPG" %></li>
+            <li><%= image_tag "IMG_2833.JPG" %></li>
+            <li><%= image_tag "IMG_2833.JPG" %></li>
+            <li><%= image_tag "IMG_2833.JPG" %></li>
+            <li><%= image_tag "IMG_2833.JPG" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="wisdom"></div>
+  </div>
 </div>
