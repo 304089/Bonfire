@@ -133,7 +133,7 @@
 
 
       &__label {
-        background: white;
+
         border-radius: 10px 10px 0 0 ;
         height: 50px;
 
@@ -149,7 +149,7 @@
           }
 
           li {
-
+            background: white;
             width: 100%;
             border-radius: 10px 10px 0 0;
 
@@ -163,7 +163,7 @@
             }
 
             p:hover {
-              background: #DDDDDD;
+              opacity: 0.5;
               color: black;
               transition: 0.3s;
             }
@@ -175,7 +175,6 @@
 
 
       &__list {
-        border-top: 1px solid gray;
         border-right: 1px solid gray;
         border-left: 1px solid gray;
 

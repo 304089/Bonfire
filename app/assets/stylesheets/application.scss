@@ -382,3 +382,49 @@ main {
   position: relative;
   top: 5px;
 }
+
+
+/********************************トップページ******************************/
+.top-container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  top: 40px;
+
+  .heading-area {
+    width: 80%;
+    height: 700px;
+    margin: 0 auto;
+
+    h1 {
+      -ms-writing-mode: tb-rl;
+      writing-mode: vertical-rl;
+      color: white;
+      font-size: 50px;
+      position: relative;
+      bottom: 600px;
+      left: 800px;
+      font-family: Georgia, serif;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+  }
+
+  .photo-area {
+    width: 100%;
+    background: #FFCC99;
+    height: 400px;
+    z-index: 10;
+  }
+
+  .cousultation-area {
+    width: 100%;
+    background: #66CCFF;
+    height: 400px;
+    z-index: 10;
+  }
+}
