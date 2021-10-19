@@ -10,7 +10,7 @@
   <div class="slider__solo">
 <% end %>
     <% photo_post.post_images.each do |image| %>
-      <%= attachment_image_tag image, :image %>
+      <%= attachment_image_tag image, :image, size: "524x470" %>
     <% end %>
   </div>
   <div class="photo-area__under">
