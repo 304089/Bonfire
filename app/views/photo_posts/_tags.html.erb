@@ -1,9 +1,5 @@
 <% if photo_post.preview == false %>
-  <% tag_list.each do |tag| %>
-    #<%= link_to root_path do %>
-      <%= tag %>
-     <% end %>
-  <% end %>
+  <%= raw(photo_post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>
 <% else %>
   <% tag_list.each do |tag| %>
     #<%= tag %>

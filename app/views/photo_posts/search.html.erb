@@ -1,5 +1,9 @@
 <div class="result">
-  <i class="fas fa-search"></i> <%= "' #{@keyword} ' の検索結果 - #{@photo_posts.count}件" %>
+  <% unless @keyword == nil %>
+    <i class="fas fa-search"></i> <%= "' #{@keyword} ' の検索結果 - #{@photo_posts.count}件" %>
+  <% else %>
+    <i class="fas fa-search"></i> <%= "' #{@tag} ' の検索結果 - #{@photo_posts.count}件" %>
+  <% end %>
 </div>
 <div class="index-container">
   <div class="index-container__block">

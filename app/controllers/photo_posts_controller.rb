@@ -75,8 +75,13 @@ class PhotoPostsController < ApplicationController
   end
 
   def search
-    @photo_posts = PhotoPost.search(params[:keyword]).order(id: "DESC").page(params[:page]).per(14)
+    if params[:tag]
+      @photo_posts = PhotoPost.tagged_with(params[:tag]).order(id: "DESC").page(params[:page]).per(14)
+    else
+      @photo_posts = PhotoPost.search(params[:keyword]).order(id: "DESC").page(params[:page]).per(14)
+    end
     @keyword = params[:keyword]
+    @tag = params[:tag]
   end
 
   private

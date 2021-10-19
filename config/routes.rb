@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'homes#top'
+  get 'tags/:tag', to: 'photo_posts#search', as: :tag #タグ検索
   devise_for :users
 
   resources :users, except:[:new, :destroy] do
