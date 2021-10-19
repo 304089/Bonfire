@@ -13,7 +13,8 @@ class PhotoPost < ApplicationRecord
     if keyword == "" #未入力の場合は全権表示
       PhotoPost.all
     else
-      PhotoPost.where(["introduction like?", "%#{keyword}%"])  #説明文の文字で部分検索
+      #説明文、場所名、タグ名で部分一致検索
+      PhotoPost.joins(:tags).where(["introduction like? OR place like? OR tags.name like? ", "%#{keyword}%", "%#{keyword}%","%#{keyword}%"])
     end
   end
 

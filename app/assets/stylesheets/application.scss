@@ -133,9 +133,16 @@ main {
   justify-content: center;
    margin-top: 10px;
 
-  ul {
 
+  .page-item a {
+    color: #2d2e2f;
   }
+
+  .page-item.active .page-link {
+    background: gray;
+    border: 1px solid gray;
+  }
+
 }
 
 /***************一覧画像レイアウト********************/

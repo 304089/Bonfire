@@ -68,6 +68,34 @@
 
 
 /****************indexページ***************/
+.select-container {
+    text-align: center;
+    position: relative;
+    top: 80px;
+
+    select {
+        height: 30px;
+        border-radius: 5px;
+        margin-right: 5px;
+    }
+
+    button {
+        height: 30px;
+        background: gray;
+        color: white;
+        width: 80px;
+        border-radius: 5px;
+        font-size: 12px;
+        position: relative;
+        bottom: 2px;
+    }
+
+    button:hover {
+        background: silver;
+
+    }
+}
+
 
 .index-container {
     width: 90%;
@@ -159,14 +187,12 @@
                     position: relative;
                     top: 130px;
                 }
-
-                .fa-clone {
-                    font-size: 20px;
-                    position: relative;
-                    left: 305px;
-                    top: 8px;
-                }
             }
+
+            .fa-clone {
+                    position: relative;
+                    left: 300px;
+                }
         }
     }
 }
@@ -335,7 +361,7 @@
     }
 
     .photo-area {
-        width: 50%;
+        width: 536px;
         padding: 8px 5px 20px 5px;
         border: 1px solid silver;
         border-radius: 5px;
@@ -379,6 +405,7 @@
         overflow-y: scroll;
         background: white;
         border: 1px solid silver;
+        border-radius: 5px;
 
         .user-name {
 

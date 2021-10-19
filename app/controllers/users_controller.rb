@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       elsif params[:sort] == "old"                                                          #古い順
         @photo_posts = PhotoPost.where(user_id: @user.id, preview: false)
       elsif params[:sort] == "favorite"                                                     #いいね順（0個は表示しない）
-        @photo_posts = PhotoPost.joins(:favorites).group("favorites.photo_post_id").where(user_id: @user.id).order("count(photo_post_id) desc")
+        @photo_posts = PhotoPost.joins(:favorites).group(:id).where(user_id: @user.id).order("count(favorites.id) DESC")
       end
     elsif params[:choose] == "bookmark" #ブックマークページ
       @title = "bookmark" #一覧のタイトル用
