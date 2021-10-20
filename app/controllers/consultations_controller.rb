@@ -101,7 +101,7 @@ class ConsultationsController < ApplicationController
       @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(10)
       @period = "all"
     else
-      @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).where(helpfulnesse: {screated_at: Time.current.all_week}).order("count(helpfulnesses.id) DESC").limit(10)
+      @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).where(helpfulnesses: {created_at: Time.current.all_week}).order("count(helpfulnesses.id) DESC").limit(10)
     end
 
   end
