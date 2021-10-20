@@ -35,30 +35,48 @@
   <div class="contents-area">
     <div class="photo-area">
       <div class="photo-area__header">
-        <h2><i class="fas fa-camera"></i> Photo</h2>
+        <h2><i class="fas fa-camera"></i> Photo </h2>
         <p>ー 見たい・見せたいを共有しよう ー</p>
         <div class="link">
           <%= link_to photo_posts_path do %>
-            <p>写真を見に行く<i class="fas fa-angle-double-right"></i></p>
+            <p>Photoページへ<i class="fas fa-angle-double-right"></i></p>
           <% end %>
         </div>
       </div>
       <div class="photo-area__photos">
         <div class="big">
-          <%= image_tag "IMG_2833.JPG" %>
+          <%= image_tag "IMG_2195.jpg" %>
         </div>
         <div class="small">
           <ul>
-            <li><%= image_tag "IMG_2833.JPG" %></li>
-            <li><%= image_tag "IMG_2833.JPG" %></li>
-            <li><%= image_tag "IMG_2833.JPG" %></li>
-            <li><%= image_tag "IMG_2833.JPG" %></li>
-            <li><%= image_tag "IMG_2833.JPG" %></li>
-            <li><%= image_tag "IMG_2833.JPG" %></li>
+            <li><%= image_tag "IMG_2816.JPG" %></li>
+            <li><%= image_tag "IMG_2819.JPG" %></li>
+            <li><%= image_tag "IMG_2831.JPG" %></li>
+            <li><%= image_tag "IMG_2813.JPG" %></li>
+            <li><%= image_tag "IMG_2835.JPG" %></li>
+            <li><%= image_tag "IMG_2827.JPG" %></li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="wisdom"></div>
+    <div class="border-area"></div>
+    <div class="wisdom-area">
+      <div class="wisdom-area__header">
+        <div class="link">
+          <%= link_to consultations_path do %>
+            <p><i class="fas fa-angle-double-left"></i> Wisdomページへ</p>
+          <% end %>
+        </div>
+        <h2><i class="fas fa-praying-hands"></i> Wisdom </h2>
+        <p>ー 知りたい・教えたいを共有しよう ー</p>
+      </div>
+      <div class="wisdom-area__wisdoms">
+        <ul>
+          <li class="img1"><%= image_tag "sc1.png" %></li>
+          <li class="img2"><%= image_tag "sc2.png" %></li>
+          <li class="img3"><%= image_tag "sc3.png" %></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
