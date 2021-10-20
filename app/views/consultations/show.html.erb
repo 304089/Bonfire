@@ -32,6 +32,9 @@
       </div>
     </div>
   </div>
+  <%= link_to consultation_path(@consultation), method: :delete, data: {confirm: "本当に削除しますか？"} do %>
+    <p class="post-delete">ー <i class="fas fa-trash-alt"></i> 投稿削除 ー</p>
+  <% end %>
 </div>
 
 

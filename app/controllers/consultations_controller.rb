@@ -131,6 +131,9 @@ class ConsultationsController < ApplicationController
   end
 
   def destroy
+    @consultation = Consultation.find(params[:id])
+    @consultation.destroy
+    redirect_to consultations_path
   end
 
   private
