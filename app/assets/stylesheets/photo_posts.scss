@@ -70,8 +70,7 @@
 /****************indexページ***************/
 .select-container {
     text-align: center;
-    position: relative;
-    top: 80px;
+     padding-top: 50px;
 
     select {
         height: 30px;
@@ -100,9 +99,7 @@
 .index-container {
     width: 90%;
     margin: 0 auto;
-    height: 2400px;
-    position: relative;
-    top: 100px;
+    padding: 50px 0 20px 0;
 
     &__block {
 
@@ -234,7 +231,6 @@
 
 .photo_post-show {
     background: Menu;
-    height: 700px;
 }
 
 .photo_post-container {
@@ -244,8 +240,8 @@
     margin: 0  auto;
     background: Menu;
     gap: 0 10px;
-    position: relative;
-    top: 80px;
+    padding: 80px 0;
+
 
     .photo-area {
         width: 60%;
@@ -337,9 +333,11 @@
 
 .preview-title, .preview-text {
     text-align: center;
+
 }
 
 .preview-text {
+    padding-top: 20px;
     i {
         color: red;
     }

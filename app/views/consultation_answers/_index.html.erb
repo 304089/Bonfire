@@ -13,8 +13,10 @@
   </div>
   <div class="menu">
     <p class="day"><%= consultation_answer.set_date %></p>
-    <div id="consultation_answer_helpfulness_<%= consultation_answer.id %>">
-      <%= render "helpfulnesses/helpfulness", consultation_answer: consultation_answer %>
+    <div class="helpfulness">
+      <div id="consultation_answer_helpfulness_<%= consultation_answer.id %>">
+        <%= render "helpfulnesses/helpfulness", consultation_answer: consultation_answer %>
+      </div>
     </div>
     <div>
       <% if consultation_answer.user == current_user %>

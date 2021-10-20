@@ -52,8 +52,7 @@
 /******************************indexページ*********************************/
 
 .consultation-container{
-  position: relative;
-  top: 70px;
+  padding: 90px 0 40px 0;
   background: Menu;
 
   .consultation-body {
@@ -75,6 +74,10 @@
 
         h5 {
           margin-bottom: 15px;
+          width: 150px;
+          background: orange;
+          padding: 2px;
+          border-radius: 5px;
         }
 
         &__list {
@@ -95,6 +98,12 @@
 
       &__search {
         margin-top: 15px;
+        h5 {
+          width: 150px;
+          background: orange;
+          padding: 2px;
+          border-radius: 5px;
+        }
 
         input {
           width: 250px;
@@ -369,20 +378,21 @@
 .consultation-show-container {        /************************左側*********/
   width: 80%;
   margin: 0 auto;
-  position: relative;
-  top: 30px;
-  background: white;
   overflow: hidden;
-  border: 1px solid silver;
-  border-radius: 5px;
+
+
 
   &__innor {
-    width: 100%;
+    width: 99%;
     height: 600px;
-
     margin: 60px auto;
     display: flex;
     gap: 10px;
+    background: white;
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding-top: 40px;
+    padding-bottom: 60px;
 
     .consultation-area {
       width: 50%;
@@ -438,7 +448,7 @@
 
         .content {
           font-size: 16px;
-          margin-top: 10px;
+          margin-top: 25px;
         }
       }
     }
@@ -457,6 +467,7 @@
           .menu {
             display: flex;
             justify-content: flex-end;
+            height: 70px;
             margin-bottom: 10px;
             border-bottom: 1px solid gray;
 
@@ -464,6 +475,15 @@
               font-size: 12px;
               position: relative;
               right: 10px;
+            }
+
+            .helpfulness {
+              p {
+                display: inline-block;
+              }
+            }
+
+            .fa-thumbs-up {
             }
 
             .fa-trash-alt {
