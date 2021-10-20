@@ -18,7 +18,11 @@
           <div class="genre text-right">カテゴリー: <%= @consultation.genre %><i class="fas fa-hammer"></i></div>
         </div>
         <div class="border"></div>
-        <div class="post-image"><%= attachment_image_tag @consultation, :consultation_image, size: "200x170"%></div>
+        <div class="post-image text-left">
+          <%= link_to Refile.attachment_url(@consultation, :consultation_image), 'data-lightbox': @consultation.consultation_image do %>
+            <%= attachment_image_tag @consultation, :consultation_image, size: "100x100"%>
+          <% end %>
+        </div>
         <div class="content"><%=safe_join(@consultation.content.split("\n"),tag(:br))%></div>
       </div>
     </div>

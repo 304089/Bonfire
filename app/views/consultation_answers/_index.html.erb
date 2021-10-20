@@ -6,7 +6,9 @@
     <% end %>
   </div>
   <div>
-    <%= attachment_image_tag consultation_answer, :answer_image, size: "100x100" %>
+    <%= link_to Refile.attachment_url(consultation_answer, :answer_image), 'data-lightbox': consultation_answer.answer_image do %>
+      <%= attachment_image_tag consultation_answer, :answer_image, size: "100x100" %>
+    <% end %>
   </div>
   <div>
     <%=safe_join(consultation_answer.answer.split("\n"),tag(:br))%>
