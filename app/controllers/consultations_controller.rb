@@ -2,8 +2,6 @@ class ConsultationsController < ApplicationController
 
   def index
 
-    @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(10)
-
     if params[:genre] == "0"
       @genre = 0
       if params[:list] == "1"
@@ -91,6 +89,21 @@ class ConsultationsController < ApplicationController
         @consultations = Consultation.order(created_at: "DESC").page(params[:page]).per(15)
       end
     end
+
+    if params[:period] == "week"
+      @ranks = User.joins(consultation_answers: :helpfulnesses).where(helpfulnesses: {created_at: Time.current.all_week}).group(:id)
+                   .order("count(helpfulnesses.id) DESC").limit(10)
+      @period = "week"
+    elsif params[:period] == "manth"
+      @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).where(helpfulnesses: {created_at: Time.current.all_month}).order("count(helpfulnesses.id) DESC").limit(10)
+      @period = "manth"
+    elsif params[:period] == "all"
+      @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(10)
+      @period = "all"
+    else
+      @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).where(helpfulnesse: {screated_at: Time.current.all_week}).order("count(helpfulnesses.id) DESC").limit(10)
+    end
+
   end
 
   def new
@@ -138,7 +151,7 @@ class ConsultationsController < ApplicationController
 
   private
     def consultation_params
-      params.require(:consultation).permit(:title, :content, :consultation_image, :genre, :anonymity, :sort)
+      params.require(:consultation).permit(:title, :content, :consultation_image, :genre, :anonymity, :sort, :period)
     end
 
 end

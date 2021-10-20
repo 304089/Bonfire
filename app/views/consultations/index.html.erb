@@ -150,6 +150,23 @@
         <div class="title">
           <h4>Contribute Rank</h4>
         </div>
+        <div class="period">
+          <ul>
+            <% if @period == "week" || @period == nil %>
+              <li><%= link_to "週間", consultations_path(period: "week") %></li>
+              <li class="border border-secondary bg-white"><%= link_to "月間", consultations_path(period: "manth") %></li>
+              <li class="border border-secondary bg-white"><%= link_to "全て", consultations_path(period: "all") %></li>
+            <% elsif @period == "manth" %>
+              <li class="border border-secondary bg-white"><%= link_to "週間", consultations_path(period: "week") %></li>
+              <li><%= link_to "月間", consultations_path(period: "manth") %></li>
+              <li class="border border-secondary bg-white"><%= link_to "全て", consultations_path(period: "all") %></li>
+            <% elsif @period == "all" %>
+              <li class="border border-secondary bg-white"><%= link_to "週間", consultations_path(period: "week") %></li>
+              <li class="border border-secondary bg-white"><%= link_to "月間", consultations_path(period: "manth") %></li>
+              <li><%= link_to "全て", consultations_path(period: "all") %></li>
+            <% end %>
+          </ul>
+        </div>
         <ul class="list">
           <% @ranks.each.with_index(1) do |rank, i| %>
             <li>
@@ -166,7 +183,13 @@
               </div>
               <div clss="count">
                 <i class="fas fa-thumbs-up"></i>
-                <%= Helpfulness.where(consultation_answer_id: rank.consultation_answer_ids).count %>
+                <% if @period == "week" || @period == nil %>
+                  <%= Helpfulness.where(consultation_answer_id: rank.consultation_answer_ids, created_at: Time.current.all_week).count %>
+                <% elsif @period == "manth" %>
+                  <%= Helpfulness.where(consultation_answer_id: rank.consultation_answer_ids, created_at: Time.current.all_month).count %>
+                <% elsif @period == "all" %>
+                  <%= Helpfulness.where(consultation_answer_id: rank.consultation_answer_ids).count %>
+                <% end %>
               </div>
             </li>
           <% end %>

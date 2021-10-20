@@ -346,6 +346,21 @@
           text-align: center;
         }
 
+        .period {
+          ul {
+            display: flex;
+            justify-content: center;
+            gap: 0 10px;
+            li {
+              text-align: center;
+              background: silver;
+              padding: 2px;
+              font-size: 15px;
+              width: 50px;
+            }
+          }
+        }
+
         .list li {
           display: flex;
           height: 50px;
