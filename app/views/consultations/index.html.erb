@@ -8,6 +8,12 @@
             <p>相談を投稿する</p>
           </div>
         <% end %>
+        <%= link_to consultations_path(user_id: current_user.id) do %>
+          <div class="consultation-left__post__link">
+            <i class="fas fa-user"></i>
+            <p>My 相談</p>
+          </div>
+        <% end %>
       </div>
       <div class="consultation-left__genre">
         <h5>カテゴリー検索</h5>
@@ -43,35 +49,47 @@
     </div>
     <div class="consultation-center">
       <div class="consultation-center__label">
-        <ul>
-          <li class="consultation-center__label-list1">
-            <%= link_to consultations_path(list: 1, genre: @genre) do %>
-              <% if @list == 1  || @list == nil %>
-                <p class="border border-dark"><i class="fas fa-praying-hands"></i>新着相談</p>
-              <% else %>
-                <p class="border border-light bg-secondary"><i class="fas fa-praying-hands"></i>新着相談</p>
+        <% if @list == 0 %>
+          <div class="mine">
+            <h3><i class="fas fa-user"></i> My 相談</h3>
+            <div class="select-list">
+              <%= form_with url: consultations_path, method: :get, local: true do |f| %>
+                <%= f.select :sort, [["新しい順", "new"], ["古い順", "old"], ["閲覧数が多い順", "look"], ["役に立った！が多い順", "helpfulness"]], selected: params[:sort] %>
+                <%= hidden_field_tag :user_id, current_user.id %>
               <% end %>
-            <% end %>
-          </li>
-          <li class="consultation-center__label-list2">
-            <%= link_to consultations_path(list: 2, genre: @genre) do %>
-              <% if @list == 2 %>
-                <p class="border border-dark"><i class="far fa-laugh"></i>閲覧数</p>
-              <% else %>
-                <p class="border border-light bg-secondary"><i class="far fa-laugh"></i>閲覧数</p>
+            </div>
+          </div>
+        <% else %>
+          <ul>
+            <li class="consultation-center__label-list1">
+              <%= link_to consultations_path(list: 1, genre: @genre) do %>
+                <% if @list == 1  || @list == nil %>
+                  <p class="border border-secondary bg-white"><i class="fas fa-praying-hands"></i>新着相談</p>
+                <% else %>
+                  <p class="border"><i class="fas fa-praying-hands"></i>新着相談</p>
+                <% end %>
               <% end %>
-            <% end %>
-          </li>
-          <li class="consultation-center__label-list3">
-            <%= link_to consultations_path(list: 3, genre: @genre) do %>
-              <% if @list == 3 %>
-                <p class="border border-dark"><i class="far fa-thumbs-up"></i>役立った！</p>
-              <% else %>
-                <p class="border border-light bg-secondary"><i class="far fa-thumbs-up"></i>役立った！</p>
+            </li>
+            <li class="consultation-center__label-list2">
+              <%= link_to consultations_path(list: 2, genre: @genre) do %>
+                <% if @list == 2 %>
+                  <p class="border border-secondary bg-white"><i class="far fa-laugh"></i>閲覧数</p>
+                <% else %>
+                  <p class="border"><i class="far fa-laugh"></i>閲覧数</p>
+                <% end %>
               <% end %>
-            <% end %>
-          </li>
-        </ul>
+            </li>
+            <li class="consultation-center__label-list3">
+              <%= link_to consultations_path(list: 3, genre: @genre) do %>
+                <% if @list == 3 %>
+                  <p class="border border-secondary bg-white"><i class="far fa-thumbs-up"></i>役立った！</p>
+                <% else %>
+                  <p class="border"><i class="far fa-thumbs-up"></i>役立った！</p>
+                <% end %>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
       </div>
       <div class="consultation-center__list">
         <ul>

@@ -65,7 +65,19 @@ class ConsultationsController < ApplicationController
         @consultations = Consultation.where(genre: "その他").order(created_at: "DESC").page(params[:page]).per(15)
       end
     else
-      if params[:list] == "1"
+      if params[:user_id]
+        if params[:sort] == "new" || params[:sort] == nil
+          @consultations = Consultation.where(user_id: params[:user_id]).order(created_at: "DESC").page(params[:page]).per(15)
+        elsif params[:sort] == "old"
+          @consultations = Consultation.where(user_id: params[:user_id]).page(params[:page]).per(15)
+        elsif params[:sort] == "look"
+          @consultations = Consultation.where(user_id: params[:user_id]).order(impressions_count: "DESC").page(params[:page]).per(15)
+        elsif params[:sort] == "helpfulness"
+          @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
+                                       .where(user_id: params[:user_id]).order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
+        end
+        @list = 0
+      elsif params[:list] == "1"
         @consultations = Consultation.order(created_at: "DESC").page(params[:page]).per(15)
         @list = 1
       elsif params[:list] == "2"
@@ -123,7 +135,7 @@ class ConsultationsController < ApplicationController
 
   private
     def consultation_params
-      params.require(:consultation).permit(:title, :content, :consultation_image, :genre, :anonymity)
+      params.require(:consultation).permit(:title, :content, :consultation_image, :genre, :anonymity, :sort)
     end
 
 end
