@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_13_173335) do
+ActiveRecord::Schema.define(version: 2021_10_21_160533) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 2021_10_13_173335) do
     t.boolean "preview", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "impressions_count", default: 0
     t.index ["user_id"], name: "index_photo_posts_on_user_id"
   end
 

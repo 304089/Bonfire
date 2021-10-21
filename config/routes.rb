@@ -6,9 +6,17 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :consultations, only:[:index, :destroy]
-    resources :photo_posts, only:[:index, :destroy]
-    resources :users, only:[:index, :destroy] do
+    resources :consultations, only:[:index] do
+      collection do
+        get :search
+      end
+    end
+    resources :photo_posts, only:[:index] do
+      collection do
+        get :search
+      end
+    end
+    resources :users, only:[:index] do
       collection do
         get :top
         get :search

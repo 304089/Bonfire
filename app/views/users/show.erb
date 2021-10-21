@@ -3,7 +3,7 @@
   <div class="posts">
     <% if @title == "mine" %>
         <h2 class="posts-title">My Photo  <i class="fas fa-camera"></i></h2>
-      <div class="select-list">
+      <div class="select">
         <%= form_with url: user_path(@user), method: :get, local: true do |f| %>
           <%= f.select :sort, [["新しい順", "new"], ["古い順", "old"], ["いいねが多い順", "favorite"]], selected: params[:sort] %>
         <% end %>

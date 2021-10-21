@@ -1,0 +1,61 @@
+<div class="photo_post-index-container">
+  <div class="photo_post-index-container__header">
+    <h2><i class="fas fa-camera"></i>写真一覧</h2>
+    <div class="select">
+      <%= form_with url: admin_photo_posts_path, method: :get, local: true do |f| %>
+        <%= f.select :sort, [["投稿日(新しい)", "new"], ["投稿日(古い)", "old"], ["閲覧数", "look"], ["コメント数", "comment"], ["いいね数", "favorite"], ["ブックマーク数", "bookmark"]],
+                            selected: params[:sort], class: "select" %>
+      <% end %>
+    </div>
+    <div class="search">
+      <%= form_with url: search_admin_photo_posts_path, method: :get,  local: true do |f| %>
+        <%= f.text_field :keyword, value: keyword, placeholder: "キーワードを入力", class: "search_form" %>
+        <%= f.button :type => "submit", style: 'border-style: none;', class: "search-btn" do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col", class="text-center">ID</th>
+        <th scope="col", class="text-center">写真</th>
+        <th scope="col", class="text-center">投稿者</th>
+        <th scope="col">投稿日時</th>
+        <th scope="col">カテゴリー</th>
+        <th scope="col", class="text-center"><i class="fas fa-eye"></i></th>
+        <th scope="col", class="text-center"><i class="far fa-comment-dots"></i></th>
+        <th scope="col", class="text-center"><i class="fas fa-heart"></i></th>
+        <th scope="col", class="text-center"><i class="fas fa-bookmark"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% photo_posts.each do |photo_post| %>
+        <tr>
+          <th class="text-center"><%= photo_post.id %></th>
+          <td class="text-center p-0">
+            <%= link_to photo_post_path(photo_post) do %>
+              <% photo_post.post_images.first(1).each do |image| %>
+                <%= attachment_image_tag image, :image, size: "50x50" %>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user_path(photo_post.user) do %>
+              <%= attachment_image_tag photo_post.user, :profile_image, size: "20x20", class: "user-icon rounded-circle", fallback: "no_image.jpg"  %>
+              <%= photo_post.user.name %>
+            <% end %>
+          </td>
+          <td><%= photo_post.created_at.strftime("%Y年 %m月 %d日 %H時 %M分") %></td>
+          <td><%= photo_post.genre %></td>
+          <td class="text-center"><%= photo_post.impressions_count %></td>
+          <td class="text-center"><%= photo_post.photo_post_comments.count %></td>
+          <td class="text-center"><%= photo_post.favorites.count %></td>
+          <td class="text-center"><%= photo_post.bookmarks.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate photo_posts %>
+</div>

@@ -1,11 +1,13 @@
 class PhotoPost < ApplicationRecord
-  acts_as_taggable
+  acts_as_taggable  #タグ
   belongs_to :user
   has_many :photo_post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :post_images, dependent: :destroy
-  accepts_attachments_for :post_images, attachment: :image
+  accepts_attachments_for :post_images, attachment: :image #複数投稿
+
+  is_impressionable counter_cache: true #pv計測用
 
   enum genre: {"キャンプ場": 0, "キャンプ道具": 1, "キャンプ料理": 2, "キャンプ初心者": 3}
 

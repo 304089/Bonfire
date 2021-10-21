@@ -114,7 +114,7 @@ class ConsultationsController < ApplicationController
   def create
     @consultation = Consultation.new(consultation_params)
     @consultation.user_id = current_user.id
-    @consultation.save!
+    @consultation.save
     redirect_to consultations_path
   end
 

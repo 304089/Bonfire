@@ -60,6 +60,7 @@ class PhotoPostsController < ApplicationController
 
   def show
     @photo_post = PhotoPost.find(params[:id])
+    impressionist(@photo_post, nil, unique: [:user_id]) #動作確認しやすいためユーザーIDで判別
     @photo_post_comment = PhotoPostComment.new
     @photo_post_comments = PhotoPostComment.where(photo_post_id: @photo_post.id)
   end

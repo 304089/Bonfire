@@ -64,6 +64,6 @@ $(function() {
 /***************マイページ　写真ソート選択動化*/
 $(function(){
     $('#sort').change(function() {
-        $("form").submit();
+        $(".select form").submit();
     });
 });

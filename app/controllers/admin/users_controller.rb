@@ -1,9 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :admin_user
 
-
   def top
-
   end
 
   def index
@@ -24,12 +22,6 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(active: false)
     redirect_to request.referer
-  end
-
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_users_path
   end
 
   def search
