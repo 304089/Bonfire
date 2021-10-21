@@ -153,17 +153,17 @@
         <div class="period">
           <ul>
             <% if @period == "week" || @period == nil %>
-              <li><%= link_to "週間", consultations_path(period: "week") %></li>
+              <li>週間</li>
               <li class="border border-secondary bg-white"><%= link_to "月間", consultations_path(period: "manth") %></li>
               <li class="border border-secondary bg-white"><%= link_to "全て", consultations_path(period: "all") %></li>
             <% elsif @period == "manth" %>
               <li class="border border-secondary bg-white"><%= link_to "週間", consultations_path(period: "week") %></li>
-              <li><%= link_to "月間", consultations_path(period: "manth") %></li>
+              <li>月間</li>
               <li class="border border-secondary bg-white"><%= link_to "全て", consultations_path(period: "all") %></li>
             <% elsif @period == "all" %>
               <li class="border border-secondary bg-white"><%= link_to "週間", consultations_path(period: "week") %></li>
               <li class="border border-secondary bg-white"><%= link_to "月間", consultations_path(period: "manth") %></li>
-              <li><%= link_to "全て", consultations_path(period: "all") %></li>
+              <li>全て</li>
             <% end %>
           </ul>
         </div>

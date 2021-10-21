@@ -4,10 +4,10 @@
 
 /****************newページ*********************/
 .index-title {
-  color: black;
-  position: absolute;
-  bottom: 585px;
+  position: relative;
+  bottom: 360px;
 }
+
 
 .comment-container {
     border: 1px solid silver;
@@ -36,6 +36,8 @@
              outline: none;
              border: 1px solid gray;
              font-size: 15px;
+             position: relative;
+             top: 110px;
           }
 
           input:focus {
@@ -45,8 +47,8 @@
           .comment-btn {
              background: none;
              position: relative;
-             bottom: 45px;
-             left: 300px;
+             top: 113px;
+             right: 45px;
              font-size: 27px;
           }
 

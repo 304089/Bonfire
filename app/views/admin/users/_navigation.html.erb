@@ -1,0 +1,22 @@
+<div class="admin_top-container__left__nav">
+  <h3><i class="fas fa-user-shield"></i>管理者</h3>
+  <div class="admin_top-container__left__nav__list">
+    <ul>
+      <li>
+        <%= link_to admin_users_path do %>
+          <i class="fas fa-users"></i>ユーザー
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_photo_posts_path do %>
+          <i class="fas fa-camera"></i>写真
+        <% end %>
+      </li>
+      <li>
+        <%= link_to admin_consultations_path do %>
+          <i class="fas fa-praying-hands"></i>相談
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

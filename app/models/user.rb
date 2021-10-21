@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :trackable
 
   attachment :profile_image
 
@@ -21,5 +21,14 @@ class User < ApplicationRecord
   def admin?
     self.admin == true
   end
+
+  def self.search(keyword)
+    if keyword == "" #未入力の場合は全件表示
+      User.where(admin: false)
+    else              #名前かメールアドレスの部分一致
+      User.where(["name like? OR email like?", "%#{keyword}%", "%#{keyword}%"]).where(admin: false)
+    end
+  end
+
 
 end

@@ -1,5 +1,4 @@
-class InfomationsController < ApplicationController
-
+class Admin::InfomationsController < ApplicationController
   def new
     @infomation= Infomation.new
   end

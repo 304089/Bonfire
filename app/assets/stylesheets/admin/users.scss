@@ -1,0 +1,67 @@
+// Place all the styles related to the admin::users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*********************管理者ページ****************************/
+.admin_top-container {
+  padding-top: 30px;
+  display: flex;
+  height: 800px;
+
+  &__left {
+    width: 15%;
+    background: silver;
+
+    &__nav {
+      width: 80%;
+      margin: 0 auto;
+      padding-top: 20px;
+
+      h3 {
+        i {
+          margin-right: 5px;
+        }
+      }
+
+      &__list {
+        margin-top: 20px;
+        ul {
+          li {
+            font-size: 25px;
+            padding-top: 20px;
+
+            i {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__right {
+    width: 85%;
+    background: gray;
+
+    .user-index-container {
+      padding-top: 20px;
+      width: 80%;
+      margin: 0 auto;
+
+      &__header {
+        display: flex;
+
+        h2 {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        .select {
+          select {
+
+          }
+        }
+
+      }
+    }
+  }
+}
