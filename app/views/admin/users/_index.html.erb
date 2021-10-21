@@ -3,7 +3,8 @@
     <h2><i class="fas fa-users"></i>ユーザー一覧</h2>
     <div class="select">
       <%= form_with url: admin_users_path, method: :get, local: true do |f| %>
-        <%= f.select :sort, [["ID(昇順)", "old"], ["ID(降順)", "new"], ["ログイン日時(近い)", "near"], ["ログイン日時(遠い)", "far"], ["垢BANユーザー", "punish"]], selected: params[:sort] %>
+        <%= f.select :sort, [["ID(昇順)", "old"], ["ID(降順)", "new"], ["ログイン日時(近い)", "near"], ["ログイン日時(遠い)", "far"], ["垢BANユーザー", "punish"]],
+                            selected: params[:sort], class: "select" %>
       <% end %>
     </div>
     <div class="search">
@@ -18,23 +19,32 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">ID</th>
+        <th scope="col", class="text-center">ID</th>
         <th scope="col">ユーザー名</th>
         <th scope="col">登録メールアドレス</th>
         <th scope="col">登録日</th>
-        <th scope="col">最終ログイン日</th>
-        <th scope="col"><i class="fas fa-user-alt-slash"></i></th>
+        <th scope="col">最終ログイン</th>
+        <th scope="col"><i class="fas fa-user-check"></i></th>
       </tr>
     </thead>
     <tbody>
       <% users.each do |user| %>
         <tr>
-          <th><%= user.id %></th>
-          <td><%= user.name %></td>
+          <th class="text-center"><%= user.id %></th>
+          <td>
+            <%= link_to user_path(user) do %>
+              <%= attachment_image_tag user, :profile_image, size: "20x20", class: "user-icon rounded-circle", fallback: "no_image.jpg"  %>
+              <%= user.name %>
+            <% end %>
+          </td>
           <td><%= user.email %></td>
           <td><%= user.created_at.strftime("%Y年 %m月 %d日") %></td>
           <td><%= user.current_sign_in_at.strftime("%Y年 %m月 %d日 %H時 %M分") %></td>
-          <td></td>
+          <% if user.active == false %>
+            <td><i class="fas fa-skull-crossbones"></i></td>
+          <% else %>
+            <td></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

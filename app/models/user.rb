@@ -25,8 +25,8 @@ class User < ApplicationRecord
   def self.search(keyword)
     if keyword == "" #未入力の場合は全件表示
       User.where(admin: false)
-    else              #名前かメールアドレスの部分一致
-      User.where(["name like? OR email like?", "%#{keyword}%", "%#{keyword}%"]).where(admin: false)
+    else              #名前の部分一致
+      User.where(["name like?", "%#{keyword}%"]).where(admin: false)
     end
   end
 
