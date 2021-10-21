@@ -1,0 +1,53 @@
+<div class="consultation-index-container">
+  <div class="consultation-index-container__header">
+    <h2><i class="fas fa-praying-hands"></i>相談一覧</h2>
+    <div class="select">
+      <%= form_with url: admin_consultations_path, method: :get, local: true do |f| %>
+        <%= f.select :sort, [["投稿日(新しい)", "new"], ["投稿日(古い)", "old"], ["閲覧数", "look"], ["コメント数", "comment"], ["役に立った！数", "helpfulness"]],
+                            selected: params[:sort], class: "select" %>
+      <% end %>
+    </div>
+    <div class="search">
+      <%= form_with url: search_admin_consultations_path, method: :get,  local: true do |f| %>
+        <%= f.text_field :keyword, value: keyword, placeholder: "キーワードを入力", class: "search_form" %>
+        <%= f.button :type => "submit", style: 'border-style: none;', class: "search-btn" do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col", class="text-center">ID</th>
+        <th scope="col", class="text-center">タイトル</th>
+        <th scope="col", class="text-center">投稿者</th>
+        <th scope="col">投稿日時</th>
+        <th scope="col">カテゴリー</th>
+        <th scope="col", class="text-center"><i class="fas fa-eye"></i></th>
+        <th scope="col", class="text-center"><i class="far fa-comment-dots"></i></th>
+        <th scope="col", class="text-center"><i class="fas fa-thumbs-up"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% consultations.each do |consultation| %>
+        <tr>
+          <th class="text-center"><%= consultation.id %></th>
+          <td class="text-center"><%= consultation.title %></td>
+          <td>
+            <%= link_to user_path(consultation.user) do %>
+              <%= attachment_image_tag consultation.user, :profile_image, size: "20x20", class: "user-icon rounded-circle", fallback: "no_image.jpg"  %>
+              <%= consultation.user.name %>
+            <% end %>
+          </td>
+          <td><%= consultation.created_at.strftime("%Y年 %m月 %d日 %H時 %M分") %></td>
+          <td><%= consultation.genre %></td>
+          <td class="text-center"><%= consultation.impressions_count %></td>
+          <td class="text-center"><%= consultation.consultation_answers.count %></td>
+          <td class="text-center"><%= consultation.helpfulnesses.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate consultations %>
+</div>

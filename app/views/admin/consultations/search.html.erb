@@ -1,0 +1,9 @@
+<div class="admin_top-container">
+  <div class="admin_top-container__left">
+    <%= render "admin/users/navigation" %>
+  </div>
+  <div class="admin_top-container__right">
+    <div class="result"><i class="fas fa-search"></i> <%= "' #{@keyword} ' の検索結果 - #{@consultations.count}件" %></div>
+    <%= render "index", consultations: @consultations, keyword: @keyword %>
+  </div>
+</div>

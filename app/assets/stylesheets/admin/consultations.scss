@@ -1,3 +1,44 @@
 // Place all the styles related to the admin::consultations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.consultation-index-container {
+      padding-top: 20px;
+      width: 80%;
+      margin: 0 auto;
+
+      &__header {
+        display: flex;
+        justify-content: flex-end;
+
+        h2 {
+          text-align: center;
+          margin-bottom: 20px;
+          padding-right: 50px;
+        }
+
+        .select {
+          select {
+            height: 25px;
+            position: relative;
+            right: 20px;
+            top: 5px;
+          }
+        }
+
+        .search {
+          input {
+            height: 25px;
+            width: 210px;
+            position: relative;
+            top: 5px;
+          }
+
+          button {
+            position: relative;
+            top: 5px;
+            right: 24px;
+            background: white;
+          }
+        }
+      }
+}
