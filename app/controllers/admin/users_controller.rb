@@ -26,6 +26,7 @@ class Admin::UsersController < ApplicationController
 
   def search
     @users = User.search(params[:keyword]).page(params[:page]).per(30)
+    @keyword = params[:keyword]
   end
 
   private
