@@ -1,37 +1,37 @@
-<div>
-    <h3>お問い合わせフォーム</h3>
-    <div>
-      <table>
-        <tr>
-          <th>問い合わせ内容</th>
-        </tr>
-        <tr></tr>
-          <td><%= @infomation.content %></td>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <th>名前</th>
-          <th>電話番号</th>
-          <th>メールアドレス</th>
-        </tr>
-        <tr>
-          <td><%= @infomation.name %></td>
-          <td><%= @infomation.email %></td>
-        </tr>
-      </table>
-      <%= form_with model: @infomation,url: infomation_path(@infomation), method: :patch ,local: true do |f| %>
-        <% if @infomation.status == "未回答" %>
-          <%= f.hidden_field :status, value: "回答済み" %>
-          <div>
-            <%= f.submit "回答済みにする" %>
-          </div>
-        <% else %>
-          <%= f.hidden_field :status, value: "未回答" %>
-          <div>
-            <%= f.submit "未回答に戻す" %>
-          </div>
-        <% end %>
-      <% end %>
+<div class="infomation-show-container">
+  <div class="infomation-show-container__header">
+    <h2><i class="far fa-envelope"></i> 問い合わせ詳細</h2>
+  </div>
+  <div class="infomation-show-container__body">
+    <div class="infomation-show-container__body__email">
+      <p>問い合わせ日時</p>
+      <p class="border border-dark p-1"><%= @infomation.created_at.strftime("%Y年 %m月 %d日 %H時 %M分") %></p>
     </div>
+    <div class="infomation-show-container__body__genre mt-3">
+      <p>カテゴリー</p>
+      <p class="border border-dark p-1"><%= @infomation.genre %></p>
+    <div class="infomation-show-container__body__conten mt-3">
+      <p>問い合わせ内容</p>
+      <p class="border border-dark p-1 content"><%= @infomation.content %></p>
+    </div>
+    <div class="infomation-show-container__body__email mt-3">
+      <p>メールアドレス</p>
+      <p class="border border-dark p-1"><%= @infomation.email %></p>
+    </div>
+    <div class="infomation-show-container__body__name mt-3">
+      <p>名前</p>
+      <p class="border border-dark p-1"><%= @infomation.name %></p>
+    </div>
+  </div>
+</div>
+<div class="status-button">
+  <%= form_with url: infomation_path(@infomation), method: :patch ,local: true do |f| %>
+    <% if @infomation.status == "未読" %>
+      <%= f.hidden_field :status, value: 1 %>
+      <%= f.submit "確認した" %>
+    <% else %>
+      <p><%= @infomation.updated_at.strftime("%Y年 %m月 %d日 %H時 %M分") %></p>
+      <p class="checked"><i class="fas fa-envelope-open"></i> 確認済み</p>
+    <% end %>
+  <% end %>
 </div>

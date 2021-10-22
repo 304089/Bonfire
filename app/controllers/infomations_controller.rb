@@ -60,8 +60,10 @@ class InfomationsController < ApplicationController
 
   def update
     infomation= Infomation.find(params[:id])
-    infomation.update(infomation_params)
-    redirect_to infomations_path
+    if params[:status] == "1"
+      infomation.update(status: 1)
+      redirect_to request.referer
+    end
   end
 
   private
