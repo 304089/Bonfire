@@ -89,3 +89,8 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'jquery-ui-rails'
 #閲覧数計測
 gem 'impressionist', '~>1.6.1'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
