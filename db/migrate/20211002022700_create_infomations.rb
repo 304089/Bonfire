@@ -5,6 +5,7 @@ class CreateInfomations < ActiveRecord::Migration[5.2]
       t.string :email, null: false
       t.text :content, null: false
       t.integer :status,null: false,default: 0
+      t.integer :genre, null: false
       t.timestamps
     end
   end

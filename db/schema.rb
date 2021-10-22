@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_10_21_160533) do
     t.string "email", null: false
     t.text "content", null: false
     t.integer "status", default: 0, null: false
+    t.integer "genre", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

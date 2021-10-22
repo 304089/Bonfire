@@ -1,3 +1,4 @@
 class Infomation < ApplicationRecord
-  enum status: {"未回答": 0, "回答済み": 1}, _prefix: true
+  enum status: {"未読": 0, "既読": 1}, _prefix: true
+  enum genre: {"広告掲載・取材依頼": 0, "アプリの改善要望": 1, "その他お問い合わせ": 2}, _prefix: true
 end

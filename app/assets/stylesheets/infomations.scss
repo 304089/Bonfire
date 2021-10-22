@@ -1,3 +1,123 @@
 // Place all the styles related to the infomations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.infomation-index-container {
+      padding-top: 20px;
+      width: 90%;
+      margin: 0 auto;
+
+      &__header {
+        display: flex;
+        justify-content: flex-end;
+
+        i {
+            margin-right: 5px;
+          }
+
+        h2 {
+          text-align: center;
+          margin-bottom: 20px;
+          padding-right: 200px;
+        }
+
+        .select {
+          select {
+            height: 25px;
+            position: relative;
+            right: 20px;
+            top: 5px;
+          }
+        }
+
+        .search {
+          input {
+            height: 25px;
+            width: 210px;
+            position: relative;
+            top: 5px;
+          }
+
+          button {
+            position: relative;
+            top: 5px;
+            right: 24px;
+            background: white;
+          }
+        }
+      }
+
+      .fa-envelope, .fa-envelope-open {
+        font-size: 25px;
+      }
+
+}
+
+
+/*************************new*****************/
+.infomation-new-container {
+  width: 30%;
+  margin: 0 auto;
+  padding: 40px 0 80px 0;
+
+  &__header {
+    h2 {
+      width: 400px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__body {
+    font-weight: 600;
+    p {
+      margin: 0;
+    }
+    span {
+      background: orange;
+      color: white;
+      padding: 3px;
+      font-size: 12px;
+      margin-left: 5px;
+      position: relative;
+      bottom: 2px;
+    }
+    input, select, textarea {
+      width: 400px;
+    }
+
+    textarea {
+      margin-top: 15px;
+      height: 180px;
+    }
+
+    .btn input {
+      width: 130px;
+      height: 40px;
+    }
+
+    &__email, &__name, &__content, &__button  {
+      margin-top: 20px;
+    }
+
+    &__button {
+      width: 130px;
+      p {
+        font-weight: 600;
+      }
+
+      button {
+        background: orange;
+        width: 180px;
+        height: 50px;
+        position: relative;
+        left: 110px;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        opacity: 0.6;
+      }
+    }
+
+  }
+}

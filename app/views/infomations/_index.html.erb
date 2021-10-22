@@ -1,12 +1,54 @@
-<% infomations.each do |infomation| %>
-  <tr>
-    <% if infomation.status == "未回答" %>
-      <td style="color: red; font-weight: 900"><%= infomation.status %></td>
-    <% else %>
-      <td style="font-weight: 900"><%= infomation.status %></td>
-    <% end %>
-      <td><%= infomation.created_at.strftime("%Y/%m/%d %H:%M").to_s %></td>
-      <td><%= infomation.name %></td>
-      <td class="text-center"><%= link_to "表示する", infomation_path(infomation), class: "btn btn-secondary" %></td>
-  </tr>
-<% end %>
+<div class="infomation-index-container">
+  <div class="infomation-index-container__header">
+    <h2><i class="far fa-envelope"></i>問い合わせ一覧</h2>
+    <div class="select">
+      <%= form_with url: infomations_path, method: :get, local: true do |f| %>
+        <%= f.select :genre, [["広告掲載・取材依頼", 0], ["アプリの改善要望", 1],["その他お問い合わせ", 2]],
+                           include_blank: "全てのカテゴリー", selected: params[:genre] %>
+
+        <%= f.select :sort, [["新しい順", "new"], ["古い順", "old"],["未読", "yet"]], selected: params[:sort]%>
+      <% end %>
+    </div>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col", class="text-center"></th>
+        <th scope="col", class="text-center">カテゴリー</th>
+        <th scope="col", class="text-center">内容</th>
+        <th scope="col">メールアドレス</th>
+        <th scope="col">名前</th>
+        <th scope="col", class="text-center">問い合わせ日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% infomations.each do |infomation| %>
+        <tr>
+            <% if infomation.status == "未読" %>
+              <td class="text-center">
+                <%= link_to infomation_path(infomation) do %>
+                  <i class="far fa-envelope"></i>
+                <% end %>
+              </td>
+            <% else %>
+              <td class="text-center">
+                <%= link_to infomation_path(infomation) do %>
+                  <i class="fas fa-envelope-open"></i>
+                <% end %>
+              </td>
+            <% end %>
+          <td class="text-center"><%= infomation.genre %></td>
+          <td class="text-center">
+            <%= link_to infomation_path(infomation) do %>
+              <%= infomation.content.slice(0..12)... %>
+            <% end %>
+          </td>
+          <td><%= infomation.email %></td>
+          <td><%= infomation.name %></td>
+          <td><%= infomation.created_at.strftime("%Y年 %m月 %d日 %H時 %M分") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate infomations %>
+</div>
