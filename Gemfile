@@ -89,6 +89,10 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'jquery-ui-rails'
 #閲覧数計測
 gem 'impressionist', '~>1.6.1'
+#グラフ作成
+gem "chartkick"
+#チャートグラフ
+gem 'groupdate'
 
 gem 'dotenv-rails'
 group :production do

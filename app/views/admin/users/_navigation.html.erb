@@ -5,6 +5,11 @@
   <div class="admin_top-container__left__nav__list">
     <ul>
       <li>
+        <%= link_to top_admin_users_path do %>
+          <i class="fas fa-chart-bar"></i>トップ
+        <% end %>
+      </li>
+      <li>
         <%= link_to admin_users_path do %>
           <i class="fas fa-users"></i>ユーザー
         <% end %>

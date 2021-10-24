@@ -2,9 +2,11 @@ class Admin::UsersController < ApplicationController
   before_action :admin_user
 
   def top
+    @user_data= User.group("date(created_at)").count
   end
 
   def index
+
     if params[:sort] == "old" || params[:sort] == nil                                    #登録順
       @users = User.where(admin: false).page(params[:page]).per(30)
     elsif params[:sort] == "new"                                                          #新しい順

@@ -79,6 +79,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    chartkick (4.1.0)
     childprocess (3.0.0)
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
@@ -115,6 +116,8 @@ GEM
       sassc (>= 1.11)
     globalid (0.5.2)
       activesupport (>= 5.0)
+    groupdate (5.2.2)
+      activesupport (>= 5)
     http-accept (1.7.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
@@ -327,6 +330,7 @@ DEPENDENCIES
   bootstrap (~> 4.5)
   byebug
   capybara (>= 2.15)
+  chartkick
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
@@ -334,6 +338,7 @@ DEPENDENCIES
   devise-i18n-views
   dotenv-rails
   font-awesome-sass (~> 5.13)
+  groupdate
   impressionist (~> 1.6.1)
   jbuilder (~> 2.5)
   jquery-rails

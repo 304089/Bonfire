@@ -41,8 +41,28 @@
 
   &__right {
     width: 85%;
-    background: gray;
 
+    &__graph {
+
+  /**********************ユーザーグラフ******/
+      .user-graph {
+        width: 80%;
+        margin: 0 auto;
+
+        h2 {
+          text-align: center;
+        }
+      }
+
+      .post-graph {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 150px
+      }
+    }
+
+  /*****************写真・相談・お問い合わせ共通部分*******************/
     .result {
       font-size: 20px;
       margin-left: 30px;
