@@ -32,12 +32,16 @@
         <%= render "consultation_answers/index", consultation: @consultation, consultation_answers: @consultation_answers %>
       </div>
       <div class="form-area">
-        <%= render "consultation_answers/form", consultation: @consultation, consultation_answer: @consultation_answer %>
+        <% if user_signed_in? %>
+          <%= render "consultation_answers/form", consultation: @consultation, consultation_answer: @consultation_answer %>
+        <% end %>
       </div>
     </div>
   </div>
-  <%= link_to consultation_path(@consultation), method: :delete, data: {confirm: "本当に削除しますか？"} do %>
-    <p class="post-delete">ー <i class="fas fa-trash-alt"></i> 投稿削除 ー</p>
+  <% if user_signed_in? && @consultation.user == current_user %>
+    <%= link_to consultation_path(@consultation), method: :delete, data: {confirm: "本当に削除しますか？"} do %>
+      <p class="post-delete">ー <i class="fas fa-trash-alt"></i> 投稿削除 ー</p>
+    <% end %>
   <% end %>
 </div>
 

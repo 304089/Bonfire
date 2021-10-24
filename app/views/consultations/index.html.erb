@@ -2,17 +2,32 @@
   <div class="consultation-body">
     <div class="consultation-left">
       <div class="consultation-left__post">
-        <%= link_to new_consultation_path do %>
-          <div class="consultation-left__post__link">
-            <i class="far fa-paper-plane"></i>
-            <p>相談を投稿する</p>
-          </div>
-        <% end %>
-        <%= link_to consultations_path(user_id: current_user.id) do %>
-          <div class="consultation-left__post__link">
-            <i class="fas fa-user"></i>
-            <p>My 相談</p>
-          </div>
+        <% if user_signed_in? %>
+          <%= link_to new_consultation_path do %>
+            <div class="consultation-left__post__link">
+              <i class="far fa-paper-plane"></i>
+              <p>相談を投稿する</p>
+            </div>
+          <% end %>
+          <%= link_to consultations_path(user_id: current_user.id) do %>
+            <div class="consultation-left__post__link">
+              <i class="fas fa-user"></i>
+              <p>My 相談</p>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path do %>
+            <div class="consultation-left__post__link">
+              <i class="far fa-paper-plane"></i>
+              <p>相談を投稿する</p>
+            </div>
+          <% end %>
+          <%= link_to new_user_session_path do %>
+            <div class="consultation-left__post__link">
+              <i class="fas fa-user"></i>
+              <p>My 相談</p>
+            </div>
+          <% end %>
         <% end %>
       </div>
       <div class="consultation-left__genre">

@@ -3,45 +3,54 @@
     <li class="item1"><%= link_to root_path do %><%= image_tag "logo.png", size: "150x80" %><% end %></li>
     <li class="item2"><%= render "layouts/search_form", keyword: @keyword %></li>
     <li class="item3"><%= link_to root_path do %>Home <i class="fas fa-campground"></i><% end %>
-    <li class="item4"><%= link_to do %>Photo <i class="fas fa-camera"></i><% end %>
-      <ul class="menuSub">
-        <li><%= link_to "写真を見る", photo_posts_path %></li>
-        <li><%= link_to "写真を投稿する", new_photo_post_path %></li>
-      </ul>
-    </li>
-    <li class="item5"><%= link_to do %>Wisdom <i class="fas fa-praying-hands"></i><% end %>
-      <ul class="menuSub">
-        <li><%= link_to "相談を見る", consultations_path %></li>
-        <li><%= link_to "相談を投稿する", new_consultation_path %></li>
-      </ul>
-    </li>
-  <% if user_signed_in? && current_user.admin? %>
-    <li class="item6">
-      <%= link_to destroy_user_session_path, method: :delete do %>
-        SignOut <i class="fas fa-sign-out-alt"></i>
+    <% if user_signed_in? %>
+      <li class="item4"><%= link_to do %>Photo <i class="fas fa-camera"></i><% end %>
+        <ul class="menuSub">
+          <li><%= link_to "写真を見る", photo_posts_path %></li>
+          <li><%= link_to "写真を投稿する", new_photo_post_path %></li>
+        </ul>
+      </li>
+      <li class="item5"><%= link_to do %>Wisdom <i class="fas fa-praying-hands"></i><% end %>
+        <ul class="menuSub">
+          <li><%= link_to "相談を見る", consultations_path %></li>
+          <li><%= link_to "相談を投稿する", new_consultation_path %></li>
+        </ul>
+      </li>
+    <% else %>
+      <li class="item4"><%= link_to photo_posts_path do %>Photo <i class="fas fa-camera"></i><% end %>
+      </li>
+      <li class="item5"><%= link_to consultations_path do %>Wisdom <i class="fas fa-praying-hands"></i><% end %>
+      </li>
+    <% end %>
+    <% if user_signed_in? %>
+      <% if current_user.admin %>
+        <li class="item6">
+          <%= link_to top_admin_users_path do %>
+            MyPage <i class="fas fa-id-card"></i>
+          <% end %>
+        </li>
+      <% else %>
+        <li class="item6">
+          <%= link_to user_path(current_user) do %>
+            MyPage <i class="fas fa-id-card"></i>
+          <% end %>
+        </li>
       <% end %>
-    </li>
-  <% elsif user_signed_in? %>
-    <li class="item6">
-      <%= link_to user_path(current_user) do %>
-        MyPage <i class="fas fa-id-card"></i>
-      <% end %>
-    </li>
-    <li class="item7">
-      <%= link_to destroy_user_session_path, method: :delete do %>
-        SignOut <i class="fas fa-sign-out-alt"></i>
-      <% end %>
-    </li>
-  <% else %>
-    <li class="item6">
-      <%= link_to do %>
-        Sign <i class="fas fa-user-check"></i>
-      <% end %>
-      <ul class="menuSub">
-        <li><%= link_to "Sign Up", new_user_registration_path %></li>
-        <li><%= link_to "Sign In", new_user_session_path %></li>
-      </ul>
-    </li>
-  <% end %>
+      <li class="item7">
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          SignOut <i class="fas fa-sign-out-alt"></i>
+        <% end %>
+      </li>
+    <% else %>
+      <li class="item6">
+        <%= link_to do %>
+          Sign <i class="fas fa-user-check"></i>
+        <% end %>
+        <ul class="menuSub">
+          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+        </ul>
+      </li>
+    <% end %>
   </ul>
 </nav>
