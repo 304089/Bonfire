@@ -22,7 +22,7 @@ Rails.application.routes.draw do
         get :search
       end
       member do
-        patch :punish
+        patch :change
       end
     end
   end

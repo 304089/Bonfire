@@ -22,16 +22,4 @@ class Admin::PhotoPostsController < ApplicationController
     @keyword = params[:keyword]
   end
 
-  private
-
-  def admin_user
-    if user_signed_in?
-      if current_user.admin == false
-        redirect_to root_path
-      end
-    else
-      redirect_to root_path
-    end
-  end
-
 end

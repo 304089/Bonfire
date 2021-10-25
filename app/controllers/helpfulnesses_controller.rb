@@ -1,4 +1,6 @@
 class HelpfulnessesController < ApplicationController
+  before_action :active_user
+
   def create
     @consultation_answer = ConsultationAnswer.find(params[:consultation_answer_id])
     helpfulness = current_user.helpfulnesses.new(consultation_answer_id: @consultation_answer.id)

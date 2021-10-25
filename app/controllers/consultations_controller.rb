@@ -1,4 +1,6 @@
 class ConsultationsController < ApplicationController
+  before_action :active_user, except:[:index, :show, :search]
+
 
   def new
     @consultation = Consultation.new

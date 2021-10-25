@@ -1,4 +1,6 @@
 class ConsultationAnswersController < ApplicationController
+  before_action :active_user
+
 
   def create
     @consultation = Consultation.find(params[:consultation_id])

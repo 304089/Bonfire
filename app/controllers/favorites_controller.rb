@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :active_user
 
   def create
     @photo_post = PhotoPost.find(params[:photo_post_id])

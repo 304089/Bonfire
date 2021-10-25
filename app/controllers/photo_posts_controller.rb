@@ -1,4 +1,5 @@
 class PhotoPostsController < ApplicationController
+  before_action :active_user, except:[:show, :index, :search]
 
   def new
     @photo_post = PhotoPost.new

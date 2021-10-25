@@ -1,4 +1,5 @@
 class RelationsController < ApplicationController
+  before_action :active_user, only:[:create, :destroy]
 
   def create
     @user = User.find(params[:user_id])
