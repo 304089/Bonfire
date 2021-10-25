@@ -347,7 +347,7 @@ main {
       background-color: white;
       border: 1px solid #BBBBBB;
       width: 25%;
-      height: 490px;
+      min-height: 490px;
       margin: 90px auto;
       text-align: center;
       align-item: center;
@@ -407,7 +407,8 @@ main {
 
 /******************************ログイン************************/
 .sign-in {
-  height: 400px;
+  min-height: 400px;
+
 }
 
 
