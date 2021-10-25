@@ -1,0 +1,16 @@
+<% if current_user.status == "会員" %>
+  <%= link_to "退会する", leave_user_path(@user), method: :patch %>
+<% elsif current_user.status == "退会" %>
+  <p>
+    <%= @user.updated_at.strftime("%Y年 %m月 %d日") %>に退会しています。<br>
+    会員に戻りますか？
+  </p>
+  <%= link_to "会員に戻る", revival_user_path(@user), method: :patch %>
+  <%= link_to "やめる", root_path %>
+<% elsif current_user.status == "垢BAN" %>
+  <p>
+    あなたのアカウントは、<%= @user.updated_at.strftime("%Y年 %m月 %d日") %>に<br>
+    管理者より利用が停止されています。<br>
+    ご不明な点があればページ下部の「お問い合わせフォーム」からお問い合わせください。
+  </p>
+<% end %>

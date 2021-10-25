@@ -337,10 +337,9 @@ main {
 /**************************サインアップページ***********************/
 .sign-container {
     background-color: Menu;
-    height: 900px;
+    height: 680px;
     margin: 0 auto;
-    position: relative;
-    top: 20px;
+    padding-top: 20px;
     overflow: hidden;
 
 
@@ -408,13 +407,7 @@ main {
 
 /******************************ログイン************************/
 .sign-in {
-  height: 430px;
-}
-
-.forget {
-  font-size: 13px;
-  position: relative;
-  top: 5px;
+  height: 400px;
 }
 
 

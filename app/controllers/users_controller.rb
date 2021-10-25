@@ -30,8 +30,22 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  def unsubscribe
+  def confirm
     @user = User.find(params[:id])
+  end
+
+  def leave
+    @user = User.find(params[:id])
+    @user.update(status: 1)
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
+
+  def revival
+    @user = User.find(params[:id])
+    @user.update(status: 0)
+    redirect_to user_path(@user)
   end
 
   private

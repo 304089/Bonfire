@@ -1,7 +1,18 @@
 class ConsultationsController < ApplicationController
 
-  def index
+  def new
+    @consultation = Consultation.new
+    @user = current_user
+  end
 
+  def create
+    @consultation = Consultation.new(consultation_params)
+    @consultation.user_id = current_user.id
+    @consultation.save
+    redirect_to consultations_path
+  end
+
+  def index
     if params[:genre] == "0"
       @genre = 0
       if params[:list] == "1"
@@ -103,19 +114,6 @@ class ConsultationsController < ApplicationController
     else
       @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).where(helpfulnesses: {created_at: Time.current.all_week}).order("count(helpfulnesses.id) DESC").limit(10)
     end
-
-  end
-
-  def new
-    @consultation = Consultation.new
-    @user = current_user
-  end
-
-  def create
-    @consultation = Consultation.new(consultation_params)
-    @consultation.user_id = current_user.id
-    @consultation.save
-    redirect_to consultations_path
   end
 
   def show
@@ -128,13 +126,13 @@ class ConsultationsController < ApplicationController
   def search
     if params[:keyword]
       if params[:list] == "1" || params[:list] == nil
-        @consultations = Consultation.search(params[:keyword]).order(creared_at: "DESC").page(params[:page]).per(15)
+        @consultations = Consultation.search(params[:keyword]).order(id: "DESC").page(params[:page]).per(15)
         @list = 1
       elsif params[:list] == "2"
         @consultations = Consultation.search(params[:keyword]).order(impressions_count: "DESC").page(params[:page]).per(15)
         @list = 2
       elsif params[:list] == "3"
-        @consultations = Consultation.search(params[:keyword]).joins(consultation_answers: :helpfulnesses).group(:consultation_id)
+        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).search(params[:keyword]).group(:consultation_id)
                                      .order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
         @list = 3
       end

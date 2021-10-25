@@ -18,15 +18,18 @@ class User < ApplicationRecord
   has_many :reverse_of_relations,class_name: "Relation",foreign_key: "followed_id",dependent: :destroy
   has_many :followers,through: :reverse_of_relations,source: :follower
 
+  enum status: {"会員": 0, "退会": 1, "垢BAN": 2, "管理者": 99}
+
+
   def admin?
-    self.admin == true
+    self.status == "管理者"
   end
 
   def self.search(keyword)
     if keyword == "" #未入力の場合は全件表示
       User.where(admin: false)
     else              #名前の部分一致
-      User.where(["name like?", "%#{keyword}%"]).where(admin: false)
+      User.where(['name like?', "%#{keyword}%"]).where(admin: false)
     end
   end
 

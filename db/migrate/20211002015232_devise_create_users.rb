@@ -9,8 +9,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :name, unique: true, null: false
       t.text :introduction
       t.string :profile_image_id
-      t.boolean :active, null: false, default: true
-      t.boolean :admin, null: false, default: false
+      t.integer :status, null: false, default: 0
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

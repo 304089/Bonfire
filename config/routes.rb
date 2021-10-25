@@ -32,11 +32,13 @@ Rails.application.routes.draw do
 
 #*******エンドユーザー
   resources :users, except:[:new, :destroy] do
-    resource :relation
+    resource :relation, only:[:create, :destroy]
     get "followings" => "relations#followings"
     get "followers" => "relations#followers"
     member do
-      get :unsubscribe
+      get :confirm
+      patch :leave
+      patch :revival
     end
   end
 

@@ -125,9 +125,9 @@ class PhotoPostsController < ApplicationController
 
   def search
     if params[:tag]
-      @photo_posts = PhotoPost.tagged_with(params[:tag]).where(preview: false).order(id: "DESC").page(params[:page]).per(28)
+      @photo_posts = PhotoPost.tagged_with(params[:tag]).where(preview: false).group(:id).order(id: "DESC").page(params[:page]).per(28)
     else
-      @photo_posts = PhotoPost.search(params[:keyword]).where(preview: false).order(id: "DESC").page(params[:page]).per(28)
+      @photo_posts = PhotoPost.search(params[:keyword]).where(preview: false).group(:id).order(id: "DESC").page(params[:page]).per(28)
     end
     @keyword = params[:keyword]
     @tag = params[:tag]

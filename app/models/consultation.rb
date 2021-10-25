@@ -16,8 +16,7 @@ class Consultation < ApplicationRecord
     if keyword == "" #未入力の場合は全件表示
       Consultation.all
     else
-      Consultation.joins(:consultation_answers) #タイトル、内容、コメント内容で検索
-                  .where(["title like? OR content like? OR consultation_answers.answer like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+      Consultation.where(['title like? OR content like?', "%#{keyword}%", "%#{keyword}%"])
     end
   end
 

@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2021_10_21_160533) do
     t.text "content", null: false
     t.string "consultation_image_id"
     t.boolean "anonymity", default: false, null: false
-    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "impressions_count", default: 0
@@ -168,8 +167,7 @@ ActiveRecord::Schema.define(version: 2021_10_21_160533) do
     t.string "name", null: false
     t.text "introduction"
     t.string "profile_image_id"
-    t.boolean "active", default: true, null: false
-    t.boolean "admin", default: false, null: false
+    t.integer "status", default: 0, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
