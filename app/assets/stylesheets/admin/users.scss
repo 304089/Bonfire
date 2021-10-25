@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /*********************管理者ページ****************************/
 .admin_top-container {
-  padding-top: 30px;
   display: flex;
   height: 800px;
 
@@ -14,7 +13,7 @@
     &__nav {
       width: 80%;
       margin: 0 auto;
-      padding-top: 20px;
+      padding-top: 40px;
 
       h3 {
         margin-bottom: 15px;
@@ -41,7 +40,7 @@
 
   &__right {
     width: 85%;
-
+    padding-top: 30px;
     &__graph {
 
   /**********************ユーザーグラフ******/

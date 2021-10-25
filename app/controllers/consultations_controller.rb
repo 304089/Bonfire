@@ -126,21 +126,34 @@ class ConsultationsController < ApplicationController
   end
 
   def search
-    @keyword = params[:keyword]
-
-    @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(10)
-    if params[:list] == "1" || params[:list] == nil
-      @consultations = Consultation.search(params[:keyword]).order(creared_at: "DESC").page(params[:page]).per(15)
-      @list = 1
-    elsif params[:list] == "2"
-      @consultations = Consultation.search(params[:keyword]).order(impressions_count: "DESC").page(params[:page]).per(15)
-      @list = 2
-    elsif params[:list] == "3"
-      @consultations = Consultation.search(params[:keyword]).joins(consultation_answers: :helpfulnesses).group(:consultation_id)
-                                   .order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
-      @list = 3
-    else
+    if params[:keyword]
+      if params[:list] == "1" || params[:list] == nil
+        @consultations = Consultation.search(params[:keyword]).order(creared_at: "DESC").page(params[:page]).per(15)
+        @list = 1
+      elsif params[:list] == "2"
+        @consultations = Consultation.search(params[:keyword]).order(impressions_count: "DESC").page(params[:page]).per(15)
+        @list = 2
+      elsif params[:list] == "3"
+        @consultations = Consultation.search(params[:keyword]).joins(consultation_answers: :helpfulnesses).group(:consultation_id)
+                                     .order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
+        @list = 3
+      end
     end
+
+    if params[:period] == "week"
+      @ranks = User.joins(consultation_answers: :helpfulnesses).where(helpfulnesses: {created_at: Time.current.all_week}).group(:id)
+                   .order("count(helpfulnesses.id) DESC").limit(10)
+      @period = "week"
+    elsif params[:period] == "manth"
+      @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).where(helpfulnesses: {created_at: Time.current.all_month}).order("count(helpfulnesses.id) DESC").limit(10)
+      @period = "manth"
+    elsif params[:period] == "all"
+      @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).order("count(helpfulnesses.id) DESC").limit(10)
+      @period = "all"
+    else
+      @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).where(helpfulnesses: {created_at: Time.current.all_week}).order("count(helpfulnesses.id) DESC").limit(10)
+    end
+
   end
 
   def destroy

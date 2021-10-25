@@ -1,61 +1,110 @@
 <div class="consultation-container">
   <div class="consultation-body">
     <div class="consultation-left">
+      <div class="consultation-left__post">
+        <% if user_signed_in? %>
+          <%= link_to new_consultation_path do %>
+            <div class="consultation-left__post__link">
+              <i class="far fa-paper-plane"></i>
+              <p>相談を投稿する</p>
+            </div>
+          <% end %>
+          <%= link_to consultations_path(user_id: current_user.id) do %>
+            <div class="consultation-left__post__link">
+              <i class="fas fa-user"></i>
+              <p>My 相談</p>
+            </div>
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path do %>
+            <div class="consultation-left__post__link">
+              <i class="far fa-paper-plane"></i>
+              <p>相談を投稿する</p>
+            </div>
+          <% end %>
+          <%= link_to new_user_session_path do %>
+            <div class="consultation-left__post__link">
+              <i class="fas fa-user"></i>
+              <p>My 相談</p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
       <div class="consultation-left__genre">
+        <h5>カテゴリー検索</h5>
         <%= link_to consultations_path(genre: 0) do %>
-          <p>キャンプ場</p>
+          <div class="consultation-left__genre__list">
+            <i class="fas fa-campground"></i>
+            <p>キャンプ場</p>
+          </div>
         <% end %>
         <%= link_to consultations_path(genre: 1) do %>
-          <p>キャンプ道具</p>
+          <div class="consultation-left__genre__list">
+            <i class="fas fa-hammer"></i>
+            <p>キャンプ道具</p>
+          </div>
         <% end %>
         <%= link_to consultations_path(genre: 2) do %>
-          <p>キャンプ料理</p>
+          <div class="consultation-left__genre__list">
+            <i class="fas fa-utensils"></i>
+            <p>キャンプ料理</p>
+          </div>
         <% end %>
         <%= link_to consultations_path(genre: 3) do %>
-          <p>その他</p>
+          <div class="consultation-left__genre__list">
+            <i class="fas fa-infinity"></i>
+            <p>その他</p>
+          </div>
         <% end %>
       </div>
       <div class="consultation-left__search">
+        <h5>キーワード検索</h5>
         <%= render "search-form", keyword: @keyword %>
-      </div>
-      <div class="consultation-left__post">
-        <%= link_to new_consultation_path do %>
-          <p>相談を投稿する</p>
-        <% end %>
       </div>
     </div>
     <div class="consultation-center">
-      <div class="consultation-center__sort"></div>
       <div class="consultation-center__label">
-        <ul>
-          <li class="consultation-center__label-list1">
-            <%= link_to search_consultations_path(list: 1, keyword: @keyword) do %>
-              <% if @list == 1  || @list == nil %>
-                <p class="border border-dark"><i class="fas fa-praying-hands"></i>新着相談</p>
-              <% else %>
-                <p class="border border-light"><i class="fas fa-praying-hands"></i>新着相談</p>
+        <% if @list == 0 %>
+          <div class="mine">
+            <h3><i class="fas fa-user"></i> My 相談</h3>
+            <div class="select-list">
+              <%= form_with url: consultations_path, method: :get, local: true do |f| %>
+                <%= f.select :sort, [["新しい順", "new"], ["古い順", "old"], ["閲覧数が多い順", "look"], ["役に立った！が多い順", "helpfulness"]], selected: params[:sort] %>
+                <%= hidden_field_tag :user_id, current_user.id %>
               <% end %>
-            <% end %>
-          </li>
-          <li class="consultation-center__label-list2">
-            <%= link_to search_consultations_path(list: 2, keyword: @keyword) do %>
-              <% if @list == 2 %>
-                <p class="border border-dark"><i class="far fa-laugh"></i>閲覧数</p>
-              <% else %>
-                <p class="border border-light"><i class="far fa-laugh"></i>閲覧数</p>
+            </div>
+          </div>
+        <% else %>
+          <ul>
+            <li class="consultation-center__label-list1">
+              <%= link_to consultations_path(list: 1, genre: @genre) do %>
+                <% if @list == 1  || @list == nil %>
+                  <p class="border border-secondary bg-white"><i class="fas fa-praying-hands"></i>新着相談</p>
+                <% else %>
+                  <p class="border"><i class="fas fa-praying-hands"></i>新着相談</p>
+                <% end %>
               <% end %>
-            <% end %>
-          </li>
-          <li class="consultation-center__label-list3">
-            <%= link_to search_consultations_path(list: 3, keyword: @keyword) do %>
-              <% if @list == 3 %>
-                <p class="border border-dark"><i class="far fa-thumbs-up"></i>役立った！</p>
-              <% else %>
-                <p class="border border-light"><i class="far fa-thumbs-up"></i>役立った！</p>
+            </li>
+            <li class="consultation-center__label-list2">
+              <%= link_to consultations_path(list: 2, genre: @genre) do %>
+                <% if @list == 2 %>
+                  <p class="border border-secondary bg-white"><i class="far fa-laugh"></i>閲覧数</p>
+                <% else %>
+                  <p class="border"><i class="far fa-laugh"></i>閲覧数</p>
+                <% end %>
               <% end %>
-            <% end %>
-          </li>
-        </ul>
+            </li>
+            <li class="consultation-center__label-list3">
+              <%= link_to consultations_path(list: 3, genre: @genre) do %>
+                <% if @list == 3 %>
+                  <p class="border border-secondary bg-white"><i class="far fa-thumbs-up"></i>役立った！</p>
+                <% else %>
+                  <p class="border"><i class="far fa-thumbs-up"></i>役立った！</p>
+                <% end %>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
       </div>
       <div class="consultation-center__list">
         <ul>
@@ -107,12 +156,31 @@
           <% end %>
         </ul>
       </div>
-      <div class="consultation-center__page"><%= paginate @consultations %></div>
+      <div class="consultation-center__page">
+        <%= paginate @consultations %>
+      </div>
     </div>
     <div class="consultation-right">
       <div class="ranking">
         <div class="title">
           <h4>Contribute Rank</h4>
+        </div>
+        <div class="period">
+          <ul>
+            <% if @period == "week" || @period == nil %>
+              <li>週間</li>
+              <li class="border border-secondary bg-white"><%= link_to "月間", consultations_path(period: "manth") %></li>
+              <li class="border border-secondary bg-white"><%= link_to "全て", consultations_path(period: "all") %></li>
+            <% elsif @period == "manth" %>
+              <li class="border border-secondary bg-white"><%= link_to "週間", consultations_path(period: "week") %></li>
+              <li>月間</li>
+              <li class="border border-secondary bg-white"><%= link_to "全て", consultations_path(period: "all") %></li>
+            <% elsif @period == "all" %>
+              <li class="border border-secondary bg-white"><%= link_to "週間", consultations_path(period: "week") %></li>
+              <li class="border border-secondary bg-white"><%= link_to "月間", consultations_path(period: "manth") %></li>
+              <li>全て</li>
+            <% end %>
+          </ul>
         </div>
         <ul class="list">
           <% @ranks.each.with_index(1) do |rank, i| %>
@@ -130,7 +198,13 @@
               </div>
               <div clss="count">
                 <i class="fas fa-thumbs-up"></i>
-                <%= Helpfulness.where(consultation_answer_id: rank.consultation_answer_ids).count %>
+                <% if @period == "week" || @period == nil %>
+                  <%= Helpfulness.where(consultation_answer_id: rank.consultation_answer_ids, created_at: Time.current.all_week).count %>
+                <% elsif @period == "manth" %>
+                  <%= Helpfulness.where(consultation_answer_id: rank.consultation_answer_ids, created_at: Time.current.all_month).count %>
+                <% elsif @period == "all" %>
+                  <%= Helpfulness.where(consultation_answer_id: rank.consultation_answer_ids).count %>
+                <% end %>
               </div>
             </li>
           <% end %>

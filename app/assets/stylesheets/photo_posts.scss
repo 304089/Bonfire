@@ -99,7 +99,7 @@
 .index-container {
     width: 90%;
     margin: 0 auto;
-    padding: 50px 0 20px 0;
+    padding: 50px 0 600px 0;
     min-height: 500px;
 
     &__block {
@@ -511,10 +511,9 @@
 /******************************************editページ***********************:*/
 .photo_post-destory {
     font-size: 18px;
-    float: right;
     position: relative;
-    right: 430px;
-    top: 40px;
+    left: 830px;
+    bottom: 40px;
 }
 
 .edit-select {
