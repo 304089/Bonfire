@@ -37,6 +37,7 @@ class PhotoPostsController < ApplicationController
         if @photo_post.update(photo_post_params)  #**********編集された内容だけ更新
           redirect_to preview_photo_post_path(@photo_post) #*****プレビュー画面へ
         else
+          @user = current_user
           render "edit"
         end
       else                                #********下書き・プレビューから本投稿されたら
@@ -50,6 +51,7 @@ class PhotoPostsController < ApplicationController
         if @photo_post.update(photo_post_params)
           redirect_to preview_photo_post_path(@photo_post)  #*********プレビュー画面を経由させる
         else
+          @user = current_user
           render "edit"
         end
       else

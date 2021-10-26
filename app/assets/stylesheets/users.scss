@@ -45,25 +45,20 @@
     }
 
     .edit-input4 {
-      display: block;
       background-color: #009900;
       height: 30px;
       color: white;
-      border: 1px solid  #009900!important;
+      width: 160px;
     }
 
     .edit-input4:hover {
-      background-color: white;
-      color: #009900;
-      border: 1px solid  #009900!important;
+      hover: 0.8;
     }
 
     .leave-btn {
-        position: relative;
-        left: 100px;
-        top: 15px;
-        font-size: 14px;
-
+      position: relative;
+      top: 50px;
+      left: 80px;
     }
 }
 
