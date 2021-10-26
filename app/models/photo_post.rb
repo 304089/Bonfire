@@ -1,4 +1,11 @@
 class PhotoPost < ApplicationRecord
+
+  with_options presence: true do
+    validates :genre
+    validates :introduction, length: { in: 1..1000 }
+    validates :post_images_images
+  end
+
   acts_as_taggable  #タグ
   belongs_to :user
   has_many :photo_post_comments, dependent: :destroy

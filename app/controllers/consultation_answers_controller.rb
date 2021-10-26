@@ -8,8 +8,11 @@ class ConsultationAnswersController < ApplicationController
     @consultation_answer = ConsultationAnswer.new(consultation_answer_params)
     @consultation_answer.user_id = current_user.id
     @consultation_answer.consultation_id = @consultation.id
-    @consultation_answer.save
-    render :answers
+    if @consultation_answer.save
+      render :answers
+    else
+      render :answers
+    end
   end
 
   def destroy

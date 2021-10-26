@@ -37,6 +37,10 @@
         height: 70px;
     }
 
+    .any {
+        display: inline-block;
+    }
+
 
 
 
@@ -55,9 +59,7 @@
         }
 
         p:hover {
-            background-color: #EEEEEE;
-            color: gray;
-            border: 1px solid white;
+            opacity: 0.6;
         }
 
         i {

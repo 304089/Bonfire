@@ -6,7 +6,7 @@
           <%= attachment_image_tag photo_post_comment.user, :profile_image, size: "20x20", fallback: "no_image.jpg", class: "rounded-circle" %>
             <%= photo_post_comment.user.name %>:
           <% end %>
-        <% if current_user.admin == true || current_user == photo_post_comment.user %>   <%#.  管理人は全て削除可能　%>
+        <% if user_signed_in? && current_user.admin? || current_user == photo_post_comment.user %>   <%#.  管理人は全て削除可能　%>
           <%= link_to photo_post_photo_post_comment_path(photo_post, photo_post_comment), method: :delete, remote: true, class: "comment", data: {confirm: "本当に削除しますか？"} do %>
             <%= photo_post_comment.comment %>
           <% end %>
@@ -25,7 +25,7 @@
         <%= attachment_image_tag photo_post_comment.user, :profile_image, size: "20x20", fallback: "no_image.jpg", class: "rounded-circle" %>
           <%= photo_post_comment.user.name %>:
         <% end %>
-      <% if current_user.admin == true || current_user == photo_post_comment.user %>   <%#.  管理人は全て削除可能　%>
+      <% if user_signed_in? && current_user.admin? || current_user == photo_post_comment.user %>   <%#.  管理人は全て削除可能　%>
         <%= link_to photo_post_photo_post_comment_path(photo_post, photo_post_comment), method: :delete, remote: true, class: "comment", data: {confirm: "本当に削除しますか？"} do %>
           <%= photo_post_comment.comment %>
         <% end %>

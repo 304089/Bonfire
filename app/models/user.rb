@@ -20,11 +20,6 @@ class User < ApplicationRecord
 
   enum status: {"会員": 0, "退会": 1, "垢BAN": 2, "管理者": 99}
 
-
-  def admin?
-    self.status == "管理者"
-  end
-
   def self.search(keyword)
     if keyword == "" #未入力の場合は全件表示
       User.where(admin: false)
@@ -32,6 +27,5 @@ class User < ApplicationRecord
       User.where(['name like?', "%#{keyword}%"]).where(admin: false)
     end
   end
-
 
 end

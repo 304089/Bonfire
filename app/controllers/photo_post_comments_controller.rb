@@ -1,5 +1,5 @@
 class PhotoPostCommentsController < ApplicationController
-  before_action :active_user, except:[:index]
+  before_action :active_user, except:[:new, :index]
 
 
   def new
@@ -20,8 +20,11 @@ class PhotoPostCommentsController < ApplicationController
     @photo_post_comment = PhotoPostComment.new(photo_post_comment_params)
     @photo_post_comment.user_id = current_user.id
     @photo_post_comment.photo_post_id = @photo_post.id
-    @photo_post_comment.save
-    render :comments
+    if @photo_post_comment.save
+      render :comments
+    else
+      render :comments
+    end
   end
 
   def destroy

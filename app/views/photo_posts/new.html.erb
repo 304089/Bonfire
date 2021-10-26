@@ -2,16 +2,17 @@
   <%= render "users/profile", user: @user %>
   <div class="posts">
     <h2>写真投稿フォーム  <i class="fas fa-file-upload"></i></h2>
+    <%= render "layouts/error_messages", model: @photo_post %>
     <div class="form-area">
       <%= form_with model: @photo_post, local: true do |f| %>
         <%= f.select :genre,options_for_select(PhotoPost.genres.keys), include_blank: "カテゴリーを選択して下さい", class: "inp input1" %>
         <%= f.label :profile_image,"投稿画像（複数可）", class: "label" %>
         <%= f.attachment_field :post_images_images, multiple: true, class: "inp input2" %>
-        <%= f.text_area :introduction, placeholder: " ---------------説明文を入力してください------------ -----改行も反映されます" , class: "inp input3"%>
+        <%= f.text_area :introduction, placeholder: " 説明文を入力してください\n 改行も反映されます" , class: "inp input3"%>
         <%= f.label :place, "(任意) 場所", class: "label" %>
         <%= f.text_field :place, placeholder: "(例)　○○キャンプ場 , (例)ショップ△△店", class: "inp input4" %>
         <%= f.label :tag_list, "(任意) タグ", class: "label" %>
-        <%= f.text_area :tag_list, value: @photo_post.tag_list.join(','), id: 'tags', placeholder: "--半角カンマ , で区切ってください----------------（例）キャンプ大好き,ソロキャンプ,キャンプ仲間募集", class: "inp input5"  %>
+        <%= f.text_area :tag_list, value: @photo_post.tag_list.join(','), id: 'tags', placeholder: " 半角カンマ , で区切ってください\n（例）ソロキャンプ,キャンプ仲間募集", class: "inp input5"  %>
         <%= f.button :type => "submit", style: 'border-style: none;', class: "inp input6" do %>
           <p>プレビューへ進む <i class="fas fa-angle-double-right"></i></p>
         <% end %>

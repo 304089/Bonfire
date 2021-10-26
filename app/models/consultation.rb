@@ -1,4 +1,11 @@
 class Consultation < ApplicationRecord
+
+  with_options presence: true do
+    validates :genre
+    validates :title
+    validates :content, length: { in: 1..1000 }
+  end
+
   attachment :consultation_image
   has_many :consultation_answers, dependent: :destroy
   has_many :helpfulnesses, through: :consultation_answers, dependent: :destroy

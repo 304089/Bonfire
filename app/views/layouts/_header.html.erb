@@ -7,13 +7,21 @@
       <li class="item4"><%= link_to do %>Photo <i class="fas fa-camera"></i><% end %>
         <ul class="menuSub">
           <li><%= link_to "写真を見る", photo_posts_path %></li>
-          <li><%= link_to "写真を投稿する", new_photo_post_path %></li>
+          <% if current_user.status == "退会" || current_user.status == "垢BAN"  %>
+            <li><%= link_to "写真を投稿する", confirm_user_path(current_user) %></li>
+          <% else %>
+            <li><%= link_to "写真を投稿する", new_photo_post_path %></li>
+          <% end %>
         </ul>
       </li>
       <li class="item5"><%= link_to do %>Wisdom <i class="fas fa-praying-hands"></i><% end %>
         <ul class="menuSub">
           <li><%= link_to "相談を見る", consultations_path %></li>
-          <li><%= link_to "相談を投稿する", new_consultation_path %></li>
+          <% if current_user.status == "退会" || current_user.status == "垢BAN"  %>
+            <li><%= link_to "相談を投稿する", confirm_user_path(current_user) %></li>
+          <% else %>
+            <li><%= link_to "相談を投稿する", new_consultation_path %></li>
+          <% end %>
         </ul>
       </li>
     <% else %>
@@ -23,7 +31,7 @@
       </li>
     <% end %>
     <% if user_signed_in? %>
-      <% if current_user.admin? %>
+      <% if current_user.status == "管理者" %>
         <li class="item6">
           <%= link_to top_admin_users_path do %>
             MyPage <i class="fas fa-id-card"></i>

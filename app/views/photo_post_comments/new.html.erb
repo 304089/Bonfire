@@ -5,14 +5,14 @@
       <div id="photo_post_comment_index">
         <%= render "index", photo_post: @photo_post, photo_post_comments: @photo_post_comments %>
       </div>
-      <% if user_signed_in? %>
         <div id="photo_post_comment_form">
           <div class="title">
             <h3 class="index-title">ー コメント <i class="far fa-comments"></i> ー</h3>
           </div>
-          <%= render "form", photo_post: @photo_post, photo_post_comment: @photo_post_comment %>
+          <% if user_signed_in? && current_user.active_user? %>
+            <%= render "form", photo_post: @photo_post, photo_post_comment: @photo_post_comment %>
+          <% end %>
         </div>
-      <% end %>
     </div>
   </div>
 </div>

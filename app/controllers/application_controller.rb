@@ -23,8 +23,7 @@ class ApplicationController < ActionController::Base
   def active_user
     if user_signed_in?
       unless current_user.status == "管理者" || current_user.status == "会員"
-        reset_session
-        redirect_to new_user_session_path
+        redirect_to confirm_user_path(current_user)
       end
     else
       redirect_to root_path

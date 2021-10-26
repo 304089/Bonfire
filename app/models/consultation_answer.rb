@@ -1,4 +1,6 @@
 class ConsultationAnswer < ApplicationRecord
+  validates :answer, {presence: true}
+
   attachment :answer_image
   has_many :helpfulnesses, dependent: :destroy
   belongs_to :consultation

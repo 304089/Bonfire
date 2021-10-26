@@ -2,6 +2,7 @@
   <%= render "users/profile", user: @user %>
   <div class="posts">
     <h2>相談投稿フォーム<i class="far fa-paper-plane"></i></h2>
+    <%= render "layouts/error_messages", model: @consultation %>
     <div class="form-area">
       <%= form_with(model:[@consultation], local: true) do |f| %>
         <%= f.label :title, "タイトル", class: "label cons-label1" %>

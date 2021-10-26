@@ -20,6 +20,7 @@ class PhotoPostsController < ApplicationController
     if @photo_post.save
       redirect_to preview_photo_post_path(@photo_post)
     else
+      @user = current_user
       render "new"
     end
   end
@@ -127,11 +128,11 @@ class PhotoPostsController < ApplicationController
   def search
     if params[:tag]
       @photo_posts = PhotoPost.tagged_with(params[:tag]).where(preview: false).group(:id).order(id: "DESC").page(params[:page]).per(28)
-    else
+      @tag = params[:tag]
+    elsif params[:keyword]
       @photo_posts = PhotoPost.search(params[:keyword]).where(preview: false).group(:id).order(id: "DESC").page(params[:page]).per(28)
+      @keyword = params[:keyword]
     end
-    @keyword = params[:keyword]
-    @tag = params[:tag]
   end
 
   private

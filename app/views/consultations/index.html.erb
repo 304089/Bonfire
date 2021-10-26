@@ -108,51 +108,55 @@
       </div>
       <div class="consultation-center__list">
         <ul>
-          <% @consultations.each do |consultation| %>
-            <li>
-              <div class="consultation-center__list__left">
-                <% if consultation.genre == "キャンプ場" %>
-                  <div class="icon"><i class="fas fa-campground"></i></div>
-                  <div class="genre"><%= consultation.genre %></div>
-                <% elsif consultation.genre == "キャンプ道具" %>
-                  <div class="icon"><i class="fas fa-hammer"></i></div>
-                  <div class="genre"><%= consultation.genre %></div>
-                <% elsif consultation.genre == "キャンプ料理" %>
-                  <div class="icon"><i class="fas fa-utensils"></i></div>
-                  <div class="genre"><%= consultation.genre %></div>
-                <% elsif consultation.genre == "その他" %>
-                  <div class="icon"><i class="fas fa-infinity"></i></div>
-                  <div class="genre"><%= consultation.genre %></div>
-                <% end %>
-              </div>
-              <div class="consultation-center__list__right">
-                <%= link_to consultation_path(consultation) do %>
-                  <div class="title">&emsp;<%= consultation.title %></div>
-                <% end %>
-                <div class="body">
-                  <ul>
-                    <li class="answer"><p><i class="far fa-comment-dots"></i> <%= consultation.consultation_answers.count%></p></li>
-                    <li class="look"><p><i class="fas fa-eye"></i> <%= consultation.impressions_count %></p></li>
-                    <li class="good"><p><i class="fas fa-thumbs-up"></i> <%= consultation.helpfulnesses.count %></p></li>
-                    <% if consultation.anonymity == true %>
-                      <li class="user">
-                        <%= image_tag "no_image.jpeg", class: "user-icon rounded-circle" %>
-                        <p>匿名さん</p>
-                      </li>
-                    <% else %>
-                      <li class="user">
-                        <%= attachment_image_tag consultation.user, :profile_image, fallback: "no_image.jpg", class: "user-icon rounded-circle" %>
-                        <%= link_to user_path(consultation.user) do %>
-                          <%= consultation.user.name %>
-                        <% end %>
-                      </li>
-                    <% end %>
-                    </li>
-                    <li class="time"><%= consultation.set_date %></li>
-                  </ul>
+          <% if @consultations.size == 0 %>
+            <li><h4>相談はありません</h4></li>
+          <% else %>
+            <% @consultations.each do |consultation| %>
+              <li>
+                <div class="consultation-center__list__left">
+                  <% if consultation.genre == "キャンプ場" %>
+                    <div class="icon"><i class="fas fa-campground"></i></div>
+                    <div class="genre"><%= consultation.genre %></div>
+                  <% elsif consultation.genre == "キャンプ道具" %>
+                    <div class="icon"><i class="fas fa-hammer"></i></div>
+                    <div class="genre"><%= consultation.genre %></div>
+                  <% elsif consultation.genre == "キャンプ料理" %>
+                    <div class="icon"><i class="fas fa-utensils"></i></div>
+                    <div class="genre"><%= consultation.genre %></div>
+                  <% elsif consultation.genre == "その他" %>
+                    <div class="icon"><i class="fas fa-infinity"></i></div>
+                    <div class="genre"><%= consultation.genre %></div>
+                  <% end %>
                 </div>
-              </div>
-            </li>
+                <div class="consultation-center__list__right">
+                  <%= link_to consultation_path(consultation) do %>
+                    <div class="title">&emsp;<%= consultation.title %></div>
+                  <% end %>
+                  <div class="body">
+                    <ul>
+                      <li class="answer"><p><i class="far fa-comment-dots"></i> <%= consultation.consultation_answers.count%></p></li>
+                      <li class="look"><p><i class="fas fa-eye"></i> <%= consultation.impressions_count %></p></li>
+                      <li class="good"><p><i class="fas fa-thumbs-up"></i> <%= consultation.helpfulnesses.count %></p></li>
+                      <% if consultation.anonymity == true %>
+                        <li class="user">
+                          <%= image_tag "no_image.jpeg", class: "user-icon rounded-circle" %>
+                          <p>匿名さん</p>
+                        </li>
+                      <% else %>
+                        <li class="user">
+                          <%= attachment_image_tag consultation.user, :profile_image, fallback: "no_image.jpg", class: "user-icon rounded-circle" %>
+                          <%= link_to user_path(consultation.user) do %>
+                            <%= consultation.user.name %>
+                          <% end %>
+                        </li>
+                      <% end %>
+                      </li>
+                      <li class="time"><%= consultation.set_date %></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            <% end %>
           <% end %>
         </ul>
       </div>
