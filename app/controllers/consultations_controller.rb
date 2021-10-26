@@ -124,7 +124,7 @@ class ConsultationsController < ApplicationController
 
   def show
     @consultation = Consultation.find(params[:id])
-    impressionist(@consultation, nil, unique: [:user_id]) #動作確認しやすいためユーザーIDで判別
+    impressionist(@consultation, nil, unique: [:ip_address]) #IPアドレスでカウント（同投稿に一回のみ）
     @consultation_answer = ConsultationAnswer.new
     @consultation_answers = ConsultationAnswer.where(consultation_id: @consultation.id)
   end

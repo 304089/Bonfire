@@ -32,7 +32,7 @@
         <%= render "consultation_answers/index", consultation: @consultation, consultation_answers: @consultation_answers %>
       </div>
       <div class="form-area">
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.active_user? %>
           <%= render "consultation_answers/form", consultation: @consultation, consultation_answer: @consultation_answer %>
         <% end %>
       </div>
