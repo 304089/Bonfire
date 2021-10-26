@@ -43,7 +43,6 @@
   height: 70px;
   background: #b9966aa8;
   padding-bottom: 10px;
-
  }
 
 /***********************メイン**************************/
@@ -350,7 +349,6 @@ main {
       min-height: 490px;
       margin: 90px auto;
       text-align: center;
-      align-item: center;
       overflow: hidden;
 
       .logo {
@@ -395,6 +393,7 @@ main {
           transition: 0.2s;
           background-color: #0066FF;
           color: white;
+          box-shadow: 2px 2px 4px gray;
         }
 
         button:hover {
@@ -409,6 +408,9 @@ main {
 .sign-in {
   min-height: 400px;
 
+  button {
+    box-shadow: 2px 2px 4px gray;
+  }
 }
 
 
@@ -427,6 +429,7 @@ main {
     background: white;
     padding: 30px 40px;
     border: 1px solid silver;
+    box-shadow: 2px 2px 4px gray;
 
 
 

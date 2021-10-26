@@ -4,19 +4,19 @@
 
 /******************newページ*****************/
 .form-area {
-    margin: 30px auto;
+    margin: 20px auto;
     select {
         height: 30px;
-        width: 250px;
+        width: 350px;
         background-color: gray;
         color: white;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
 
     }
 
     .inp {
         display: block;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .label {
@@ -30,6 +30,7 @@
 
     .input4 {
         width: 400px;
+        margin-bottom: 25px;
     }
 
     .input5 {
@@ -37,34 +38,43 @@
         height: 70px;
     }
 
+    .many {
+        padding: 2px;
+        background: #28a745;
+        color: white;
+        font-size: 13px;
+    }
+
     .any {
-        display: inline-block;
+        padding: 2px;
+        background: orange;
+        color: white;
+        font-size: 13px;
     }
 
 
 
 
-    .input6 {
-        background-color: white;
-
-        p {
-            font-size: 15px;
-            height: 28px;
-            padding: 10px;
-            line-height: 30px;
-            background-color: #0066FF;
-            color: white;
-            border-radius: 5px;
-            transition: all 0.2s 0s ease;
-        }
-
-        p:hover {
-            opacity: 0.6;
-        }
+    button {
+        height: 40px;
+        padding: 2px 5px;
+        border-radius: 3px;
+        margin: 0 auto;
+        text-align: center;
+        background: #0779f5;
+        color: white;
+        transition: all 0.2s 0s ease;
+        box-shadow: 2px 2px 4px gray;
+        position: relative;
+        left: 80px;
 
         i {
             font-size: 20px;
         }
+    }
+
+    button:hover {
+        opacity: 0.6;
     }
 }
 
