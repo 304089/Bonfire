@@ -40,6 +40,9 @@ Rails.application.routes.draw do
       patch :leave
       patch :revival
     end
+    collection do
+      get :withdrawal
+    end
   end
 
   resources :photo_posts do

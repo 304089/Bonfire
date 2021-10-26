@@ -123,3 +123,81 @@
       visibility: visible;
   }
 }
+
+/***********************:confirmページ******************/
+.confirm-container {
+  width: 50%;
+  margin: 0 auto;
+  min-height: 600px;
+  p {
+    margin: 0;
+    font-size: 20px;
+    padding: 20px;
+  }
+
+  &__content {
+    padding-top: 100px;
+
+    &__button {
+      display: flex;
+      justify-content: center;
+
+      .enter {
+        background: silver;
+        padding: 10px;
+        margin-right: 30px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 4px gray;
+      }
+
+      .enter:hover {
+        opacity: 0.8;
+      }
+
+      .back {
+        background: orange;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 4px gray;
+      }
+
+      .back:hover {
+        opacity: 0.8;
+      }
+
+      .enter-1 {
+        background: orange;
+      }
+
+      .back-1 {
+        background: silver;
+      }
+    }
+  }
+}
+
+/**********************withdrawalページ*******************/
+.withdrawal-container {
+   width: 50%;
+  margin: 0 auto;
+  min-height: 600px;
+  p {
+    margin: 0;
+    font-size: 25px;
+    padding: 20px;
+  }
+
+  &__content {
+    padding-top: 100px;
+  }
+
+  &__button {
+    width: 16%;
+    margin: 0 auto;
+    background: silver;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px gray;
+
+  }
+}

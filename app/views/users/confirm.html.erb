@@ -1,16 +1,56 @@
-<% if current_user.status == "会員" %>
-  <%= link_to "退会する", leave_user_path(@user), method: :patch %>
-<% elsif current_user.status == "退会" %>
-  <p>
-    <%= @user.updated_at.strftime("%Y年 %m月 %d日") %>に退会しています。<br>
-    会員に戻りますか？
-  </p>
-  <%= link_to "会員に戻る", revival_user_path(@user), method: :patch %>
-  <%= link_to "やめる", root_path %>
-<% elsif current_user.status == "垢BAN" %>
-  <p>
-    あなたのアカウントは、<%= @user.updated_at.strftime("%Y年 %m月 %d日") %>に<br>
-    管理者より利用が停止されています。<br>
-    ご不明な点があればページ下部の「お問い合わせフォーム」からお問い合わせください。
-  </p>
-<% end %>
+<div class="confirm-container">
+  <div class="confirm-container__content">
+    <% if current_user.status == "会員" %>
+      <p class="text-center">退会すると下記のコンテンツの利用が制限されます。</p>
+      <p class="bg-white border">
+        ・マイページ機能<br>
+        ・【写真投稿】写真投稿、写真へのコメント、いいね、ブックマーク<br>
+        ・【相談投稿】相談投稿、My相談、相談への回答、役に立った！
+      </p>
+      <p class="text-center">退会しますか？</p>
+      <div class="confirm-container__content__button">
+        <%= link_to leave_user_path(@user), method: :patch do %>
+          <div class="enter">
+            退会する
+          </div>
+        <% end %>
+        <%= link_to user_path(@user), method: :patch do %>
+          <div class="back">
+            マイページに戻る
+          </div>
+        <% end %>
+      </div>
+    <% elsif current_user.status == "退会" %>
+      <h3 class="text-center"><i class="fas fa-info-circle"></i> ご確認</h3>
+      <p>
+        このメールアドレス及びパスワードのユーザーは<%= @user.updated_at.strftime("%Y年 %m月 %d日") %>に退会しています。<br>
+        会員に戻ると、下記のコンテンツが再度利用可能になります。<br>
+        <p class="bg-white border">
+        ・【マイページ】退会直前のプロフィール<br>
+        ・【写真投稿】写真投稿、写真へのコメント、いいね、ブックマーク<br>
+        ・【相談投稿】相談投稿、My相談、相談への回答、役に立った！
+        </p>
+        <p class="text-center">会員に戻りますか？</p>
+      </p>
+      <div class="confirm-container__content__button">
+        <%= link_to revival_user_path(@user), method: :patch do %>
+          <div class="enter enter-1">
+            会員に戻る
+          </div>
+        <% end %>
+        <%= link_to root_path do %>
+          <div class="back back-1">
+            やめる
+          </div>
+        <% end %>
+      </div>
+    <% elsif current_user.status == "垢BAN" %>
+      <h3 class="text-center"><i class="fas fa-exclamation-triangle text-danger"></i> Attention</h3>
+      <p>
+        あなたのアカウントは、何らかの理由により<%= @user.updated_at.strftime("%Y年 %m月 %d日") %>に<br>
+        管理者より利用が停止されています。<br>
+        ご不明な点があればページ下部の「お問い合わせフォーム」からお問い合わせください。
+      </p>
+    <% end %>
+  </div>
+</div>
