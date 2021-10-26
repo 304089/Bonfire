@@ -179,3 +179,29 @@
     font-weight: 600;
   }
 }
+
+/***************thanksページ******************/
+.thanks-container {
+   width: 50%;
+  margin: 0 auto;
+  min-height: 600px;
+  p {
+    margin: 0;
+    font-size: 25px;
+    padding: 20px;
+  }
+
+  &__content {
+    padding-top: 100px;
+  }
+
+  &__button {
+    width: 16%;
+    margin: 0 auto;
+    background: silver;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px gray;
+
+  }
+}

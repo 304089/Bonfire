@@ -1,13 +1,14 @@
-<div>
-  <div>
-    <h3>お問い合わせありがとうございましたとうございました</h3>
-    <p>確認次第ご回答させていただきますので、今しばらくお待ちください。</p>
+<div class="thanks-container">
+  <div class="thanks-container__content">
+    <p class="text-center">
+      お問い合わせありがとうございましたとうございました。<br>
+      確認,対応まで、今しばらくお待ちください。<br>
+      引き続き、当コンテンツの利用をお楽しみください。
+    </p>
   </div>
-  <div>
-    <div>
-      <%= link_to root_path do %>
-        <button type="button" class="btn btn-secondary">トップページに戻る</button>
-      <% end %>
+  <%= link_to root_path do %>
+    <div class="thanks-container__button">
+      トップページへ
     </div>
-  </div>
+  <% end %>
 </div>
