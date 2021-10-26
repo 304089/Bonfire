@@ -29,24 +29,31 @@
     font-size: 20px;
   }
 
-  .cons-inp6 p{
-    background-color: #FF6928;
-    border: 1px solid #FF6928;
-    color: white;
-    height: 40px;
-    line-height: 40px;
-    transition: all 0.2s 0s ease;
-    box-shadow: 2px 2px 4px gray;
-  }
+  button {
+        height: 40px;
+        padding: 2px 5px;
+        border-radius: 3px;
+        margin: 0 auto;
+        text-align: center;
+        background: #0779f5;
+        color: white;
+        transition: all 0.2s 0s ease;
+        box-shadow: 2px 2px 4px gray;
+        position: relative;
+        left: 80px;
+        top: 20px;
 
-  .cons-inp6:hover p{
-    opacity: 0.6;
-  }
+        i {
+            font-size: 20px;
+        }
+    }
 
-  .cons-inp6 {
-    height: 0;
-  }
+    button:hover {
+        opacity: 0.6;
+    }
 }
+
+
 
 /******************************indexページ*********************************/
 

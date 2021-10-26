@@ -5,17 +5,18 @@
     <%= render "layouts/error_messages", model: @consultation %>
     <div class="form-area">
       <%= form_with(model:[@consultation], local: true) do |f| %>
-        <%= f.label :title, "タイトル", class: "label cons-label1" %>
-        <%= f.text_field :title, placeholder: "(例)　○○のテントを持ってる方！！", class: "inp cons-inp1 edit-inp1" %>
-        <%= f.label :content, "内容", class: "label cons-label2" %>
-        <%= f.text_area :content, placeholder: "(例)　○○のテントの購入を検討していますが、店頭には置いていないため、サイズ感などの感想を教えていただきたいです！写真もあればとても助かります！", class: "inp cons-inp2" %>
+        <p class="m-0">タイトル</p>
+        <%= f.text_field :title, class: "inp cons-inp1 edit-inp1" %>
+        <p class="m-0">内容</p>
+        <%= f.text_area :content, placeholder: "改行もできます", class: "inp cons-inp2" %>
+        <p class="m-0">カテゴリー</p>
         <%= f.select :genre,options_for_select(Consultation.genres.keys), include_blank: "カテゴリーを選択して下さい", class: "inp cons-inp3" %>
-        <%= f.label :consultation_image,"(任意)画像添付", class: "label" %>
+        <p class="m-0">画像 <span class="any">任意</span></p>
         <%= f.attachment_field :consultation_image, class: "inp  cons-inp4" %>
         <%= f.label :anonymity, "匿名を希望する", class: "label cons-label3" %>
         <%= f.check_box :anonymity, class: "inp cons-inp5"  %>
-        <%= f.button :type => "submit", style: 'border-style: none;', class: "inp cons-inp6" do %>
-          <p>投稿する <i class="fas fa-angle-double-right"></i></p>
+        <%= f.button :type => "submit", style: 'border-style: none;' , class: "bg-warning" do %>
+          相談を投稿する <i class="fas fa-angle-double-right"></i>
         <% end %>
       <% end %>
     </div>
