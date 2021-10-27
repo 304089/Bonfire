@@ -88,29 +88,29 @@
         <% else %>
           <ul>
             <li class="consultation-center__label-list1">
-              <%= link_to consultations_path(list: 1, genre: @genre) do %>
+              <%= link_to search_consultations_path(list: 1, keyword: @keyword) do %>
                 <% if @list == 1  || @list == nil %>
                   <p class="border border-secondary bg-white"><i class="fas fa-praying-hands"></i>新着相談</p>
                 <% else %>
-                  <p class="border"><i class="fas fa-praying-hands"></i>新着相談</p>
+                  <p class="border text-white"><i class="fas fa-praying-hands"></i>新着相談</p>
                 <% end %>
               <% end %>
             </li>
             <li class="consultation-center__label-list2">
-              <%= link_to consultations_path(list: 2, genre: @genre) do %>
+              <%= link_to search_consultations_path(list: 2, keyword: @keyword) do %>
                 <% if @list == 2 %>
                   <p class="border border-secondary bg-white"><i class="far fa-laugh"></i>閲覧数</p>
                 <% else %>
-                  <p class="border"><i class="far fa-laugh"></i>閲覧数</p>
+                  <p class="border text-white"><i class="far fa-laugh"></i>閲覧数</p>
                 <% end %>
               <% end %>
             </li>
             <li class="consultation-center__label-list3">
-              <%= link_to consultations_path(list: 3, genre: @genre) do %>
+              <%= link_to search_consultations_path(list: 3, keyword: @keyword) do %>
                 <% if @list == 3 %>
                   <p class="border border-secondary bg-white"><i class="far fa-thumbs-up"></i>役立った！</p>
                 <% else %>
-                  <p class="border"><i class="far fa-thumbs-up"></i>役立った！</p>
+                  <p class="border text-white"><i class="far fa-thumbs-up"></i>役立った！</p>
                 <% end %>
               <% end %>
             </li>

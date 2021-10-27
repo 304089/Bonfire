@@ -35,7 +35,7 @@
       <%= form_with model: @photo_post,url: photo_post_path(@photo_post), method: :patch, local: true do |f| %>
         <%= f.hidden_field :preview, value: @preview %>
         <%= f.button :type => "submit", style: 'border-style: none;' do %>
-          <% if @photo_post.preview == true %>
+          <% if @photo_post.preview == true %> <%# 下書きかどうかでボタンの表示を変える%>
             <p class="text-white rounded">投稿する<i class="far fa-paper-plane"></i></p>
           <% else %>
             <p class="text-white rounded">更新する<i class="fas fa-upload"></i></p>

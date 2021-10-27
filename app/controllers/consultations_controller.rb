@@ -18,7 +18,7 @@ class ConsultationsController < ApplicationController
     end
   end
 
-  def index
+  def index #ジャンル絞り込みからソート可能
     if params[:genre] == "0"
       @genre = 0
       if params[:list] == "1"
@@ -107,6 +107,7 @@ class ConsultationsController < ApplicationController
       end
     end
 
+    #ページ右側のランキング
     if params[:period] == "week"
       @ranks = User.joins(consultation_answers: :helpfulnesses).where(helpfulnesses: {created_at: Time.current.all_week}).group(:id)
                    .order("count(helpfulnesses.id) DESC").limit(10)
@@ -129,21 +130,22 @@ class ConsultationsController < ApplicationController
     @consultation_answers = ConsultationAnswer.where(consultation_id: @consultation.id)
   end
 
-  def search
+  def search #キーワード検索からさらにソート可能
     if params[:keyword]
       if params[:list] == "1" || params[:list] == nil
         @consultations = Consultation.search(params[:keyword]).order(id: "DESC").page(params[:page]).per(15)
-        @list = 1
+        @keyword = params[:keyword]
       elsif params[:list] == "2"
         @consultations = Consultation.search(params[:keyword]).order(impressions_count: "DESC").page(params[:page]).per(15)
-        @list = 2
+        @keyword = params[:keyword]
       elsif params[:list] == "3"
         @consultations = Consultation.joins(consultation_answers: :helpfulnesses).search(params[:keyword]).group(:consultation_id)
                                      .order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
-        @list = 3
+        @keyword = params[:keyword]
       end
     end
 
+    #ページ右側のランキング
     if params[:period] == "week"
       @ranks = User.joins(consultation_answers: :helpfulnesses).where(helpfulnesses: {created_at: Time.current.all_week}).group(:id)
                    .order("count(helpfulnesses.id) DESC").limit(10)

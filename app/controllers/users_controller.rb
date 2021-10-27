@@ -31,25 +31,24 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  def confirm
+  def confirm #退会・垢BANユーザーがログイン時、事実確認するページ
     @user = User.find(params[:id])
   end
 
-  def leave
+  def leave #会員から退会
     @user = User.find(params[:id])
-    @user.update(status: 1)
-    reset_session
-    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
-    redirect_to withdrawal_users_path
+    @user.update(status: 1) #退会処理（論理削除）
+    reset_session           #ログアウトさせ
+    redirect_to withdrawal_users_path #ありがとページへ
   end
 
-  def revival
+  def revival #退会から復活
     @user = User.find(params[:id])
     @user.update(status: 0)
     redirect_to user_path(@user)
   end
 
-  def withdrawal
+  def withdrawal  #ありがとページへ
   end
 
   private

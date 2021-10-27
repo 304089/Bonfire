@@ -128,10 +128,10 @@ class PhotoPostsController < ApplicationController
   end
 
   def search
-    if params[:tag]
+    if params[:tag] #タグで検索されたら（タグをクリックしたら）
       @photo_posts = PhotoPost.tagged_with(params[:tag]).where(preview: false).group(:id).order(id: "DESC").page(params[:page]).per(28)
       @tag = params[:tag]
-    elsif params[:keyword]
+    elsif params[:keyword]  #ヘッダーの検索フォームで検索されたら
       @photo_posts = PhotoPost.search(params[:keyword]).where(preview: false).group(:id).order(id: "DESC").page(params[:page]).per(28)
       @keyword = params[:keyword]
     end

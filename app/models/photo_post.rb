@@ -23,15 +23,15 @@ class PhotoPost < ApplicationRecord
       PhotoPost.all
     else
       #説明文、場所名、タグ名で部分一致検索
-      PhotoPost.where(['introduction like? OR place like?', "%#{keyword}%","%#{keyword}%"])
+      PhotoPost.joins(:tags).where(['introduction like? OR place like? OR tags.name like?', "%#{keyword}%","%#{keyword}%","%#{keyword}%"])
     end
   end
 
-  def favorited_by?(user)
+  def favorited_by?(user)   #いいね済みかどうか
     favorites.where(user_id: user.id).exists?
   end
 
-  def bookmarked_by?(user)
+  def bookmarked_by?(user) #ブックマーク済みかどうか
     bookmarks.where(user_id: user.id).exists?
   end
 end

@@ -13,7 +13,7 @@ class InfomationsController < ApplicationController
     end
   end
 
-  def thanks
+  def thanks  #ありがとページ
   end
 
   def index
@@ -58,7 +58,7 @@ class InfomationsController < ApplicationController
     @infomation= Infomation.find(params[:id])
   end
 
-  def update
+  def update  #管理人が既読、未読のステータス切り替える時
     infomation= Infomation.find(params[:id])
     if params[:status] == "1"
       infomation.update(status: 1)

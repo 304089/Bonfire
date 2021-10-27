@@ -15,10 +15,10 @@
         <%= f.text_area :introduction, class: "inp input3"%>
         <p class="m-0">カテゴリー</p>
         <%= f.select :genre,options_for_select(PhotoPost.genres.keys), class: "inp input1" %>
-        <p class="m-0">場所 <span class="any">任意</span></p>
-        <%= f.text_field :place, placeholder: "(例)　○○キャンプ場 , (例)ショップ△△店", class: "inp input4" %>
         <p class="m-0">タグ <span class="any">任意</span></p>
         <%= f.text_area :tag_list, value: @photo_post.tag_list.join(','), id: 'tags', placeholder: " 半角カンマ , で区切ってください\n（例）ソロキャンプ,キャンプ仲間募集", class: "inp input5"  %>
+        <p class="m-0">場所 <span class="any">任意</span></p>
+        <%= f.text_field :place, placeholder: "(例)　○○キャンプ場 , (例)ショップ△△店", class: "inp input4" %>
         <%= f.button :type => "submit", style: 'border-style: none;' do %>
           <% if @photo_post.preview == true %>
             プレビューへ進む <i class="fas fa-angle-double-right"></i>
