@@ -8,7 +8,7 @@
         <p class="m-0">タイトル</p>
         <%= f.text_field :title, class: "inp cons-inp1 edit-inp1" %>
         <p class="m-0">内容</p>
-        <%= f.text_area :content, placeholder: "改行もできます", class: "inp cons-inp2" %>
+        <%= f.text_area :content, placeholder: "改行も反映されます", class: "inp cons-inp2" %>
         <p class="m-0">カテゴリー</p>
         <%= f.select :genre,options_for_select(Consultation.genres.keys), include_blank: "カテゴリーを選択して下さい", class: "inp cons-inp3" %>
         <p class="m-0">画像 <span class="any">任意</span></p>
@@ -16,7 +16,7 @@
         <%= f.label :anonymity, "匿名を希望する", class: "label cons-label3" %>
         <%= f.check_box :anonymity, class: "inp cons-inp5"  %>
         <%= f.button :type => "submit", style: 'border-style: none;' , class: "bg-warning" do %>
-          相談を投稿する <i class="fas fa-angle-double-right"></i>
+          相談を投稿する <i class="far fa-paper-plane"></i>
         <% end %>
       <% end %>
     </div>

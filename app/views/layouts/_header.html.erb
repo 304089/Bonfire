@@ -14,7 +14,7 @@
           <% end %>
         </ul>
       </li>
-      <li class="item5"><%= link_to do %>Wisdom <i class="fas fa-praying-hands"></i><% end %>
+      <li class="item5"><%= link_to do %> Consult  <i class="fas fa-comments"></i><% end %>
         <ul class="menuSub">
           <li><%= link_to "相談を見る", consultations_path %></li>
           <% unless current_user.active_user?  %>
@@ -27,7 +27,7 @@
     <% else %>
       <li class="item4"><%= link_to photo_posts_path do %>Photo <i class="fas fa-camera"></i><% end %>
       </li>
-      <li class="item5"><%= link_to consultations_path do %>Wisdom <i class="fas fa-praying-hands"></i><% end %>
+      <li class="item5"><%= link_to consultations_path do %>Consult <i class="fas fa-comments"></i><% end %>
       </li>
     <% end %>
     <% if user_signed_in? %>

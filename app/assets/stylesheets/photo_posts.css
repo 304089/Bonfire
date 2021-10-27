@@ -1,0 +1,346 @@
+@charset "UTF-8";
+/******************newページ*****************/
+.form-area {
+  margin: 20px auto; }
+  .form-area select {
+    height: 30px;
+    width: 350px;
+    background-color: gray;
+    color: white;
+    margin-bottom: 15px; }
+  .form-area .inp {
+    display: block;
+    margin-bottom: 10px; }
+  .form-area .label {
+    margin-bottom: 0; }
+  .form-area .input3 {
+    width: 400px;
+    height: 200px; }
+  .form-area .input4 {
+    width: 400px;
+    margin-bottom: 25px; }
+  .form-area .input5 {
+    width: 400px;
+    height: 70px; }
+  .form-area .many {
+    padding: 2px;
+    background: #28a745;
+    color: white;
+    font-size: 13px; }
+  .form-area .any {
+    padding: 2px;
+    background: orange;
+    color: white;
+    font-size: 13px; }
+  .form-area button {
+    height: 40px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin: 0 auto;
+    text-align: center;
+    background: #0779f5;
+    color: white;
+    transition: all 0.2s 0s ease;
+    box-shadow: 2px 2px 4px gray;
+    position: relative;
+    left: 80px; }
+    .form-area button i {
+      font-size: 20px; }
+  .form-area button:hover {
+    opacity: 0.6; }
+
+/****************indexページ***************/
+.select-container {
+  text-align: center;
+  padding-top: 30px; }
+  .select-container select {
+    height: 30px;
+    border-radius: 5px;
+    margin-right: 5px;
+    box-shadow: 2px 2px 2px; }
+  .select-container button {
+    height: 31px;
+    background: gray;
+    color: white;
+    width: 80px;
+    border-radius: 5px;
+    font-size: 12px;
+    box-shadow: 2px 2px 2px gray;
+    position: relative;
+    bottom: 2px; }
+  .select-container button:hover {
+    background: silver; }
+
+.index-container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 30px 0 600px 0;
+  min-height: 500px; }
+  .index-container__block {
+    min-height: 500px; }
+    .index-container__block .contents {
+      display: inline-block;
+      width: 250px;
+      height: 250px;
+      margin-left: 4px;
+      margin-right: 2px; }
+      .index-container__block .contents .photo__background {
+        width: 250px;
+        height: 250px; }
+        .index-container__block .contents .photo__background__image {
+          font-size: 50px;
+          position: relative;
+          top: 5px; }
+      .index-container__block .contents .fa-clone {
+        position: relative;
+        left: 50px; }
+    .index-container__block .contents:nth-child(14n + 1) {
+      width: 513px;
+      height: 500px;
+      float: left !important; }
+      .index-container__block .contents:nth-child(14n + 1) img {
+        width: 510px;
+        height: 490px; }
+      .index-container__block .contents:nth-child(14n + 1) .photo__background {
+        width: 510px;
+        height: 490px; }
+        .index-container__block .contents:nth-child(14n + 1) .photo__background__image {
+          font-size: 50px;
+          position: relative;
+          top: 130px; }
+      .index-container__block .contents:nth-child(14n + 1) .fa-clone {
+        font-size: 20px;
+        position: relative;
+        left: 305px;
+        top: 8px; }
+    .index-container__block .contents:nth-child(14n + 8) {
+      width: 500px;
+      height: 500px;
+      float: right;
+      position: relative;
+      right: 10px; }
+      .index-container__block .contents:nth-child(14n + 8) img {
+        width: 510px;
+        height: 490px; }
+      .index-container__block .contents:nth-child(14n + 8) .photo__background {
+        width: 510px;
+        height: 490px; }
+        .index-container__block .contents:nth-child(14n + 8) .photo__background__image {
+          font-size: 50px;
+          position: relative;
+          top: 130px; }
+      .index-container__block .contents:nth-child(14n + 8) .fa-clone {
+        position: relative;
+        left: 300px; }
+
+/***********showページ**************/
+/*画像複数の場合*/
+.slider {
+  display: inline-block;
+  margin: 0 auto;
+  width: 524px; }
+  .slider:hover .slick-next {
+    right: 20px;
+    z-index: 100; }
+  .slider:hover .slick-prev {
+    left: 10px;
+    z-index: 100; }
+  .slider:hover .slick-prev::before, .slider:hover .slick-next::before {
+    font-size: 30px; }
+
+/*画像１枚の場合*/
+.slider__solo {
+  display: inline-block;
+  margin: 0 auto;
+  padding-bottom: 30px; }
+
+.photo_post-show {
+  background: Menu; }
+
+.photo_post-container {
+  display: flex;
+  width: 65%;
+  height: 600px;
+  /************写真外枠****************/
+  margin: 0  auto;
+  background: Menu;
+  gap: 0 10px;
+  padding: 80px 0; }
+  .photo_post-container .photo-area {
+    width: 60%;
+    padding: 8px 5px 20px 5px;
+    border: 1px solid silver;
+    background: white;
+    border-radius: 5px; }
+    .photo_post-container .photo-area .photo-place {
+      margin-bottom: 5px;
+      font-size: 16px;
+      padding: 0 20px;
+      overflow-y: scroll; }
+      .photo_post-container .photo-area .photo-place img {
+        width: 524px; }
+    .photo_post-container .photo-area__under {
+      display: flex; }
+      .photo_post-container .photo-area__under #photo_post_favorite, .photo_post-container .photo-area__under #photo_post_bookmark, .photo_post-container .photo-area__under #photo_post_comment, .photo_post-container .photo-area__under .photo_post-edit {
+        width: 60px;
+        font-size: 30px;
+        text-align: center;
+        position: relative;
+        bottom: 20px;
+        left: 20px; }
+      .photo_post-container .photo-area__under .favorite-count {
+        font-size: 20px;
+        position: relative;
+        bottom: 20px; }
+      .photo_post-container .photo-area__under .post-day {
+        font-size: 18px;
+        width: 200px;
+        margin-left: auto;
+        position: relative;
+        left: 75px;
+        top: 20px; }
+  .photo_post-container .explanation-area {
+    width: 40%;
+    padding: 20px;
+    border: 1px solid silver;
+    background: white;
+    border-radius: 5px;
+    z-index: 10; }
+    .photo_post-container .explanation-area .user-name a {
+      font-size: 20px; }
+    .photo_post-container .explanation-area .content {
+      word-wrap: break-word; }
+    .photo_post-container .explanation-area #photo_post_comment_index {
+      padding-bottom: 80px; }
+      .photo_post-container .explanation-area #photo_post_comment_index .comment-body {
+        margin: 5px 0; }
+        .photo_post-container .explanation-area #photo_post_comment_index .comment-body .comment {
+          position: relative;
+          left: 20px; }
+
+/************************************previewページ************************************************************/
+.preview-title, .preview-text {
+  text-align: center; }
+
+.preview-text {
+  padding-top: 20px; }
+  .preview-text i {
+    color: red; }
+
+.photo_post-container-preview {
+  display: flex;
+  width: 70%;
+  height: 580px;
+  /************写真外枠****************/
+  margin: 0 auto 10px auto;
+  gap: 0 10px; }
+  .photo_post-container-preview .slick-slider .slick-list {
+    height: 470px !important;
+    /*************画像サイズ調整*****************/ }
+  .photo_post-container-preview .photo-area {
+    width: 536px;
+    padding: 8px 5px 20px 5px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    background: white; }
+    .photo_post-container-preview .photo-area .photo-place {
+      margin-bottom: 5px;
+      font-size: 13px;
+      padding: 0 20px;
+      overflow-y: scroll; }
+      .photo_post-container-preview .photo-area .photo-place p {
+        box-sizing: content-box; }
+    .photo_post-container-preview .photo-area__under {
+      display: flex; }
+      .photo_post-container-preview .photo-area__under #photo_post_favorite, .photo_post-container-preview .photo-area__under #photo_post_bookmark, .photo_post-container-preview .photo-area__under #photo_post_comment {
+        width: 60px;
+        font-size: 25px;
+        text-align: center;
+        position: relative;
+        bottom: 20px;
+        left: 20px; }
+      .photo_post-container-preview .photo-area__under .post-day {
+        font-size: 15px;
+        width: 200px;
+        margin-left: auto;
+        position: relative;
+        left: 70px;
+        top: 10px; }
+  .photo_post-container-preview .explanation-area {
+    width: 35%;
+    padding: 25px 20px;
+    height: 530px;
+    overflow-y: scroll;
+    background: white;
+    border: 1px solid silver;
+    border-radius: 5px; }
+    .photo_post-container-preview .explanation-area .user-name a {
+      font-size: 20px; }
+    .photo_post-container-preview .explanation-area .content {
+      word-wrap: break-word; }
+    .photo_post-container-preview .explanation-area #photo_post_comment_index {
+      padding-bottom: 80px; }
+      .photo_post-container-preview .explanation-area #photo_post_comment_index .comment-body {
+        margin: 5px 0; }
+        .photo_post-container-preview .explanation-area #photo_post_comment_index .comment-body .comment {
+          position: relative;
+          left: 20px; }
+
+.button-area {
+  margin: 0 auto;
+  background: Menu;
+  text-align: center; }
+  .button-area .btn1 button p {
+    width: 330px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 25px;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+    background-color: orange;
+    box-shadow: 2px 2px 4px gray; }
+  .button-area .btn1 button p:hover {
+    opacity: 0.8; }
+  .button-area .btn2 {
+    margin-top: 10px; }
+    .button-area .btn2 p {
+      text-align: center;
+      display: inline-block;
+      width: 160px;
+      height: 30px;
+      line-height: 30px;
+      margin-right: 3px;
+      letter-spacing: 2px;
+      box-shadow: 2px 2px 4px gray;
+      border-radius: 5px; }
+    .button-area .btn2 p:hover {
+      opacity: 0.8; }
+
+/*********下書きの場合**/
+.draft-title {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  top: 20px; }
+
+/******************************************editページ***********************:*/
+.photo_post-destory {
+  font-size: 18px;
+  position: relative;
+  left: 820px;
+  bottom: 40px; }
+
+.edit-select {
+  margin-top: -30px; }
+
+.input6 p {
+  margin-bottom: 0 !important; }
+
+/**************************:*******:検索結果******************************/
+.result {
+  font-size: 25px;
+  position: relative;
+  left: 80px;
+  padding-top: 50px; }
+
+/*# sourceMappingURL=photo_posts.css.map */

@@ -138,7 +138,7 @@ main {
      margin: 0 auto;
      padding: 0 35px 0 15px;
      height: 30px;
-     border-radius: 30px;
+     border-radius: 5px;
      outline: none;
      border: 1px solid gray;
      font-size: 15px;
@@ -467,6 +467,7 @@ main {
 
         .photo,.txt {
           font-size: 23px;
+          box-shadow: 2px 2px 4px gray;
         }
 
         .photo {
@@ -512,6 +513,7 @@ main {
       padding: 20px;
       position: relative;
       right: 20px;
+      box-shadow: 2px 2px 4px gray;
 
       &__header {
         display: flex;
@@ -582,6 +584,7 @@ main {
       padding: 20px;
       position: relative;
       right: 20px;
+      box-shadow: 2px 2px 4px gray;
 
       &__header {
         display: flex;

@@ -2,7 +2,7 @@
   <% unless @keyword == nil %>
     <i class="fas fa-search"></i> <%= "' #{@keyword} ' の検索結果 - #{@photo_posts.ids.count}件" %>
   <% else %>
-    <i class="fas fa-search"></i> <%= "' #{@tag} ' の検索結果 - #{@photo_posts.ids.count}件" %>
+    <i class="fas fa-search"></i> <%= "' #{@tag} ' のタグ - #{@photo_posts.ids.count}件" %>
   <% end %>
 </div>
 <div class="index-container">

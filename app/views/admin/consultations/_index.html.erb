@@ -1,6 +1,6 @@
 <div class="consultation-index-container">
   <div class="consultation-index-container__header">
-    <h2><i class="fas fa-praying-hands"></i>相談一覧</h2>
+    <h2><i class="fas fa-comments"></i>相談一覧</h2>
     <div class="select">
       <%= form_with url: admin_consultations_path, method: :get, local: true do |f| %>
         <%= f.select :sort, [["投稿日(新しい)", "new"], ["投稿日(古い)", "old"], ["閲覧数", "look"], ["コメント数", "comment"], ["役に立った！数", "helpfulness"]],

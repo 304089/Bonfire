@@ -14,7 +14,7 @@
           <%= pie_chart PhotoPost.group(:genre).count %>
         </div>
         <div class="post-graph__consultation">
-          <h2><i class="fas fa-praying-hands"></i> 相談投稿割合</h2>
+          <h2><i class="fas fa-comments"></i> 相談投稿割合</h2>
           <%= pie_chart Consultation.group(:genre).count %>
         </div>
       </div>
