@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #プロフィール右側部分
     if params[:choose] == "mine" || params[:choose] == nil   #My Photo押すか、マイページに飛んできた時
       @title = "mine" #一覧のタイトル用
       if params[:sort] == "new" || params[:sort] == nil                                     #新しい順（デフォルトも）

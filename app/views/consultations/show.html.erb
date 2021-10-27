@@ -3,7 +3,7 @@
     <div class="consultation-area">
       <div class="consultation-area__content">
         <% if @consultation.anonymity == true %>
-          <h6><%= image_tag "no_image.jpeg",size: "30x30", class: "user-icon rounded-circle" %>匿名さんからの相談</h4>
+          <p><%= image_tag "no_image.jpeg",size: "30x30", class: "user-icon rounded-circle" %>匿名さんからの相談</p>
         <% else %>
           <p>
             <%= attachment_image_tag @consultation.user, :profile_image, size: "30x30", fallback: "no_image.jpg", class: "user-icon rounded-circle" %>

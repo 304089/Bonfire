@@ -1,19 +1,25 @@
 <div class="profile-container">
-  <%= render "profile", user: @user %>
-  <div class="posts">
-    <% if @title == "mine" %>
-        <h2 class="posts-title">My Photo  <i class="fas fa-camera"></i></h2>
-      <div class="select">
-        <%= form_with url: user_path(@user), method: :get, local: true do |f| %>
-          <%= f.select :sort, [["新しい順", "new"], ["古い順", "old"], ["いいねが多い順", "favorite"]], selected: params[:sort] %>
-        <% end %>
-      </div>
-    <% elsif @title == "bookmark" %>
-      <h2 class="posts-title">ブックマーク <i class="fas fa-bookmark"></i></h2>
-    <% elsif @title == "draft" %>
-      <h2 class="posts-title">下書き <i class="fas fa-edit"></i></h2>
-    <% end %>
-    <%= render "photo_posts/index", photo_posts: @photo_posts%>
-  </div>
+  <% if @user.active_user? %> <%# 正規ユーザーでなければプロフィールを見れない%>
+    <%= render "profile", user: @user %>
+    <div class="posts">
+      <% if @title == "mine" %>
+          <h2 class="posts-title">My Photo  <i class="fas fa-camera"></i></h2>
+        <div class="select">
+          <%= form_with url: user_path(@user), method: :get, local: true do |f| %>
+            <%= f.select :sort, [["新しい順", "new"], ["古い順", "old"], ["いいねが多い順", "favorite"]], selected: params[:sort] %>
+          <% end %>
+        </div>
+      <% elsif @title == "bookmark" %>
+        <h2 class="posts-title">ブックマーク <i class="fas fa-bookmark"></i></h2>
+      <% elsif @title == "draft" %>
+        <h2 class="posts-title">下書き <i class="fas fa-edit"></i></h2>
+      <% end %>
+      <%= render "photo_posts/index", photo_posts: @photo_posts%>
+    </div>
+  <% elsif @user.status == "退会" %>
+    <h1 class="negative">このユーザーは退会しています。</h1>
+  <% elsif @user.status == "垢BAN" %>
+    <h1 class="negative">このユーザーはアカウントの利用を停止されています。</h1>
+  <% end %>
 </div>
 
