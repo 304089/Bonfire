@@ -13,9 +13,6 @@ class InfomationsController < ApplicationController
     end
   end
 
-  def thanks  #ありがとページ
-  end
-
   def index
     if params[:genre] == ""
       if params[:sort] == "new"
@@ -64,6 +61,9 @@ class InfomationsController < ApplicationController
       infomation.update(status: 1)
       redirect_to request.referer
     end
+  end
+
+  def thanks  #ありがとページ
   end
 
   private

@@ -1,7 +1,6 @@
 class ConsultationsController < ApplicationController
   before_action :active_user, except:[:index, :show, :search]
 
-
   def new
     @consultation = Consultation.new
     @user = current_user
@@ -106,7 +105,6 @@ class ConsultationsController < ApplicationController
         @consultations = Consultation.order(created_at: "DESC").page(params[:page]).per(15)
       end
     end
-
     #ページ右側のランキング（相談の回答に”役に立った！”が多い人 週間・月間・全期間）
     if params[:period] == "week"
       @ranks = User.joins(consultation_answers: :helpfulnesses).where(helpfulnesses: {created_at: Time.current.all_week}).group(:id)
@@ -147,7 +145,6 @@ class ConsultationsController < ApplicationController
         @keyword = params[:keyword]
       end
     end
-
     #ページ右側のランキング（相談の回答に”役に立った！”が多い人 週間・月間・全期間）
     if params[:period] == "week"
       @ranks = User.joins(consultation_answers: :helpfulnesses).where(helpfulnesses: {created_at: Time.current.all_week}).group(:id)
@@ -162,7 +159,6 @@ class ConsultationsController < ApplicationController
     else
       @ranks = User.joins(consultation_answers: :helpfulnesses).group(:id).where(helpfulnesses: {created_at: Time.current.all_week}).order("count(helpfulnesses.id) DESC").limit(10)
     end
-
   end
 
   def destroy

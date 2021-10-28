@@ -1,7 +1,6 @@
 class PhotoPostCommentsController < ApplicationController
   before_action :active_user, except:[:new, :index]
 
-
   def new
     @photo_post = PhotoPost.find(params[:photo_post_id])
     @photo_post_comments = PhotoPostComment.where(photo_post_id: @photo_post.id)

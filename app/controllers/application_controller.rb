@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-
   #退会、垢BANはログイン後退会・垢BAN事実確認ページに移行
   def after_sign_in_path_for(resource)
     if current_user.status == "管理者"
@@ -14,9 +13,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   protected
-
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
@@ -36,6 +33,5 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
-
 
 end

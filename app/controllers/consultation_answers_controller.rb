@@ -1,7 +1,6 @@
 class ConsultationAnswersController < ApplicationController
   before_action :active_user
 
-
   def create
     @consultation = Consultation.find(params[:consultation_id])
     @consultation_answers = ConsultationAnswer.where(consultation_id: @consultation.id)
@@ -27,4 +26,5 @@ class ConsultationAnswersController < ApplicationController
     def consultation_answer_params
       params.require(:consultation_answer).permit(:answer, :answer_image)
     end
+
 end
