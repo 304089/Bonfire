@@ -32,7 +32,12 @@ Rails.application.routes.draw do
 
 #*******エンドユーザー
   resources :users, except:[:new, :destroy] do
-    resources :items
+    resources :items, except:[:show]
+    resources :plans do
+      collection do
+        post :item_choice
+      end
+    end
     resource :relation, only:[:create, :destroy]
     get "followings" => "relations#followings"
     get "followers" => "relations#followers"
@@ -45,6 +50,11 @@ Rails.application.routes.draw do
       get :withdrawal
     end
   end
+
+
+
+
+
 
   resources :photo_posts do
     collection do

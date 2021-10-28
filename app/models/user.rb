@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :reverse_of_relations,class_name: "Relation",foreign_key: "followed_id",dependent: :destroy
   has_many :followers,through: :reverse_of_relations,source: :follower
   has_many :items, dependent: :destroy
+  has_many :plans, dependent: :destroy
 
   enum status: {"会員": 0, "退会": 1, "垢BAN": 2, "管理者": 99}
 

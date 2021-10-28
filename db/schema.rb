@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_28_122238) do
+ActiveRecord::Schema.define(version: 2021_10_28_172308) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -110,6 +110,14 @@ ActiveRecord::Schema.define(version: 2021_10_28_122238) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "members", force: :cascade do |t|
+    t.integer "plan_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_members_on_plan_id"
+  end
+
   create_table "photo_post_comments", force: :cascade do |t|
     t.integer "photo_post_id", null: false
     t.integer "user_id", null: false
@@ -130,6 +138,29 @@ ActiveRecord::Schema.define(version: 2021_10_28_122238) do
     t.datetime "updated_at", null: false
     t.integer "impressions_count", default: 0
     t.index ["user_id"], name: "index_photo_posts_on_user_id"
+  end
+
+  create_table "plan_items", force: :cascade do |t|
+    t.integer "plan_id", null: false
+    t.integer "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_plan_items_on_item_id"
+    t.index ["plan_id"], name: "index_plan_items_on_plan_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "title", null: false
+    t.date "day", null: false
+    t.string "place", null: false
+    t.time "check_in_time"
+    t.time "check_out_time"
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "member"
+    t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
   create_table "post_images", force: :cascade do |t|

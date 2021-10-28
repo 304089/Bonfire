@@ -1,0 +1,67 @@
+// Place all the styles related to the plans controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*****************newページ*********************/
+.plan-container {
+  width: 60%;
+  min-height: 600px;
+  margin: 0 auto;
+  p {
+    margin: 0;
+    font-size: 25px;
+  }
+
+  &__header {
+    height: 50px;
+    background: silver;
+  }
+
+  &__chart {
+    height: 80px;
+    background: gray;
+  }
+
+  &__content {
+    background: orange;
+    width: 60%;
+    margin: 0 auto;
+
+    &__title {
+      input{
+        width: 500px;
+        height: 30px;
+      }
+    }
+
+    &__day {
+
+    }
+
+    &__check-time {
+
+    }
+
+    &__place {
+      input{
+        width: 500px;
+        height: 30px;
+      }
+    }
+
+    &__member {
+
+    }
+
+    &__memo {
+      textarea {
+        width: 500px;
+        height: 300px;
+      }
+    }
+  }
+}
+
+/**********************:show****************************/
+
+/**********************:*index*****************************/

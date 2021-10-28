@@ -1,0 +1,44 @@
+<div class="plan-container">
+  <div class="plan-container__header">
+    <h1 class="text-center">キャンプ計画 <i class="fas fa-hiking"></i></h1>
+  </div>
+  <div class="plan-container__chart">
+
+  </div>
+  <%= render "layouts/error_messages", model: @plan %>
+  <div class="plan-container__content">
+    <%= form_with(model:[@user, @plan], url: item_choice_user_plans_path(@user), local: true) do |f| %>
+      <div class="plan-container__content__title">
+        <p>キャンプタイトル</p>
+        <%= f.text_field :title %>
+      </div>
+      <div class="plan-container__content__day">
+        <p>出発日</p>
+        <%= f.date_field :day %>
+      </div>
+      <div class="plan-container__content__chack-time">
+        チェックイン<%= f.time_field :check_in_time %>
+        チェックアウト<%= f.time_field :check_out_time %>
+      </div>
+      <div class="plan-container__content__place">
+        <p>キャンプ場</p>
+        <%= f.text_field :place %>
+      </div>
+      <div class="plan-container__content__chack-member">
+        <p>メンバー</p>
+          <%= @user.name %>,他
+          <%= f.select :member, options_for_select((0..20).to_a), include_blank: "人数" %>
+          名
+      </div>
+      <div class="plan-container__content__memo">
+        <p>メモ</p>
+        <%= f.text_area :memo, include_blank: "メモ" %>
+      </div>
+      <div class="plan-container__content__submit">
+        <%= f.button :type => "submit", style: 'border-style: none;' do %>
+          ギア選択へ <i class="fas fa-angle-double-right"></i></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

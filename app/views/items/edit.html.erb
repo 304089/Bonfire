@@ -4,7 +4,7 @@
     <h2>ギア登録  <i class="fas fa-campground"></i></h2>
     <%= render "layouts/error_messages", model: @item %>
     <div class="form-area">
-      <%= form_with(model:[@user, @item],url: user_item_path(@user, @item), method: :patch,  local: true) do |f| %>
+      <%= form_with(model:[@user, @item], method: :patch,  local: true) do |f| %>
         <p class="m-0">カテゴリー</p>
         <%= f.select :genre, Item.genres.keys.to_a, selected: params[:genre], class: "inp input1" %>
         <p class="m-0">ギア名</p>

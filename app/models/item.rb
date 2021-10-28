@@ -6,6 +6,10 @@ class Item < ApplicationRecord
   end
 
   belongs_to :user
+  has_many :plan_items
+  has_many :plans, through: :plan_items
+
+
   attachment :item_image
 
   enum genre: {"テント・タープ": 0,

@@ -24,3 +24,7 @@ ja:
         genre: カテゴリー
         introduction: 紹介文
         item_image: 画像
+      plan:
+        title: キャンプタイトル
+        day: 日付
+        place: キャンプ場
