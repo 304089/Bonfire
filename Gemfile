@@ -57,6 +57,9 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  #rubocop
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -67,9 +70,6 @@ gem 'devise'
 #日本語化
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-#rubocop
-gem 'rubocop', require: false
-gem 'rubocop-rails', require: false
 #多言語化
 gem 'rails-i18n'
 #画像アップロード
