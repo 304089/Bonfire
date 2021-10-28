@@ -4,7 +4,7 @@
 /*********************管理者ページ****************************/
 .admin_top-container {
   display: flex;
-  height: 800px;
+  min-height: 800px;
 
   &__left {
     width: 15%;

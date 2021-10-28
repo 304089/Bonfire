@@ -69,7 +69,7 @@ class PhotoPostsController < ApplicationController
     @photo_post_comments = PhotoPostComment.where(photo_post_id: @photo_post.id)
   end
 
-  def index
+  def index #カテゴリーで絞り込み ＆ 新着or古いorいいねが多い順でソート（初期は全投稿の新着順）
     if params[:genre] == "キャンプ場"
       if params[:type] == "new" || params[:type] == ""
         @photo_posts = PhotoPost.where(genre: "キャンプ場", preview: false).order(id: "DESC").page(params[:page]).per(28)
