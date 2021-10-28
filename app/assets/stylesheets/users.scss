@@ -4,23 +4,31 @@
 
 /*********posts部分**********/
 .posts {
+  &__header {
+    display: flex;
 
-     h3 {
-       font-weight: 600;
-       display: inline-block;
-       position: relative;
-       left: 400px;
-     }
+    &__post {
+      margin-left: 200px;
+       a {
+         background: #ff8d00;
+         font-size: 25px;
+         color: white;
+         padding: 8px;
+         border-radius: 5px;
+         box-shadow: 2px 2px 4px gray;
+       }
 
-     .posts-title, .select {
-       display: inline-block;
-     }
+       a:hover {
+         opacity: 0.7;
+       }
+    }
+  }
 
-     #sort {
-       margin-left: 10px;
-       position: relative;
-       bottom: 3px;
-     }
+  select {
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px grey;
+  }
 
 }
 

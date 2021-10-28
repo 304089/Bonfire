@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
 #*******エンドユーザー
   resources :users, except:[:new, :destroy] do
+    resources :items
     resource :relation, only:[:create, :destroy]
     get "followings" => "relations#followings"
     get "followers" => "relations#followers"

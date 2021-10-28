@@ -5,13 +5,10 @@
           <p class="title">Menu　<i class="fas fa-bars"></i></p>
           <ul class="child">
             <li>
-              <%= link_to "写真投稿", new_photo_post_path %>
-            </li>
-            <li>
-              <%= link_to "相談投稿", new_consultation_path %>
-            </li>
-            <li>
               <%= link_to "プロフィール編集",edit_user_path(user) %>
+            </li>
+            <li>
+              <%= link_to "My Gear", user_items_path(user) %>
             </li>
             <li>
               <%= link_to "My Photo", user_path(user, choose: "mine") %>

@@ -3,12 +3,19 @@
     <%= render "profile", user: @user %>
     <div class="posts">
       <% if @title == "mine" %>
-          <h2 class="posts-title">My Photo  <i class="fas fa-camera"></i></h2>
-        <div class="select">
-          <%= form_with url: user_path(@user), method: :get, local: true do |f| %>
-            <%= f.select :sort, [["新しい順", "new"], ["古い順", "old"], ["いいねが多い順", "favorite"]], selected: params[:sort] %>
+      <div class="posts__header">
+        <h2 class="posts__header__title">My Photo  <i class="fas fa-camera"></i></h2>
+        <div class="posts__header__post">
+          <%= link_to new_photo_post_path do %>
+            写真投稿 <i class="fas fa-plus-square"></i>
           <% end %>
         </div>
+      </div>
+      <div class="posts__select">
+        <%= form_with url: user_path(@user), method: :get, local: true do |f| %>
+          <%= f.select :sort, [["新しい順", "new"], ["古い順", "old"], ["いいねが多い順", "favorite"]], selected: params[:sort] %>
+        <% end %>
+      </div>
       <% elsif @title == "bookmark" %>
         <h2 class="posts-title">ブックマーク <i class="fas fa-bookmark"></i></h2>
       <% elsif @title == "draft" %>

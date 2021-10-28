@@ -1,0 +1,25 @@
+<div class="profile-container">
+  <%= render "users/profile", user: @user %>
+  <div class="items">
+    <h2>ギア登録  <i class="fas fa-campground"></i></h2>
+    <%= render "layouts/error_messages", model: @item %>
+    <div class="form-area">
+      <%= form_with(model:[@user, @item],url: user_item_path(@user, @item), method: :patch,  local: true) do |f| %>
+        <p class="m-0">カテゴリー</p>
+        <%= f.select :genre, Item.genres.keys.to_a, selected: params[:genre], class: "inp input1" %>
+        <p class="m-0">ギア名</p>
+        <%= f.text_field :name,class: "inp"%>
+        <p class="m-0">メーカー <span class="any">任意</span></p>
+        <%= f.text_field :manufacturer,class: "inp"%>
+        <p class="m-0">画像 <span class="any">任意</span></p>
+        <%= f.attachment_field :item_image, class: "inp input2" %>
+        <%= f.button :type => "submit", style: 'border-style: none;' do %>
+          内容を更新する <i class="fas fa-plus-square"></i></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="items__delete">
+      <%= link_to "ー 削除する ー", user_item_path(@user, @item), method: :delete, data: {confirm: "【確認】本当に削除しますか？"} %>
+    </div>
+  </div>
+</div>

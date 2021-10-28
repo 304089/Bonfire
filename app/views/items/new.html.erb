@@ -1,0 +1,22 @@
+<div class="profile-container">
+  <%= render "users/profile", user: @user %>
+  <div class="items">
+    <h2>ギア登録  <i class="fas fa-campground"></i></h2>
+    <%= render "layouts/error_messages", model: @item %>
+    <div class="form-area">
+      <%= form_with(model:[@user, @item], method: :post,  local: true) do |f| %>
+        <p class="m-0">カテゴリー</p>
+        <%= f.select :genre, Item.genres.keys.to_a, include_blank: "選択して下さい", class: "inp input1" %>
+        <p class="m-0">ギア名</p>
+        <%= f.text_field :name,class: "inp"%>
+        <p class="m-0">メーカー <span class="any">任意</span></p>
+        <%= f.text_field :manufacturer,class: "inp"%>
+        <p class="m-0">画像 <span class="any">任意</span></p>
+        <%= f.attachment_field :item_image, class: "inp input2" %>
+        <%= f.button :type => "submit", style: 'border-style: none;' do %>
+          ギアを登録する <i class="fas fa-plus-square"></i></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

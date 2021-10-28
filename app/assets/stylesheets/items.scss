@@ -1,0 +1,100 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/**********newページ***************/
+.items {
+    width: 50%;
+    margin-top: 10px;
+
+    h2 {
+      font-size: 40px;
+      font-weight: 600;
+    }
+
+    .form-area button {
+      background: #6c757d;
+      osition: relative;
+      left: 100px;
+    }
+
+  }
+
+  /***************indexページ***************/
+  .items {
+   &__header {
+     display: flex;
+
+     &__link {
+       margin-left: 200px;
+       a {
+         background: #545b62;
+         font-size: 25px;
+         color: white;
+         padding: 8px;
+         border-radius: 5px;
+         box-shadow: 2px 2px 4px gray;
+       }
+
+       a:hover {
+         opacity: 0.7;
+       }
+     }
+   }
+
+   &__select {
+     margin-top: 10px;
+     select {
+       height: 30px;
+       box-shadow: 2px 2px 4px gray;
+       border-radius: 5px;
+     }
+
+     button {
+       background: gray;
+       padding: 4px;
+       border-radius: 5px;
+       color: white;
+       margin-left: 3px;
+       box-shadow: 2px 2px 4px gray;
+     }
+
+     button:hover {
+       opacity: 0.7;
+     }
+   }
+
+   &__list {
+     ul {
+       height: 600px;
+       overflow: scroll;
+       margin-top: 10px;
+       border: 2px solid;
+       padding: 10px;
+       border-radius: 5px;
+       li {
+         font-size: 25px;
+         padding: 5px 10px;
+         border-bottom: 1px solid silver;
+         white-space: nowrap;
+         width: 600px;
+         overflow: scroll;
+         img {
+           margin-right: 10px;
+         }
+       }
+     }
+   }
+  }
+
+  /************:editページ**************/
+  .items {
+    &__delete {
+      width: 370px;
+      margin: 0 auto;
+      margin-top: 60px;
+    }
+    .form-area button {
+      background: #059e18;
+    }
+  }

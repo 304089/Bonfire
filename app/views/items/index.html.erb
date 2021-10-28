@@ -1,0 +1,36 @@
+<div class="profile-container">
+  <%= render "users/profile", user: @user %>
+  <div class="items">
+    <div class="items__header">
+      <h2 class="items__header__title">My Gear <i class="fas fa-campground"></i></h2>
+      <div class="items__header__link">
+        <%= link_to new_user_item_path(@user) do %>
+          ギア登録 <i class="fas fa-plus-square"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class="items__select">
+      <%= form_with url: user_items_path(@user), method: :get, local: true do |f| %>
+        <%= f.select :genre, Item.genres.keys.to_a, selected: params[:genre] %>
+        <%= f.button :type => "submit", style: 'border-style: none;', class: "select3" do %>
+          絞り込む <i class="fas fa-search-plus"></i>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="items__list">
+      <ul>
+        <% @items.each do |item| %>
+          <%= link_to edit_user_item_path(@user, item), data: {confirm: "登録内容を変更しますか？"} do %>
+            <li>
+              <%= attachment_image_tag item, :item_image,size: "60x60", fallback: "no_photo.jpg", class: "rounded" %>
+              <%= item.name %>
+              <% unless item.manufacturer == nil %>
+                (<%= item.manufacturer %>)
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

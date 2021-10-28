@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_21_160533) do
+ActiveRecord::Schema.define(version: 2021_10_28_122238) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -97,6 +97,17 @@ ActiveRecord::Schema.define(version: 2021_10_21_160533) do
     t.integer "genre", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name"
+    t.string "manufacturer"
+    t.integer "genre", null: false
+    t.string "item_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "photo_post_comments", force: :cascade do |t|

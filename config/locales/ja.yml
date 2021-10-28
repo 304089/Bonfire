@@ -8,6 +8,8 @@ ja:
       truncate: "..."
   activerecord:
     attributes:
+      user:
+        name: 名前
       photo_post:
         genre: カテゴリー
         introduction: 説明文
@@ -16,3 +18,9 @@ ja:
         genre: カテゴリー
         title: タイトル
         content: 内容
+      item:
+        name: 名前
+        manufacturer: メーカー
+        genre: カテゴリー
+        introduction: 紹介文
+        item_image: 画像

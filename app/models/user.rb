@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable #最終ログイン時間等表示のため追加
 
+  validates :name, presence: true
+
+
   attachment :profile_image
 
   has_many :photo_posts, dependent: :destroy
@@ -17,6 +20,7 @@ class User < ApplicationRecord
   has_many :followings,through: :relations,source: :followed
   has_many :reverse_of_relations,class_name: "Relation",foreign_key: "followed_id",dependent: :destroy
   has_many :followers,through: :reverse_of_relations,source: :follower
+  has_many :items, dependent: :destroy
 
   enum status: {"会員": 0, "退会": 1, "垢BAN": 2, "管理者": 99}
 

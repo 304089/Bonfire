@@ -50,10 +50,6 @@ main {
   background: Menu;
 }
 
-
-
-
-
  /********************フッター*******************************/
  footer {
     height: 70px;
@@ -75,6 +71,13 @@ main {
    }
  }
 
+/*********エラーメッセージ**********:***/
+ .alert-warning {
+      width: 310px;
+      background: none;
+      border: 1px solid red;
+      color: red;
+ }
 
 
 
@@ -230,7 +233,7 @@ main {
   display: flex;
   gap: 0 50px;
   width: 90%;
-  min-height: 800px;
+  min-height: 850px;
   margin: 0 auto;
   position: relative;
   top: 20px;
@@ -255,7 +258,8 @@ main {
       }
 
       h2 {
-        font-weight: 630;
+        font-weight: 600;
+        font-size: 40px;
       }
 
       &__bottom {
@@ -326,6 +330,7 @@ main {
 
      h2 {
        font-weight: 600;
+       font-size: 40px;
        display: inline-block;
      }
   }
