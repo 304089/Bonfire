@@ -1,4 +1,4 @@
-# Bonfire
+# Bonfire-Club
 
 ## サイト概要
 キャンプ関連情報共有サイト
