@@ -335,6 +335,11 @@
     &__gear {
       max-height: 600px;
       overflow: scroll;
+      ul {
+        li {
+          padding: 5px 0;
+        }
+      }
     }
   }
 }
