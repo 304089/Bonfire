@@ -9,30 +9,34 @@
   <div class="plan-container__content">
     <%= form_with(model:[@user, @plan], url: item_choice_user_plans_path(@user), local: true) do |f| %>
       <div class="plan-container__content__title">
-        <p>キャンプタイトル</p>
+        <p>キャンプタイトル <span class="must">必須</span></p>
         <%= f.text_field :title %>
       </div>
       <div class="plan-container__content__day">
-        <p>出発日</p>
+        <p>出発日 <span class="must">必須</span></p>
         <%= f.date_field :day %>
       </div>
-      <div class="plan-container__content__chack-time">
-        チェックイン<%= f.time_field :check_in_time %>
-        チェックアウト<%= f.time_field :check_out_time %>
+      <div class="plan-container__content__check-word">
+        <p>チェックイン</p>
+        <p>チェックアウト</p>
+      </div>
+      <div class="plan-container__content__check-time">
+        <%= f.time_field :check_in_time %>
+        <%= f.time_field :check_out_time %>
       </div>
       <div class="plan-container__content__place">
-        <p>キャンプ場</p>
+        <p>キャンプ場 <span class="must">必須</span></p>
         <%= f.text_field :place %>
       </div>
-      <div class="plan-container__content__chack-member">
-        <p>メンバー</p>
-          <%= @user.name %>,他
+      <div class="plan-container__content__member">
+        <p>参加人数 <span class="must">必須</span></p>
+          <%= @user.name %>  他
           <%= f.select :member, options_for_select((0..20).to_a), include_blank: "人数" %>
           名
       </div>
       <div class="plan-container__content__memo">
         <p>メモ</p>
-        <%= f.text_area :memo, include_blank: "メモ" %>
+        <%= f.text_area :memo, placeholder: "(例)\n参加メンバー\n・\n・\n\n(昼食)\nホットサンド\n(夕食)\nローストビーフ\nカレー\netc" %>
       </div>
       <div class="plan-container__content__submit">
         <%= f.button :type => "submit", style: 'border-style: none;' do %>

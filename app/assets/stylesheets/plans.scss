@@ -4,12 +4,15 @@
 
 /*****************newページ*********************/
 .plan-container {
-  width: 60%;
+  width: 55%;
   min-height: 600px;
+  background: white;
   margin: 0 auto;
+  border: 3px solid;
   p {
     margin: 0;
     font-size: 25px;
+    margin-top: 15px;
   }
 
   &__header {
@@ -23,9 +26,18 @@
   }
 
   &__content {
-    background: orange;
     width: 60%;
     margin: 0 auto;
+
+    .must {
+      font-size: 15px;
+      padding: 5px;
+      background: #ec0219eb;
+      color: white;
+      border-radius: 5px;
+      position: relative;
+      bottom: 3px;
+    }
 
     &__title {
       input{
@@ -35,11 +47,22 @@
     }
 
     &__day {
+      input {
+        width: 210px;
+      }
+    }
 
+    &__check-word {
+      display: flex;
+      gap: 40px;
+      p {
+        font-size: 15px;
+      }
     }
 
     &__check-time {
-
+      display: flex;
+      gap: 50px
     }
 
     &__place {
@@ -50,13 +73,36 @@
     }
 
     &__member {
+      p {
+        margin-bottom: 5px;
+      }
+      #text {
+        font-size: 20px;
+      }
 
+      select {
+        height: 25px;
+      }
     }
 
     &__memo {
       textarea {
         width: 500px;
         height: 300px;
+      }
+    }
+
+    &__submit {
+       text-align: center;
+       margin: 20px 0 40px 0;
+
+      button {
+        height: 20px;
+        background: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        box-shadow: 2px 2px 4px gray;
       }
     }
   }
@@ -77,7 +123,7 @@
     &__link {
       margin-left: 100px;
       a {
-       background: #545b62;
+       background: #007eff;
        font-size: 25px;
        color: white;
        padding: 8px;

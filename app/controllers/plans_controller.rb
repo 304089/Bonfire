@@ -33,24 +33,24 @@ class PlansController < ApplicationController
     @user = User.find(params[:user_id])
     if params[:type] == "all"
       if params[:sort] == "new"
-        @plans = Plan.where(user_id: params[:user_id])
+        @plans = Plan.where(user_id: params[:user_id]).order(day: "DESC" )
       elsif params[:sort] == "old"
-        @plans = Plan.where(user_id: params[:user_id]).order(id: "DESC" )
+        @plans = Plan.where(user_id: params[:user_id]).order(day: "ASC" )
       end
     elsif params[:type] == "group"
       if params[:sort] == "new"
-        @plans = Plan.where(user_id: params[:user_id], member: 1..Float::INFINITY)  #参加人数２人以上（入力時、自分はすでに含まれているため）
+        @plans = Plan.where(user_id: params[:user_id], member: 1..Float::INFINITY).order(day: "DESC" )  #参加人数２人以上（入力時、自分はすでに含まれているため）
       elsif params[:sort] == "old"
-        @plans = Plan.where(user_id: params[:user_id], member: 1..Float::INFINITY).order(id: "DESC" )
+        @plans = Plan.where(user_id: params[:user_id], member: 1..Float::INFINITY).order(day: "ASC" )
       end
     elsif params[:type] == "single"
       if params[:sort] == "new"
-        @plans = Plan.where(user_id: params[:user_id], member: 0)
+        @plans = Plan.where(user_id: params[:user_id], member: 0).order(day: "DESC" )
       elsif params[:sort] == "old"
-        @plans = Plan.where(user_id: params[:user_id], member: 0).order(id: "DESC" )
+        @plans = Plan.where(user_id: params[:user_id], member: 0).order(day: "ASC" )
       end
     else
-      @plans = Plan.where(user_id: params[:user_id])
+      @plans = Plan.where(user_id: params[:user_id]).order(day: "DESC" )
     end
   end
 
