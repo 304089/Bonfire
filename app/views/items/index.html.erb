@@ -15,7 +15,7 @@
       <% end %>
     </div>
     <div class="items__list">
-     <% unless @items == nil %>
+     <% unless @items == [] %>
       <ul>
         <% @items.each do |item| %>
           <%= link_to edit_user_item_path(@user, item), data: {confirm: "登録内容を変更しますか？"} do %>

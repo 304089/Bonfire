@@ -3,7 +3,7 @@
     <%= render "admin/users/navigation" %>
   </div>
   <div class="admin_top-container__right">
-    <div class="result"><i class="fas fa-search"></i> <%= "' #{@keyword} ' の検索結果 - #{@photo_posts.count}件" %></div>
+    <div class="result"><i class="fas fa-search"></i> <%= "' #{@keyword} ' の検索結果" %></div>
     <%= render "index", photo_posts: @photo_posts, keyword: @keyword %>
   </div>
 </div>

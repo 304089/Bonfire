@@ -18,7 +18,7 @@ class Admin::PhotoPostsController < ApplicationController
   end
 
   def search
-    @photo_posts = PhotoPost.search(params[:keyword]).page(params[:page]).per(30)
+    @photo_posts = PhotoPost.search(params[:keyword]).group(:id).page(params[:page]).per(30)
     @keyword = params[:keyword]
   end
 

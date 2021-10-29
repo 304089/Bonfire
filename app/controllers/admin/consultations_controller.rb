@@ -17,7 +17,7 @@ class Admin::ConsultationsController < ApplicationController
   end
 
   def search
-    @consultations = Consultation.search(params[:keyword]).page(params[:page]).per(30)
+    @consultations = Consultation.search(params[:keyword]).group(:id).page(params[:page]).per(30)
     @keyword = params[:keyword]
   end
 

@@ -20,7 +20,7 @@
     </div>
     <div class="plans__list">
       <table>
-        <% unless @plans == nil %>
+        <% unless @plans == [] %>
           <% @plans.each do |plan| %>
             <tr>
               <td class="pr-3 plans__list__day"><%= plan.day.strftime("%Y / %m / %d").to_s %></td>
