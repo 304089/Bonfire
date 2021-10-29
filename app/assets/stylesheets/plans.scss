@@ -104,8 +104,78 @@
         border-radius: 5px;
         box-shadow: 2px 2px 4px gray;
       }
+
+      button:hover {
+        opacity: 0.7;
+      }
     }
   }
+}
+
+/**********************item_choice**********************/
+.plan_item-container {
+    width: 55%;
+    min-height: 600px;
+    background: white;
+    margin: 0 auto;
+    border: 3px solid;
+    p {
+      margin: 0;
+      font-size: 25px;
+      margin-top: 15px;
+    }
+
+    &__header {
+      height: 50px;
+      background: silver;
+    }
+
+    &__chart {
+      height: 80px;
+      background: gray;
+    }
+
+    &__content {
+      width: 90%;
+      margin: 20px auto;
+      label {
+        display: block;
+        position: relative;
+        font-size: 25px;
+        bottom: 27px;
+        left: 35px;
+        margin: -10px 0;
+      }
+
+      input[type=checkbox] {
+      	width: 25px;
+      	height:	25px;
+      }
+      &__list {
+        height: 500px;
+        overflow: scroll;
+        border: 1px solid;
+        padding: 5px;
+      }
+
+      &__submit {
+       text-align: center;
+       margin: 20px 0 40px 0;
+
+        button {
+          height: 25px;
+          background: #007bff;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 5px;
+          box-shadow: 2px 2px 4px gray;
+        }
+
+        button:hover {
+          opacity: 0.7;
+        }
+      }
+    }
 }
 
 /**********************:show****************************/

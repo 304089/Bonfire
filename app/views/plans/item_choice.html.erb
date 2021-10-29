@@ -7,7 +7,9 @@
   </div>
   <div class="plan_item-container__content">
     <%= form_with(model:[@user, @plan], url: user_plans_path(@user), method: :post, local: true) do |f| %>
+    <div class="plan_item-container__content__list">
       <%= f.collection_check_boxes :item_ids, @items, :id, :name, include_hidden: false %>
+    </div>
       <%= f.hidden_field :title, :value => @plan.title %>
       <%= f.hidden_field :day, :value => @plan.day %>
       <%= f.hidden_field :place, :value => @plan.place %>
@@ -15,7 +17,11 @@
       <%= f.hidden_field :check_out_time, :value => @plan.check_out_time %>
       <%= f.hidden_field :member, :value => @plan.member %>
       <%= f.hidden_field :memo, :value => @plan.memo %>
-      <%= f.submit "ギアを登録する" %>
+    <div class="plan_item-container__content__submit">
+      <%= f.button :type => "submit", style: 'border-style: none;' do %>
+        登録する <i class="fas fa-angle-double-right"></i></i>
+      <% end %>
+    </div>
     <% end %>
   </div>
 </div>

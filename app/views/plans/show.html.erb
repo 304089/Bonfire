@@ -1,4 +1,8 @@
-<%= @plan.title %>
-<% @items.each do |item| %>
-  <%= item.name %>
-<% end %>
+<div class="plan-show-container">
+  <div class="plan-container__header">
+    <h1 class="text-center">キャンプ計画 <i class="fas fa-hiking"></i></h1>
+  </div>
+  <div class="plan-show-container__content">
+    <%= render "plan", user: @user, plan: @plan %>
+  </div>
+</div>

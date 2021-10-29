@@ -1,0 +1,30 @@
+<div class="plan-container__content__title">
+  <p>キャンプタイトル</p>
+  <%= plan.title %>
+</div>
+<div class="plan-show-container__content__day">
+  <p>出発日</p>
+  <%= plan.day %>
+</div>
+<div class="plan-show-container__content__check-word">
+  <p>チェックイン</p>
+  <p>チェックアウト</p>
+</div>
+<div class="plan-show-container__content__check-time">
+  <%= plan.check_in_time %>
+  <%= plan.check_out_time %>
+</div>
+<div class="plan-show-container__content__place">
+  <p>キャンプ場</p>
+  <%= plan.place %>
+</div>
+<div class="plan-show-container__content__member">
+  <p>参加人数</p>
+    <%= user.name %>  他
+    <%= plan.member %>
+    名
+</div>
+<div class="plan-show-container__content__memo">
+  <p>メモ</p>
+  <%= plan.memo %>
+</div>

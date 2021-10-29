@@ -25,6 +25,7 @@ class PlansController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:user_id])
     @plan = Plan.find(params[:id])
     @items = Item.joins(:plan_items).where(plan_items: { plan_id: @plan.id }) #計画と合わせて選択したアイテムも表示するため
   end
