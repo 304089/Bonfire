@@ -64,4 +64,73 @@
 
 /**********************:show****************************/
 
+
 /**********************:*index*****************************/
+.plans {
+  &__header {
+    display: flex;
+    h2 {
+      font-size: 40px;
+      font-weight: 600;
+    }
+
+    &__link {
+      margin-left: 100px;
+      a {
+       background: #545b62;
+       font-size: 25px;
+       color: white;
+       padding: 8px;
+       border-radius: 5px;
+       box-shadow: 2px 2px 4px gray;
+      }
+
+      a:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &__select {
+    select {
+      height: 30px;
+      border-radius: 5px;
+      box-shadow: 2px 2px 4px gray;
+    }
+
+    button {
+       background: gray;
+       padding: 4px;
+       border-radius: 5px;
+       color: white;
+       margin-left: 3px;
+       box-shadow: 2px 2px 4px gray;
+     }
+
+     button:hover {
+       opacity: 0.7;
+     }
+  }
+
+  &__list {
+    padding: 10px 15px;
+    font-size: 25px;
+    border: 2px solid;
+    border-radius: 5px;
+    margin-top: 20px;
+
+    table {
+      max-height: 600px;
+      overflow: scroll;
+      tr{
+        border-bottom: 1px solid silver;
+      }
+    }
+
+    &__title {
+      width: 330px;
+      white-space: nowrap;
+      overflow: scroll;
+    }
+  }
+}

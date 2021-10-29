@@ -1,11 +1,11 @@
 class PlansController < ApplicationController
 
-  def new
+  def new #日時場所選択
     @user = User.find(params[:user_id])
     @plan = Plan.new
   end
 
-  def item_choice
+  def item_choice #newからパラメータ受け取り、登録してあるアイテムをチェックボックスで選択したパラメータを受け取る
     @user = User.find(params[:user_id])
     @plan = Plan.new(plan_params)
     @plan_item = PlanItem.new
@@ -26,12 +26,32 @@ class PlansController < ApplicationController
 
   def show
     @plan = Plan.find(params[:id])
-    @items = Item.joins(:plan_items).where(plan_items: { plan_id: @plan.id })
+    @items = Item.joins(:plan_items).where(plan_items: { plan_id: @plan.id }) #計画と合わせて選択したアイテムも表示するため
   end
 
-  def index
+  def index #全て・グルキャン・ソロで絞り込み&新旧ソート
     @user = User.find(params[:user_id])
-    @plans = Plan.where(user_id: params[:user_id])
+    if params[:type] == "all"
+      if params[:sort] == "new"
+        @plans = Plan.where(user_id: params[:user_id])
+      elsif params[:sort] == "old"
+        @plans = Plan.where(user_id: params[:user_id]).order(id: "DESC" )
+      end
+    elsif params[:type] == "group"
+      if params[:sort] == "new"
+        @plans = Plan.where(user_id: params[:user_id], member: 1..Float::INFINITY)  #参加人数２人以上（入力時、自分はすでに含まれているため）
+      elsif params[:sort] == "old"
+        @plans = Plan.where(user_id: params[:user_id], member: 1..Float::INFINITY).order(id: "DESC" )
+      end
+    elsif params[:type] == "single"
+      if params[:sort] == "new"
+        @plans = Plan.where(user_id: params[:user_id], member: 0)
+      elsif params[:sort] == "old"
+        @plans = Plan.where(user_id: params[:user_id], member: 0).order(id: "DESC" )
+      end
+    else
+      @plans = Plan.where(user_id: params[:user_id])
+    end
   end
 
   def edit
@@ -57,6 +77,6 @@ class PlansController < ApplicationController
 
   private
   def plan_params
-    params.require(:plan).permit(:title, :day, :place, :check_in_time, :check_out_time, :member, :memo, :user_id, item_ids: [] )
+    params.require(:plan).permit(:title, :day, :place, :check_in_time, :check_out_time, :member, :memo, :user_id, item_ids: [] )  #アイテムは複数のため配列で
   end
 end

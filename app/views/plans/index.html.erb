@@ -1,33 +1,43 @@
 <div class="profile-container">
   <%= render "users/profile", user: @user %>
-  <div class="items">
+  <div class="plans">
     <div class="plans__header">
       <h2 class="plans__header__title">My Record <i class="fas fa-book"></i></h2>
       <div class="plans__header__link">
         <%= link_to new_user_plan_path(@user) do %>
-          キャンプに行く！ <i class="fas fa-plus-square"></i>
+          計画を立てる <i class="fas fa-plus-square"></i>
         <% end %>
       </div>
     </div>
     <div class="plans__select">
       <%= form_with url: user_plans_path(@user), method: :get, local: true do |f| %>
-        <%= f.select :genre, Item.genres.keys.to_a, selected: params[:genre] %>
+        <%= f.select :type, [["全てのキャンプスタイル", "all"], ["グループキャンプ", "group"], ["ソロキャンプ", "single"]], selected: params[:type] %>
+        <%= f.select :sort, [["新しい順", "new"], ["古い順", "old"]], selected: params[:sort] %>
         <%= f.button :type => "submit", style: 'border-style: none;', class: "select3" do %>
           絞り込む <i class="fas fa-search-plus"></i>
         <% end %>
       <% end %>
     </div>
     <div class="plans__list">
-      <ul>
-        <% @plans.each do |plan| %>
-          <%= link_to user_plan_path(@user, plan) do %>
-            <li>
-              <%= plan.day.strftime("%Y 年 %m 月 %d 日").to_s %>
-              <%= plan.title %>
-            </li>
+      <table>
+        <% unless @plans == nil %>
+          <% @plans.each do |plan| %>
+            <tr>
+              <td class="pr-3"><%= plan.day.strftime("%Y / %m / %d").to_s %></td>
+              <td class="plans__list__title">
+                <%= link_to user_plan_path(@user, plan) do %>
+                  <%= plan.title %>
+                <% end %>
+              </td>
+            </tr>
           <% end %>
+        <% else %>
+          <tr>
+            <td>キャンプ記録はありません。</td>
+          </tr>
         <% end %>
-      </ul>
+      </table>
     </div>
   </div>
 </div>
+
