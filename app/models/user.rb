@@ -29,7 +29,7 @@ class User < ApplicationRecord
     if keyword == "" #未入力の場合は全件表示
       User.all
     else              #名前の部分一致
-      User.where(['name like?', "%#{keyword}%"]).where(admin: false)
+      User.where(['name like?', "%#{keyword}%"])
     end
   end
 
