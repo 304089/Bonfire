@@ -14,7 +14,7 @@
       <% end %>
         <%= f.text_area :introduction, class: "inp input3"%>
         <p class="m-0">カテゴリー</p>
-        <%= f.select :genre,PhotoPost.genres.keys.to_a, selected: params[:genre], class: "inp input1" %>
+        <%= f.select :genre,PhotoPost.genres.keys.to_a, selected: @photo_post.genre, class: "inp input1" %>
         <p class="m-0">タグ <span class="any">任意</span></p>
         <%= f.text_area :tag_list, value: @photo_post.tag_list.join(','), id: 'tags', placeholder: " 半角カンマ , で区切ってください\n（例）ソロキャンプ,キャンプ仲間募集", class: "inp input5"  %>
         <p class="m-0">場所 <span class="any">任意</span></p>

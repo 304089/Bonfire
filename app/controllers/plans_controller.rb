@@ -17,7 +17,7 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     @plan.user_id = params[:user_id]
     if @plan.save
-      flash[:notice] = "新しくキャンプ計画を作成しました！"
+      flash[:success] = "新しくキャンプ計画を作成しました！"
       redirect_to user_plan_path(params[:user_id], @plan)
     else
       @user = User.find(params[:user_id])
