@@ -7,6 +7,7 @@
                            include_blank: "全てのカテゴリー", selected: params[:genre] %>
 
         <%= f.select :sort, [["新しい順", "new"], ["古い順", "old"],["未読", "yet"]], selected: params[:sort]%>
+        <%= f.submit "ソート" %>
       <% end %>
     </div>
   </div>

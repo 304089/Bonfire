@@ -4,6 +4,7 @@
     <div class="select">
       <%= form_with url: admin_users_path, method: :get, local: true do |f| %>
         <%= f.select :sort, [["ID(昇順)", "old"], ["ID(降順)", "new"], ["ログイン日時(近い)", "near"], ["ログイン日時(遠い)", "far"], ["退会ユーザー", "leave"],["垢BANユーザー", "punish"]],selected: params[:sort] %>
+        <%= f.submit "ソート" %>
       <% end %>
     </div>
     <div class="search">

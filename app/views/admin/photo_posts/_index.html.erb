@@ -5,6 +5,7 @@
       <%= form_with url: admin_photo_posts_path, method: :get, local: true do |f| %>
         <%= f.select :sort, [["投稿日(新しい)", "new"], ["投稿日(古い)", "old"], ["閲覧数", "look"], ["コメント数", "comment"], ["いいね数", "favorite"], ["ブックマーク数", "bookmark"]],
                             selected: params[:sort], class: "select" %>
+        <%= f.submit "ソート" %>
       <% end %>
     </div>
     <div class="search">

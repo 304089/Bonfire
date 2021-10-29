@@ -205,7 +205,9 @@
               </div>
               <div class="user">
                 <%= attachment_image_tag rank, :profile_image, size: "20x20", fallback: "no_image.jpg", class: "user-icon rounded-circle" %>
-                <%= rank.name %>
+                <%= link_to user_path(rank) do %>
+                  <%= rank.name %>
+                <% end %>
               </div>
               <div clss="count">
                 <i class="fas fa-thumbs-up"></i>
