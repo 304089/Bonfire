@@ -49,31 +49,19 @@
        box-shadow: 2px 2px 4px gray;
        border-radius: 5px;
      }
-
-     button {
-       background: gray;
-       padding: 4px;
-       border-radius: 5px;
-       color: white;
-       margin-left: 3px;
-       box-shadow: 2px 2px 4px gray;
-     }
-
-     button:hover {
-       opacity: 0.7;
-     }
    }
 
    &__list {
      ul {
        height: 600px;
+       width: 530px;
        overflow: scroll;
        margin-top: 10px;
        border: 2px solid;
        padding: 10px;
        border-radius: 5px;
        li {
-         font-size: 25px;
+         font-size: 20px;
          padding: 5px 10px;
          border-bottom: 1px solid silver;
          white-space: nowrap;

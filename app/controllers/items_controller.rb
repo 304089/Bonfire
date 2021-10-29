@@ -18,10 +18,12 @@ class ItemsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    if params[:genre]
-      @items = Item.where(user_id: params[:user_id], genre: params[:genre])
+    if params[:genre] == ""
+      @items = Item.where(user_id: params[:user_id]).order(:genre)
+    elsif params[:genre]
+      @items = Item.where(user_id: params[:user_id], genre: params[:genre]).order(:genre)
     else
-       @items = Item.where(user_id: params[:user_id])
+      @items = Item.where(user_id: params[:user_id]).order(:genre)
     end
   end
 

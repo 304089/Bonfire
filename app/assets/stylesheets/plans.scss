@@ -14,20 +14,36 @@
     margin-top: 15px;
   }
 
-  &__header {
-    height: 50px;
+  .alert-warning {
+    position: relative;
+    left: 200px;
+    top: 8px;
   }
 
-  &__chart {
-    height: 80px;
+  &__header {
+    height: 50px;
+    width: 620px;
+    color: white;
+    margin: 0 auto;
     background: gray;
   }
 
+  &__chart {
+    height: 50px;
+    width: 620px;
+    background: silver;
+    margin: 0 auto;
+    h3 {
+      text-align: center;
+      line-height: 50px;
+    }
+  }
+
   &__content {
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
     border: 3px solid;
-    padding: 10px;
+    padding: 10px 0 10px 60px;
 
     .must {
       font-size: 15px;
@@ -103,6 +119,8 @@
         padding: 10px 20px;
         border-radius: 5px;
         box-shadow: 2px 2px 4px gray;
+        position: relative;
+        right: 40px;
       }
 
       button:hover {
@@ -126,18 +144,28 @@
 
     &__header {
       height: 50px;
-      background: silver;
+      width: 580px;
+      margin: 0 auto;
+      background: gray;
+      color: white;
     }
 
     &__chart {
-      height: 80px;
-      background: gray;
+      height: 50px;
+      background: silver;
+      width: 580px;
+      margin: 0 auto;
+      h3 {
+        text-align: center;
+        line-height: 50px;
+      }
     }
 
     &__content {
-      margin: 20px auto 0 auto;
+      margin: 0 auto;
       border: 3px solid;
       padding: 10px;
+      width: 70%;
 
       label {
         display: block;
@@ -157,7 +185,8 @@
         background: white;
         overflow: scroll;
         border: 1px solid;
-        padding: 5px;
+        width: 550px;
+        white-space: nowrap;
       }
 
       &__submit {
@@ -181,6 +210,11 @@
 }
 
 /**********************:show****************************/
+.plan-show-flash {
+  text-align: center;
+  color: green;
+  font-size: 25px;
+}
 .plan-show-container {
     padding-top: 30px;
     width: 50%;
@@ -371,6 +405,10 @@
       tr{
         border-bottom: 1px solid silver;
       }
+    }
+
+    &__day {
+      font-size: 15px;
     }
 
     &__title {

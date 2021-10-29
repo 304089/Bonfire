@@ -67,6 +67,13 @@ $(function() {
 /***************マイページ　写真ソート選択動化*/
 $(function(){
     $('#sort').change(function() {
-        $(".select form").submit();
+        $(".posts__select form").submit();
+    });
+});
+
+/**************ギア一覧絞り込み・ソート自動化********/
+$(function(){
+    $('#genre').change(function() {
+        $(".items__select form").submit();
     });
 });

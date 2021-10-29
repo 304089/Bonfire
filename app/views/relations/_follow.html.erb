@@ -8,13 +8,13 @@
               <%= link_to "プロフィール編集",edit_user_path(user) %>
             </li>
             <li>
-              <%= link_to "My Gear", user_items_path(user) %>
+              <%= link_to "キャンプ計画", user_plans_path(user) %>
             </li>
             <li>
-              <%= link_to "My Photo", user_path(user, choose: "mine") %>
+              <%= link_to "キャンプギア", user_items_path(user) %>
             </li>
             <li>
-              <%= link_to "My Plan", user_plans_path(user) %>
+              <%= link_to "写真一覧", user_path(user, choose: "mine") %>
             </li>
             <li>
               <%= link_to "ブックマーク", user_path(user, choose: "bookmark") %>

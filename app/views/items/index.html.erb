@@ -11,10 +11,7 @@
     </div>
     <div class="items__select">
       <%= form_with url: user_items_path(@user), method: :get, local: true do |f| %>
-        <%= f.select :genre, Item.genres.keys.to_a, selected: params[:genre] %>
-        <%= f.button :type => "submit", style: 'border-style: none;', class: "select3" do %>
-          絞り込む <i class="fas fa-search-plus"></i>
-        <% end %>
+        <%= f.select :genre, Item.genres.keys.to_a, include_blank: "全てのカテゴリー", selected: params[:genre] %>
       <% end %>
     </div>
     <div class="items__list">
@@ -23,9 +20,9 @@
         <% @items.each do |item| %>
           <%= link_to edit_user_item_path(@user, item), data: {confirm: "登録内容を変更しますか？"} do %>
             <li>
-              <%= attachment_image_tag item, :item_image,size: "60x60", fallback: "no_photo.jpg", class: "rounded" %>
+              <%= attachment_image_tag item, :item_image,size: "50x50", fallback: "no_photo.jpg", class: "rounded" %>
               <%= item.name %>
-              <% unless item.manufacturer == nil %>
+              <% unless item.manufacturer == ""%>
                 (<%= item.manufacturer %>)
               <% end %>
             </li>

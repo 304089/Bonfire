@@ -9,7 +9,7 @@ class PlansController < ApplicationController
     @user = User.find(params[:user_id])
     @plan = Plan.new(plan_params)
     @plan_item = PlanItem.new
-    @items = Item.where(user_id: params[:user_id])
+    @items = Item.where(user_id: params[:user_id]).order(:genre)
     @plan.plan_items.build
   end
 
@@ -17,6 +17,7 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     @plan.user_id = params[:user_id]
     if @plan.save
+      flash[:notice] = "新しくキャンプ計画を作成しました！"
       redirect_to user_plan_path(params[:user_id], @plan)
     else
       @user = User.find(params[:user_id])
@@ -27,7 +28,7 @@ class PlansController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @plan = Plan.find(params[:id])
-    @items = Item.joins(:plan_items).where(plan_items: { plan_id: @plan.id }) #計画と合わせて選択したアイテムも表示するため
+    @items = Item.joins(:plan_items).where(plan_items: { plan_id: @plan.id }).order(:genre) #計画と合わせて選択したアイテムも表示するため
     if params[:tab] == "plan" || params[:tab] == nil
       @tab = "plan"
       render "show"

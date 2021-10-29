@@ -6,14 +6,16 @@
   <p>出発日 <i class="far fa-calendar-alt"></i></p>
   <%= plan.day.strftime("%Y年%m月%d日") %>
 </div>
-<div class="plan-show-container__content__check-word">
-  <p>チェックイン <i class="far fa-clock"></i></p>
-  <p>チェックアウト <i class="fas fa-clock"></i></p>
-</div>
-<div class="plan-show-container__content__check-time">
-  <span class="in"><%= plan.check_in_time.strftime("%H時 %M分").to_s %></span>
-  <span class="out"><%= plan.check_out_time.strftime("%H時 %M分").to_s %></span>
-</div>
+<% unless plan.check_in_time == nil && plan.check_out_time == nil %>
+  <div class="plan-show-container__content__check-word">
+    <p>チェックイン <i class="far fa-clock"></i></p>
+    <p>チェックアウト <i class="fas fa-clock"></i></p>
+  </div>
+  <div class="plan-show-container__content__check-time">
+    <span class="in"><%= plan.check_in_time.strftime("%H時 %M分").to_s %></span>
+    <span class="out"><%= plan.check_out_time.strftime("%H時 %M分").to_s %></span>
+  </div>
+<% end %>
 <div class="plan-show-container__content__place">
   <p>キャンプ場 <i class="fas fa-campground"></i></p>
   <%= plan.place %>
