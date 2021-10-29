@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 #*******エンドユーザー
   resources :users, except:[:new, :destroy] do
     resources :items, except:[:show]
-    resources :plans do
+    resources :plans, except:[:edit, :update] do
       collection do
         post :item_choice
       end
@@ -50,10 +50,6 @@ Rails.application.routes.draw do
       get :withdrawal
     end
   end
-
-
-
-
 
 
   resources :photo_posts do

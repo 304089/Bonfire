@@ -63,21 +63,6 @@ class PlansController < ApplicationController
     end
   end
 
-  def edit
-    @user = User.find(params[:user_id])
-    @plan = Plan.find(params[:id])
-  end
-
-  def update
-    @plan = Plan.find(params[:id])
-    if @plan.update(plan_params)
-      redirect_to user_plan_path(params[:user_id], @plan)
-    else
-      @user = User.find(params[:user_id])
-      render "edit"
-    end
-  end
-
   def destroy
     @plan = Plan.find(params[:id])
     @plan.destroy

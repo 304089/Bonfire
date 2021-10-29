@@ -1,14 +1,18 @@
-<% if consultation_answer.helped_by?(current_user) %>
-  <p>
-    <%= link_to consultation_consultation_answer_helpfulness_path(consultation_answer.consultation,consultation_answer), method: :delete,remote: true do %>
-      <i class="fas fa-thumbs-up"></i>
-    <% end %>
-  </p>
+<% if user_signed_in? %>
+  <% if consultation_answer.helped_by?(current_user) %>
+    <p>
+      <%= link_to consultation_consultation_answer_helpfulness_path(consultation_answer.consultation,consultation_answer), method: :delete,remote: true do %>
+        <i class="fas fa-thumbs-up"></i>
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to consultation_consultation_answer_helpfulness_path(consultation_answer.consultation,consultation_answer), method: :post, remote: true do %>
+        <i class="far fa-thumbs-up"></i>
+      <% end %>
+    </p>
+  <% end %>
+  <p class="count"><%= consultation_answer.helpfulnesses.count %></p>
 <% else %>
-  <p>
-    <%= link_to consultation_consultation_answer_helpfulness_path(consultation_answer.consultation,consultation_answer), method: :post, remote: true do %>
-      <i class="far fa-thumbs-up"></i>
-    <% end %>
-  </p>
+  <p><i class="far fa-thumbs-up"></i></p>
 <% end %>
-<p class="count"><%= consultation_answer.helpfulnesses.count %></p>
