@@ -1,0 +1,17 @@
+<div class="plan-show-container__content__gear">
+ <% unless @items == nil %>
+  <ul>
+    <% @items.each do |item| %>
+      <li>
+        <%= attachment_image_tag item, :item_image,size: "60x60", fallback: "no_photo.jpg", class: "rounded" %>
+        <%= item.name %>
+        <% unless item.manufacturer == nil || item.manufacturer == "" %>
+          (<%= item.manufacturer %>)
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+ <% else %>
+   <p>ギアの登録がありません</p>
+ <% end %>
+</div>

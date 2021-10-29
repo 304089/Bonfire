@@ -1,30 +1,38 @@
 <div class="plan-container__content__title">
-  <p>キャンプタイトル</p>
+  <p>キャンプタイトル <i class="fas fa-book-open"></i></p>
   <%= plan.title %>
 </div>
 <div class="plan-show-container__content__day">
-  <p>出発日</p>
-  <%= plan.day %>
+  <p>出発日 <i class="far fa-calendar-alt"></i></p>
+  <%= plan.day.strftime("%Y年%m月%d日") %>
 </div>
 <div class="plan-show-container__content__check-word">
-  <p>チェックイン</p>
-  <p>チェックアウト</p>
+  <p>チェックイン <i class="far fa-clock"></i></p>
+  <p>チェックアウト <i class="fas fa-clock"></i></p>
 </div>
 <div class="plan-show-container__content__check-time">
-  <%= plan.check_in_time %>
-  <%= plan.check_out_time %>
+  <span class="in"><%= plan.check_in_time.strftime("%H時 %M分").to_s %></span>
+  <span class="out"><%= plan.check_out_time.strftime("%H時 %M分").to_s %></span>
 </div>
 <div class="plan-show-container__content__place">
-  <p>キャンプ場</p>
+  <p>キャンプ場 <i class="fas fa-campground"></i></p>
   <%= plan.place %>
 </div>
 <div class="plan-show-container__content__member">
-  <p>参加人数</p>
+  <p>参加人数 <i class="fas fa-users"></i></p>
     <%= user.name %>  他
     <%= plan.member %>
     名
 </div>
 <div class="plan-show-container__content__memo">
-  <p>メモ</p>
-  <%= plan.memo %>
+  <% unless plan.memo == "" %>
+    <p>メモ <i class="fas fa-edit"></i></p>
+    <div class="plan-show-container__content__memo__body">
+      <%if plan.memo.nil? %>
+        <%= plan.memo %>
+      <% else %>
+        <%=safe_join(plan.memo.split("\n"),tag(:br))%>
+      <% end %>
+    </div>
+  <% end %>
 </div>

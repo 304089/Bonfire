@@ -28,6 +28,13 @@ class PlansController < ApplicationController
     @user = User.find(params[:user_id])
     @plan = Plan.find(params[:id])
     @items = Item.joins(:plan_items).where(plan_items: { plan_id: @plan.id }) #計画と合わせて選択したアイテムも表示するため
+    if params[:tab] == "plan" || params[:tab] == nil
+      @tab = "plan"
+      render "show"
+    elsif params[:tab] == "gear"
+      @tab = "gear"
+      render "show"
+    end
   end
 
   def index #全て・グルキャン・ソロで絞り込み&新旧ソート

@@ -4,11 +4,10 @@
 
 /*****************newページ*********************/
 .plan-container {
+  padding-top: 30px;
   width: 55%;
   min-height: 600px;
-  background: white;
   margin: 0 auto;
-  border: 3px solid;
   p {
     margin: 0;
     font-size: 25px;
@@ -17,7 +16,6 @@
 
   &__header {
     height: 50px;
-    background: silver;
   }
 
   &__chart {
@@ -28,6 +26,8 @@
   &__content {
     width: 60%;
     margin: 0 auto;
+    border: 3px solid;
+    padding: 10px;
 
     .must {
       font-size: 15px;
@@ -114,11 +114,10 @@
 
 /**********************item_choice**********************/
 .plan_item-container {
+    padding-top: 30px;
     width: 55%;
     min-height: 600px;
-    background: white;
     margin: 0 auto;
-    border: 3px solid;
     p {
       margin: 0;
       font-size: 25px;
@@ -136,8 +135,10 @@
     }
 
     &__content {
-      width: 90%;
-      margin: 20px auto;
+      margin: 20px auto 0 auto;
+      border: 3px solid;
+      padding: 10px;
+
       label {
         display: block;
         position: relative;
@@ -153,6 +154,7 @@
       }
       &__list {
         height: 500px;
+        background: white;
         overflow: scroll;
         border: 1px solid;
         padding: 5px;
@@ -179,6 +181,134 @@
 }
 
 /**********************:show****************************/
+.plan-show-container {
+    padding-top: 30px;
+    width: 50%;
+    white-space: nowrap;
+    overflow: scroll;
+    min-height: 600px;
+    margin: 0 auto;
+    font-size: 25px;
+    p {
+      margin: 0;
+      font-size: 20px;
+      margin-top: 15px;
+      background: #545b62;
+      width: fit-content;
+      color: white;
+      padding: 0 3px;
+      border-radius: 5px;
+    }
+
+    &__header {
+      height: 50px;
+      margin-bottom: 10px;
+    }
+
+    &__tab {
+      display: flex;
+
+      &__plan {
+        width: 50%;
+        height: 50px;
+        border-radius: 10px 10px 0 0;
+        border: 2px solid;
+        background: silver;
+        span {
+          font-size: 30px;
+          position: relative;
+          left: 130px;
+        }
+      }
+
+      &__gear {
+        width: 50%;
+        height: 50px;
+        border-radius: 10px 10px 0 0;
+        border: 2px solid;
+        background: silver;
+        span {
+          font-size: 30px;
+          position: relative;
+          left: 120px;
+        }
+      }
+    }
+
+/****************部分テンプレ(plan)*********************:********/
+    &__content {
+      padding: 10px;
+      background: white;
+      border: 3px solid;
+      &__check-word {
+        display: flex;
+        gap: 40px;
+        p {
+          font-size: 15px;
+        }
+      }
+
+      &__check-time {
+        display: flex;
+        font-size: 25px;
+        .out {
+          position: relative;
+          left: 45px;
+        }
+      }
+
+      &__memo {
+        &__body {
+          border: 2px solid gray;
+          padding: 3px;
+          border-radius: 5px;
+          font-size: 20px;
+          max-height: 400px;
+          overflow: scroll;
+        }
+      }
+    }
+
+    &__bottom{
+      height: 100px;
+      &__back {
+        background: #007bff;
+        width: 10%;
+        margin: 20px auto 0 auto;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        color: white;
+        border-radius: 5px;
+        padding: 10px;
+        position: relative;
+        top: 20px;
+        left: 660px;
+        box-shadow: 2px 2px 4px grey;
+      }
+
+      &__delete {
+        position: relative;
+        left: 820px;
+        top: 20px;
+      }
+    }
+}
+
+/****************部分テンプレ(gear)*********************:********/
+.plan-show-container {
+  &__content {
+    &__gear {
+      max-height: 600px;
+      overflow: scroll;
+    }
+  }
+}
+
+
+
+
+
 
 
 /**********************:*index*****************************/

@@ -18,6 +18,7 @@
       <% end %>
     </div>
     <div class="items__list">
+     <% unless @items == nil %>
       <ul>
         <% @items.each do |item| %>
           <%= link_to edit_user_item_path(@user, item), data: {confirm: "登録内容を変更しますか？"} do %>
@@ -31,6 +32,9 @@
           <% end %>
         <% end %>
       </ul>
+     <% else %>
+       <p>ギアの登録がありません</p>
+     <% end %>
     </div>
   </div>
 </div>

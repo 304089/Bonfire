@@ -1,8 +1,33 @@
 <div class="plan-show-container">
-  <div class="plan-container__header">
-    <h1 class="text-center">キャンプ計画 <i class="fas fa-hiking"></i></h1>
+  <div class="plan-show-container__header">
+    <h1 class="text-center">CAMP PLAN <i class="fas fa-hiking"></i></h1>
+  </div>
+  <div class="plan-show-container__tab">
+    <% if @tab == "plan" || @tab == nil %>
+      <%= link_to user_plan_path(@user, @plan, tab: "plan"), class: "plan-show-container__tab__plan bg-white" do %>
+        <span>PLAN <i class="fas fa-clipboard-list"></i></span>
+      <% end %>
+      <%= link_to user_plan_path(@user, @plan, tab: "gear"), class: "plan-show-container__tab__gear" do %>
+        <span>GEAR <i class="fas fa-hammer"></i></span>
+      <% end %>
+    <% elsif @tab == "gear" %>
+      <%= link_to user_plan_path(@user, @plan, tab: "plan"), class: "plan-show-container__tab__plan" do %>
+        <span>PLAN <i class="fas fa-clipboard-list"></i></span>
+      <% end %>
+      <%= link_to user_plan_path(@user, @plan, tab: "gear"), class: "plan-show-container__tab__gear bg-white" do %>
+        <span>GEAR <i class="fas fa-hammer"></i></span>
+      <% end %>
+    <% end %>
   </div>
   <div class="plan-show-container__content">
-    <%= render "plan", user: @user, plan: @plan %>
+    <% if @tab == "plan" || @tab == nil %>
+      <%= render "plan", user: @user, plan: @plan %>
+    <% elsif @tab == "gear" %>
+      <%= render "gear", user: @user, items: @items %>
+    <% end %>
   </div>
+</div>
+<div class="plan-show-container__bottom">
+  <%= link_to "一覧に戻る", user_plans_path(@user), class: "plan-show-container__bottom__back"%>
+  <%= link_to "ー 計画を削除する ー", user_plan_path(@user, @plan), method: :delete, data: {confirm: "【確認】 削除しますか？"}, class: "plan-show-container__bottom__delete" %>
 </div>
