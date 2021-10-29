@@ -3,6 +3,7 @@ class Plan < ApplicationRecord
     validates :title
     validates :day
     validates :place
+    validates :member
   end
 
   belongs_to :user
