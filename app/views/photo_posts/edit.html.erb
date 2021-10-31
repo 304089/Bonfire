@@ -6,7 +6,7 @@
     <div class="form-area">
       <%= form_with model: @photo_post, local: true do |f| %>
       <% if @photo_post.preview == true %>　<%# 下書き・プレビュー状態か%>
-        <p class="m-0">投稿写真 <span class="many">複数可</span></p>
+        <p class="m-0">変更する写真 <span class="many bg-danger">変更のない場合は未選択のままで</span></p>
         <%= f.attachment_field :post_images_images, multiple: true, class: "inp input2" %>
         <%= f.hidden_field :preview, value: "preview" %>    <%# 下書き・プレビュー状態か投稿済みのものかでupdateアクションの動きを分岐させるため%>
       <% else %>　<%# 投稿済みのものは写真は変更できない%>

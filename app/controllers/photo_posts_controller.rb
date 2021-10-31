@@ -3,6 +3,7 @@ class PhotoPostsController < ApplicationController
 
   def new
     @photo_post = PhotoPost.new
+    @photo_post.post_images.build
     @user = current_user
   end
 
@@ -27,6 +28,8 @@ class PhotoPostsController < ApplicationController
 
   def edit
     @photo_post = PhotoPost.find(params[:id])
+    @post_images = PostImage.where(photo_post_id: @photo_post.id)
+
     @user = current_user
   end
 

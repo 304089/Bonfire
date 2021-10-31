@@ -12,7 +12,7 @@ class PhotoPost < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :post_images, dependent: :destroy
-  accepts_attachments_for :post_images, attachment: :image #複数投稿
+  accepts_attachments_for :post_images, attachment: :image, append: true
 
   is_impressionable counter_cache: true #pv計測用
 

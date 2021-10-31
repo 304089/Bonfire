@@ -8,9 +8,8 @@ class PlansController < ApplicationController
   def item_choice #newからパラメータ受け取り、登録してあるアイテムをチェックボックスで選択したパラメータを受け取る
     @user = User.find(params[:user_id])
     @plan = Plan.new(plan_params)
-    @plan_item = PlanItem.new
-    @items = Item.where(user_id: params[:user_id]).order(:genre)
     @plan.plan_items.build
+    @items = Item.where(user_id: params[:user_id]).order(:genre)
   end
 
   def create
