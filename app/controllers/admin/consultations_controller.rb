@@ -14,6 +14,10 @@ class Admin::ConsultationsController < ApplicationController
       @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:id)
                                    .order("count(helpfulnesses.id) DESC").page(params[:page]).per(30)
     end
+    @warning = []
+    @consultations.each do |consultation|
+      @warning << consultation.consultation_answers.select{ |value| value[:score].to_f <= -0.5 } #感情分析結果、スコアが-0.5以下のコメントを抽出
+    end
   end
 
   def search

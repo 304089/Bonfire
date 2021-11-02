@@ -19,6 +19,7 @@
     <% end %>
   <% end %>
 <% else %>
+  <span class="text-danger"><%= flash[:alert] %></span>
   <% photo_post_comments.reverse.each do |photo_post_comment| %>
     <div class="comment-body">
       <%= link_to user_path(photo_post_comment.user) do %>
@@ -27,7 +28,11 @@
         <% end %>
       <% if user_signed_in? && current_user.admin? || current_user == photo_post_comment.user %>   <%#.  管理人は全て削除可能　%>
         <%= link_to photo_post_photo_post_comment_path(photo_post, photo_post_comment), method: :delete, remote: true, class: "comment", data: {confirm: "本当に削除しますか？"} do %>
-          <%= photo_post_comment.comment %>
+          <% if current_user.status == "管理者" && photo_post_comment.score.to_f <= -0.5 %>
+            <span class="bg-danger"><%= photo_post_comment.comment %></span>
+          <% else %>
+            <%= photo_post_comment.comment %>
+          <% end %>
         <% end %>
       <% end %>
     </div>

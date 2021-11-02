@@ -1,0 +1,62 @@
+<div class="admin_top-container">
+  <div class="admin_top-container__left">
+    <%= render "navigation" %>
+  </div>
+  <div class="admin_top-container__right">
+    <div class="warning_list-container">
+      <div class="warning_list-container__header">
+        <h2><i class="fas fa-user"></i> 【<%= @user.name %>】の警告がついたコメント・回答</h2>
+      </div>
+      <h4><i class="fas fa-camera"></i> 投稿写真へのコメント</h4>
+      <div class="photo_post_comment_list">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col", style="width: 20%", class="text-center">投稿日時</th>
+              <th scope="col", style="width: 70%", class="text-center">投稿内容</th>
+              <th scope="col", style="width: 10%", class="text-center">スコア</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @photo_post_comments.each do |photo_post_comment| %>
+              <tr>
+                <td class="text-center"><%= photo_post_comment.created_at.strftime("%Y/ %m/ %d %H:%M") %></th>
+                <td class="text-center">
+                  <%= link_to photo_post_path(photo_post_comment.photo_post) do %>
+                    <%= photo_post_comment.comment %>
+                  <% end %>
+                </td>
+                <td class="text-center"><%= photo_post_comment.score %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <h4><i class="fas fa-comments"></i> 投稿相談への回答</h4>
+      <div class="photo_post_comment_list">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col", style="width: 20%", class="text-center">投稿日時</th>
+              <th scope="col", style="width: 70%", class="text-center">投稿内容</th>
+              <th scope="col", style="width: 10%", class="text-center">スコア</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @consultation_answers.each do |consultation_answer| %>
+              <tr>
+                <td class="text-center"><%= consultation_answer.created_at.strftime("%Y/ %m/ %d %H:%M") %></th>
+                <td class="text-center">
+                  <%= link_to consultation_path(consultation_answer.consultation) do %>
+                    <%= consultation_answer.answer %>
+                  <% end %>
+                </td>
+                <td class="text-center"><%= consultation_answer.score %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

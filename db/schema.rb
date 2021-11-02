@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_28_172308) do
+ActiveRecord::Schema.define(version: 2021_11_01_172706) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_10_28_172308) do
     t.string "answer_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "score", precision: 5, scale: 3
     t.index ["consultation_id"], name: "index_consultation_answers_on_consultation_id"
     t.index ["user_id"], name: "index_consultation_answers_on_user_id"
   end
@@ -124,6 +125,7 @@ ActiveRecord::Schema.define(version: 2021_10_28_172308) do
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "score", precision: 5, scale: 3
     t.index ["photo_post_id"], name: "index_photo_post_comments_on_photo_post_id"
     t.index ["user_id"], name: "index_photo_post_comments_on_user_id"
   end

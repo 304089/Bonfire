@@ -7,13 +7,13 @@ class Admin::UsersController < ApplicationController
 
   def index
     if params[:sort] == "old" || params[:sort] == nil                                     #登録順
-      @users = User.where(status: 0).page(params[:page]).per(30)
+      @users = User.all.page(params[:page]).per(30)
     elsif params[:sort] == "new"                                                          #新しい順
-      @users = User.where(status: 0).order(id: "DESC").page(params[:page]).per(30)
+      @users = User.all.order(id: "DESC").page(params[:page]).per(30)
     elsif params[:sort] == "near"                                                         #最終ログイン時間が近い順
-      @users = User.where(status: 0).order(current_sign_in_at: "DESC").page(params[:page]).per(30)
+      @users = User.all.order(current_sign_in_at: "DESC").page(params[:page]).per(30)
     elsif params[:sort] == "far"                                                          #最終ログイン時間が遠い順
-      @users = User.where(status: 0).order(current_sign_in_at: "ASC").page(params[:page]).per(30)
+      @users = User.all.order(current_sign_in_at: "ASC").page(params[:page]).per(30)
     elsif params[:sort] == "leave"                                                        #退会者
       @users = User.where(status: 1).page(params[:page]).per(30)
       @status = "leave"
@@ -22,6 +22,13 @@ class Admin::UsersController < ApplicationController
       @status = "punish"
     end
   end
+
+  def warning_list
+    @user = User.find(params[:id])
+    @photo_post_comments = PhotoPostComment.where(user_id: params[:id]).where("score <= ?", -0.5)
+    @consultation_answers = ConsultationAnswer.where(user_id: params[:id]).where("score <= ?", -0.5)
+  end
+
 
   def change  #ユーザー一覧ページにて、会員と垢BANのステータス変更時
     @user = User.find(params[:id])

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         get :search
       end
       member do
+        get :warning_list
         patch :change
       end
     end

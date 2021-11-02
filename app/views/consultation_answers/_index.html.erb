@@ -1,3 +1,4 @@
+<p class="text-danger"><%= flash[:alert] %></p>
 <% consultation_answers.reverse.each do |consultation_answer| %>
   <div>
     <%= link_to user_path(consultation_answer.user) do %>
@@ -11,7 +12,11 @@
     <% end %>
   </div>
   <div>
-    <%=safe_join(consultation_answer.answer.split("\n"),tag(:br))%>
+    <% if current_user.status == "管理者" && consultation_answer.score.to_f <= -0.5 %>
+      <span class="bg-danger"><%=safe_join(consultation_answer.answer.split("\n"),tag(:br))%></span>
+    <% else %>
+      <%=safe_join(consultation_answer.answer.split("\n"),tag(:br))%>
+    <% end %>
   </div>
   <div class="menu">
     <p class="day"><%= consultation_answer.set_date %></p>
@@ -21,7 +26,7 @@
       </div>
     </div>
     <div>
-      <% if consultation_answer.user == current_user %>
+      <% if current_user.status == "管理者"|| consultation_answer.user == current_user %>
         <%= link_to consultation_consultation_answer_path(consultation, consultation_answer), method: :delete, remote: true, data: {confirm: "削除しますか？"} do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>

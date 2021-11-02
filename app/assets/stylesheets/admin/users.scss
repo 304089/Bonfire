@@ -115,5 +115,23 @@
 
       }
     }
+
+/****************warning_list************/
+    .warning_list-container {
+      width: 80%;
+      margin: 0 auto;
+
+      &__header {
+        h2 {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+      }
+
+      .photo_post_comment_list {
+        max-height: 400px;
+        overflow: scroll;
+      }
+    }
   }
 }
