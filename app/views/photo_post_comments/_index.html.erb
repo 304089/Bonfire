@@ -28,7 +28,7 @@
         <% end %>
       <% if user_signed_in? && current_user.admin? || current_user == photo_post_comment.user %>   <%#.  管理人は全て削除可能　%>
         <%= link_to photo_post_photo_post_comment_path(photo_post, photo_post_comment), method: :delete, remote: true, class: "comment", data: {confirm: "本当に削除しますか？"} do %>
-          <% if current_user.status == "管理者" && warning_id.to_i == photo_post_comment.id %>
+          <% if current_user.admin? && warning_id.to_i == photo_post_comment.id %>
             <span class="bg-danger"><%= photo_post_comment.comment %></span>
           <% else %>
             <%= photo_post_comment.comment %>
