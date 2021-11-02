@@ -12,7 +12,7 @@
     <% end %>
   </div>
   <div>
-    <% if current_user.status == "管理者" && consultation_answer.score.to_f <= -0.5 %>
+    <% if user_signed_in? && current_user.status == "管理者" && consultation_answer.score.to_f <= -0.5 %>
       <span class="bg-danger"><%=safe_join(consultation_answer.answer.split("\n"),tag(:br))%></span>
     <% else %>
       <%=safe_join(consultation_answer.answer.split("\n"),tag(:br))%>
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div>
-      <% if current_user.status == "管理者"|| consultation_answer.user == current_user %>
+      <% if  user_signed_in? && current_user.status == "管理者"|| consultation_answer.user == current_user %>
         <%= link_to consultation_consultation_answer_path(consultation, consultation_answer), method: :delete, remote: true, data: {confirm: "削除しますか？"} do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
