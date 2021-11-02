@@ -1,7 +1,7 @@
 <div class="photo_post_comment_index-container">
   <h2 class="text-center"><%= "#{@photo_post.user.name}" %>さんの投稿へのコメント</h2>
   <div id="photo_post_comment_index">
-    <%= render "index", photo_post: @photo_post, photo_post_comments: @photo_post_comments %>
+    <%= render "index", photo_post: @photo_post, photo_post_comments: @photo_post_comments, warning_id: @warning_id %>
   </div>
   <div class="photo_post_comment-page">
     <%= paginate(@photo_post_comments) %>

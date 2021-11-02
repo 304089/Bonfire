@@ -22,7 +22,7 @@
               <tr>
                 <td class="text-center"><%= photo_post_comment.created_at.strftime("%Y/ %m/ %d %H:%M") %></th>
                 <td class="text-center">
-                  <%= link_to photo_post_path(photo_post_comment.photo_post) do %>
+                  <%= link_to new_photo_post_photo_post_comment_path(photo_post_comment.photo_post, warning_id: photo_post_comment.id) do %>
                     <%= photo_post_comment.comment %>
                   <% end %>
                 </td>
@@ -47,7 +47,7 @@
               <tr>
                 <td class="text-center"><%= consultation_answer.created_at.strftime("%Y/ %m/ %d %H:%M") %></th>
                 <td class="text-center">
-                  <%= link_to consultation_path(consultation_answer.consultation) do %>
+                  <%= link_to consultation_path(consultation_answer.consultation, warning_id: consultation_answer.id ) do %>
                     <%= consultation_answer.answer %>
                   <% end %>
                 </td>

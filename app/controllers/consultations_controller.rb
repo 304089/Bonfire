@@ -126,6 +126,7 @@ class ConsultationsController < ApplicationController
     impressionist(@consultation, nil, unique: [:ip_address]) #IPアドレスでカウント（同投稿に一回のみ）
     @consultation_answer = ConsultationAnswer.new
     @consultation_answers = ConsultationAnswer.where(consultation_id: @consultation.id)
+    @warning_id = params[:warning_id]
   end
 
   def search #キーワード検索からさらにソート可能 listパラメータはタブ切り替え時の判別用

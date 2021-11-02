@@ -5,6 +5,7 @@ class PhotoPostCommentsController < ApplicationController
     @photo_post = PhotoPost.find(params[:photo_post_id])
     @photo_post_comments = PhotoPostComment.where(photo_post_id: @photo_post.id)
     @photo_post_comment = PhotoPostComment.new
+    @warning_id = params[:warning_id]
   end
 
   def index

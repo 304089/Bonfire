@@ -29,7 +29,7 @@
     <div class="answer-area">
       <h3 class="text-center">ー Answers ー</h3>
       <div id="consultation_answer_index">
-        <%= render "consultation_answers/index", consultation: @consultation, consultation_answers: @consultation_answers %>
+        <%= render "consultation_answers/index", consultation: @consultation, consultation_answers: @consultation_answers, warning_id: @warning_id %>
       </div>
       <div class="form-area">
         <% if user_signed_in? && current_user.active_user? %>
