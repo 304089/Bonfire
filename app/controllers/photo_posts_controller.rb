@@ -73,55 +73,27 @@ class PhotoPostsController < ApplicationController
   end
 
   def index #カテゴリーで絞り込み ＆ 新着or古いorいいねが多い順でソート（初期は全投稿の新着順）
-    if params[:genre] == "キャンプ場"
-      if params[:type] == "new" || params[:type] == ""
-        @photo_posts = PhotoPost.where(genre: "キャンプ場", preview: false).order(id: "DESC").page(params[:page]).per(28)
-      elsif params[:type] == "old"
-        @photo_posts = PhotoPost.where(genre: "キャンプ場", preview: false).page(params[:page]).per(28)
-      elsif  params[:type] == "favorite"
-        @photo_posts = PhotoPost.joins(:favorites).group(:id).where(genre: "キャンプ場", preview: false)
-                                .order("count(favorites.id) DESC").page(params[:page]).per(28)
-      end
-    elsif params[:genre] == "キャンプ道具"
-      if params[:type] == "new" || params[:type] == ""
-        @photo_posts = PhotoPost.where(genre: "キャンプ道具",preview: false).order(id: "DESC").page(params[:page]).per(28)
-      elsif params[:type] == "old"
-        @photo_posts = PhotoPost.where(genre: "キャンプ道具",preview: false).page(params[:page]).per(28)
-      elsif params[:type] == "favorite"
-        @photo_posts = PhotoPost.joins(:favorites).group(:id).where(genre: "キャンプ道具",preview: false)
-                                .order("count(favorites.id) DESC").page(params[:page]).per(28)
-      end
-    elsif params[:genre] == "キャンプ料理"
-      if params[:type] == "new" || params[:type] == ""
-        @photo_posts = PhotoPost.where(genre: "キャンプ料理", preview: false).order(id: "DESC").page(params[:page]).per(28)
-      elsif params[:type] == "old"
-        @photo_posts = PhotoPost.where(genre: "キャンプ料理", preview: false).page(params[:page]).per(28)
-      elsif params[:type] == "favorite"
-        @photo_posts = PhotoPost.joins(:favorites).group(:id).where(genre: "キャンプ料理", preview: false)
-                                .order("count(favorites.id) DESC").page(params[:page]).per(28)
-      end
-    elsif params[:genre] == "キャンプ初心者"
-      if params[:type] == "new" || params[:type] == ""
-        @photo_posts = PhotoPost.where(genre: "キャンプ初心者", preview: false).order(id: "DESC").page(params[:page]).per(28)
-      elsif params[:type] == "old"
-        @photo_posts = PhotoPost.where(genre: "キャンプ初心者", preview: false).page(params[:page]).per(28)
-      elsif params[:type] == "favorite"
-        @photo_posts = PhotoPost.joins(:favorites).group(:id).where(genre: "キャンプ初心者", preview: false)
-                                .order("count(favorites.id) DESC").page(params[:page]).per(28)
-      end
-    elsif params[:genre] == ""
-      if params[:type] == "new" || params[:type] == ""
+    if params[:genre] == ""
+      if params[:type] == "new"
         @photo_posts = PhotoPost.where(preview: false).order(id: "DESC").page(params[:page]).per(28)
       elsif params[:type] == "old"
         @photo_posts = PhotoPost.where(preview: false).page(params[:page]).per(28)
-      elsif params[:type] == "favorite"
+      elsif  params[:type] == "favorite"
         @photo_posts = PhotoPost.joins(:favorites).group(:id).where(preview: false)
+                                .order("count(favorites.id) DESC").page(params[:page]).per(28)
+      end
+    elsif params[:genre]
+      if params[:type] == "new"
+        @photo_posts = PhotoPost.where(genre: params[:genre], preview: false).order(id: "DESC").page(params[:page]).per(28)
+      elsif params[:type] == "old"
+        @photo_posts = PhotoPost.where(genre: params[:genre], preview: false).page(params[:page]).per(28)
+      elsif  params[:type] == "favorite"
+        @photo_posts = PhotoPost.joins(:favorites).group(:id).where(genre: params[:genre], preview: false)
                                 .order("count(favorites.id) DESC").page(params[:page]).per(28)
       end
     else
       @photo_posts = PhotoPost.where(preview: false).order(id: "DESC").page(params[:page]).per(28)
     end
-
   end
 
   def destroy
@@ -142,8 +114,7 @@ class PhotoPostsController < ApplicationController
 
   private
   def photo_post_params #画像は複数投稿可能なため、配列で受け取る.
-    params.require(:photo_post).permit(:introduction, :photo_image, :genre, :tag_list,:place, :preview, :status, :type,
-      post_images_images: [])
+    params.require(:photo_post).permit(:introduction, :photo_image, :genre, :tag_list,:place, :preview, :status, post_images_images: [])
   end
 
 end

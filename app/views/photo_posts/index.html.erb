@@ -3,8 +3,7 @@
   <h4 class="text-center pb-3">ー 見たい・見せたいを共有しよう ー</h4>
   <div class="genre">
     <%= form_with url: photo_posts_path, method: :get, local: true do |f| %>
-      <%= f.select :genre, [["キャンプ場", "キャンプ場"], ["キャンプ道具", "キャンプ道具"],["キャンプ料理", "キャンプ料理"], ["キャンプ初心者", "キャンプ初心者"]],
-                          include_blank: "全ての写真", selected: params[:genre], class: "select1" %>
+      <%= f.select :genre, PhotoPost.genres.keys.to_a, include_blank: "全ての写真", selected: params[:genre], class: "select1" %>
       <%= f.select :type, [["新しい順", "new"], ["古い順", "old"],["いいねが多い順", "favorite"]], selected: params[:type], class: "select2"  %>
       <%= f.button :type => "submit", style: 'border-style: none;', class: "select3" do %>
         絞り込む <i class="fas fa-search-plus"></i>
