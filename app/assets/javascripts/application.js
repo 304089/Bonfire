@@ -77,3 +77,10 @@ $(function(){
         $(".items__select form").submit();
     });
 });
+
+/**************My相談ソート*****************/
+$(function(){
+    $('#sort').change(function() {
+        $(".select-list form").submit();
+    });
+});
