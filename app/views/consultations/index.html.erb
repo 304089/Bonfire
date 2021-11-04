@@ -75,7 +75,7 @@
     </div>
     <div class="consultation-center">
       <div class="consultation-center__label">
-        <% if @list == 0 %>
+        <% if user_signed_in? && @list = "mine" %>
           <div class="mine">
             <h3><i class="fas fa-user"></i> My 相談</h3>
             <div class="select-list">
@@ -88,8 +88,8 @@
         <% else %>
           <ul>
             <li class="consultation-center__label-list1">
-              <%= link_to consultations_path(list: 1, genre: @genre) do %>
-                <% if @list == 1  || @list == nil %>
+              <%= link_to consultations_path(list: "new", genre: @genre) do %>
+                <% if @list == "new"  || @list == nil %>
                   <p class="border border-secondary bg-white"><i class="fas fa-praying-hands"></i>新着相談</p>
                 <% else %>
                   <p class="border text-white"><i class="fas fa-praying-hands"></i>新着相談</p>
@@ -97,8 +97,8 @@
               <% end %>
             </li>
             <li class="consultation-center__label-list2">
-              <%= link_to consultations_path(list: 2, genre: @genre) do %>
-                <% if @list == 2 %>
+              <%= link_to consultations_path(list: "look", genre: @genre) do %>
+                <% if @list == "look" %>
                   <p class="border border-secondary bg-white"><i class="far fa-laugh"></i>閲覧数</p>
                 <% else %>
                   <p class="border text-white"><i class="far fa-laugh"></i>閲覧数</p>
@@ -106,8 +106,8 @@
               <% end %>
             </li>
             <li class="consultation-center__label-list3">
-              <%= link_to consultations_path(list: 3, genre: @genre) do %>
-                <% if @list == 3 %>
+              <%= link_to consultations_path(list: "helpfulness", genre: @genre) do %>
+                <% if @list == "helpfulness" %>
                   <p class="border border-secondary bg-white"><i class="far fa-thumbs-up"></i>役立った！</p>
                 <% else %>
                   <p class="border text-white"><i class="far fa-thumbs-up"></i>役立った！</p>
@@ -119,7 +119,7 @@
       </div>
       <div class="consultation-center__list">
         <ul>
-          <% if @consultations.size == 0 %>
+          <% if @consultations.count == 0 %>
             <li><h4>相談はありません</h4></li>
           <% else %>
             <% @consultations.each do |consultation| %>

@@ -73,7 +73,7 @@ class PhotoPostsController < ApplicationController
   end
 
   def index #カテゴリーで絞り込み ＆ 新着or古いorいいねが多い順でソート（初期は全投稿の新着順）
-    if params[:genre] == ""
+    if params[:genre] == "" #「全て」を選択時
       if params[:type] == "new"
         @photo_posts = PhotoPost.where(preview: false).order(id: "DESC").page(params[:page]).per(28)
       elsif params[:type] == "old"
@@ -82,7 +82,7 @@ class PhotoPostsController < ApplicationController
         @photo_posts = PhotoPost.joins(:favorites).group(:id).where(preview: false)
                                 .order("count(favorites.id) DESC").page(params[:page]).per(28)
       end
-    elsif params[:genre]
+    elsif params[:genre]  #上記以外を選択時
       if params[:type] == "new"
         @photo_posts = PhotoPost.where(genre: params[:genre], preview: false).order(id: "DESC").page(params[:page]).per(28)
       elsif params[:type] == "old"
@@ -91,7 +91,7 @@ class PhotoPostsController < ApplicationController
         @photo_posts = PhotoPost.joins(:favorites).group(:id).where(genre: params[:genre], preview: false)
                                 .order("count(favorites.id) DESC").page(params[:page]).per(28)
       end
-    else
+    else  #写真一覧ページに遷移時（genreパラメータを受け取れないため）
       @photo_posts = PhotoPost.where(preview: false).order(id: "DESC").page(params[:page]).per(28)
     end
   end

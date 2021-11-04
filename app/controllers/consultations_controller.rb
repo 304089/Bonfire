@@ -17,69 +17,24 @@ class ConsultationsController < ApplicationController
     end
   end
 
-  def index #ジャンル絞り込みからソート可能　listパラメータはタブ切り替え時の判別用
-    if params[:genre] == "0"  #カテゴリー=キャンプ場選択時
-      @genre = 0
-      if params[:list] == "1" #新着順
+  def index #カテゴリー絞り込みからソート可能　listパラメータはタブ切り替え時の判別用
+    if params[:genre] #カテゴリーを選択した場合
+      if params[:list] == "new" #新着順
         @consultations = Consultation.where(genre: params[:genre]).order(created_at: "DESC").page(params[:page]).per(15)
-        @list = 1
-      elsif params[:list] == "2"  #閲覧順
+        @list = "new"
+      elsif params[:list] == "look"  #閲覧順
         @consultations = Consultation.where(genre: params[:genre]).order(impressions_count: "DESC").page(params[:page]).per(15)
-        @list = 2
-      elsif params[:list] == "3"  #役に立った！が多い順
+        @list = "look"
+      elsif params[:list] == "helpfulness"  #役に立った！が多い順
         @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
                                      .where(genre: params[:genre]).order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
-        @list = 3
+        @list = "helpfulness"
       else
         @consultations = Consultation.where(genre: params[:genre]).order(created_at: "DESC").page(params[:page]).per(15)
       end
-    elsif params[:genre] == "1" #カテゴリー=キャンプ道具選択時
-      @genre = 1
-      if params[:list] == "1" #新着順
-        @consultations = Consultation.where(genre: params[:genre]).order(created_at: "DESC").page(params[:page]).per(15)
-        @list = 1
-      elsif params[:list] == "2"  #閲覧順
-        @consultations = Consultation.where(genre: params[:genre]).order(impressions_count: "DESC").page(params[:page]).per(15)
-        @list = 2
-      elsif params[:list] == "3"   #役に立った！が多い順
-        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
-                                     .where(genre: params[:genre]).order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
-        @list = 3
-      else
-        @consultations = Consultation.where(genre: params[:genre]).order(created_at: "DESC").page(params[:page]).per(15)
-      end
-    elsif params[:genre] == "2" #カテゴリー=キャンプ料理選択時
-      @genre = 2
-      if params[:list] == "1" #新着順
-        @consultations = Consultation.where(genre: params[:genre]).order(created_at: "DESC").page(params[:page]).per(15)
-        @list = 1
-      elsif params[:list] == "2"  #閲覧順
-        @consultations = Consultation.where(genre: params[:genre]).order(impressions_count: "DESC").page(params[:page]).per(15)
-        @list = 2
-      elsif params[:list] == "3"   #役に立った！が多い順
-        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
-                                     .where(genre: params[:genre]).order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
-        @list = 3
-      else
-        @consultations = Consultation.where(genre: params[:genre]).order(created_at: "DESC").page(params[:page]).per(15)
-      end
-    elsif params[:genre] == "3" #カテゴリー=その他選択時
-      @genre = 3
-      if params[:list] == "1" #新着順
-        @consultations = Consultation.where(genre: params[:genre]).order(created_at: "DESC").page(params[:page]).per(15)
-        @list = 1
-      elsif params[:list] == "2"  #閲覧順
-        @consultations = Consultation.where(genre: params[:genre]).order(impressions_count: "DESC").page(params[:page]).per(15)
-        @list = 2
-      elsif params[:list] == "3"   #役に立った！が多い順
-        @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
-                                     .where(genre: params[:genre]).order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
-        @list = 3
-      else
-        @consultations = Consultation.where(genre: params[:genre]).order(created_at: "DESC").page(params[:page]).per(15)
-      end
+      @genre = params[:genre] #カテゴリーで絞り込んだ後に、さらにそのカテゴリー内でソートをかけるためのパラメータ
     else  #カテゴリーを選択していない場合
-      if params[:user_id] #My相談選択時
+      if params[:user_id] #My相談を選択時
         if params[:sort] == "new" || params[:sort] == nil
           @consultations = Consultation.where(user_id: params[:user_id]).order(created_at: "DESC").page(params[:page]).per(15)
         elsif params[:sort] == "old"
@@ -90,17 +45,17 @@ class ConsultationsController < ApplicationController
           @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
                                        .where(user_id: params[:user_id]).order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
         end
-        @list = 0
-      elsif params[:list] == "1"  #カテゴリー、My相談未選択時
+        @list = "mine"
+      elsif params[:list] == "new"  #カテゴリー、My相談未選択時
         @consultations = Consultation.order(created_at: "DESC").page(params[:page]).per(15)
-        @list = 1
-      elsif params[:list] == "2"  #カテゴリー、My相談未選択時
+        @list = "new"
+      elsif params[:list] == "look"  #カテゴリー、My相談未選択時
         @consultations = Consultation.order(impressions_count: "DESC").page(params[:page]).per(15)
-        @list = 2
-      elsif params[:list] == "3"  #カテゴリー、My相談未選択時
+        @list = "look"
+      elsif params[:list] == "helpfulness"  #カテゴリー、My相談未選択時
         @consultations = Consultation.joins(consultation_answers: :helpfulnesses).group(:consultation_id)
                                      .order("count(helpfulnesses.id) DESC").page(params[:page]).per(15)
-        @list = 3
+        @list = "helpfulness"
       else  #Consultページに遷移してきただけの時
         @consultations = Consultation.order(created_at: "DESC").page(params[:page]).per(15)
       end
@@ -170,7 +125,7 @@ class ConsultationsController < ApplicationController
 
   private
     def consultation_params
-      params.require(:consultation).permit(:title, :content, :consultation_image, :genre, :anonymity, :sort, :period)
+      params.require(:consultation).permit(:title, :content, :consultation_image, :genre, :anonymity)
     end
 
 end
