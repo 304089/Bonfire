@@ -5,7 +5,6 @@
       <%= form_with url: admin_consultations_path, method: :get, local: true do |f| %>
         <%= f.select :sort, [["投稿日(新しい)", "new"], ["投稿日(古い)", "old"], ["閲覧数", "look"], ["コメント数", "comment"], ["役に立った！数", "helpfulness"]],
                             selected: params[:sort], class: "select" %>
-        <%= f.submit "ソート" %>
       <% end %>
     </div>
     <div class="search">

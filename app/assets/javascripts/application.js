@@ -84,3 +84,10 @@ $(function(){
         $(".select-list form").submit();
     });
 });
+
+/*************管理者ページ　各セレクト自動化***********/
+$(function(){
+    $('#sort').change(function() {
+        $(".select form").submit();
+    });
+});
