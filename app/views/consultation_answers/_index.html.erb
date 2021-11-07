@@ -12,6 +12,7 @@
     <% end %>
   </div>
   <div>
+    <%# ユーザーがログインしている　＆　管理者またはコメント投稿者ならコメントは削除リンク%>
     <% if user_signed_in? && current_user.admin? && warning_id.to_i == consultation_answer.id %>
       <span class="bg-danger"><%=safe_join(consultation_answer.answer.split("\n"),tag(:br))%></span>
     <% else %>
