@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-
   attachment :profile_image
 
   has_many :photo_posts, dependent: :destroy
