@@ -7,7 +7,7 @@ class Plan < ApplicationRecord
   end
 
   belongs_to :user
-  has_many :plan_items
+  has_many :plan_items, dependent: :destroy
   has_many :items, through: :plan_items
 
 end
