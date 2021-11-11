@@ -68,13 +68,15 @@ class PlansController < ApplicationController
   end
 
   def item_edit #ギア編集
-
+    @user = User.find(params[:user_id])
+    @plan = Plan.find_by(id: params[:id], user_id: @user.id)
+    @all_items = Item.where(user_id: params[:user_id]).order(:genre)
   end
 
   def update
     @plan = Plan.find_by(id: params[:id], user_id: params[:user_id])
     if @plan.update(plan_params)
-      flash[:success] = "スケジュールを更新しました！"
+      flash[:success] = "内容を更新しました！"
       redirect_to user_plan_path(params[:user_id], @plan)
     else
       @user = User.find(params[:user_id])
