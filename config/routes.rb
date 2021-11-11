@@ -34,7 +34,11 @@ Rails.application.routes.draw do
 #*******エンドユーザー
   resources :users, except:[:new, :destroy] do
     resources :items, except:[:show]
-    resources :plans, except:[:edit, :update] do
+    resources :plans, except:[:edit] do
+      member do
+        get :schedule_edit
+        get :item_edit
+      end
       collection do
         post :item_choice
       end

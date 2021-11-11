@@ -1,0 +1,48 @@
+<div class="plan-container">
+  <div class="plan-container__header">
+    <h1 class="text-center">CAMP PLAN <i class="fas fa-hiking"></i></h1>
+  </div>
+  <div class="plan-container__chart">
+    <h3>スケジュール編集</h3>
+  </div>
+  <%= render "layouts/error_messages", model: @plan %>
+  <div class="plan-container__content">
+    <%= form_with(model:[@user, @plan], url: user_plan_path(@user, @plan), method: :patch, local: true) do |f| %>
+      <div class="plan-container__content__title">
+        <p><i class="fas fa-book-open"></i> キャンプタイトル <span class="must">必須</span></p>
+        <%= f.text_field :title %>
+      </div>
+      <div class="plan-container__content__day">
+        <p><i class="far fa-calendar-alt"></i> 出発日 <span class="must">必須</span></p>
+        <%= f.date_field :day %>
+      </div>
+      <div class="plan-container__content__check-word">
+        <p>チェックイン</p>
+        <p>チェックアウト</p>
+      </div>
+      <div class="plan-container__content__check-time">
+        <%= f.time_field :check_in_time %>
+        <%= f.time_field :check_out_time %>
+      </div>
+      <div class="plan-container__content__place">
+        <p><i class="fas fa-campground"></i> キャンプ場 <span class="must">必須</span></p>
+        <%= f.text_field :place %>
+      </div>
+      <div class="plan-container__content__member">
+        <p><i class="fas fa-users"></i> 参加人数 <span class="must">必須</span></p>
+          <%= @user.name %>  他
+          <%= f.select :member, options_for_select((0..20).to_a, @plan.member) %>
+          名
+      </div>
+      <div class="plan-container__content__memo">
+        <p><i class="fas fa-edit"></i> メモ</p>
+        <%= f.text_area :memo, placeholder: "(例)\n参加メンバー\n・\n・\n\n(昼食)\nホットサンド\n(夕食)\nローストビーフ\nカレー\netc" %>
+      </div>
+      <div class="plan-container__content__submit">
+        <%= f.button :type => "submit", style: 'border-style: none;', class: "bg-success" do %>
+          内容を更新する
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

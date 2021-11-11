@@ -5,7 +5,7 @@ class PlansController < ApplicationController
     @plan = Plan.new
   end
 
-  def item_choice #newからパラメータ受け取り、登録してあるアイテムをチェックボックスで選択したパラメータを受け取る
+  def item_choice #ギア選択(newからパラメータ受け取り、登録してあるアイテムをチェックボックスで選択したパラメータを受け取る)
     @user = User.find(params[:user_id])
     @plan = Plan.new(plan_params)
     @plan.plan_items.build
@@ -59,6 +59,26 @@ class PlansController < ApplicationController
       end
     else
       @plans = Plan.where(user_id: params[:user_id]).order(day: "DESC" )
+    end
+  end
+
+  def schedule_edit #日時場所編集
+    @user = User.find(params[:user_id])
+    @plan = Plan.find_by(id: params[:id], user_id: @user.id)
+  end
+
+  def item_edit #ギア編集
+
+  end
+
+  def update
+    @plan = Plan.find_by(id: params[:id], user_id: params[:user_id])
+    if @plan.update(plan_params)
+      flash[:success] = "スケジュールを更新しました！"
+      redirect_to user_plan_path(params[:user_id], @plan)
+    else
+      @user = User.find(params[:user_id])
+      render "schedule_edit"
     end
   end
 

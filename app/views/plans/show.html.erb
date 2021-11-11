@@ -5,9 +5,7 @@
   </div>
   <div class="plan-show-container__tab">
     <% if @tab == "plan" || @tab == nil %>
-      <%= link_to user_plan_path(@user, @plan, tab: "plan"), class: "plan-show-container__tab__plan bg-white" do %>
-        <span>PLAN <i class="fas fa-clipboard-list"></i></span>
-      <% end %>
+      <span class="plan-show-container__tab__plan bg-white text-center">PLAN <i class="fas fa-clipboard-list"></i></span>
       <%= link_to user_plan_path(@user, @plan, tab: "gear"), class: "plan-show-container__tab__gear" do %>
         <span>GEAR <i class="fas fa-hammer"></i></span>
       <% end %>
@@ -15,9 +13,7 @@
       <%= link_to user_plan_path(@user, @plan, tab: "plan"), class: "plan-show-container__tab__plan" do %>
         <span>PLAN <i class="fas fa-clipboard-list"></i></span>
       <% end %>
-      <%= link_to user_plan_path(@user, @plan, tab: "gear"), class: "plan-show-container__tab__gear bg-white" do %>
-        <span>GEAR <i class="fas fa-hammer"></i></span>
-      <% end %>
+      <span class="plan-show-container__tab__gear bg-white text-center">GEAR <i class="fas fa-hammer"></i></span>
     <% end %>
   </div>
   <div class="plan-show-container__content">
@@ -30,5 +26,7 @@
 </div>
 <div class="plan-show-container__bottom">
   <%= link_to "一覧に戻る", user_plans_path(@user), class: "plan-show-container__bottom__back"%>
+  <%= link_to "スケジュール編集", schedule_edit_user_plan_path(@user, @plan), class: "plan-show-container__bottom__back"%>
+  <%= link_to "ギア編集", item_edit_user_plan_path(@user, @plan), class: "plan-show-container__bottom__back"%>
   <%= link_to "ー 計画を削除する ー", user_plan_path(@user, @plan), method: :delete, data: {confirm: "【確認】 削除しますか？"}, class: "plan-show-container__bottom__delete" %>
 </div>
