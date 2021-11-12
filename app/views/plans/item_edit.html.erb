@@ -8,8 +8,8 @@
   <div class="plan_item-container__content">
     <%= form_with(model:[@user, @plan], url: user_plan_path(@user, @plan), method: :patch, local: true) do |f| %>
     <div class="plan_item-container__content__list">
-      <% unless @items == [] %>
-        <%= f.collection_check_boxes :item_ids, @all_items, :id, :name, checked: @items %>
+      <% unless @items == nil %>
+        <%= f.collection_check_boxes :item_ids, @items, :id, :name, checked: @plan.item_ids %>
       <% else %>
         <p>ギアの登録がありません</p>
       <% end %>
@@ -23,7 +23,7 @@
       <%= f.hidden_field :memo, :value => @plan.memo %>
     <div class="plan_item-container__content__submit">
       <%= f.button :type => "submit", style: 'border-style: none;' do %>
-        内容を更新する <i class="fas fa-angle-double-right"></i></i>
+        内容を更新する
       <% end %>
     </div>
     <% end %>

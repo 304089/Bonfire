@@ -70,7 +70,7 @@ class PlansController < ApplicationController
   def item_edit #ギア編集
     @user = User.find(params[:user_id])
     @plan = Plan.find_by(id: params[:id], user_id: @user.id)
-    @all_items = Item.where(user_id: params[:user_id]).order(:genre)
+    @items = Item.where(user_id: params[:user_id]).order(:genre)
   end
 
   def update

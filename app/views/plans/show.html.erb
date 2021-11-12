@@ -25,8 +25,12 @@
   </div>
 </div>
 <div class="plan-show-container__bottom">
-  <%= link_to "一覧に戻る", user_plans_path(@user), class: "plan-show-container__bottom__back"%>
-  <%= link_to "スケジュール編集", schedule_edit_user_plan_path(@user, @plan), class: "plan-show-container__bottom__back"%>
-  <%= link_to "ギア編集", item_edit_user_plan_path(@user, @plan), class: "plan-show-container__bottom__back"%>
-  <%= link_to "ー 計画を削除する ー", user_plan_path(@user, @plan), method: :delete, data: {confirm: "【確認】 削除しますか？"}, class: "plan-show-container__bottom__delete" %>
+  <div class="plan-show-container__bottom__edit">
+    <%= link_to "スケジュール編集", schedule_edit_user_plan_path(@user, @plan), class: "btn btn-success"%>
+    <%= link_to "ギア編集", item_edit_user_plan_path(@user, @plan), class: "btn btn-success"%>
+    <%= link_to "計画を削除する", user_plan_path(@user, @plan), method: :delete, data: {confirm: "【確認】 削除しますか？"}, class: "btn btn-secondary" %>
+  </div>
+  <div class="plan-show-container__bottom__back">
+    <%= link_to "一覧に戻る", user_plans_path(@user), class: "btn btn-primary"%>
+  </div>
 </div>
