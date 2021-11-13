@@ -4,7 +4,7 @@
     <li class="item2"><%= render "layouts/search_form", keyword: @keyword %></li>
     <li class="item3"><%= link_to root_path do %>Home <i class="fas fa-campground"></i><% end %>
     <% if user_signed_in? %>
-      <li class="item4"><%= link_to do %>Photo <i class="fas fa-camera"></i><% end %>
+      <li class="item4">Photo <i class="fas fa-camera"></i>
         <ul class="menuSub">
           <li><%= link_to "写真を見る", photo_posts_path %></li>
           <% unless current_user.active_user?  %>
@@ -14,7 +14,7 @@
           <% end %>
         </ul>
       </li>
-      <li class="item5"><%= link_to do %> Consult  <i class="fas fa-comments"></i><% end %>
+      <li class="item5">Consult  <i class="fas fa-comments"></i>
         <ul class="menuSub">
           <li><%= link_to "相談を見る", consultations_path %></li>
           <% unless current_user.active_user?  %>
