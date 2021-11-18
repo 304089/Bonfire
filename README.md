@@ -46,7 +46,7 @@
 [チャレンジ要素](https://docs.google.com/spreadsheets/d/1lzPPfHXpo8iiL9e9x6RtkWUOUH-uQZxFOOObnomo3rw/edit?usp=sharing)
 
 ## 開発環境
-- OS：macOS Big Sur
+- OS：Amazon Linux2
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
